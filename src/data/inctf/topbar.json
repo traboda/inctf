@@ -70,10 +70,6 @@
       "link": "/resources",
       "items": [
         {
-          "label":"Ambassador Program",
-          "link": "/ambassador"
-        },
-        {
           "label": "Cyber Workshops",
           "badge": "free",
           "link": "/trainings"

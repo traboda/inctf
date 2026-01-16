@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import Head from 'next/head';
 
 const seoTags = {
-  siteName: 'InCTF 2025',
+  siteName: 'InCTF 2026',
   tagLine: 'India’s First Ethical Hacking contest.',
   description: 'Capture the Flag contest. India’s first hacking competition. Play CTFs, win prizes and get placed with our sponsors.',
 };
