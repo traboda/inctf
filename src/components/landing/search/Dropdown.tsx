@@ -15,25 +15,24 @@ const Dropdown = ({ search, setSearch = (_: string) => {} }) => {
       {faq().length ? (
         <div>
           {faq().map((f, i) => (
-            <Link key={i} href={`/faq?q=${encodeURIComponent(f.question)}`} passHref legacyBehavior>
-              <a className="px-6 py-2 hover:bg-gray-100 flex" onClick={() => setSearch(f.question)}>
-                <div>
-                  {reactStringReplace(f.question, search, match => (
-                    <span className="font-semibold">{match}</span>
-                  ))}
-                </div>
-              </a>
+            <Link key={i} href={`/faq?q=${encodeURIComponent(f.question)}`} className="px-6 py-2 hover:bg-gray-100 flex" onClick={() => setSearch(f.question)}>
+
+              <div>
+                {reactStringReplace(f.question, search, match => (
+                  <span className="font-semibold">{match}</span>
+                ))}
+              </div>
+
             </Link>
           ))}
         </div>
       ) : (
         <div className="p-3 lg:p-6 text-center">
           <div className="mb-2">Do not see what you were looking for? </div>
-          <Link legacyBehavior href="/discord" passHref>
-            <a className="text-primary hover:text-blue-800">
-              Join our discord server
-              <i className="fa fa-external-link ml-1" />
-            </a>
+          <Link href="/discord" className="text-primary hover:text-blue-800">
+            Join our discord server
+                          <i className="fa fa-external-link ml-1" />
+
           </Link>
           <span> to get help from experts.</span>
         </div>

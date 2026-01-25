@@ -33,7 +33,9 @@ type Breadcrumb = {
 const Breadcrumb = ({ items }: Breadcrumb) => (
   <BreadcrumbWrapper>
     <li>
-      <Link legacyBehavior href="/" className="hover:text-primary">
+      <Link href="/" className="hover:text-primary">
+        {/* @next-codemod-error This Link previously used the now removed `legacyBehavior` prop, and has a child that might not be an anchor. The codemod bailed out of lifting the child props to the Link. Check that the child component does not render an anchor, and potentially move the props manually to Link. */
+        }
         <i className="fa fa-home" />
       </Link>
     </li>
@@ -41,10 +43,10 @@ const Breadcrumb = ({ items }: Breadcrumb) => (
         items.map((i) =>
           (<li key={shortid.generate()}>
             {i.isActive ? i.title : (
-              <Link legacyBehavior passHref href={i?.link || '#'}>
-                <a className="hover:text-primary">
-                  {i.title}
-                </a>
+              <Link href={i?.link || '#'} className="hover:text-primary">
+
+                {i.title}
+
               </Link>
             )}
           </li>),

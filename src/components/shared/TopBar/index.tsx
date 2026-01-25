@@ -152,12 +152,14 @@ const TopBar = ({ UTMSource = null }) => {
             </div>
             <div className="flex items-center md:my-0 px-2 md:px-0 justify-end gap-2">
               {topbarConfig?.topbarCTA?.map((cta) => (
-                <Link legacyBehavior href={cta?.link} passHref>
-                  <a className="bg-white text-blue-800 mb-0 hover:text-primary rounded-lg px-3 py-2 whitespace-nowrap">
-                    {cta?.buttonText}
-                    {' '}
-                    <i className="fa fa-chevron-right ml-1" />
-                  </a>
+                <Link
+                  href={cta?.link}
+                  className="bg-white text-blue-800 mb-0 hover:text-primary rounded-lg px-3 py-2 whitespace-nowrap">
+
+                  {cta?.buttonText}
+                  {' '}
+                  <i className="fa fa-chevron-right ml-1" />
+
                 </Link>
               ))}
             </div>

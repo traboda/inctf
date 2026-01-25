@@ -46,10 +46,10 @@ const TopBarSearch = () => {
               className="container mx-auto flex flex-col items-center justify-center"
             >
               <div className="text-center w-full" style={{ maxWidth: 600 }}>
-                <Link legacyBehavior href="/" passHref>
-                  <a className="flex justify-center mb-2">
-                    <Logo isDark maxHeight={120} />
-                  </a>
+                <Link href="/" className="flex justify-center mb-2">
+
+                  <Logo isDark maxHeight={120} />
+
                 </Link>
                 <SearchBar
                   placeholder="Search your queries & questions about InCTF Jr"
