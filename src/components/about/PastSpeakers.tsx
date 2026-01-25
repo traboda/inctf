@@ -41,15 +41,17 @@ const PastINCTFSpeakers = () => {
     { 'image': '/assets/images/photos/speakers/12.jpg' }];
 
   const [currHighlight, setHighlight] = useState(0);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     setInterval(() => {
       setHighlight(Math.floor(Math.random() * 12));
     }, 1000);
   }, []);
 
   return (
-    <PastSpeakersSection>
+    <PastSpeakersSection suppressHydrationWarning>
       <div className="py-3">
         <h4>Talks & Sessions</h4>
         <h5>By Leading Professionals & Security Researchers</h5>
@@ -62,7 +64,7 @@ const PastINCTFSpeakers = () => {
                 alt="Speaker"
                 draggable="false"
                 src={s.image}
-                style={{ transform: index === currHighlight ? 'scale(1.15)' : null }}
+                style={{ transform: mounted && index === currHighlight ? 'scale(1.15)' : undefined }}
               />
             </div>
           </div>

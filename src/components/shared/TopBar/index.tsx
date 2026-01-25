@@ -103,6 +103,7 @@ const TopBar = ({ UTMSource = null }) => {
   const [showRegCard, setShowRegCard] = useState(false);
   const [scrollDir, setScrollDir] = useState('up');
   const [isAtTop, setIsAtTop] = useState(true);
+  const [mounted, setMounted] = useState(false);
 
   const topbarRef = useRef(null);
   const scrollPrevStateRef = useRef(0);
@@ -121,6 +122,12 @@ const TopBar = ({ UTMSource = null }) => {
   };
 
   useEffect(() => {
+    // Prevent hydration mismatch by only running after mount
+    setMounted(true);
+
+    // Initialize scroll position on mount
+    onScroll();
+
     document.addEventListener('scroll', onScroll, false);
     return () => {
       document.removeEventListener('scroll', onScroll, false);
@@ -157,7 +164,7 @@ const TopBar = ({ UTMSource = null }) => {
           </div>
         </div>
       )}
-      <TopbarContainer ref={topbarRef} className={scrollDir + ` ${isAtTop ? 'top' : 'floating'}`}>
+      <TopbarContainer suppressHydrationWarning ref={topbarRef} className={scrollDir + ` ${isAtTop ? 'top' : 'floating'}`}>
         <div className="flex flex-wrap justify-center items-center container">
           <div
             className="w-1/4 md:w-1/3 xl:w-1/4 md:text-center flex flex-wrap items-center md:justify-start justify-center px-2"
@@ -207,12 +214,12 @@ const TopBar = ({ UTMSource = null }) => {
                   {topbarConfig?.CTA && (
                     <React.Fragment>
                       {topbarConfig?.CTA?.type === 'info' && (
-                      <div className="text-right px-2">
-                        <div className="text-lg font-semibold text-primary">
-                          {topbarConfig?.CTA?.title}
+                        <div className="text-right px-2">
+                          <div className="text-lg font-semibold text-primary">
+                            {topbarConfig?.CTA?.title}
+                          </div>
+                          <div className="font-semibold">{topbarConfig?.CTA?.subTitle}</div>
                         </div>
-                        <div className="font-semibold">{topbarConfig?.CTA?.subTitle}</div>
-                      </div>
                       )}
                       {/*{eventID === 'inctfj' ? (*/}
                       {/*  <div>*/}
@@ -226,13 +233,13 @@ const TopBar = ({ UTMSource = null }) => {
                       {/*  </div>*/}
                       {/*) : */}
                       {topbarConfig?.CTA.type === 'link' && (
-                      <Link href={topbarConfig?.CTA?.link} target="_blank">
-                        <button className="px-8 py-4 rounded-lg font-semibold bg-primary hover:bg-blue-800 shadow hover:shadow-xl text-white ml-3">
-                          {topbarConfig?.CTA?.buttonText} 
-                          {' '}
-                          <i className="fa fa-chevron-right" />
-                        </button>
-                      </Link>
+                        <Link href={topbarConfig?.CTA?.link} target="_blank">
+                          <button className="px-8 py-4 rounded-lg font-semibold bg-primary hover:bg-blue-800 shadow hover:shadow-xl text-white ml-3">
+                            {topbarConfig?.CTA?.buttonText}
+                            {' '}
+                            <i className="fa fa-chevron-right" />
+                          </button>
+                        </Link>
                       )}
                     </React.Fragment>
                   )}

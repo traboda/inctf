@@ -6,6 +6,8 @@ import remarkGfm from 'remark-gfm';
 import TopBar from '../../src/components/shared/TopBar';
 import Footer from '../../src/components/shared/Footer';
 import SiteView from '../../src/components/SiteView';
+import postsIndex from '../../src/data/posts/index.json';
+import { loadYaml } from '../../lib/loadYaml';
 
 const BlogWrap = styled.section`
     background: #223;
@@ -30,15 +32,7 @@ const TitleArea = styled.div`
     }
 `;
 
-const BlogPostPage = ({ slug }) => {
-  const data = (() => {
-    try {
-      return require(`../../src/data/posts/${slug}.yaml`);
-    } catch (e) {
-      return null;
-    }
-  })();
-
+const BlogPostPage = ({ data }) => {
   return data ?
     <SiteView meta={{ title: `${data.title} - Blog`, description: data.description }}>
       <TopBar />
@@ -48,12 +42,12 @@ const BlogPostPage = ({ slug }) => {
             <h1>{data.title}</h1>
             <div>
               <div className="mr-3 d-inline-block my-1">
-                <i className="far fa-calendar-alt mr-1" /> 
+                <i className="far fa-calendar-alt mr-1" />
                 {' '}
-                {data.date.toDateString()}
+                {new Date(data.date).toDateString()}
               </div>
               <div className="d-inline-block my-1">
-                <i className="far fa-user mr-1" /> 
+                <i className="far fa-user mr-1" />
                 {' '}
                 {data.author}
               </div>
@@ -76,10 +70,35 @@ const BlogPostPage = ({ slug }) => {
     </SiteView>;
 };
 
-BlogPostPage.getInitialProps = async ({ query }) => {
-  const slug = query.slug;
-  return { slug };
-};
+export async function getStaticPaths() {
+  const paths = Object.keys(postsIndex).map((key) => {
+    const { query } = postsIndex[key];
+    return {
+      params: { slug: query.slug },
+    };
+  });
 
+  return {
+    paths,
+    fallback: false,
+  };
+}
+
+export async function getStaticProps({ params }) {
+  try {
+    const data = loadYaml(`src/data/posts/${params.slug}.yaml`);
+    return {
+      props: {
+        data,
+      },
+    };
+  } catch (e) {
+    return {
+      props: {
+        data: null,
+      },
+    };
+  }
+}
 
 export default BlogPostPage;

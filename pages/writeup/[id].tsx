@@ -9,6 +9,8 @@ import Footer from '../../src/components/shared/Footer';
 import Breadcrumb from '../../src/components/shared/Breadcrumb';
 import PageFooterExplorer from '../../src/components/PageFooterExplorer';
 import SiteView from '../../src/components/SiteView';
+import postsIndex from '../../src/data/writeups/index.json';
+import { loadYaml } from '../../lib/loadYaml';
 
 const CodeBlock = dynamic(() => import('../../src/components/CodeBlock'), { ssr: false });
 
@@ -110,15 +112,7 @@ const Markdown = styled.div`
   }
 `;
 
-const WriteUpPage = ({ id }) => {
-  const data = (() => {
-    try {
-      return require(`../../src/data/writeups/${id}.yaml`);
-    } catch (e) {
-      return null;
-    }
-  })();
-
+const WriteUpPage = ({ data }) => {
   return data ?
     <SiteView meta={{ title: `${data.title} - ${data?.category} Challenge Solution` }}>
       <TopBar />
@@ -137,13 +131,13 @@ const WriteUpPage = ({ id }) => {
           <h1 className="text-primary mb-2 text-3xl lg:text-6xl">{data.title}</h1>
           <div className="font-semibold opacity-75 text-base pb-6 pt-2">
             <span>
-              <i className="far fa-fire" /> 
+              <i className="far fa-fire" />
               {' '}
               {data?.difficulty}
               {' '}
             </span>
             <span className="ml-2">
-              <i className="far fa-album-collection" /> 
+              <i className="far fa-album-collection" />
               {' '}
               {data?.category}
             </span>
@@ -153,7 +147,7 @@ const WriteUpPage = ({ id }) => {
               href={`https://app.traboda.com/challenge/${data?.id}`}
               className="bg-blue-900 hover:bg-primary px-4 py-3 text-white rounded-lg"
             >
-              Open Challenge 
+              Open Challenge
               {' '}
               <i className="fa fa-external-link ml-1" />
             </a>
@@ -222,10 +216,35 @@ const WriteUpPage = ({ id }) => {
     </SiteView>;
 };
 
-WriteUpPage.getInitialProps = async ({ query }) => {
-  const id = query.id;
-  return { id };
-};
+export async function getStaticPaths() {
+  const paths = Object.keys(postsIndex).map((key) => {
+    const { query } = postsIndex[key];
+    return {
+      params: { id: String(query.id) },
+    };
+  });
 
+  return {
+    paths,
+    fallback: false,
+  };
+}
+
+export async function getStaticProps({ params }) {
+  try {
+    const data = loadYaml(`src/data/writeups/${params.id}.yaml`);
+    return {
+      props: {
+        data,
+      },
+    };
+  } catch (e) {
+    return {
+      props: {
+        data: null,
+      },
+    };
+  }
+}
 
 export default WriteUpPage;

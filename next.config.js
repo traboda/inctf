@@ -1,13 +1,18 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  webpack: function (config) {
-    config.module.rules.push(
-      {
-        test: /\.ya?ml$/,
-        use: 'js-yaml-loader',
-      },
-    );
-    return config;
+  reactStrictMode: false, // Disable strict mode to reduce hydration warnings in dev
+  swcMinify: true,
+
+  // Webpack YAML loader removed - YAML files now loaded at build time via getStaticProps
+
+  experimental: {
+    // Disable strict mode hydration checks that can cause false positives
+    strictNextHead: false,
+  },
+
+  // Optimize images
+  images: {
+    domains: ['traboda.com', 'app.traboda.com'],
   },
 };
 

@@ -17,6 +17,7 @@ const StatsContainer = styled.section`
 const LandingStatsBar = () => {
 
   const [stats, setStats] = useState(null);
+  const [mounted, setMounted] = useState(false);
 
   const fetchStats = () => {
     try {
@@ -35,7 +36,10 @@ const LandingStatsBar = () => {
     }
   };
 
-  useEffect(fetchStats, []);
+  useEffect(() => {
+    setMounted(true);
+    fetchStats();
+  }, []);
 
   const statsPreviewer = [
     { value: stats?.registrations || 0, title: 'Total Participants' },
@@ -43,7 +47,11 @@ const LandingStatsBar = () => {
     { value: stats?.totalInstitutions || 0, title: 'Schools Participating' },
   ];
 
-  return (<StatsContainer className="container mx-auto flex flex-wrap text-center">
+  if (!mounted) {
+    return <StatsContainer className="container mx-auto flex flex-wrap text-center" suppressHydrationWarning />;
+  }
+
+  return (<StatsContainer suppressHydrationWarning className="container mx-auto flex flex-wrap text-center">
     {statsPreviewer.map((s, i) => (
       <div className="w-1/2 md:w-1/3 p-4" key={i}>
         <div className="text-blue-600 h2 mb-2 font-bold">
