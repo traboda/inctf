@@ -56,7 +56,7 @@ const BlogPostPage = ({ data }) => {
         </TitleArea>
         <div className="container-lg py-4 px-3" style={{ maxWidth: '900px' }}>
           <div>
-            <ReactMarkdown plugins={[remarkGfm]}>
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>
               {data?.content}
             </ReactMarkdown>
           </div>

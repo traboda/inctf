@@ -151,8 +151,9 @@ const TopBar = ({ UTMSource = null }) => {
               {topbarConfig?.topbarCTAText}
             </div>
             <div className="flex items-center md:my-0 px-2 md:px-0 justify-end gap-2">
-              {topbarConfig?.topbarCTA?.map((cta) => (
+              {topbarConfig?.topbarCTA?.map((cta, index) => (
                 <Link
+                  key={`topbar-cta-${index}`}
                   href={cta?.link}
                   className="bg-white text-blue-800 mb-0 hover:text-primary rounded-lg px-3 py-2 whitespace-nowrap">
 
@@ -166,7 +167,11 @@ const TopBar = ({ UTMSource = null }) => {
           </div>
         </div>
       )}
-      <TopbarContainer suppressHydrationWarning ref={topbarRef} className={scrollDir + ` ${isAtTop ? 'top' : 'floating'}`}>
+      <TopbarContainer
+        suppressHydrationWarning
+        ref={topbarRef}
+        className={mounted ? `${scrollDir} ${isAtTop ? 'top' : 'floating'}` : 'up top'}
+      >
         <div className="flex flex-wrap justify-center items-center container">
           <div
             className="w-1/4 md:w-1/3 xl:w-1/4 md:text-center flex flex-wrap items-center md:justify-start justify-center px-2"

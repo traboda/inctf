@@ -47,11 +47,11 @@ const LandingSponsorship = () => (
             <h2>{data.forNewSponsors.title}</h2>
             <p className="mt-4">
               {data.forNewSponsors.description[0]}
-              <div className="text-lg mt-3">{data.forNewSponsors.description[1]}</div>
+              <span className="block text-lg mt-3">{data.forNewSponsors.description[1]}</span>
             </p>
             <div className="mt-4 mb-8">
               {/*<a className="sponsorship-brochure-button" href="/sponsor">Sponsorship Brochure</a>*/}
-              <a 
+              <a
                 className="contact-us-button px-3 py-2 rounded-lg text-white bg-primary"
                 href={data.forNewSponsors.url}
               >

@@ -158,8 +158,8 @@ const WriteUpPage = ({ data }) => {
         <div className="py-8 px-3" style={{ minHeight: '50vh', width: '1000px', maxWidth: '100%' }}>
           <Markdown className="leading-relaxed">
             <ReactMarkdown
-              plugins={[remarkGfm]}
-              renderers={{
+              remarkPlugins={[remarkGfm]}
+              components={{
                 code: CodeBlock,
               }}
             >
