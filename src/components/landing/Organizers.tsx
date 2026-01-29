@@ -15,18 +15,28 @@ const OrganizersSection = styled.section`
           font-weight: 700;
           font-size: 26px;
           text-transform: uppercase;
-          color: #E65100;
+          color: #E11D48; /* alert-crimson */
           margin-bottom: 2rem;
+          font-family: 'Inter', sans-serif;
+          letter-spacing: 1px;
         }
         h4 {
           font-size: 18px;
           font-weight: 600;
-          color: #444;
+          color: #F8FAFC; /* ghost-white */
+          font-family: 'Inter', sans-serif;
         }
         img {
           max-height: 78px;
           max-width: 100%;
           margin-bottom: 1rem;
+          filter: brightness(0) invert(1); /* Make logos white if possible, or just readable */
+          opacity: 0.8;
+          transition: 0.3s;
+        }
+        img:hover {
+            opacity: 1;
+            filter: none;
         }
         .md\\:w-1\\/3 {
             padding: 1rem;
@@ -34,6 +44,8 @@ const OrganizersSection = styled.section`
               font-size: 12px;
               max-width: 450px;
               margin-bottom: 0;
+              color: #94A3B8; /* slate-satellite */
+              font-family: 'JetBrains Mono', monospace;
             }
         }
     }

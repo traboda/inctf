@@ -4,6 +4,7 @@ const nextConfig = {
 
   // Optimize images - using remotePatterns instead of deprecated domains
   images: {
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',
@@ -15,6 +16,8 @@ const nextConfig = {
       },
     ],
   },
+  // Enable static export
+  output: 'export',
 };
 
 module.exports = nextConfig;

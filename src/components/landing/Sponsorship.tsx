@@ -15,22 +15,35 @@ const SponsorshipArea = styled.section`
       font-weight: 700;
       font-size: 32px;
       margin-bottom: 1rem;
+      color: #F8FAFC;
+      font-family: 'Inter', sans-serif;
       div {
         font-size: 90%;
+        color: #38BDF8;
       }
     }
     p {
         max-width: 650px;
+        color: #94A3B8;
+        font-family: 'JetBrains Mono', monospace;
         div {
           font-size: 16px;
           font-weight: 500;
         }
     }
     .sponsorship-brochure-button {
-       background: #E65100;
+       background: #E11D48;
     }
     .contact-us-button {
-        background: #1A237E;
+        background: rgba(56, 189, 248, 0.1);
+        border: 1px solid #38BDF8;
+        color: #38BDF8;
+        transition: 0.3s;
+    }
+    .contact-us-button:hover {
+        background: #38BDF8;
+        color: #000;
+        box-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
     }
 `;
 

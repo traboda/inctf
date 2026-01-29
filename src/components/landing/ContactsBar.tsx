@@ -7,7 +7,7 @@ const data = require(`../../data/${eventID}/index.json`);
 
 const ContactsBarSection = styled.section`
     padding: 5vh 3vw;
-    background: #222640;
+    background: transparent;
     color: white;
     img {
       max-height: 64px;

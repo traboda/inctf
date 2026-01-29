@@ -17,7 +17,7 @@ class MyDocument extends Document {
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
           <link
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap"
             rel="stylesheet"
             crossOrigin="anonymous"
           />
@@ -25,7 +25,7 @@ class MyDocument extends Document {
             href="https://cdn.staticaly.com/gh/hung1001/font-awesome-pro/8af0edd/css/all.css"
             rel="stylesheet"
           />
-          
+
           {/* Google Tag Manager */}
           <script
             dangerouslySetInnerHTML={{
@@ -39,17 +39,17 @@ class MyDocument extends Document {
             }}
           />
         </Head>
-        <body>
+        <body suppressHydrationWarning={true}>
           {/* Google Tag Manager (noscript) - Must be right after opening <body> tag */}
           <noscript>
-            <iframe 
+            <iframe
               src="https://www.googletagmanager.com/ns.html?id=GTM-56DCPP26"
-              height="0" 
-              width="0" 
-              style={{display: 'none', visibility: 'hidden'}}
+              height="0"
+              width="0"
+              style={{ display: 'none', visibility: 'hidden' }}
             />
           </noscript>
-          
+
           <Main />
           <NextScript />
           <script src="https://play.inctf.in/sdk.js" />
