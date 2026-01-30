@@ -31,6 +31,48 @@ body {
     background: rgba(2, 6, 23, 0.7);
 }
 
+/* Operation VAJRA Theme Colors */
+.text-sky-digital {
+    color: #38BDF8;
+}
+
+.bg-sky-digital {
+    background-color: #38BDF8;
+}
+
+.border-sky-digital {
+    border-color: #38BDF8;
+}
+
+.text-alert-crimson {
+    color: #FF0000;
+}
+
+.bg-alert-crimson {
+    background-color: #FF0000;
+}
+
+.border-alert-crimson {
+    border-color: #FF0000;
+}
+
+.text-slate-satellite {
+    color: #94A3B8;
+}
+
+.text-ghost-white {
+    color: #F8FAFC;
+}
+
+/* Operation VAJRA Fonts */
+.font-tactical {
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.font-heading {
+    font-family: 'Inter', sans-serif;
+}
+
 .scanlines {
     background: linear-gradient(to bottom,
             rgba(255, 255, 255, 0),
@@ -70,7 +112,7 @@ body {
 }
 
 .glitch::after {
-    color: #E11D48;
+    color: #FF0000;
     z-index: -2;
     animation: glitch-anim-2 3s infinite linear alternate-reverse;
 }

@@ -1,19 +1,17 @@
 import React from 'react';
 
 import LandingHeader from '../src/components/landing/Header';
-import LandingSponsorship from '../src/components/landing/Sponsorship';
-import LandingTestimonials from '../src/components/landing/Testimonials';
-import LandingOrganizers from '../src/components/landing/Organizers';
-import LandingReasonsToParticipate from '../src/components/landing/WhyParticipate';
-import CTAReg from '../src/components/landing/CTAReg';
-import LandingQuickInfo from '../src/components/landing/QuickInfo';
+import LandingMissionCredentials from '../src/components/landing/Organizers';
+import LandingCrewEligibility from '../src/components/landing/WhyParticipate';
+import LandingJoinMissionControl from '../src/components/landing/CTAReg';
+import LandingMissionOutcomes from '../src/components/landing/QuickInfo';
 import LandingAboutInCTF from '../src/components/landing/About';
 // import LandingStatsBar from "../src/components/landing/StatsCounter";
-import LandingHowItWorks from '../src/components/landing/HowItWorks';
+import LandingOperationalPlan from '../src/components/landing/HowItWorks';
 import LandingContactsBar from '../src/components/landing/ContactsBar';
 import TopBar from '../src/components/shared/TopBar';
-import CTAPartners from '../src/components/landing/CTAPartners';
-import LandingPromoVideo from '../src/components/landing/PromoVideo';
+import LandingMissionOutreach from '../src/components/landing/CTAPartners';
+// import LandingPromoVideo from '../src/components/landing/PromoVideo';
 import LandingSearch from '../src/components/landing/search';
 import Footer from '../src/components/shared/Footer';
 import SiteView from '../src/components/SiteView';
@@ -40,18 +38,16 @@ const LandingPage = () => {
         <TopBar />
         <div className="relative z-10 overflow-x-hidden">
           <LandingHeader />
-          <LandingQuickInfo />
           <LandingAboutInCTF />
-          {/*<LandingStatsBar />*/}
-          {/*<LandingPrizeDetails />*/}
-          <LandingPromoVideo />
-          <LandingReasonsToParticipate />
-          <CTAReg />
-          <LandingHowItWorks />
-          <LandingTestimonials />
-          <LandingSponsorship />
-          <CTAPartners />
-          <LandingOrganizers />
+          <LandingCrewEligibility />
+          <LandingMissionOutcomes />
+          {/* <LandingPromoVideo />  -- Commented out for Operation VAJRA theme cohesion */}
+          <LandingOperationalPlan />
+          <LandingMissionOutreach />
+          <LandingMissionCredentials />
+          <LandingJoinMissionControl />
+          {/* <LandingTestimonials /> -- Commented out */}
+          {/* <LandingSponsorship /> -- Commented out unless requested */}
           <LandingSearch />
           <LandingContactsBar />
         </div>

@@ -1,100 +1,122 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import { FileText, ShieldAlert, Activity, Target, Terminal, ChevronDown, ChevronRight, Lock } from 'lucide-react';
 
 import animation from '@/src/animation';
 
 const eventID = process.env.EVENT_ID || process.env.NEXT_PUBLIC_EVENT_ID;
 const data = require(`../../data/${eventID}/index.json`);
 
-const DecodingText = ({ text, className }: { text: string; className?: string }) => (
-  <motion.span
-    initial="hiddenDecoding"
-    whileInView="decoding"
+const ClassifiedSection = ({ title, icon: Icon, children, delay = 0 }: any) => (
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ delay, duration: 0.5 }}
     viewport={{ once: true }}
-    variants={animation}
-    className={className}
+    className="mb-6 border-l-2 border-sky-digital/30 pl-4 bg-sky-digital/5 p-4 rounded-r-lg hover:bg-sky-digital/10 transition-colors"
   >
-    {text.split("").map((char, index) => (
-      <motion.span
-        key={index}
-        variants={{
-          hiddenDecoding: animation.hiddenChar,
-          decoding: animation.charReveal
-        }}
-      >
-        {char}
-      </motion.span>
-    ))}
-  </motion.span>
+    <div className="flex items-center gap-3 mb-2 text-sky-400 font-tactical tracking-wider text-sm uppercase">
+      <Icon size={16} />
+      <span>{title}</span>
+    </div>
+    <div className="text-slate-300 font-mono text-sm leading-relaxed whitespace-pre-line">
+      {children}
+    </div>
+  </motion.div>
 );
 
 const LandingAboutInCTF = () => (
-  <section className="container mx-auto py-20 px-4">
-    <div>
-      <div className="md:hidden flex justify-center mb-6">
-        <div className="rounded-none border border-sky-digital/30 bg-sky-digital/10 p-4 backdrop-blur-sm relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-4 h-4 border-t border-r border-sky-digital"></div>
-          <div className="absolute bottom-0 left-0 w-4 h-4 border-b border-l border-sky-digital"></div>
-          <div className="flex flex-wrap items-center">
-            <div className="w-full md:w-4/5 text-slate-satellite font-mono text-sm mb-4">
-              [ MISSION SUPPORT ] <br />
-              Have you got stuck? Need Help?
-              {' '}
-              <span className="inline-block text-sky-digital">
-                Join our discord server, ask your doubts & get support from our experts.
-              </span>
-            </div>
-            <div className="w-full flex items-center justify-start">
-              <Link href="/discord" className="bg-sky-digital/10 border border-sky-digital text-sky-digital px-4 py-2 text-sm font-bold uppercase tracking-wider hover:bg-sky-digital hover:text-black transition-all">
-                Join Discord
-                {' '}
-                <i className="fa fa-chevron-right ml-1" />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="grid md:grid-cols-3 gap-6 md:gap-8">
+  <section className="container mx-auto py-20 px-4" id="mission-brief">
+
+    <div className="flex flex-col lg:flex-row gap-12">
+      {/* Main Brief Column */}
+      <div className="lg:w-1/2">
         <motion.div
           variants={animation}
           initial="hiddenScale"
           whileInView="tacticalFocus"
           viewport={{ once: true }}
-          className="w-full md:col-span-2 border-glass p-8 rounded-xl relative"
         >
-          <div className="absolute -top-1 -left-1 w-6 h-6 border-t-2 border-l-2 border-sky-digital opacity-50"></div>
-          <h2 className="mb-6 text-4xl font-heading font-bold text-white tracking-tight">
-            <DecodingText text="About InCTF" />
+          <h2 className="text-4xl font-heading font-black text-white mb-6 flex items-center gap-3">
+            <span className="text-alert-crimson"><Terminal size={32} /></span>
+            MISSION BRIEF
           </h2>
-          {data.LandingDescINCTF.map((item, index) => (
-            <p className="mb-2 md:mb-4 text-base md:text-lg max-w-full text-slate-satellite font-mono leading-relaxed" key={index}>
-              {">"} {item}
-            </p>
-          ))}
+
+          <p className="text-lg md:text-xl text-slate-200 border-l-4 border-alert-crimson pl-6 py-2 mb-12 font-medium leading-relaxed bg-gradient-to-r from-alert-crimson/10 to-transparent">
+            {data.MissionBrief.summary}
+          </p>
+
+          <div className="font-mono text-xs text-sky-digital mb-2">CLASSIFIED BRIEF // EYE ONLY</div>
+          <div className="grid gap-4">
+            <ClassifiedSection title="SITUATION REPORT" icon={Activity} delay={0.1}>
+              <ul className="list-disc list-inside space-y-2">
+                {data.ClassifiedBrief.SituationReport.map((item: string, i: number) => (
+                  <li key={i}>{item}</li>
+                ))}
+              </ul>
+            </ClassifiedSection>
+
+            <ClassifiedSection title="THREAT ASSESSMENT" icon={ShieldAlert} delay={0.2}>
+              <ul className="list-disc list-inside space-y-2 text-alert-crimson/90">
+                {data.ClassifiedBrief.ThreatAssessment.map((item: string, i: number) => (
+                  <li key={i}>{item}</li>
+                ))}
+              </ul>
+            </ClassifiedSection>
+          </div>
         </motion.div>
+      </div>
+
+      {/* Operational Column */}
+      <div className="lg:w-1/2">
         <motion.div
           variants={animation}
           initial="hiddenBlur"
           whileInView="tacticalFocus"
           viewport={{ once: true }}
-          className="flex justify-start items-center p-6 border-glass rounded-xl"
+          className="bg-obsidian border border-slate-800 p-6 rounded-xl relative overflow-hidden"
         >
-          <ul className="flex flex-col text-lg font-semibold gap-6 w-full">
-            {data.LandingHighlights.map((item, index) => (
-              <motion.li
-                key={index}
-                variants={animation}
-                className="flex items-center text-ghost-white font-tactical text-sm uppercase tracking-wide border-b border-slate-700/50 pb-2"
-              >
-                <span className="text-alert-crimson mr-3 text-xs">[0{index + 1}]</span>
-                {item}
-              </motion.li>
-            ))}
-          </ul>
+          <div className="absolute top-0 right-0 p-4 opacity-10">
+            <Lock size={120} />
+          </div>
+
+          <ClassifiedSection title="OPERATIONAL RESPONSE" icon={Target} delay={0.3}>
+            <ul className="list-disc list-inside space-y-2">
+              {data.ClassifiedBrief.OperationalResponse.map((item: string, i: number) => (
+                <li key={i}>{item}</li>
+              ))}
+            </ul>
+          </ClassifiedSection>
+
+          <ClassifiedSection title="MISSION PARAMETERS" icon={FileText} delay={0.4}>
+            <ul className="list-disc list-inside space-y-2">
+              {data.ClassifiedBrief.MissionParameters.map((item: string, i: number) => (
+                <li key={i}>{item}</li>
+              ))}
+            </ul>
+          </ClassifiedSection>
+
+          <div className="mt-8 p-6 border border-sky-digital/30 bg-sky-digital/5 rounded relative">
+            <div className="absolute top-0 left-0 w-4 h-4 border-t border-l border-sky-digital"></div>
+            <div className="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-sky-digital"></div>
+
+            <h4 className="font-tactical text-sky-digital text-sm mb-2 uppercase tracking-widest">FINAL DIRECTIVE</h4>
+            <p className="font-mono text-slate-300 text-sm italic">
+              &quot;{data.ClassifiedBrief.FinalDirective}&quot;
+            </p>
+          </div>
+
+          <div className="mt-6 flex justify-end">
+            <Link href="#crew-eligibility" className="flex items-center gap-2 text-sm font-bold text-sky-digital hover:text-white transition-colors uppercase tracking-wider">
+              Proceed to Crew Selection <ChevronRight size={16} />
+            </Link>
+          </div>
+
         </motion.div>
       </div>
     </div>
+
   </section>
 );
 
