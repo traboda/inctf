@@ -18,8 +18,7 @@ const TopbarContainer = styled.header`
   z-index: 6000;
   background: rgba(2, 6, 23, 0.7);
   backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(56, 189, 248, 0.2);
-  transition: all 300ms ease-in-out;
+   transition: all 300ms ease-in-out;
   padding: 1rem 0.35rem;
   display: flex;
   justify-content: center;
@@ -30,7 +29,6 @@ const TopbarContainer = styled.header`
   &.floating {
     background: rgba(2, 6, 23, 0.85);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-    border-bottom: 1px solid rgba(56, 189, 248, 0.3);
   }
 
   &.up, &.top {
@@ -41,7 +39,6 @@ const TopbarContainer = styled.header`
 
   @media screen and (max-width: 768px) {
     position: fixed;
-    border-top: 1px solid rgba(56, 189, 248, 0.2);
     border-bottom: none !important;
     background: rgba(2, 6, 23, 0.95);
     top: initial;
@@ -149,7 +146,7 @@ const TopBar = ({ UTMSource = null }) => {
   return (
     <>
       {topbarConfig?.topbarCTA && (
-        <div style={{ fontSize: '14px' }} className="hidden md:block p-2 bg-slate-900/90 backdrop-blur-sm text-cyan-400 border-b border-sky-500/20 relative z-50">
+        <div style={{ fontSize: '14px' }} className="hidden md:block p-2 bg-slate-900/90 backdrop-blur-sm text-cyan-400 relative z-50">
           <div className="flex items-center justify-between container mx-auto">
             <div className="px-3 font-mono tracking-tight">
               <span className="text-alert-crimson mr-2">[ALERT]</span>
@@ -181,7 +178,7 @@ const TopBar = ({ UTMSource = null }) => {
           <div
             className="w-1/4 md:w-1/3 xl:w-1/4 md:text-center flex flex-wrap items-center md:justify-start justify-center px-2"
           >
-            <Link className="w-full md:w-1/3" href="/">
+            <Link className="w-full md:w-1/3 hidden md:block" href="/">
               <Logo isDark />
             </Link>
             {topbarConfig?.associate?.link && (
