@@ -28,7 +28,7 @@ const MissionCredentials = () => {
                     transition={{ duration: 0.8 }}
                     className="max-w-3xl w-full mb-20"
                 >
-                    <SectionCard>
+                    <SectionCard bottomBracketOffset={{ y: 16, x: -16 }}>
 
                         <div className="w-12 h-0.5 bg-alert-crimson mx-auto mb-6"></div>
                         <h2 className="text-3xl md:text-4xl font-black font-heading text-ghost-white text-center mb-8 tracking-wider uppercase">

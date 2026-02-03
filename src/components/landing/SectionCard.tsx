@@ -2,82 +2,77 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import styled from '@emotion/styled';
 
-// Corner Breathing Animation
-const BreathingCorner = styled(motion.div)`
-  @keyframes breathing {
-    0%, 100% { opacity: 0.3; text-shadow: 0 0 0px transparent; }
-    50% { opacity: 1; text-shadow: 0 0 10px rgba(56, 189, 248, 0.8); }
-  }
-  animation: breathing 3s ease-in-out infinite;
-`;
-
-// Running Data Border Animation
-const RunningBorder = styled.div`
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 15;
-  
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border: 1px dashed rgba(56, 189, 248, 0.3);
-    /* Clip path matches the angled card shape */
-    clip-path: polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px);
-    mask: linear-gradient(90deg, transparent, #fff 50%, transparent);
-    mask-size: 200% 100%;
-    animation: borderRun 3s linear infinite;
-  }
-
-  @keyframes borderRun {
-    0% { mask-position: 100% 0; }
-    100% { mask-position: -100% 0; }
-  }
-`;
-
 const CardContainer = styled(motion.div)`
-  /* Keep existing glow if needed, or rely on the new effects */
+  /* Glassmorphism & Glow */
+  background: rgba(2, 6, 23, 0.6); /* Very dark blue/slate */
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(56, 189, 248, 0.5); /* Solid blue border */
+  box-shadow: 0 0 30px rgba(56, 189, 248, 0.15), inset 0 0 20px rgba(56, 189, 248, 0.05);
+  border-radius: 1.5rem; /* Large rounded corners */
 `;
 
 interface SectionCardProps {
   children: React.ReactNode;
   className?: string;
   delay?: number;
+  bottomBracketOffset?: { x?: number; y?: number }; // Custom offset for bottom bracket
 }
 
-const SectionCard: React.FC<SectionCardProps> = ({ children, className = "", delay = 0 }) => {
+const SectionCard: React.FC<SectionCardProps> = ({
+  children,
+  className = "",
+  delay = 0,
+  bottomBracketOffset = { x: 0, y: -16 } // Default: -16px up (current -translate-y-4)
+}) => {
   return (
-    <div className="relative group p-1">
+    <div className="relative group p-6 md:p-8">
+
+      {/* Top-Left L-Bracket (Cyan) */}
+      <motion.div
+        initial={{ width: 0, height: 0, opacity: 0 }}
+        whileInView={{ width: 60, height: 60, opacity: 0.4 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, delay: delay, ease: "circOut" }}
+        className="absolute top-0 left-0 p-4 border-l-[3px] border-t-[3px] border-sky-digital pointer-events-none"
+      ></motion.div>
+
+      {/* Bottom-Right L-Bracket (Cyan) - with custom offset */}
+      <motion.div
+        initial={{ width: 0, height: 0, opacity: 0 }}
+        whileInView={{ width: 60, height: 60, opacity: 0.4 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, delay: delay, ease: "circOut" }}
+        className="absolute bottom-0 right-0 p-4 border-r-[3px] border-b-[3px] border-sky-digital pointer-events-none"
+        style={{
+          transform: `translate(${bottomBracketOffset.x || 0}px, ${bottomBracketOffset.y || 0}px)`
+        }}
+      ></motion.div>
+
       {/* Main Card Content */}
       <CardContainer
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-10%" }}
         variants={{
-          hidden: { opacity: 0, scale: 0.9, skewX: 10, filter: "blur(10px)" },
+          hidden: { opacity: 0, scale: 0.95, y: 10 },
           visible: {
             opacity: 1,
             scale: 1,
-            skewX: 0,
-            filter: "blur(0px)",
-            transition: {
-              duration: 0.4,
-              delay: delay + 0.1,
-              ease: "backOut"
-            }
+            y: 0,
+            transition: { duration: 0.5, delay: delay + 0.1 }
           }
         }}
         className={`
-            group relative z-10 
-            bg-obsidian/40 
-            backdrop-blur-md 
+            relative z-10 
             p-8 md:p-12 
             overflow-hidden
             ${className}
           `}
+        /* Thicker right/bottom borders for 3D effect */
         style={{
-          clipPath: "polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px)",
+          borderRightWidth: '4px',
+          borderBottomWidth: '4px',
+          borderColor: 'rgba(56, 189, 248, 0.5)',
         }}
         onMouseMove={(e) => {
           const rect = e.currentTarget.getBoundingClientRect();
@@ -91,34 +86,15 @@ const SectionCard: React.FC<SectionCardProps> = ({ children, className = "", del
         <div
           className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
           style={{
-            background: `radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(56, 189, 248, 0.1), transparent 40%)`
+            background: `radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(56, 189, 248, 0.08), transparent 40%)`
           }}
         />
 
-        {/* Tactical Borders & Codes */}
-        {/* The main solid border */}
-        <div className="absolute inset-0 border border-sky-digital/20 pointer-events-none"
-          style={{ clipPath: "polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px)" }}>
-        </div>
-
-        {/* Idea 5: Running Data Borders */}
-        <RunningBorder />
-
-        {/* Idea 6: Corner Breathing (Static/Independent) */}
-        {/* Top Left */}
-        <BreathingCorner
-          className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-sky-500 rounded-tl-sm pointer-events-none"
-          style={{ animationDelay: '0s' }}
-        />
-        {/* Bottom Right */}
-        <BreathingCorner
-          className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-sky-500 rounded-br-sm pointer-events-none"
-          style={{ animationDelay: '1.5s' }} // Offset phase
-        />
+        {/* Top Accent Line (Red) */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-20 h-[3px] bg-alert-crimson shadow-[0_0_15px_rgba(244,63,94,0.6)] rounded-b-md"></div>
 
         {/* Tactical Codes */}
-        <div className="absolute top-1 right-2 text-[8px] font-mono text-sky-500/40 tracking-widest">SYS-01</div>
-        <div className="absolute bottom-1 left-2 text-[8px] font-mono text-sky-500/40 tracking-widest">RDY</div>
+        <div className="absolute top-4 right-6 text-[10px] font-mono text-sky-500/40 tracking-widest font-bold">SYS-01</div>
 
         <div className="relative z-10">
           {children}
