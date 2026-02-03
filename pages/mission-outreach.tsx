@@ -81,6 +81,36 @@ const MissionOutreachPage = () => {
                     <img src="/inctf/assets/design/Homepage/sparkle(1).png" alt="" className="absolute opacity-15" style={{ top: '92%', left: '38%', width: '64px' }} />
                 </div>
 
+                {/* Satellite Decoration - Right Side (Fixed while scrolling) */}
+                <div className="fixed right-0 top-0 h-full z-5 pointer-events-none overflow-hidden">
+                    {/* Multiple satellites stacked vertically */}
+                    <img
+                        src="/inctf/assets/design/Homepage/satellite_laser.webp"
+                        alt=""
+                        className="absolute opacity-30"
+                        style={{
+                            right: '-100px',
+                            top: '5%',
+                            width: '800px',
+                            height: 'auto',
+                            filter: 'drop-shadow(0 0 20px rgba(56, 189, 248, 0.3))'
+                        }}
+                    />
+                    <img
+                        src="/inctf/assets/design/Homepage/satellite_laser.webp"
+                        alt=""
+                        className="absolute opacity-25"
+                        style={{
+                            right: '-150px',
+                            top: '55%',
+                            width: '750px',
+                            height: 'auto',
+                            filter: 'drop-shadow(0 0 20px rgba(56, 189, 248, 0.3))',
+                            transform: 'scaleY(-1)'
+                        }}
+                    />
+                </div>
+
                 <TopBar />
 
                 {/* Main Content */}

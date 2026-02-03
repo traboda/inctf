@@ -199,7 +199,7 @@ const HeroSection = () => {
                 {/* Right side - Info Box */}
                 <div className="w-full lg:w-1/2">
                     <div
-                        className="relative rounded-[14px] p-6"
+                        className="relative rounded-[14px] p-6 transition-all duration-300 hover:shadow-[5px_5px_30px_rgba(56,189,248,0.6)] hover:border-[rgba(56,189,248,0.5)] hover:bg-[rgba(2,6,23,0.6)]"
                         style={{
                             width: '586px',
                             maxWidth: '100%',
@@ -238,11 +238,14 @@ const HeroSection = () => {
                         {/* Responsibilities list */}
                         <ul className="space-y-4">
                             {responsibilities.map((item, index) => (
-                                <li key={index} className="flex items-start gap-3">
+                                <li
+                                    key={index}
+                                    className="flex items-start gap-3 p-2 rounded-lg transition-all duration-300 cursor-pointer hover:bg-[rgba(56,189,248,0.1)] hover:translate-x-2"
+                                >
                                     <img
                                         src="/inctf/assets/design/MissionOutreachpage/right.png"
                                         alt=""
-                                        className="flex-shrink-0"
+                                        className="flex-shrink-0 transition-transform duration-300 hover:scale-110"
                                         style={{ width: '40px', height: '40px' }}
                                     />
                                     <span
