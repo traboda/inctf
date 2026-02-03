@@ -142,14 +142,28 @@ const HeroSection = () => {
 
     return (
         <HeroContainer>
-            {/* Corner decorations */}
+            {/* Top-left corner decoration */}
             <div
-                className="absolute top-0 left-[33px] w-[44.5px] h-[46px] border-l border-t"
-                style={{ borderColor: '#38BDF8' }}
+                className="absolute border-l border-t"
+                style={{
+                    width: '44.5px',
+                    height: '46px',
+                    left: '33px',
+                    top: '0',
+                    borderColor: '#38BDF8'
+                }}
             />
+            {/* Bottom-right corner decoration (rotated 180deg) */}
             <div
-                className="absolute bottom-0 right-0 w-[44.5px] h-[46px] border-r border-b"
-                style={{ borderColor: '#38BDF8' }}
+                className="absolute border-l border-t"
+                style={{
+                    width: '40px',
+                    height: '44px',
+                    right: '33px',
+                    bottom: '0',
+                    borderColor: '#38BDF8',
+                    transform: 'rotate(180deg)'
+                }}
             />
 
             {/* Title with glitch effect - matching home page */}
@@ -172,9 +186,9 @@ const HeroSection = () => {
                         }}
                     >
                         <img
-                            src="/inctf/assets/design/MissionOutreachpage/image-removebg-preview.png"
-                            alt="ECHO-9 Satellite"
-                            className="w-full h-full object-contain"
+                            src="/inctf/assets/design/MissionOutreachpage/mission.jpeg"
+                            alt="Mission Outreach"
+                            className="w-full h-full object-cover"
                             style={{
                                 filter: 'drop-shadow(0 0 20px rgba(56, 189, 248, 0.4))'
                             }}

@@ -173,7 +173,7 @@ const PerformanceTiersSection = () => {
 
       {/* Right corner decoration - Vector 8 (rotated 180deg) */}
       <div
-        className="absolute border-r border-b"
+        className="absolute border-l border-t"
         style={{
           width: '40px',
           height: '44px',
