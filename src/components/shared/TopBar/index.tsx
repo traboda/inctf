@@ -263,7 +263,7 @@ const TopBar = ({ UTMSource = null }) => {
               <div className="font-semibold text-primary">
                 InCTF 2026
               </div>
-              <div>Coming Soon</div>
+              <div>Register Now</div>
             </div>
             {/*<TopbarInfoCard className="mr-3">*/}
             {/*    <button*/}

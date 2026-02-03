@@ -1,21 +1,23 @@
 {
   "associatedemo": {
-      "logo": {
-          "light": "cbse_logo.jpg",
-          "dark": "cbse_logo.jpg"
-      },
-      "alt": "Central Board of Secondary Education (CBSE)",
-      "link": "http://cbseacademic.nic.in/web_material/Circulars/2021/93_Circular_2021.pdf"
+    "logo": {
+      "light": "cbse_logo.jpg",
+      "dark": "cbse_logo.jpg"
+    },
+    "alt": "Central Board of Secondary Education (CBSE)",
+    "link": "http://cbseacademic.nic.in/web_material/Circulars/2021/93_Circular_2021.pdf"
   },
-  "topbarCTA": [{
+  "topbarCTA": [
+    {
       "buttonText": "Join Discord Now",
       "link": "/discord"
-  }],
+    }
+  ],
   "topbarCTAText": "Have you got stuck? Need Help? Join our discord server, ask your doubts & get support from our experts.",
   "CTA": {
-      "type": "link",
-      "link": "/",
-      "buttonText": "Coming soon"
+    "type": "link",
+    "link": "#",
+    "buttonText": "Register Now"
   },
   "menu": [
     {
@@ -40,7 +42,6 @@
         }
       ]
     },
-
     {
       "label": "Championship",
       "link": "/championship",
