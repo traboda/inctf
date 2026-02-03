@@ -93,8 +93,7 @@ const SectionCard: React.FC<SectionCardProps> = ({
         {/* Top Accent Line (Red) */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-20 h-[3px] bg-alert-crimson shadow-[0_0_15px_rgba(244,63,94,0.6)] rounded-b-md"></div>
 
-        {/* Tactical Codes */}
-        <div className="absolute top-4 right-6 text-[10px] font-mono text-sky-500/40 tracking-widest font-bold">SYS-01</div>
+
 
         <div className="relative z-10">
           {children}
