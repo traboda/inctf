@@ -380,7 +380,7 @@ const LandingHeader = () => {
               {/* Content Box with Border */}
               <SectionCard className="mb-8 w-full">
                 <h1 className="text-5xl md:text-6xl font-black font-heading mb-8 text-ghost-white text-center">
-                  <span className="block text-3xl md:text-4xl font-mono text-ghost-white mb-4 tracking-wide">
+                  <span className="hidden md:block text-3xl md:text-4xl font-mono text-ghost-white mb-4 tracking-wide">
                     <TypewriterText text="Amrita InCTF 2026" delay={0.5} />
                   </span>
                   <GlitchText text="OPERATION VAJRA" className="text-4xl md:text-5xl text-sky-digital" />

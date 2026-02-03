@@ -15,7 +15,7 @@ const TopbarContainer = styled.header`
   position: sticky;
   top: 0;
   width: 100%;
-  z-index: 6000;
+  z-index: 8000;
   background: rgba(2, 6, 23, 0.7);
   backdrop-filter: blur(10px);
    transition: all 300ms ease-in-out;
@@ -41,9 +41,9 @@ const TopbarContainer = styled.header`
     position: fixed;
     border-bottom: none !important;
     background: rgba(2, 6, 23, 0.95);
-    top: initial;
-    bottom: 0;
-    transform: translateY(100%);
+    top: 48px;
+    bottom: initial;
+    transform: translateY(-100%);
   }
 
   nav {
@@ -146,8 +146,9 @@ const TopBar = ({ UTMSource = null }) => {
   return (
     <>
       {topbarConfig?.topbarCTA && (
-        <div style={{ fontSize: '14px' }} className="hidden md:block p-2 bg-slate-900/90 backdrop-blur-sm text-cyan-400 relative z-50">
-          <div className="flex items-center justify-between container mx-auto">
+        <div style={{ fontSize: '14px' }} className="block p-2 bg-slate-900/90 backdrop-blur-sm text-cyan-400 relative z-[7000]">
+          {/* Desktop Version */}
+          <div className="hidden md:flex items-center justify-between container mx-auto">
             <div className="px-3 font-mono tracking-tight">
               <span className="text-alert-crimson mr-2">[ALERT]</span>
               {topbarConfig?.topbarCTAText}
@@ -167,6 +168,19 @@ const TopBar = ({ UTMSource = null }) => {
               ))}
             </div>
           </div>
+
+          {/* Mobile Version - Simplified One Line */}
+          <div className="md:hidden flex items-center justify-center gap-2 px-2 font-mono text-xs">
+            <span className="text-alert-crimson mr-1">[ALERT]</span>
+            <span className="text-cyan-400">Need Help? Join our server</span>
+            {topbarConfig?.topbarCTA?.[0] && (
+              <Link
+                href={topbarConfig.topbarCTA[0].link}
+                className="bg-sky-500/10 border border-sky-500/50 text-sky-400 hover:bg-sky-500 hover:text-black px-3 py-1 rounded-none transition-all duration-300 font-bold uppercase text-xs tracking-wider">
+                Discord
+              </Link>
+            )}
+          </div>
         </div>
       )}
       <TopbarContainer
@@ -176,9 +190,9 @@ const TopBar = ({ UTMSource = null }) => {
       >
         <div className="flex flex-wrap justify-center items-center container">
           <div
-            className="w-1/4 md:w-1/3 xl:w-1/4 md:text-center flex flex-wrap items-center md:justify-start justify-center px-2"
+            className="hidden md:flex w-1/4 md:w-1/3 xl:w-1/4 md:text-center flex-wrap items-center md:justify-start justify-center px-2"
           >
-            <Link className="w-full md:w-1/3 hidden md:block" href="/">
+            <Link className="w-full md:w-1/3" href="/">
               <Logo isDark />
             </Link>
             {topbarConfig?.associate?.link && (
@@ -258,23 +272,27 @@ const TopBar = ({ UTMSource = null }) => {
               </div>
             </div>
           </div>
-          <div className="w-3/4 flex md:hidden items-center justify-end px-1">
-            <div className="text-right px-2">
-              <div className="font-semibold text-primary">
-                InCTF 2026
-              </div>
-              <div>Register Now</div>
-            </div>
-            {/*<TopbarInfoCard className="mr-3">*/}
-            {/*    <button*/}
-            {/*        onClick={() => setShowRegCard(true)}*/}
-            {/*        className="w-full px-5 py-4 font-semibold rounded-lg bg-primary text-white hover:bg-blue-800 shadow hover:shadow-xl ml-3"*/}
-            {/*    >*/}
-            {/*        Register <i className="fa fa-chevron-right"/>*/}
-            {/*    </button>*/}
-            {/*</TopbarInfoCard>*/}
-            <button onClick={onOpen} className="transition">
-              <img src={`/assets/icons/${showMenu ? 'times' : 'menu'}.svg`} alt="Sidebar" className="w-[46px] h-[46px]" />
+          <div className="flex md:hidden items-center justify-between w-full px-4">
+            {/* Logo on Mobile */}
+            <Link href="/">
+              <Logo isDark maxHeight={45} />
+            </Link>
+
+            {/* Hamburger Menu Icon */}
+            <button
+              onClick={onOpen}
+              className="p-2 hover:bg-sky-digital/10 transition-all duration-300 rounded group"
+              aria-label="Toggle Menu"
+            >
+              {showMenu ? (
+                <svg className="w-7 h-7 text-sky-digital transform transition-transform duration-300 group-hover:rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              ) : (
+                <svg className="w-7 h-7 text-sky-digital transition-all duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              )}
             </button>
           </div>
         </div>
@@ -318,17 +336,7 @@ const TopBar = ({ UTMSource = null }) => {
           </div>}
       </Modal>
       {isVisible() && showMenu &&
-        <MobileMenu onClose={onClose} />}
-      <div className="block md:hidden text-center pt-6 px-2 pb-4">
-        <Link href="/">
-          <img
-            alt="InCTF Jr"
-            style={{ height: '72px' }}
-            className="inline"
-            src="/assets/images/conference/inctf_logo.png"
-          />
-        </Link>
-      </div>
+        <MobileMenu onClose={onClose} config={topbarConfig} />}
     </>
   );
 };
