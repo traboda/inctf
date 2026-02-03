@@ -3,6 +3,8 @@ import TopBar from '../src/components/shared/TopBar';
 import SiteView from '../src/components/SiteView';
 import HeroSection from '../src/components/mission-outreach/HeroSection';
 import PerformanceTiersSection from '../src/components/mission-outreach/PerformanceTiersSection';
+import OperationalWorkflowSection from '../src/components/mission-outreach/OperationalWorkflowSection';
+import OperationalNotesSection from '../src/components/mission-outreach/OperationalNotesSection';
 
 const MissionOutreachPage = () => {
     return (
@@ -89,9 +91,11 @@ const MissionOutreachPage = () => {
                     {/* Performance Tiers & Recognition Section */}
                     <PerformanceTiersSection />
 
-                    {/* Operational Workflow Section - TO BE IMPLEMENTED */}
+                    {/* Operational Workflow Section */}
+                    <OperationalWorkflowSection />
 
-                    {/* Operational Notes Section - TO BE IMPLEMENTED */}
+                    {/* Operational Notes Section */}
+                    <OperationalNotesSection />
                 </main>
             </div>
         </SiteView>
