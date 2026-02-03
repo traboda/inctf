@@ -436,8 +436,8 @@ const LandingHeader = () => {
             className="w-full lg:w-1/2 mt-0 lg:mt-0 lg:-ml-16 relative flex justify-center items-center"
           >
             {/* Rotating HUD Rings */}
-            <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-sky-digital/20 rounded-full animate-spin-slow pointer-events-none"></div>
-            <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] border border-dashed border-alert-crimson/20 rounded-full animate-reverse-spin pointer-events-none"></div>
+            <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-sky-digital/20 rounded-full animate-spin-slow pointer-events-none"></div>
+            <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] border border-dashed border-alert-crimson/20 rounded-full animate-reverse-spin pointer-events-none"></div>
 
             {/* Satellite Laser Image */}
             <HolographicFlicker delay={0.5}>
@@ -445,7 +445,7 @@ const LandingHeader = () => {
                 initial={{ opacity: 0, y: -50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1.2, delay: 0.5 }}
-                className="relative z-10 floating md:static absolute inset-0 md:inset-auto flex justify-center items-center pointer-events-none md:pointer-events-auto"
+                className="relative z-10 floating md:static absolute inset-0 md:inset-auto flex justify-center items-center pointer-events-none md:pointer-events-auto -mt-20 lg:-mt-32"
               >
                 <img
                   src="/inctf/assets/design/Homepage/satellite_laser.webp"
@@ -460,7 +460,7 @@ const LandingHeader = () => {
             </HolographicFlicker>
 
             {/* Signal Waves */}
-            <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2">
+            <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2">
               <span className="flex h-3 w-3">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-3 w-3 bg-sky-500"></span>
