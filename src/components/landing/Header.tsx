@@ -396,8 +396,8 @@ const LandingHeader = () => {
                 </div>
               </SectionCard>
 
-              <div className="flex flex-wrap gap-4 justify-center w-full px-8">
-                <Link href="#mission-control" className="plain-link flex-1">
+              <div className="flex flex-col md:flex-row gap-4 justify-center w-full px-8">
+                <Link href="#mission-control" className="plain-link md:flex-1">
                   <motion.button
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -410,7 +410,7 @@ const LandingHeader = () => {
                   </motion.button>
                 </Link>
 
-                <Link href="#mission-brief" className="plain-link flex-1">
+                <Link href="#mission-brief" className="plain-link md:flex-1">
                   <motion.button
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
