@@ -341,18 +341,6 @@ const LandingHeader = () => {
       ></motion.div>
       <div className="container mx-auto px-4 relative z-20">
         {/* HUD Elements */}
-        <motion.div
-          initial={{ width: 0, height: 0, opacity: 0 }}
-          animate={{ width: 64, height: 64, opacity: 0.8 }}
-          transition={{ duration: 1, delay: 0.2, ease: "circOut" }}
-          className="absolute top-0 left-0 p-4 border-l-2 border-t-2 border-alert-crimson"
-        ></motion.div>
-        <motion.div
-          initial={{ width: 0, height: 0, opacity: 0 }}
-          animate={{ width: 64, height: 64, opacity: 0.8 }}
-          transition={{ duration: 1, delay: 0.2, ease: "circOut" }}
-          className="absolute bottom-0 right-0 p-4 border-r-2 border-b-2 border-sky-digital"
-        ></motion.div>
 
         <div className="flex flex-wrap lg:flex-nowrap items-start gap-0">
           <motion.div
