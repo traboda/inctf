@@ -177,9 +177,15 @@ const GlitchText = ({ text, className = "" }: { text: string, className?: string
           z-index: 1;
           color: #ffffff;
           text-shadow: 
-            2px 0 #0a0a14,
-            -1px 0 rgba(255, 0, 0, 0.5),
-            -2px 0 rgba(0, 255, 255, 0.5);
+            1px 1px 0 rgba(0, 255, 255, 0.8),
+            2px 2px 0 rgba(0, 255, 255, 0.7),
+            3px 3px 0 rgba(0, 255, 255, 0.6),
+            4px 4px 0 rgba(0, 200, 200, 0.5),
+            5px 5px 0 rgba(0, 150, 150, 0.4),
+            6px 6px 0 rgba(255, 0, 0, 0.3),
+            7px 7px 0 rgba(255, 0, 0, 0.2),
+            8px 8px 20px rgba(0, 0, 0, 0.5);
+          transform: skewY(-2deg);
         }
       `}</style>
       <span className="glitch-container">
