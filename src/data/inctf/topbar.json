@@ -109,6 +109,10 @@
           "link": "/discord"
         }
       ]
+    },
+    {
+      "label": "Mission Outreach",
+      "link": "/mission-outreach"
     }
   ]
 }
