@@ -2,16 +2,42 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import styled from '@emotion/styled';
 
-const CardContainer = styled(motion.div)`
-  @keyframes breathingGlow {
-    0%, 100% {
-      box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
-    }
-    50% {
-      box-shadow: 0 0 35px rgba(56, 189, 248, 0.5);
-    }
+// Corner Breathing Animation
+const BreathingCorner = styled(motion.div)`
+  @keyframes breathing {
+    0%, 100% { opacity: 0.3; text-shadow: 0 0 0px transparent; }
+    50% { opacity: 1; text-shadow: 0 0 10px rgba(56, 189, 248, 0.8); }
   }
-  animation: breathingGlow 5s ease-in-out infinite;
+  animation: breathing 3s ease-in-out infinite;
+`;
+
+// Running Data Border Animation
+const RunningBorder = styled.div`
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 15;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 1px dashed rgba(56, 189, 248, 0.3);
+    /* Clip path matches the angled card shape */
+    clip-path: polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px);
+    mask: linear-gradient(90deg, transparent, #fff 50%, transparent);
+    mask-size: 200% 100%;
+    animation: borderRun 3s linear infinite;
+  }
+
+  @keyframes borderRun {
+    0% { mask-position: 100% 0; }
+    100% { mask-position: -100% 0; }
+  }
+`;
+
+const CardContainer = styled(motion.div)`
+  /* Keep existing glow if needed, or rely on the new effects */
 `;
 
 interface SectionCardProps {
@@ -20,30 +46,9 @@ interface SectionCardProps {
   delay?: number;
 }
 
-const CornerBracket = ({ top, bottom, left, right, delay }: { top?: boolean, bottom?: boolean, left?: boolean, right?: boolean, delay: number }) => (
-  <motion.div
-    initial={{ opacity: 0, scale: 1.2 }}
-    whileInView={{ opacity: 1, scale: 1 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.5, delay, ease: "easeOut" }}
-    className={`absolute w-8 h-8 border-sky-digital/50 group-hover:border-sky-digital transition-colors duration-300 pointer-events-none z-20 
-        ${top ? 'border-t-2 -top-[2px] rounded-tl-sm' : ''} 
-        ${bottom ? 'border-b-2 -bottom-[2px] rounded-br-sm' : ''} 
-        ${left ? 'border-l-2 -left-[2px]' : ''} 
-        ${right ? 'border-r-2 -right-[2px]' : ''}`}
-  />
-);
-
 const SectionCard: React.FC<SectionCardProps> = ({ children, className = "", delay = 0 }) => {
   return (
     <div className="relative group p-1">
-      {/* Animation: Corner Brackets */}
-      <CornerBracket top left delay={delay} />
-      <CornerBracket bottom right delay={delay} />
-
-      <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-sky-digital/30 group-hover:border-sky-digital/60 transition-colors duration-300"></div>
-      <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-sky-digital/30 group-hover:border-sky-digital/60 transition-colors duration-300"></div>
-
       {/* Main Card Content */}
       <CardContainer
         initial="hidden"
@@ -64,13 +69,13 @@ const SectionCard: React.FC<SectionCardProps> = ({ children, className = "", del
           }
         }}
         className={`
-                    group relative z-10 
-                    bg-obsidian/40 
-                    backdrop-blur-md 
-                    p-8 md:p-12 
-                    overflow-hidden
-                    ${className}
-                `}
+            group relative z-10 
+            bg-obsidian/40 
+            backdrop-blur-md 
+            p-8 md:p-12 
+            overflow-hidden
+            ${className}
+          `}
         style={{
           clipPath: "polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px)",
         }}
@@ -91,13 +96,25 @@ const SectionCard: React.FC<SectionCardProps> = ({ children, className = "", del
         />
 
         {/* Tactical Borders & Codes */}
-        <div className="absolute inset-0 border border-sky-digital/20 transition-all duration-300 group-hover:border-sky-digital/40 pointer-events-none"
+        {/* The main solid border */}
+        <div className="absolute inset-0 border border-sky-digital/20 pointer-events-none"
           style={{ clipPath: "polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px)" }}>
         </div>
 
-        {/* Corner Decorators */}
-        <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-sky-500/50 rounded-tl-sm" />
-        <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-sky-500/50 rounded-br-sm" />
+        {/* Idea 5: Running Data Borders */}
+        <RunningBorder />
+
+        {/* Idea 6: Corner Breathing (Static/Independent) */}
+        {/* Top Left */}
+        <BreathingCorner
+          className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-sky-500 rounded-tl-sm pointer-events-none"
+          style={{ animationDelay: '0s' }}
+        />
+        {/* Bottom Right */}
+        <BreathingCorner
+          className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-sky-500 rounded-br-sm pointer-events-none"
+          style={{ animationDelay: '1.5s' }} // Offset phase
+        />
 
         {/* Tactical Codes */}
         <div className="absolute top-1 right-2 text-[8px] font-mono text-sky-500/40 tracking-widest">SYS-01</div>
