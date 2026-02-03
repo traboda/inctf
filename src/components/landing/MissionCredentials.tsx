@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import styled from '@emotion/styled';
 import SectionCard from './SectionCard';
@@ -67,21 +68,27 @@ const MissionCredentials = () => {
                     </div>
 
                     <div className="flex flex-col md:flex-row gap-6 justify-center">
-                        <motion.button
-                            whileHover={{ scale: 1.03, boxShadow: "0 0 40px rgba(244,63,94,0.6)" }}
-                            whileTap={{ scale: 0.95 }}
-                            className="px-8 py-4 bg-gradient-to-br from-red-900 to-red-800 border border-red-700 text-white font-mono font-bold text-lg tracking-wide transition-all duration-300 shadow-lg hover:shadow-red-900/70 hover:border-red-500 rounded"
-                        >
-                            [ Enter Mission Control ]
-                        </motion.button>
+                        <Link href="#mission-control">
+                            <motion.button
+                                whileHover={{ scale: 1.03, boxShadow: "0 0 40px rgba(244,63,94,0.6), 4px 4px 0 rgba(255,255,255,0.7)" }}
+                                whileTap={{ scale: 0.95 }}
+                                style={{ boxShadow: "4px 4px 0 rgba(255,255,255,0.5)" }}
+                                className="px-8 py-4 bg-gradient-to-br from-red-900 to-red-800 border-2 border-white/60 text-white font-mono font-bold text-lg tracking-wide rounded"
+                            >
+                                [ Enter Mission Control ]
+                            </motion.button>
+                        </Link>
 
-                        <motion.button
-                            whileHover={{ scale: 1.03, boxShadow: "0 0 40px rgba(244,63,94,0.6)" }}
-                            whileTap={{ scale: 0.95 }}
-                            className="px-8 py-4 bg-gradient-to-br from-red-900 to-red-800 border border-red-700 text-white font-mono font-bold text-lg tracking-wide transition-all duration-300 shadow-lg hover:shadow-red-900/70 hover:border-red-500 rounded"
-                        >
-                            [ View Mission Brief ]
-                        </motion.button>
+                        <Link href="#mission-brief">
+                            <motion.button
+                                whileHover={{ scale: 1.03, boxShadow: "0 0 40px rgba(244,63,94,0.6), 4px 4px 0 rgba(255,255,255,0.7)" }}
+                                whileTap={{ scale: 0.95 }}
+                                style={{ boxShadow: "4px 4px 0 rgba(255,255,255,0.5)" }}
+                                className="px-8 py-4 bg-gradient-to-br from-red-900 to-red-800 border-2 border-white/60 text-white font-mono font-bold text-lg tracking-wide rounded"
+                            >
+                                [ View Mission Brief ]
+                            </motion.button>
+                        </Link>
                     </div>
                 </motion.div>
             </div>
