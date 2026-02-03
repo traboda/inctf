@@ -3,9 +3,15 @@ import Image from 'next/image';
 
 
 const eventID = process.env.EVENT_ID || process.env.NEXT_PUBLIC_EVENT_ID;
-const data = require(`../../data/${eventID}/sponsors`).default;
+const sponsorsModule = require(`../../data/${eventID}/sponsors`);
+// Handle both CommonJS and ES module exports
+const data = Array.isArray(sponsorsModule) ? sponsorsModule : (sponsorsModule.default || []);
 
 const SponsorsSection = () => {
+  if (!Array.isArray(data) || data.length === 0) {
+    return null;
+  }
+
   return (
     <div className="bg-white shadow-lg rounded-lg p-4">
       {data.map((sponsor, index) => (
@@ -15,11 +21,11 @@ const SponsorsSection = () => {
             <p className="text-center opacity-8 mb-3">
               {sponsor.desc}
             </p>
-          </div> 
+          </div>
           <div className="flex flex-wrap mx-0">
             {sponsor.sponsors.map((sponsor, index) => (
               <div className="w-1/3 items-center flex justify-center p-1 md:p-3" key={index}>
-                <a href={sponsor.link} target="_blank" rel="noopener noreferrer" style={{ display:'block' }}>
+                <a href={sponsor.link} target="_blank" rel="noopener noreferrer" style={{ display: 'block' }}>
                   <Image
                     loading="lazy"
                     src={`/inctf/${sponsor.path}`}

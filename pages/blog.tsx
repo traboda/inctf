@@ -6,6 +6,7 @@ import Footer from '../src/components/shared/Footer';
 import postsIndex from '../src/data/posts/index.json';
 import PostCard from '../src/components/blog/PostCard';
 import SiteView from '../src/components/SiteView';
+import { loadYaml } from '../lib/loadYaml';
 
 export const BlogPage = styled.main`
     display: flex;
@@ -29,21 +30,7 @@ export const PageTitleArea = styled.div`
     }
 `;
 
-const BlogListingPage = () => {
-
-  const fetchedPosts = (() => {
-    const posts = [];
-    Object.keys(postsIndex).forEach((key) => {
-      const { query } = postsIndex[key];
-      try {
-        const post = require(`../src/data/posts/${query.slug}.yaml`);
-        posts.push(post);
-      } catch (e) {
-      }
-    });
-    return posts;
-  })();
-
+const BlogListingPage = ({ posts }) => {
   return (
     <SiteView meta={{ title: 'Blog' }}>
       <TopBar />
@@ -59,9 +46,9 @@ const BlogListingPage = () => {
         </PageTitleArea>
         <div className="container-lg px-0">
           <div className="row mx-0">
-            {fetchedPosts.length > 0 ?
+            {posts.length > 0 ?
               <div>
-                {fetchedPosts.map((p, i) => (
+                {posts.map((p, i) => (
                   <div className="col-md-6 p-2" key={i}>
                     <PostCard {...p} />
                   </div>
@@ -74,7 +61,26 @@ const BlogListingPage = () => {
       <Footer />
     </SiteView>
   );
-
 };
+
+export async function getStaticProps() {
+  const posts = [];
+
+  Object.keys(postsIndex).forEach((key) => {
+    const { query } = postsIndex[key];
+    try {
+      const post = loadYaml(`src/data/posts/${query.slug}.yaml`);
+      posts.push(post);
+    } catch (e) {
+      console.error(`Failed to load post: ${query.slug}`, e);
+    }
+  });
+
+  return {
+    props: {
+      posts,
+    },
+  };
+}
 
 export default BlogListingPage;

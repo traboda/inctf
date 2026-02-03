@@ -6,10 +6,12 @@ import ConfigContext from '../SiteView/context';
 import SocialMediaLinks from './SocialMediaLinks';
 
 const FooterContainer = styled.footer`
-    background: #222640;
-    color: white;
+    background: rgba(2, 6, 23, 0.95);
+    border-top: 1px solid rgba(56, 189, 248, 0.2);
+    color: #94A3B8;
     padding: 1rem;
     font-size: 14px;
+    font-family: 'JetBrains Mono', monospace;
     img {
       max-height: 64px;
       max-width: 100%;
@@ -19,13 +21,24 @@ const FooterContainer = styled.footer`
 const FooterLinksBar = styled.nav`
     a {
        font-size: 13px;
-       color: white;
+       color: #94A3B8;
        opacity: 0.8;
-       margin-right: 8px;
+       margin-right: 16px;
        margin-bottom: 5px;
+       text-transform: uppercase;
+       display: inline-flex;
+       align-items: center;
+       gap: 6px;
+       transition: all 0.2s ease;
+       
        &:hover {
-         color: #fd7e14;
+         color: #38BDF8;
          text-decoration: none;
+         text-shadow: 0 0 8px rgba(56, 189, 248, 0.5);
+       }
+       
+       i {
+         font-size: 14px;
        }
     }
 `;
@@ -48,11 +61,28 @@ const Footer = () => {
                 {footerConfig?.copyrightText}
               </div>
               {footerConfig?.menu?.length > 0 && (
-              <FooterLinksBar>
-                {footerConfig?.menu.map((link, index) => (
-                  <a key={index} href={link.link}>{link.title}</a>
-                ))}
-              </FooterLinksBar>
+                <FooterLinksBar>
+                  {footerConfig?.menu.map((link, index) => {
+                    let iconClass = "fa fa-link";
+                    const titleLower = link.title.toLowerCase();
+                    if (titleLower.includes("kit")) iconClass = "fa fa-toolbox";
+                    else if (titleLower.includes("privacy")) iconClass = "fa fa-user-shield";
+                    else if (titleLower.includes("rules")) iconClass = "fa fa-gavel";
+                    else if (titleLower.includes("email")) iconClass = "fa fa-envelope";
+                    else if (titleLower.includes("instagram")) iconClass = "fab fa-instagram";
+                    else if (titleLower.includes("twitter")) iconClass = "fab fa-twitter";
+                    else if (titleLower.includes("facebook")) iconClass = "fab fa-facebook";
+                    else if (titleLower.includes("youtube")) iconClass = "fab fa-youtube";
+                    else if (titleLower.includes("discord")) iconClass = "fab fa-discord";
+
+                    return (
+                      <a key={index} href={link.link}>
+                        <i className={iconClass}></i>
+                        {link.title}
+                      </a>
+                    );
+                  })}
+                </FooterLinksBar>
               )}
             </div>
           </div>

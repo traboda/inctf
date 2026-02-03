@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ComposableMap, Geographies, Geography } from 'react-simple-maps';
-import ReactTooltip from 'react-tooltip';
+import { Tooltip } from 'react-tooltip';
 import styled from '@emotion/styled';
 
 const INDIA_TOPO_JSON = require('../../../data/india.topo.json');
@@ -12,9 +12,6 @@ const Wrapper = styled.div`
 `;
 
 const StateWiseRegistrationMap = ({ data }) => {
-
-  const [tooltipContent, setTooltipContent] = useState('');
-
   const geographyStyle = {
     default: {
       outline: 'none',
@@ -92,16 +89,6 @@ const StateWiseRegistrationMap = ({ data }) => {
     return '#EEE';
   };
 
-  const onMouseEnter = (geo, current = { value: 'NA' }) => {
-    return () => {
-      setTooltipContent(`${geo.properties.name}: ${current.value}`);
-    };
-  };
-
-  const onMouseLeave = () => {
-    setTooltipContent('');
-  };
-
   return (
     <Wrapper>
       <ComposableMap
@@ -113,7 +100,6 @@ const StateWiseRegistrationMap = ({ data }) => {
         width={100}
         height={320}
         style={{ width: '100%', maxHeight: '75vh', height: '900px' }}
-        data-tip=""
       >
         <Geographies geography={INDIA_TOPO_JSON}>
           {({ geographies }) =>
@@ -125,15 +111,15 @@ const StateWiseRegistrationMap = ({ data }) => {
                   geography={geo}
                   fill={current ? colorScale(current.value) : '#EEE'}
                   style={geographyStyle}
-                  onMouseEnter={onMouseEnter(geo, current)}
-                  onMouseLeave={onMouseLeave}
+                  data-tooltip-id="map-tooltip"
+                  data-tooltip-content={`${geo.properties.name}: ${current ? current.value : 'NA'}`}
                 />
               );
             })
-                    }
+          }
         </Geographies>
       </ComposableMap>
-      <ReactTooltip backgroundColor="#222" type="dark">{tooltipContent}</ReactTooltip>
+      <Tooltip id="map-tooltip" style={{ backgroundColor: "#222", color: "#fff" }} />
     </Wrapper>
   );
 };

@@ -7,7 +7,7 @@ import { disableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
 
 import animation from '@/src/animation';
 
-const ReactPlayer = dynamic(() => import('react-player/youtube'));
+const ReactPlayer = dynamic(() => import('react-player/youtube'), { ssr: false });
 const eventID = process.env.EVENT_ID || process.env.NEXT_PUBLIC_EVENT_ID;
 const data = require(`../../data/${eventID}/index.json`);
 
@@ -79,7 +79,7 @@ const LandingTestimonials = () => {
         whileInView={{ opacity: 1, transition: { staggerChildren: 0.1 } }}
         className="grid lg:grid-cols-6 md:grid-cols-3 grid-cols-2 gap-2"
       >
-        {data.LandingTestimonials?.map((p, i) => (
+        {data.LandingTestimonialsdemo?.map((p, i) => (
           <motion.div
             variants={animation}
             initial="slideInBottom"
@@ -109,7 +109,7 @@ const LandingTestimonials = () => {
       >
         <CloseButton
           className="px-4 border-0 rounded"
-          onClick={() => { clearAllBodyScrollLocks(); setShowPlayer(false);}}
+          onClick={() => { clearAllBodyScrollLocks(); setShowPlayer(false); }}
         >
           <img alt="close" src="/assets/images/icons/close.png" />
         </CloseButton>

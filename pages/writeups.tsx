@@ -9,6 +9,7 @@ import PageHeader from '../src/components/PageHeader';
 import PageFooterExplorer from '../src/components/PageFooterExplorer';
 import TagSelector from '../src/components/TagSelector';
 import SiteView from '../src/components/SiteView';
+import { loadYaml } from '../lib/loadYaml';
 
 export const BlogPage = styled.main`
     display: flex;
@@ -16,7 +17,7 @@ export const BlogPage = styled.main`
     min-height: 100vh;
 `;
 
-const WriteupListingPage = () => {
+const WriteupListingPage = ({ writeups }) => {
 
   const [keyword, setKeyword] = useState('');
   const [category, setCategory] = useState(null);
@@ -43,19 +44,6 @@ const WriteupListingPage = () => {
       'value': 'web',
     },
   ];
-
-  const fetchedPosts = (() => {
-    const posts = [];
-    Object.keys(postsIndex).forEach((key) => {
-      const { query } = postsIndex[key];
-      try {
-        const post = require(`../src/data/writeups/${query.id}.yaml`);
-        posts.push(post);
-      } catch (e) {
-      }
-    });
-    return posts;
-  })();
 
   return (
     <SiteView meta={{ title: 'Challenge Solution WriteUps' }}>
@@ -99,11 +87,11 @@ const WriteupListingPage = () => {
               />
             </div>
           </div>
-          {fetchedPosts.length > 0 ?
+          {writeups.length > 0 ?
             <div className="flex flex-wrap">
-              {fetchedPosts.filter((v) =>
+              {writeups.filter((v) =>
                 (category == null || v?.category.toLowerCase() === category.value.toLowerCase()) &&
-                            ((keyword?.length < 1) || (v.title?.toLowerCase().startsWith(keyword.toLowerCase()))),
+                ((keyword?.length < 1) || (v.title?.toLowerCase().startsWith(keyword.toLowerCase()))),
               ).map((w, i) => (
                 <div className="w-full md:w-1/2 lg:w-1/3 p-2" key={i}>
                   <WriteUpCard {...w} />
@@ -157,5 +145,25 @@ const WriteupListingPage = () => {
   );
 
 };
+
+export async function getStaticProps() {
+  const writeups = [];
+
+  Object.keys(postsIndex).forEach((key) => {
+    const { query } = postsIndex[key];
+    try {
+      const writeup = loadYaml(`src/data/writeups/${query.id}.yaml`);
+      writeups.push(writeup);
+    } catch (e) {
+      console.error(`Failed to load writeup: ${query.id}`, e);
+    }
+  });
+
+  return {
+    props: {
+      writeups,
+    },
+  };
+}
 
 export default WriteupListingPage;

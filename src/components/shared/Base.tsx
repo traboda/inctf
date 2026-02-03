@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import Head from 'next/head';
+import Script from 'next/script';
 
 const seoTags = {
   siteName: 'InCTF 2026',
@@ -9,30 +10,35 @@ const seoTags = {
 
 const Base = ({ children, meta }) => {
 
-  const title = `${meta && meta.title ? `${meta.title} |` : '' } ${seoTags.siteName} - ${seoTags.tagLine}`;
+  const title = `${meta && meta.title ? `${meta.title} |` : ''} ${seoTags.siteName} - ${seoTags.tagLine}`;
   const GTMId = 'GTM-56DCPP26';
 
   useEffect(() => {
-    navigator.serviceWorker.getRegistrations().then((registrations) => {
-      for (const reg of registrations) {
-        reg.unregister();
-      }
-    });
+    // Only run in browser
+    if (typeof window !== 'undefined' && navigator?.serviceWorker) {
+      navigator.serviceWorker.getRegistrations().then((registrations) => {
+        for (const reg of registrations) {
+          reg.unregister();
+        }
+      });
+    }
   }, []);
 
   return (<React.Fragment>
-    <Head>
-      {/* Google Tag Manager */}
-      <script
-        dangerouslySetInnerHTML={{
-          __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    {/* Google Tag Manager */}
+    <Script
+      id="gtm-script"
+      strategy="afterInteractive"
+      dangerouslySetInnerHTML={{
+        __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','${GTMId}');`,
-        }}
-      />
-      
+      }}
+    />
+
+    <Head>
       <title>{title}</title>
       <meta charSet="utf-8" />
       <meta name="theme-color" content="#E65100" />
@@ -40,7 +46,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <meta name="description" content={meta && meta.description ? meta.description : seoTags.description} />
       <meta name="twitter:title" content={title} />
       <meta property="og:title" content={title} />
-      { meta && meta.image && <meta property="og:image" content={meta.image} /> }
+      {meta && meta.image && <meta property="og:image" content={meta.image} />}
       <meta name="viewport" content="width=device-width, minimum-scale=1, shrink-to-fit=no, initial-scale=1" />
       <link rel="manifest" href="/manifest.json" />
       <link href="/images/icons/icon-72x72.png" rel="icon" type="image/png" sizes="72x72" />
@@ -52,7 +58,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <link href="/images/icons/icon-384x384.png" rel="icon" type="image/png" sizes="384x384" />
       <link rel="apple-touch-icon" href="/images/icons/icon-512x512.png" />
       <link rel="shortcut icon" href="/images/icons/icon-72x72.png" />
-      
+
       {/* { GoogleAnalyticsID && <React.Fragment>
         <script rel="preconnect" async src={`https://www.googletagmanager.com/gtag/js?id=${GoogleAnalyticsID}`} />
         <script
@@ -62,18 +68,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         />
       </React.Fragment>} */}
     </Head>
-    
+
     {/* Google Tag Manager (noscript) */}
     <noscript>
-      <iframe 
+      <iframe
         src={`https://www.googletagmanager.com/ns.html?id=${GTMId}`}
-        height="0" 
-        width="0" 
-        style={{display:'none', visibility:'hidden'}}
+        height="0"
+        width="0"
+        style={{ display: 'none', visibility: 'hidden' }}
       />
     </noscript>
-    
-    <div className="app">
+
+    <div className="app" suppressHydrationWarning>
       {children}
       {/*<SupportDesk />*/}
     </div>

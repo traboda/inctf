@@ -38,18 +38,18 @@ const PostCard = ({
   return (<PostCardWrapper href={`/posts/${slug}`}>
     <h4>{title}</h4>
     <div>
-      <i className="far fa-calendar" /> 
+      <i className="far fa-calendar" />
       {' '}
-      {date?.toDateString()}
+      {date ? new Date(date).toDateString() : ''}
       <span className="px-1">|</span>
       <span>
-        <i className="far fa-album-collection" /> 
+        <i className="far fa-album-collection" />
         {' '}
         {category}
       </span>
       <span className="px-1">|</span>
       <span>
-        <i className="far fa-tags" /> 
+        <i className="far fa-tags" />
         {' '}
         {tags}
       </span>

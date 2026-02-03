@@ -15,11 +15,10 @@ const TopbarContainer = styled.header`
   position: sticky;
   top: 0;
   width: 100%;
-  z-index: 6000;
-  background: transparent;
-  border-bottom: 2px solid transparent;
-  box-shadow: none;
-  transition: all 300ms ease-in-out;
+  z-index: 8000;
+  background: rgba(2, 6, 23, 0.7);
+  backdrop-filter: blur(10px);
+   transition: all 300ms ease-in-out;
   padding: 1rem 0.35rem;
   display: flex;
   justify-content: center;
@@ -28,9 +27,8 @@ const TopbarContainer = styled.header`
   opacity: 0;
 
   &.floating {
-    background: white;
-    box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.35);
-    border-bottom: 2px solid #FF6F00;
+    background: rgba(2, 6, 23, 0.85);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
   }
 
   &.up, &.top {
@@ -41,24 +39,27 @@ const TopbarContainer = styled.header`
 
   @media screen and (max-width: 768px) {
     position: fixed;
-    border-top: 2px solid #FF6F00;
     border-bottom: none !important;
-    background: white;
-    top: initial;
-    bottom: 0;
-    transform: translateY(100%);
+    background: rgba(2, 6, 23, 0.95);
+    top: 48px;
+    bottom: initial;
+    transform: translateY(-100%);
   }
 
   nav {
     a {
-      font-size: 17px;
-      color: #222;
+      font-size: 15px;
+      color: #94A3B8; /* slate-satellite */
       padding: 8px 12px;
       text-decoration: none !important;
-      transition: color 250ms ease;
+      transition: all 250ms ease;
+      font-family: 'JetBrains Mono', monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
 
       &:hover {
-        color: #fd7e14;
+        color: #38BDF8; /* sky-digital */
+        text-shadow: 0 0 8px rgba(56, 189, 248, 0.4);
       }
     }
   }
@@ -75,7 +76,7 @@ const TopbarContainer = styled.header`
 
 
 const TopbarInfoCard = styled.div`
-  color: #222;
+  color: #F8FAFC;
   line-height: 1.3;
   display: flex;
   justify-content: flex-end;
@@ -103,6 +104,7 @@ const TopBar = ({ UTMSource = null }) => {
   const [showRegCard, setShowRegCard] = useState(false);
   const [scrollDir, setScrollDir] = useState('up');
   const [isAtTop, setIsAtTop] = useState(true);
+  const [mounted, setMounted] = useState(false);
 
   const topbarRef = useRef(null);
   const scrollPrevStateRef = useRef(0);
@@ -121,6 +123,12 @@ const TopBar = ({ UTMSource = null }) => {
   };
 
   useEffect(() => {
+    // Prevent hydration mismatch by only running after mount
+    setMounted(true);
+
+    // Initialize scroll position on mount
+    onScroll();
+
     document.addEventListener('scroll', onScroll, false);
     return () => {
       document.removeEventListener('scroll', onScroll, false);
@@ -138,29 +146,51 @@ const TopBar = ({ UTMSource = null }) => {
   return (
     <>
       {topbarConfig?.topbarCTA && (
-        <div style={{ fontSize: '14px' }} className="hidden md:block p-2 bg-blue-800 text-white">
-          <div className="flex items-center justify-between">
-            <div className="px-3">
+        <div style={{ fontSize: '14px' }} className="block p-2 bg-slate-900/90 backdrop-blur-sm text-cyan-400 relative z-[7000]">
+          {/* Desktop Version */}
+          <div className="hidden md:flex items-center justify-between container mx-auto">
+            <div className="px-3 font-mono tracking-tight">
+              <span className="text-alert-crimson mr-2">[ALERT]</span>
               {topbarConfig?.topbarCTAText}
             </div>
             <div className="flex items-center md:my-0 px-2 md:px-0 justify-end gap-2">
-              {topbarConfig?.topbarCTA?.map((cta) => (
-                <Link legacyBehavior href={cta?.link} passHref>
-                  <a className="bg-white text-blue-800 mb-0 hover:text-primary rounded-lg px-3 py-2 whitespace-nowrap">
-                    {cta?.buttonText}
-                    {' '}
-                    <i className="fa fa-chevron-right ml-1" />
-                  </a>
+              {topbarConfig?.topbarCTA?.map((cta, index) => (
+                <Link
+                  key={`topbar-cta-${index}`}
+                  href={cta?.link}
+                  className="bg-sky-500/10 border border-sky-500/50 text-sky-400 hover:bg-sky-500 hover:text-black mb-0 rounded-none px-4 py-1 whitespace-nowrap transition-all duration-300 font-bold uppercase text-xs tracking-wider">
+
+                  {cta?.buttonText}
+                  {' '}
+                  <i className="fa fa-chevron-right ml-1" />
+
                 </Link>
               ))}
             </div>
           </div>
+
+          {/* Mobile Version - Simplified One Line */}
+          <div className="md:hidden flex items-center justify-center gap-2 px-2 font-mono text-xs">
+            <span className="text-alert-crimson mr-1">[ALERT]</span>
+            <span className="text-cyan-400">Need Help? Join our server</span>
+            {topbarConfig?.topbarCTA?.[0] && (
+              <Link
+                href={topbarConfig.topbarCTA[0].link}
+                className="bg-sky-500/10 border border-sky-500/50 text-sky-400 hover:bg-sky-500 hover:text-black px-3 py-1 rounded-none transition-all duration-300 font-bold uppercase text-xs tracking-wider">
+                Discord
+              </Link>
+            )}
+          </div>
         </div>
       )}
-      <TopbarContainer ref={topbarRef} className={scrollDir + ` ${isAtTop ? 'top' : 'floating'}`}>
+      <TopbarContainer
+        suppressHydrationWarning
+        ref={topbarRef}
+        className={mounted ? `${scrollDir} ${isAtTop ? 'top' : 'floating'}` : 'up top'}
+      >
         <div className="flex flex-wrap justify-center items-center container">
           <div
-            className="w-1/4 md:w-1/3 xl:w-1/4 md:text-center flex flex-wrap items-center md:justify-start justify-center px-2"
+            className="hidden md:flex w-1/4 md:w-1/3 xl:w-1/4 md:text-center flex-wrap items-center md:justify-start justify-center px-2"
           >
             <Link className="w-full md:w-1/3" href="/">
               <Logo isDark />
@@ -207,12 +237,12 @@ const TopBar = ({ UTMSource = null }) => {
                   {topbarConfig?.CTA && (
                     <React.Fragment>
                       {topbarConfig?.CTA?.type === 'info' && (
-                      <div className="text-right px-2">
-                        <div className="text-lg font-semibold text-primary">
-                          {topbarConfig?.CTA?.title}
+                        <div className="text-right px-2">
+                          <div className="text-lg font-semibold text-primary">
+                            {topbarConfig?.CTA?.title}
+                          </div>
+                          <div className="font-semibold">{topbarConfig?.CTA?.subTitle}</div>
                         </div>
-                        <div className="font-semibold">{topbarConfig?.CTA?.subTitle}</div>
-                      </div>
                       )}
                       {/*{eventID === 'inctfj' ? (*/}
                       {/*  <div>*/}
@@ -226,13 +256,15 @@ const TopBar = ({ UTMSource = null }) => {
                       {/*  </div>*/}
                       {/*) : */}
                       {topbarConfig?.CTA.type === 'link' && (
-                      <Link href={topbarConfig?.CTA?.link} target="_blank">
-                        <button className="px-8 py-4 rounded-lg font-semibold bg-primary hover:bg-blue-800 shadow hover:shadow-xl text-white ml-3">
-                          {topbarConfig?.CTA?.buttonText} 
-                          {' '}
-                          <i className="fa fa-chevron-right" />
-                        </button>
-                      </Link>
+                        <div className="md:block hidden">
+                          <Link href={topbarConfig?.CTA?.link} target="_blank">
+                            <button className="px-6 py-2 rounded-none border border-sky-digital bg-sky-digital/10 text-sky-digital font-bold font-tactical uppercase tracking-wider hover:bg-sky-digital hover:text-black transition-all duration-300 ml-3 shadow-[0_0_10px_rgba(56,189,248,0.2)] hover:shadow-[0_0_20px_rgba(56,189,248,0.4)]">
+                              {topbarConfig?.CTA?.buttonText}
+                              {' '}
+                              <i className="fa fa-chevron-right ml-1" />
+                            </button>
+                          </Link>
+                        </div>
                       )}
                     </React.Fragment>
                   )}
@@ -240,23 +272,27 @@ const TopBar = ({ UTMSource = null }) => {
               </div>
             </div>
           </div>
-          <div className="w-3/4 flex md:hidden items-center justify-end px-1">
-            <div className="text-right px-2">
-              <div className="font-semibold text-primary">
-                InCTF 2026
-              </div>
-              <div>Coming Soon</div>
-            </div>
-            {/*<TopbarInfoCard className="mr-3">*/}
-            {/*    <button*/}
-            {/*        onClick={() => setShowRegCard(true)}*/}
-            {/*        className="w-full px-5 py-4 font-semibold rounded-lg bg-primary text-white hover:bg-blue-800 shadow hover:shadow-xl ml-3"*/}
-            {/*    >*/}
-            {/*        Register <i className="fa fa-chevron-right"/>*/}
-            {/*    </button>*/}
-            {/*</TopbarInfoCard>*/}
-            <button onClick={onOpen} className="transition">
-              <img src={`/assets/icons/${showMenu ? 'times' : 'menu'}.svg`} alt="Sidebar" className="w-[46px] h-[46px]" />
+          <div className="flex md:hidden items-center justify-between w-full px-4">
+            {/* Logo on Mobile */}
+            <Link href="/">
+              <Logo isDark maxHeight={45} />
+            </Link>
+
+            {/* Hamburger Menu Icon */}
+            <button
+              onClick={onOpen}
+              className="p-2 hover:bg-sky-digital/10 transition-all duration-300 rounded group"
+              aria-label="Toggle Menu"
+            >
+              {showMenu ? (
+                <svg className="w-7 h-7 text-sky-digital transform transition-transform duration-300 group-hover:rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              ) : (
+                <svg className="w-7 h-7 text-sky-digital transition-all duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              )}
             </button>
           </div>
         </div>
@@ -300,17 +336,7 @@ const TopBar = ({ UTMSource = null }) => {
           </div>}
       </Modal>
       {isVisible() && showMenu &&
-        <MobileMenu onClose={onClose} />}
-      <div className="block md:hidden text-center pt-6 px-2 pb-4">
-        <Link href="/">
-          <img
-            alt="InCTF Jr"
-            style={{ height: '72px' }}
-            className="inline"
-            src="/assets/images/conference/inctf_logo.png"
-          />
-        </Link>
-      </div>
+        <MobileMenu onClose={onClose} config={topbarConfig} />}
     </>
   );
 };
