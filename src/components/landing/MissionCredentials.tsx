@@ -68,7 +68,7 @@ const MissionCredentials = () => {
                     </div>
 
                     <div className="flex flex-col md:flex-row gap-6 justify-center">
-                        <Link href="#mission-control">
+                        <Link href="/comingsoon">
                             <motion.button
                                 whileHover={{ scale: 1.03, boxShadow: "0 0 40px rgba(244,63,94,0.6), 4px 4px 0 rgba(255,255,255,0.7)" }}
                                 whileTap={{ scale: 0.95 }}
@@ -79,7 +79,7 @@ const MissionCredentials = () => {
                             </motion.button>
                         </Link>
 
-                        <Link href="#mission-brief">
+                        <Link href="/comingsoon">
                             <motion.button
                                 whileHover={{ scale: 1.03, boxShadow: "0 0 40px rgba(244,63,94,0.6), 4px 4px 0 rgba(255,255,255,0.7)" }}
                                 whileTap={{ scale: 0.95 }}
