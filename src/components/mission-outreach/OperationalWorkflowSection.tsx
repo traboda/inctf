@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { keyframes } from '@emotion/react';
+import GlitchText from '../shared/GlitchText';
 
 const SectionContainer = styled.section`
   position: relative;
@@ -8,98 +8,6 @@ const SectionContainer = styled.section`
   padding: 80px 0;
   min-height: 600px;
   overflow: hidden;
-`;
-
-// Background images container
-const BackgroundImages = styled.div`
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  z-index: 0;
-`;
-
-// Keyframes for glitch effect
-const glitch = keyframes`
-  2%, 64% {
-    transform: translate(2px, 0) skew(0deg);
-  }
-  4%, 60% {
-    transform: translate(-2px, 0) skew(0deg);
-  }
-  62% {
-    transform: translate(0, 0) skew(5deg);
-  }
-`;
-
-const glitchTop = keyframes`
-  2%, 64% {
-    transform: translate(2px, -2px);
-  }
-  4%, 60% {
-    transform: translate(-2px, 2px);
-  }
-  62% {
-    transform: translate(13px, -1px) skew(-13deg);
-  }
-`;
-
-const glitchBottom = keyframes`
-  2%, 64% {
-    transform: translate(-2px, 0);
-  }
-  4%, 60% {
-    transform: translate(-2px, 0);
-  }
-  62% {
-    transform: translate(-22px, 5px) skew(21deg);
-  }
-`;
-
-const GlitchWrapper = styled.span`
-  position: relative;
-  display: inline-block;
-  animation: ${glitch} 1s linear infinite;
-  font-family: 'JetBrains Mono', monospace;
-  font-weight: 800;
-  font-size: 40px;
-  line-height: 52px;
-  
-  &::before,
-  &::after {
-    content: attr(data-text);
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-  }
-  
-  &::before {
-    color: #ff0000;
-    animation: ${glitchTop} 1s linear infinite;
-    clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
-    -webkit-clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
-  }
-  
-  &::after {
-    color: #00ffff;
-    animation: ${glitchBottom} 1.5s linear infinite;
-    clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
-    -webkit-clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
-  }
-`;
-
-const GlitchMain = styled.span`
-  position: relative;
-  z-index: 1;
-  color: #ffffff;
-  text-shadow: 
-    2px 0 #0a0a14,
-    -1px 0 rgba(255, 0, 0, 0.5),
-    -2px 0 rgba(0, 255, 255, 0.5);
 `;
 
 const StepsGrid = styled.div`
@@ -277,6 +185,16 @@ const OperationalWorkflowSection = () => {
         }}
       />
 
+      {/* Satellite Image - Right Side */}
+      <div className="absolute right-0 top-1/2 -translate-y-1/2 z-5 opacity-30">
+        <img
+          src="/inctf/assets/design/Homepage/satellite_laser.webp"
+          alt=""
+          className="w-[850px] h-auto"
+          style={{ filter: 'blur(5px) drop-shadow(0 0 20px rgba(56, 189, 248, 0.3))' }}
+        />
+      </div>
+
       {/* Bottom-right corner decoration - Vector 15 (rotated 180deg) */}
       <div
         className="absolute border-l border-t"
@@ -289,51 +207,6 @@ const OperationalWorkflowSection = () => {
           transform: 'rotate(180deg)'
         }}
       />
-
-      {/* Background Images */}
-      <BackgroundImages>
-        {/* Large satellite - rotated */}
-        <img
-          src="/inctf/assets/design/MissionOutreachpage/image-removebg-preview(3).png"
-          alt=""
-          style={{
-            position: 'absolute',
-            width: '760px',
-            height: '760px',
-            left: '10%',
-            top: '0',
-            opacity: 0.3,
-            transform: 'rotate(-28.17deg)'
-          }}
-        />
-        {/* Small satellite top right */}
-        <img
-          src="/inctf/assets/design/MissionOutreachpage/image-removebg-preview.png"
-          alt=""
-          style={{
-            position: 'absolute',
-            width: '254px',
-            height: '179px',
-            right: '5%',
-            top: '150px',
-            opacity: 0.5,
-            transform: 'rotate(-12.75deg)'
-          }}
-        />
-        {/* Control center image */}
-        <img
-          src="/inctf/assets/design/MissionOutreachpage/image-removebg-preview(1).png"
-          alt=""
-          style={{
-            position: 'absolute',
-            width: '447px',
-            height: '447px',
-            left: '5%',
-            bottom: '0',
-            opacity: 0.4
-          }}
-        />
-      </BackgroundImages>
 
       {/* Content */}
       <div className="relative z-10">
@@ -350,9 +223,7 @@ const OperationalWorkflowSection = () => {
         {/* Title */}
         <div className="text-center mb-8">
           <h2>
-            <GlitchWrapper data-text="OPERATIONAL WORKFLOW">
-              <GlitchMain>OPERATIONAL WORKFLOW</GlitchMain>
-            </GlitchWrapper>
+            <GlitchText text="OPERATIONAL WORKFLOW" />
           </h2>
         </div>
 
