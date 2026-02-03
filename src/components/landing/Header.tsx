@@ -343,13 +343,13 @@ const LandingHeader = () => {
         {/* HUD Elements */}
         <motion.div
           initial={{ width: 0, height: 0, opacity: 0 }}
-          animate={{ width: 64, height: 64, opacity: 0.5 }}
+          animate={{ width: 64, height: 64, opacity: 0.8 }}
           transition={{ duration: 1, delay: 0.2, ease: "circOut" }}
           className="absolute top-0 left-0 p-4 border-l-2 border-t-2 border-alert-crimson"
         ></motion.div>
         <motion.div
           initial={{ width: 0, height: 0, opacity: 0 }}
-          animate={{ width: 64, height: 64, opacity: 0.5 }}
+          animate={{ width: 64, height: 64, opacity: 0.8 }}
           transition={{ duration: 1, delay: 0.2, ease: "circOut" }}
           className="absolute bottom-0 right-0 p-4 border-r-2 border-b-2 border-sky-digital"
         ></motion.div>
@@ -458,14 +458,6 @@ const LandingHeader = () => {
                 />
               </motion.div>
             </HolographicFlicker>
-
-            {/* Signal Waves */}
-            <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2">
-              <span className="flex h-3 w-3">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-3 w-3 bg-sky-500"></span>
-              </span>
-            </div>
           </motion.div>
         </div>
       </div>
