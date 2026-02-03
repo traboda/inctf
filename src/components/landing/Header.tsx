@@ -390,9 +390,10 @@ const LandingHeader = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 2, type: "spring" }}
-                    whileHover={{ scale: 1.05 }}
+                    whileHover={{ scale: 1.03, boxShadow: "0 0 40px rgba(244,63,94,0.6)" }}
                     whileTap={{ scale: 0.95 }}
-                    className="w-full px-6 py-3 bg-gradient-to-br from-red-900 to-red-800 border border-red-700 text-white font-mono tracking-wide transition-all shadow-lg hover:shadow-red-900/50"
+                    style={{ transformOrigin: "center" }}
+                    className="w-full px-6 py-3 bg-gradient-to-br from-red-900 to-red-800 border border-red-700 text-white font-mono tracking-wide transition-all duration-300 shadow-lg hover:shadow-red-900/70 hover:border-red-500"
                   >
                     [ Enter Mission Control ]
                   </motion.button>
@@ -403,9 +404,10 @@ const LandingHeader = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 2.2, type: "spring" }}
-                    whileHover={{ scale: 1.05 }}
+                    whileHover={{ scale: 1.03, boxShadow: "0 0 40px rgba(244,63,94,0.6)" }}
                     whileTap={{ scale: 0.95 }}
-                    className="w-full px-6 py-3 bg-gradient-to-br from-red-900 to-red-800 border border-red-700 text-white font-mono tracking-wide transition-all shadow-lg hover:shadow-red-900/50"
+                    style={{ transformOrigin: "center" }}
+                    className="w-full px-6 py-3 bg-gradient-to-br from-red-900 to-red-800 border border-red-700 text-white font-mono tracking-wide transition-all duration-300 shadow-lg hover:shadow-red-900/70 hover:border-red-500"
                   >
                     [ View Mission Brief ]
                   </motion.button>

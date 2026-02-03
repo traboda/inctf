@@ -62,7 +62,7 @@ const CrewEligibility = () => {
                         {/* Know More Button */}
                         <div className="flex justify-center mt-10">
                             <motion.button
-                                whileHover={{ scale: 1.05 }}
+                                whileHover={{ scale: 1.03 }}
                                 whileTap={{ scale: 0.95 }}
                                 className="px-8 py-3 border-2 border-sky-digital/60 text-sky-digital font-mono text-lg hover:bg-sky-digital/10 transition-all font-bold tracking-wide"
                             >
