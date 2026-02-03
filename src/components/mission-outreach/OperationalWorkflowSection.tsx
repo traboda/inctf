@@ -121,22 +121,28 @@ const StepCard = styled.div`
   align-items: center;
   text-align: center;
   position: relative;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  padding: 20px;
+  border-radius: 12px;
+  
+  &:hover {
+    transform: translateY(-5px);
+    background: rgba(56, 189, 248, 0.05);
+  }
+  
+  &:hover img {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 20px rgba(56, 189, 248, 0.8));
+  }
 `;
 
-const StepNumber = styled.div`
+const StepNumberImage = styled.img`
   width: 60px;
   height: 60px;
-  border-radius: 50%;
-  background: linear-gradient(180deg, #38BDF8 0%, #0284C7 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'JetBrains Mono', monospace;
-  font-weight: 800;
-  font-size: 28px;
-  color: #FFFFFF;
   margin-bottom: 12px;
-  box-shadow: 0 0 20px rgba(56, 189, 248, 0.5);
+  object-fit: contain;
+  transition: all 0.3s ease;
 `;
 
 const StepTitle = styled.h3`
@@ -163,200 +169,223 @@ const StepDescription = styled.p`
   }
 `;
 
-const ArrowRight = styled.div`
+const ArrowRight = styled.img`
   position: absolute;
-  right: -30px;
-  top: 30px;
-  color: #38BDF8;
-  font-size: 24px;
-  
-  @media (max-width: 768px) {
-    display: none;
-  }
-`;
-
-const ArrowLeft = styled.div`
-  position: absolute;
-  left: -30px;
-  top: 30px;
-  color: #38BDF8;
-  font-size: 24px;
-  
-  @media (max-width: 768px) {
-    display: none;
-  }
-`;
-
-const RowDivider = styled.div`
-  grid-column: 1 / -1;
+  right: -45px;
+  top: 20px;
+  width: 40px;
   height: 40px;
+  
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
-// Steps data
+const ArrowLeft = styled.img`
+  position: absolute;
+  left: -45px;
+  top: 20px;
+  width: 40px;
+  height: 40px;
+  transform: rotate(180deg);
+  
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
+
+const RowDividerContainer = styled.div`
+  grid-column: 3 / 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80px;
+  
+  @media (max-width: 768px) {
+    grid-column: 1 / -1;
+  }
+`;
+
+const DownArrow = styled.img`
+  width: 40px;
+  height: 40px;
+  transform: rotate(90deg);
+`;
+
+// Steps data with number images
 const stepsRow1 = [
-    {
-        number: 1,
-        title: 'Step 1',
-        description: 'Register as a <span class="highlight">Mission Outreach Operative</span> through the official portal',
-        hasArrowRight: true
-    },
-    {
-        number: 2,
-        title: 'Step 2',
-        description: 'Receive a unique <span class="highlight">Mission Outreach Code</span>',
-        hasArrowRight: true
-    },
-    {
-        number: 3,
-        title: 'Step 3',
-        description: 'Share the code within <span class="highlight">your</span> institution and peer network',
-        hasArrowRight: false
-    }
+  {
+    number: 1,
+    numberImage: '/inctf/assets/design/MissionOutreachpage/number-one.png',
+    title: 'Step 1',
+    description: 'Register as a <span class="highlight">Mission Outreach Operative</span> through the official portal',
+    hasArrowRight: true
+  },
+  {
+    number: 2,
+    numberImage: '/inctf/assets/design/MissionOutreachpage/number-2.png',
+    title: 'Step 2',
+    description: 'Receive a unique <span class="highlight">Mission Outreach Code</span>',
+    hasArrowRight: true
+  },
+  {
+    number: 3,
+    numberImage: '/inctf/assets/design/MissionOutreachpage/number-3.png',
+    title: 'Step 3',
+    description: 'Share the code within <span class="highlight">your</span> institution and peer network',
+    hasArrowRight: false
+  }
 ];
 
 const stepsRow2 = [
-    {
-        number: 6,
-        title: 'Step 6',
-        description: 'Top-performing operatives are invited to the onsite event in <span class="highlight">Bangalore</span> and formally recognised during the <span class="highlight">Final Deployment</span> phase',
-        hasArrowLeft: false
-    },
-    {
-        number: 5,
-        title: 'Step 5',
-        description: 'Rewards and recognition are calculated based on <span class="highlight">confirmed</span>, paid registrations',
-        hasArrowLeft: true
-    },
-    {
-        number: 4,
-        title: 'Step 4',
-        description: 'Each verified team registration using your code contributes to your operational count',
-        hasArrowLeft: true
-    }
+  {
+    number: 6,
+    numberImage: '/inctf/assets/design/MissionOutreachpage/six.png',
+    title: 'Step 6',
+    description: 'Top-performing operatives are invited to the onsite event in <span class="highlight">Bangalore</span> and formally recognised during the <span class="highlight">Final Deployment</span> phase',
+    hasArrowLeft: false
+  },
+  {
+    number: 5,
+    numberImage: '/inctf/assets/design/MissionOutreachpage/number-5.png',
+    title: 'Step 5',
+    description: 'Rewards and recognition are calculated based on <span class="highlight">confirmed</span>, paid registrations',
+    hasArrowLeft: true
+  },
+  {
+    number: 4,
+    numberImage: '/inctf/assets/design/MissionOutreachpage/number-four.png',
+    title: 'Step 4',
+    description: 'Each verified team registration using your code contributes to your operational count',
+    hasArrowLeft: true
+  }
 ];
 
 const OperationalWorkflowSection = () => {
-    return (
-        <SectionContainer>
-            {/* Top-left corner decoration */}
-            <div
-                className="absolute border-l border-t"
-                style={{
-                    width: '44.5px',
-                    height: '46px',
-                    left: '33px',
-                    top: '0',
-                    borderColor: '#38BDF8'
-                }}
-            />
+  return (
+    <SectionContainer>
+      {/* Top-left corner decoration */}
+      <div
+        className="absolute border-l border-t"
+        style={{
+          width: '44.5px',
+          height: '46px',
+          left: '33px',
+          top: '0',
+          borderColor: '#38BDF8'
+        }}
+      />
 
-            {/* Bottom-right corner decoration - Vector 15 (rotated 180deg) */}
-            <div
-                className="absolute border-l border-t"
-                style={{
-                    width: '40px',
-                    height: '44px',
-                    right: '33px',
-                    bottom: '0',
-                    borderColor: '#38BDF8',
-                    transform: 'rotate(180deg)'
-                }}
-            />
+      {/* Bottom-right corner decoration - Vector 15 (rotated 180deg) */}
+      <div
+        className="absolute border-l border-t"
+        style={{
+          width: '40px',
+          height: '44px',
+          right: '33px',
+          bottom: '0',
+          borderColor: '#38BDF8',
+          transform: 'rotate(180deg)'
+        }}
+      />
 
-            {/* Background Images */}
-            <BackgroundImages>
-                {/* Large satellite - rotated */}
-                <img
-                    src="/inctf/assets/design/MissionOutreachpage/image-removebg-preview(3).png"
-                    alt=""
-                    style={{
-                        position: 'absolute',
-                        width: '760px',
-                        height: '760px',
-                        left: '10%',
-                        top: '0',
-                        opacity: 0.3,
-                        transform: 'rotate(-28.17deg)'
-                    }}
-                />
-                {/* Small satellite top right */}
-                <img
-                    src="/inctf/assets/design/MissionOutreachpage/image-removebg-preview.png"
-                    alt=""
-                    style={{
-                        position: 'absolute',
-                        width: '254px',
-                        height: '179px',
-                        right: '5%',
-                        top: '150px',
-                        opacity: 0.5,
-                        transform: 'rotate(-12.75deg)'
-                    }}
-                />
-                {/* Control center image */}
-                <img
-                    src="/inctf/assets/design/MissionOutreachpage/image-removebg-preview(1).png"
-                    alt=""
-                    style={{
-                        position: 'absolute',
-                        width: '447px',
-                        height: '447px',
-                        left: '5%',
-                        bottom: '0',
-                        opacity: 0.4
-                    }}
-                />
-            </BackgroundImages>
+      {/* Background Images */}
+      <BackgroundImages>
+        {/* Large satellite - rotated */}
+        <img
+          src="/inctf/assets/design/MissionOutreachpage/image-removebg-preview(3).png"
+          alt=""
+          style={{
+            position: 'absolute',
+            width: '760px',
+            height: '760px',
+            left: '10%',
+            top: '0',
+            opacity: 0.3,
+            transform: 'rotate(-28.17deg)'
+          }}
+        />
+        {/* Small satellite top right */}
+        <img
+          src="/inctf/assets/design/MissionOutreachpage/image-removebg-preview.png"
+          alt=""
+          style={{
+            position: 'absolute',
+            width: '254px',
+            height: '179px',
+            right: '5%',
+            top: '150px',
+            opacity: 0.5,
+            transform: 'rotate(-12.75deg)'
+          }}
+        />
+        {/* Control center image */}
+        <img
+          src="/inctf/assets/design/MissionOutreachpage/image-removebg-preview(1).png"
+          alt=""
+          style={{
+            position: 'absolute',
+            width: '447px',
+            height: '447px',
+            left: '5%',
+            bottom: '0',
+            opacity: 0.4
+          }}
+        />
+      </BackgroundImages>
 
-            {/* Content */}
-            <div className="relative z-10">
-                {/* Red line above title */}
-                <div
-                    style={{
-                        width: '75px',
-                        height: '2px',
-                        background: '#FF0000',
-                        margin: '0 auto 30px auto'
-                    }}
-                />
+      {/* Content */}
+      <div className="relative z-10">
+        {/* Red line above title */}
+        <div
+          style={{
+            width: '75px',
+            height: '2px',
+            background: '#FF0000',
+            margin: '0 auto 30px auto'
+          }}
+        />
 
-                {/* Title */}
-                <div className="text-center mb-8">
-                    <h2>
-                        <GlitchWrapper data-text="OPERATIONAL WORKFLOW">
-                            <GlitchMain>OPERATIONAL WORKFLOW</GlitchMain>
-                        </GlitchWrapper>
-                    </h2>
-                </div>
+        {/* Title */}
+        <div className="text-center mb-8">
+          <h2>
+            <GlitchWrapper data-text="OPERATIONAL WORKFLOW">
+              <GlitchMain>OPERATIONAL WORKFLOW</GlitchMain>
+            </GlitchWrapper>
+          </h2>
+        </div>
 
-                {/* Steps Grid */}
-                <StepsGrid>
-                    {/* Row 1: Steps 1, 2, 3 */}
-                    {stepsRow1.map((step, index) => (
-                        <StepCard key={step.number}>
-                            <StepNumber>{step.number}</StepNumber>
-                            <StepTitle>{step.title}</StepTitle>
-                            <StepDescription dangerouslySetInnerHTML={{ __html: `> ${step.description}` }} />
-                            {step.hasArrowRight && <ArrowRight>»</ArrowRight>}
-                        </StepCard>
-                    ))}
+        {/* Steps Grid */}
+        <StepsGrid>
+          {/* Row 1: Steps 1, 2, 3 */}
+          {stepsRow1.map((step, index) => (
+            <StepCard key={step.number}>
+              <StepNumberImage src={step.numberImage} alt={`Step ${step.number}`} />
+              <StepTitle>{step.title}</StepTitle>
+              <StepDescription dangerouslySetInnerHTML={{ __html: `> ${step.description}` }} />
+              {step.hasArrowRight && <ArrowRight src="/inctf/assets/design/MissionOutreachpage/right(1).png" alt="arrow" />}
+            </StepCard>
+          ))}
 
-                    {/* Divider */}
-                    <RowDivider />
+          {/* Down Arrow Divider between rows */}
+          <RowDividerContainer>
+            <DownArrow src="/inctf/assets/design/MissionOutreachpage/right(1).png" alt="arrow" />
+          </RowDividerContainer>
 
-                    {/* Row 2: Steps 6, 5, 4 (reverse order with left arrows) */}
-                    {stepsRow2.map((step, index) => (
-                        <StepCard key={step.number}>
-                            <StepNumber>{step.number}</StepNumber>
-                            <StepTitle>{step.title}</StepTitle>
-                            <StepDescription dangerouslySetInnerHTML={{ __html: `> ${step.description}` }} />
-                            {step.hasArrowLeft && <ArrowLeft>«</ArrowLeft>}
-                        </StepCard>
-                    ))}
-                </StepsGrid>
-            </div>
-        </SectionContainer>
-    );
+          {/* Row 2: Steps 6, 5, 4 (reverse order with left arrows) */}
+          {stepsRow2.map((step, index) => (
+            <StepCard key={step.number}>
+              <StepNumberImage src={step.numberImage} alt={`Step ${step.number}`} />
+              <StepTitle>{step.title}</StepTitle>
+              <StepDescription dangerouslySetInnerHTML={{ __html: `> ${step.description}` }} />
+              {step.hasArrowLeft && <ArrowLeft src="/inctf/assets/design/MissionOutreachpage/right(1).png" alt="arrow" />}
+            </StepCard>
+          ))}
+        </StepsGrid>
+      </div>
+    </SectionContainer>
+  );
 };
 
 export default OperationalWorkflowSection;

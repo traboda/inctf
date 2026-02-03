@@ -46,6 +46,15 @@ const PartnerCard = styled.div`
   border-radius: 20px;
   padding: 20px;
   position: relative;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  
+  &:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0px 0px 40px #38BDF8, 0px 10px 30px rgba(56, 189, 248, 0.3);
+    border-color: #7DD3FC;
+    background: rgba(56, 189, 248, 0.18);
+  }
 `;
 
 const CardHeader = styled.div`

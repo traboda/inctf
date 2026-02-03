@@ -112,6 +112,8 @@ const NoteCard = styled.div`
   background: rgba(2, 6, 23, 0.6);
   border: 1px solid #38BDF8;
   border-radius: 8px;
+  transition: all 0.3s ease;
+  cursor: pointer;
   
   font-family: 'Space Mono', monospace;
   font-weight: 400;
@@ -123,126 +125,133 @@ const NoteCard = styled.div`
     color: #FFFFFF;
     font-weight: 700;
   }
+  
+  &:hover {
+    transform: translateX(10px);
+    box-shadow: 0 0 25px rgba(56, 189, 248, 0.4);
+    border-color: #7DD3FC;
+    background: rgba(56, 189, 248, 0.1);
+  }
 `;
 
 // Notes data
 const notes = [
-    {
-        id: 1,
-        text: 'Only <span class="highlight">verified and payment-completed</span> registrations using the assigned outreach code will be counted'
-    },
-    {
-        id: 2,
-        text: 'Travel reimbursements are processed <span class="highlight">post-event</span>, subject to valid ticket receipts'
-    },
-    {
-        id: 3,
-        text: '<span class="highlight">Team Bi0s</span> reserves the right to audit registrations and ensure authenticity and fairness'
-    }
+  {
+    id: 1,
+    text: 'Only <span class="highlight">verified and payment-completed</span> registrations using the assigned outreach code will be counted'
+  },
+  {
+    id: 2,
+    text: 'Travel reimbursements are processed <span class="highlight">post-event</span>, subject to valid ticket receipts'
+  },
+  {
+    id: 3,
+    text: '<span class="highlight">Team Bi0s</span> reserves the right to audit registrations and ensure authenticity and fairness'
+  }
 ];
 
 const OperationalNotesSection = () => {
-    return (
-        <SectionContainer>
-            {/* Top-left corner decoration */}
-            <div
-                className="absolute border-l border-t"
-                style={{
-                    width: '44.5px',
-                    height: '46px',
-                    left: '33px',
-                    top: '0',
-                    borderColor: '#38BDF8'
-                }}
-            />
+  return (
+    <SectionContainer>
+      {/* Top-left corner decoration */}
+      <div
+        className="absolute border-l border-t"
+        style={{
+          width: '44.5px',
+          height: '46px',
+          left: '33px',
+          top: '0',
+          borderColor: '#38BDF8'
+        }}
+      />
 
-            {/* Bottom-right corner decoration (rotated 180deg) */}
-            <div
-                className="absolute border-l border-t"
-                style={{
-                    width: '40px',
-                    height: '44px',
-                    right: '33px',
-                    bottom: '0',
-                    borderColor: '#38BDF8',
-                    transform: 'rotate(180deg)'
-                }}
-            />
+      {/* Bottom-right corner decoration (rotated 180deg) */}
+      <div
+        className="absolute border-l border-t"
+        style={{
+          width: '40px',
+          height: '44px',
+          right: '33px',
+          bottom: '0',
+          borderColor: '#38BDF8',
+          transform: 'rotate(180deg)'
+        }}
+      />
 
-            {/* Background Images */}
-            <BackgroundImages>
-                {/* Large satellite - rotated */}
-                <img
-                    src="/inctf/assets/design/MissionOutreachpage/image-removebg-preview(3).png"
-                    alt=""
-                    style={{
-                        position: 'absolute',
-                        width: '645px',
-                        height: '645px',
-                        left: '15%',
-                        top: '0',
-                        transform: 'matrix(0.88, -0.47, 0.47, 0.88, 0, 0)'
-                    }}
-                />
-                {/* Small satellite */}
-                <img
-                    src="/inctf/assets/design/MissionOutreachpage/image-removebg-preview.png"
-                    alt=""
-                    style={{
-                        position: 'absolute',
-                        width: '215px',
-                        height: '152px',
-                        right: '10%',
-                        top: '150px',
-                        transform: 'rotate(-12.75deg)'
-                    }}
-                />
-                {/* Control center image */}
-                <img
-                    src="/inctf/assets/design/MissionOutreachpage/image-removebg-preview(1).png"
-                    alt=""
-                    style={{
-                        position: 'absolute',
-                        width: '379px',
-                        height: '379px',
-                        left: '10%',
-                        bottom: '-50px'
-                    }}
-                />
-            </BackgroundImages>
+      {/* Background Images */}
+      <BackgroundImages>
+        {/* Large satellite - rotated */}
+        <img
+          src="/inctf/assets/design/MissionOutreachpage/image-removebg-preview(3).png"
+          alt=""
+          style={{
+            position: 'absolute',
+            width: '645px',
+            height: '645px',
+            left: '15%',
+            top: '0',
+            transform: 'matrix(0.88, -0.47, 0.47, 0.88, 0, 0)'
+          }}
+        />
+        {/* Small satellite */}
+        <img
+          src="/inctf/assets/design/MissionOutreachpage/image-removebg-preview.png"
+          alt=""
+          style={{
+            position: 'absolute',
+            width: '215px',
+            height: '152px',
+            right: '10%',
+            top: '150px',
+            transform: 'rotate(-12.75deg)'
+          }}
+        />
+        {/* Control center image */}
+        <img
+          src="/inctf/assets/design/MissionOutreachpage/image-removebg-preview(1).png"
+          alt=""
+          style={{
+            position: 'absolute',
+            width: '379px',
+            height: '379px',
+            left: '10%',
+            bottom: '-50px'
+          }}
+        />
+      </BackgroundImages>
 
-            {/* Content */}
-            <div className="relative z-10">
-                {/* Red line above title */}
-                <div
-                    style={{
-                        width: '75px',
-                        height: '2px',
-                        background: '#FF0000',
-                        margin: '0 auto 30px auto'
-                    }}
-                />
+      {/* Content */}
+      <div className="relative z-10">
+        {/* Red line above title */}
+        <div
+          style={{
+            width: '75px',
+            height: '2px',
+            background: '#FF0000',
+            margin: '0 auto 30px auto'
+          }}
+        />
 
-                {/* Title */}
-                <div className="text-center mb-12">
-                    <h2>
-                        <GlitchWrapper data-text="OPERATIONAL NOTES">
-                            <GlitchMain>OPERATIONAL NOTES</GlitchMain>
-                        </GlitchWrapper>
-                    </h2>
-                </div>
+        {/* Title */}
+        <div className="text-center mb-12">
+          <h2>
+            <GlitchWrapper data-text="OPERATIONAL NOTES">
+              <GlitchMain>OPERATIONAL NOTES</GlitchMain>
+            </GlitchWrapper>
+          </h2>
+        </div>
 
-                {/* Notes List */}
-                <div className="px-4">
-                    {notes.map((note) => (
-                        <NoteCard key={note.id}>
-                            <span dangerouslySetInnerHTML={{ __html: `> ${note.text}` }} />
-                        </NoteCard>
-                    ))}
-                </div>
-            </div>
-        </SectionContainer>
-    );
+        {/* Notes List */}
+        <div className="px-4">
+          {notes.map((note) => (
+            <NoteCard key={note.id}>
+              <span dangerouslySetInnerHTML={{ __html: `> ${note.text}` }} />
+            </NoteCard>
+          ))}
+        </div>
+      </div>
+    </SectionContainer>
+  );
 };
 
 export default OperationalNotesSection;
