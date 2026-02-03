@@ -64,14 +64,14 @@ const CrewRewards = () => {
         {
             title: "Official Certification",
             points: [
-                "Participation certificates were issued to all registered and active participants",
+                "Participation certificates issued to all registered and active participants",
                 "National recognition for finalists and top-performing teams"
             ]
         },
         {
             title: "National-Level Skill Benchmarking",
             points: [
-                "Performance was evaluated against participants from institutions across India",
+                "Performance evaluated against participants from institutions across India",
                 "Clear indication of skill level in a competitive national environment"
             ]
         }
