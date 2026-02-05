@@ -14,7 +14,7 @@ const data = require(`../src/data/${eventID}/about.json`);
 const AboutPage = () => { 
   // const getAvatar = (path) => {
   //     if(eventID && path)
-  //         return `/inctfj/assets/organizers/${path}`;
+  //         return `/inctf/assets/organizers/${path}`;
   //     return null;
   // }
   // const [stats, setStats] = useState();
