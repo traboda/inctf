@@ -22,8 +22,8 @@ const nextConfig = {
     emotion: true,
   },
 
-  // Only enable static export for production builds
-  // output: 'export', // Uncomment this for production build only
+  // Optimize for AWS deployment 
+  output: 'standalone',
 };
 
 module.exports = nextConfig;
