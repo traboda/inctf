@@ -16,97 +16,97 @@
   "topbarCTAText": "Have you got stuck? Need Help? Join our discord server, ask your doubts & get support from our experts.",
   "CTA": {
     "type": "link",
-    "link": "#",
-    "buttonText": "Register Now"
+    "link": "/comingsoon",
+    "buttonText": "Coming Soon"
   },
   "menu": [
     {
       "label": "About",
-      "link": "/about",
+      "link": "/comingsoon",
       "items": [
         {
           "label": "Our Reach & Statistics",
-          "link": "/about#our-reach"
+          "link": "/comingsoon"
         },
         {
           "label": "Organizing Team",
-          "link": "/organizers"
+          "link": "/comingsoon"
         },
         {
           "label": "Advisory Board",
-          "link": "/advisory-board"
+          "link": "/comingsoon"
         },
         {
           "label": "Past Sponsors",
-          "link": "/sponsors"
+          "link": "/comingsoon"
         }
       ]
     },
     {
       "label": "Championship",
-      "link": "/championship",
+      "link": "/comingsoon",
       "items": [
         {
           "label": "Why Participate?",
-          "link": "/championship#why-participate"
+          "link": "/comingsoon"
         },
         {
           "label": "Guidelines & Rules",
-          "link": "/rules"
+          "link": "/comingsoon"
         },
         {
           "label": "Prizes",
           "badge": "3 Lks+",
           "badgeColor": "bg-green-100",
-          "link": "championship/#prizes"
+          "link": "/comingsoon"
         },
         {
           "label": "Past Winners",
-          "link": "/"
+          "link": "/comingsoon"
         }
       ]
     },
     {
       "label": "Get Started",
-      "link": "/resources",
+      "link": "/comingsoon",
       "items": [
         {
           "label": "Cyber Workshops",
           "badge": "free",
-          "link": "/trainings"
+          "link": "/comingsoon"
         },
         {
           "label": "Videos & Guides",
-          "link": "/resources#videos"
+          "link": "/comingsoon"
         },
         {
           "label": "FAQ",
           "badge": "get answers",
-          "link": "/faq"
+          "link": "/comingsoon"
         },
         {
           "label": "bi0s Wiki",
-          "link": "https://wiki.bi0s.in/"
+          "link": "/comingsoon"
         },
         {
           "label": "Practice Challenges",
-          "link": "https://app.traboda.com/"
+          "link": "/comingsoon"
         },
         {
           "label": "Writeups",
           "badge": "new",
           "badgeColor": "bg-yellow-100",
-          "link": "/writeups"
+          "link": "/comingsoon"
         },
         {
           "label": "Promote InCTF",
-          "link": "/promote"
+          "link": "/comingsoon"
         },
         {
           "label": "Get Help",
           "badge": "discord",
           "badgeColor": "bg-blue-100",
-          "link": "/discord"
+          "link": "/comingsoon"
         }
       ]
     },
