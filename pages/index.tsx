@@ -90,7 +90,7 @@ const LandingPage = () => {
 
         <TopBar />
 
-        <section className="min-h-screen relative z-10 overflow-x-hidden pt-20 flex flex-col justify-center">
+        <section className="min-h-screen relative z-10 overflow-x-hidden pt-0 flex flex-col justify-center">
           <LandingHeader />
         </section>
 

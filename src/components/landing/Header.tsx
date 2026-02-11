@@ -353,7 +353,7 @@ const LandingHeader = () => {
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="w-full lg:w-1/2 flex flex-col items-start ml-4"
+            className="w-full lg:w-1/2 flex flex-col items-start ml-4 lg:-mt-24"
           >
             {/* Mission Alert Status */}
             <motion.div
@@ -427,7 +427,7 @@ const LandingHeader = () => {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.2 }}
-            className="w-full lg:w-1/2 mt-0 lg:mt-0 lg:-ml-16 relative flex justify-center items-center"
+            className="w-full lg:w-1/2 mt-0 lg:mt-12 lg:ml-12 relative flex justify-center items-center"
           >
             {/* Rotating HUD Rings */}
             <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-sky-digital/20 rounded-full animate-spin-slow pointer-events-none"></div>
@@ -444,7 +444,7 @@ const LandingHeader = () => {
                 <img
                   src="/inctf/assets/design/Homepage/satellite_laser.webp"
                   alt="InCTF Satellite"
-                  className="w-[80%] md:w-[650px] lg:w-[800px] h-auto object-contain md:filter-none filter blur-sm opacity-20 md:opacity-100 scale-150 md:scale-100"
+                  className="w-[80%] md:w-[650px] lg:w-[800px] h-auto object-contain md:filter-none filter blur-sm opacity-20 md:opacity-100 scale-150 md:scale-100 brightness-125"
                   draggable="false"
                   style={{
                     filter: 'drop-shadow(0 0 30px rgba(56, 189, 248, 0.4))'
