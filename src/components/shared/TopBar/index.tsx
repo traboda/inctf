@@ -26,6 +26,14 @@ const TopbarContainer = styled.header`
   transform: none;
   opacity: 1;
 
+  &.down {
+    transform: translateY(-100%);
+  }
+  
+  &.up {
+    transform: translateY(0);
+  }
+
   &.floating {
     background: rgba(2, 6, 23, 0.85);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
@@ -41,7 +49,6 @@ const TopbarContainer = styled.header`
     background: rgba(2, 6, 23, 0.95);
     top: 0;
     bottom: initial;
-    transform: none;
   }
 
   nav {
