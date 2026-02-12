@@ -7,28 +7,17 @@ const BreadcrumbWrapper = styled.ul`
     padding: 0;
     display: flex;
     align-items: center;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
     li {
         opacity: 0.75;
         list-style: none;
         margin-right: 0.75rem;
-        color: #94A3B8;
         a {
-            color: #94A3B8;
+            color: inherit;
             text-decoration: none!important;
-            transition: all 0.2s ease;
-            &:hover {
-                color: #38BDF8;
-                text-shadow: 0 0 8px rgba(56, 189, 248, 0.4);
-            }
         }
         &:after {
             margin-left: 0.75rem;
             content: '/';
-            color: #38BDF8;
         }
     }
 `;
@@ -44,16 +33,20 @@ type Breadcrumb = {
 const Breadcrumb = ({ items }: Breadcrumb) => (
   <BreadcrumbWrapper>
     <li>
-      <Link href="/">
+      <Link href="/" className="hover:text-primary">
+        {/* @next-codemod-error This Link previously used the now removed `legacyBehavior` prop, and has a child that might not be an anchor. The codemod bailed out of lifting the child props to the Link. Check that the child component does not render an anchor, and potentially move the props manually to Link. */
+        }
         <i className="fa fa-home" />
       </Link>
     </li>
     {items.length > 0 &&
         items.map((i) =>
           (<li key={shortid.generate()}>
-            {i.isActive ? <span className="text-sky-digital font-bold">{i.title}</span> : (
-              <Link href={i?.link || '#'}>
+            {i.isActive ? i.title : (
+              <Link href={i?.link || '#'} className="hover:text-primary">
+
                 {i.title}
+
               </Link>
             )}
           </li>),

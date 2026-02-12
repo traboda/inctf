@@ -1,9 +1,36 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import styled from '@emotion/styled';
 import CountUp from 'react-countup';
 
 import StateWiseRegistrationMap from './map';
 import AboutGender from './gender';
+
+
+const StatsSection = styled.div`
+  background: white;
+  padding: 7.5vh 2vw;
+  user-select: none;
+
+  img {
+    max-width: 100%;
+  }
+`;
+
+const StatsContainer = styled.section`
+  h2 {
+    font-size: calc(1.5rem + 2.5vw);
+    margin-bottom: 0;
+    line-height: 1.2;
+  }
+
+  h4 {
+    font-size: calc(1rem + 0.5vw);
+  }
+
+  .col-6 {
+    margin-bottom: 1rem;
+  }
+`;
 
 
 const INCTFJStats = ({ stats }) => {
@@ -15,46 +42,23 @@ const INCTFJStats = ({ stats }) => {
   ];
 
   return (
-    <div id="our-reach" className="py-16 md:py-24 px-4 select-none relative overflow-hidden">
-      {/* Subtle accent gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-sky-digital/5 to-transparent pointer-events-none"></div>
-
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="relative z-10"
-      >
-        <div className="font-mono text-xs text-sky-digital mb-4 text-center uppercase tracking-widest">
-          // OPERATIONAL SCALE
-        </div>
-        <div className="w-16 h-0.5 bg-alert-crimson mx-auto mb-6"></div>
-        <h2 className="text-center mb-12 text-3xl md:text-4xl lg:text-5xl font-bold font-mono text-ghost-white tracking-wide">
-          InCTF Jr 21 is one of the world's largest CTF
-        </h2>
-      </motion.div>
-
-      <div className="relative z-10 flex flex-wrap py-8 text-center mx-0">
+    <StatsSection id="our-reach">
+      <h2 className="text-center mb-8 text-3xl md:text-4xl lg:text-5xl">
+        InCTF Jr 21 is one of the world's largest CTF
+      </h2>
+      <StatsContainer className="flex flex-wrap py-8 text-center mx-0">
         {statsPreviewer().map((s, i) => (
-          <motion.div
-            className="w-1/2 md:w-1/3 p-3"
-            key={i}
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: i * 0.1 }}
-          >
-            <div className="p-6 rounded-xl border border-sky-digital/20 bg-sky-digital/5 hover:border-sky-digital/40 hover:bg-sky-digital/10 transition-all duration-300">
-              <h2 className="text-sky-digital mb-3 font-bold font-mono text-4xl md:text-5xl">
+          <div className="w-1/2 md:w-1/3 p-3" key={i}>
+            <div>
+              <h2 className="text-blue-600 mb-0 mb-3 font-bold">
                 <CountUp delay={0.5} duration={4.5} end={s.value} />
               </h2>
-              <h4 className="mb-0 font-mono text-slate-400 text-sm md:text-base tracking-wide">{s.title}</h4>
+              <h4 className="mb-0">{s.title}</h4>
             </div>
-          </motion.div>
+          </div>
         ))}
-      </div>
-      <div className="relative z-10 flex flex-wrap items-center mt-12">
+      </StatsContainer>
+      <div className="flex flex-wrap items-center">
         <div className="md:w-1/3 order-2 md:order-1 w-full">
           <AboutGender data={stats} />
         </div>
@@ -62,7 +66,7 @@ const INCTFJStats = ({ stats }) => {
           <StateWiseRegistrationMap data={stats} />
         </div>
       </div>
-    </div>
+    </StatsSection>
   );
 
 };

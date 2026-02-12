@@ -6,12 +6,10 @@ const ItemDropDown = styled('div')`
     position: absolute;
     top: calc(100% + 6px);
     left: -5px;
-    background: rgba(2, 6, 23, 0.95);
-    backdrop-filter: blur(12px);
+    background: white;
     padding: 1rem;
-    border-radius: 0.75rem;
-    border: 1px solid rgba(56, 189, 248, 0.3);
-    box-shadow: 0 0 30px rgba(56, 189, 248, 0.15), 0 4px 8px rgba(0,0,0,0.4);
+    border-radius: 1.25rem;
+    box-shadow: 1px 6px 8px rgba(0,0,0,0.2);
     width: 250px;
     max-width: 100vw;
     transition: all 0.2s ease-in;
@@ -20,20 +18,6 @@ const ItemDropDown = styled('div')`
     &.c-visible {
       opacity: 1;
       pointer-events: auto;
-    }
-
-    a {
-      color: #94A3B8 !important;
-      padding: 0.5rem !important;
-      display: block;
-      border-radius: 0.25rem;
-      transition: all 0.2s ease;
-      
-      &:hover {
-        color: #38BDF8 !important;
-        background: rgba(56, 189, 248, 0.1);
-        text-shadow: 0 0 8px rgba(56, 189, 248, 0.4);
-      }
     }
 
     @media screen and (max-width: 768px) {
