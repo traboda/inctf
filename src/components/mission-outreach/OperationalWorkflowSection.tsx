@@ -222,7 +222,7 @@ const OperationalWorkflowSection = () => {
 
         {/* Title */}
         <div className="text-center mb-8">
-          <h2>
+          <h2 className="text-3xl md:text-5xl font-black">
             <GlitchText text="OPERATIONAL WORKFLOW" />
           </h2>
         </div>
