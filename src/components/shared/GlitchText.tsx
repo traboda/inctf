@@ -1,33 +1,29 @@
 import React from 'react';
 
 const GlitchText = ({ text, className = "" }: { text: string, className?: string }) => {
-    const [displayText, setDisplayText] = React.useState("");
-    const [showCursor, setShowCursor] = React.useState(true);
-    const [typingComplete, setTypingComplete] = React.useState(false);
+  const [displayText, setDisplayText] = React.useState("");
+  const [showCursor, setShowCursor] = React.useState(true);
+  const [typingComplete, setTypingComplete] = React.useState(false);
 
-    React.useEffect(() => {
-        let index = 0;
-        setDisplayText("");
-        setTypingComplete(false);
-        setShowCursor(true);
+  React.useEffect(() => {
+    let index = 0;
+    const typeInterval = setInterval(() => {
+      if (index <= text.length) {
+        setDisplayText(text.substring(0, index));
+        index++;
+      } else {
+        clearInterval(typeInterval);
+        setTypingComplete(true);
+        setShowCursor(false);
+      }
+    }, 100);
 
-        const typeInterval = setInterval(() => {
-            if (index <= text.length) {
-                setDisplayText(text.substring(0, index));
-                index++;
-            } else {
-                clearInterval(typeInterval);
-                setTypingComplete(true);
-                setShowCursor(false);
-            }
-        }, 100);
+    return () => clearInterval(typeInterval);
+  }, [text]);
 
-        return () => clearInterval(typeInterval);
-    }, [text]);
-
-    return (
-        <span className={`relative inline-block ${className}`}>
-            <style jsx>{`
+  return (
+    <span className={`relative inline-block ${className}`}>
+      <style jsx>{`
         @keyframes glitch {
           2%, 64% {
             transform: translate(2px, 0) skew(0deg);
@@ -115,20 +111,20 @@ const GlitchText = ({ text, className = "" }: { text: string, className?: string
           transform: skewY(-2deg);
         }
       `}</style>
-            <span className="glitch-container">
-                {!typingComplete ? (
-                    <span className="glitch-main font-heading font-black text-4xl md:text-6xl tracking-wider">
-                        {displayText}
-                        {showCursor && <span className="animate-pulse">|</span>}
-                    </span>
-                ) : (
-                    <span className="glitch-wrapper font-heading font-black text-4xl md:text-6xl tracking-wider" data-text={displayText}>
-                        <span className="glitch-main">{displayText}</span>
-                    </span>
-                )}
-            </span>
-        </span>
-    );
+      <span className="glitch-container">
+        {!typingComplete ? (
+          <span className="glitch-main">
+            {displayText}
+            {showCursor && <span className="animate-pulse">|</span>}
+          </span>
+        ) : (
+          <span className="glitch-wrapper" data-text={displayText}>
+            <span className="glitch-main">{displayText}</span>
+          </span>
+        )}
+      </span>
+    </span>
+  );
 };
 
 export default GlitchText;

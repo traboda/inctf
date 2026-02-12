@@ -23,8 +23,8 @@ const TopbarContainer = styled.header`
   display: flex;
   justify-content: center;
   align-items: center;
-  transform: translateY(-100%);
-  opacity: 0;
+  transform: none;
+  opacity: 1;
 
   &.floating {
     background: rgba(2, 6, 23, 0.85);
@@ -33,8 +33,6 @@ const TopbarContainer = styled.header`
 
   &.up, &.top {
     pointer-events: auto;
-    opacity: 1;
-    transform: none;
   }
 
   @media screen and (max-width: 768px) {
@@ -43,7 +41,7 @@ const TopbarContainer = styled.header`
     background: rgba(2, 6, 23, 0.95);
     top: 48px;
     bottom: initial;
-    transform: translateY(-100%);
+    transform: none;
   }
 
   nav {
