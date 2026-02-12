@@ -28,7 +28,7 @@ const InctfIntro = () => {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.1 * index }}
-                  className="text-sky-digital font-mono text-sm md:text-base leading-relaxed mb-6"
+                  className="text-slate-300 font-mono text-sm md:text-base leading-relaxed mb-6"
                 >
                   <span className="text-sky-digital mr-2">&gt;</span>
                   {item}
