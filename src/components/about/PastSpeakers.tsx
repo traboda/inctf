@@ -1,28 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import styled from '@emotion/styled';
+import { motion } from 'framer-motion';
 
-
-const PastSpeakersSection = styled.section`
-    padding: 5vh 5vw;
-    background: #FFF9C4;
-    h4 {
-        font-weight: 600;
-        margin-bottom: 0.15rem;
-    }
-    img {
-        max-width: 100%;
-        transition: 1s all ease;
-        &:hover {
-          transform: scale(1.15)!important;
-          transition: 1s all ease;
-        }
-        overflow: hidden!important;
-    }
-    .speakers-list {
-        display: flex;
-        align-items: center;
-    }
-`;
 
 const PastINCTFSpeakers = () => {
 
@@ -45,32 +23,69 @@ const PastINCTFSpeakers = () => {
 
   useEffect(() => {
     setMounted(true);
-    setInterval(() => {
+    const interval = setInterval(() => {
       setHighlight(Math.floor(Math.random() * 12));
     }, 1000);
+    return () => clearInterval(interval);
   }, []);
 
   return (
-    <PastSpeakersSection suppressHydrationWarning>
-      <div className="py-3">
-        <h4>Talks & Sessions</h4>
-        <h5>By Leading Professionals & Security Researchers</h5>
-      </div>
-      <div className="flex flex-wrap  mx-0 speakers-list">
+    <section className="py-16 md:py-24 px-4 md:px-8 relative overflow-hidden" suppressHydrationWarning>
+      {/* Subtle accent gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-sky-digital/5 to-transparent pointer-events-none"></div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="relative z-10 py-4 mb-8"
+      >
+        <div className="font-mono text-xs text-sky-digital mb-4 uppercase tracking-widest">
+          // FIELD OPERATIVES
+        </div>
+        <div className="w-12 h-0.5 bg-alert-crimson mb-4"></div>
+        <h4 className="font-bold font-mono text-2xl text-ghost-white tracking-wide mb-1">
+          Talks &amp; Sessions
+        </h4>
+        <h5 className="text-slate-400 font-mono text-sm tracking-wide">
+          By Leading Professionals &amp; Security Researchers
+        </h5>
+      </motion.div>
+
+      <div className="relative z-10 flex flex-wrap mx-0 items-center">
         {speakers.map((s, index) => (
-          <div className="w-1/3 md:w-1/5 pr-4 pl-4 p-0" key={index}>
-            <div>
+          <motion.div
+            className="w-1/3 md:w-1/5 p-1.5"
+            key={index}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: 0.05 * index }}
+          >
+            <div className="relative group overflow-hidden rounded-lg border border-sky-digital/20 hover:border-sky-digital/50 transition-all duration-500">
               <img
                 alt="Speaker"
                 draggable="false"
                 src={s.image}
-                style={{ transform: mounted && index === currHighlight ? 'scale(1.15)' : undefined }}
+                className="w-full transition-transform duration-700 ease-out group-hover:scale-110"
+                style={{
+                  transform: mounted && index === currHighlight ? 'scale(1.1)' : undefined,
+                }}
+              />
+              {/* Glow overlay on highlight */}
+              <div
+                className="absolute inset-0 transition-opacity duration-500 pointer-events-none"
+                style={{
+                  opacity: mounted && index === currHighlight ? 1 : 0,
+                  boxShadow: 'inset 0 0 20px rgba(56, 189, 248, 0.15)',
+                }}
               />
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
-    </PastSpeakersSection>
+    </section>
   );
 
 };
