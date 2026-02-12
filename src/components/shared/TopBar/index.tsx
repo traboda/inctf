@@ -23,8 +23,16 @@ const TopbarContainer = styled.header`
   display: flex;
   justify-content: center;
   align-items: center;
-  transform: translateY(-100%);
-  opacity: 0;
+  transform: none;
+  opacity: 1;
+
+  &.down {
+    transform: translateY(-100%);
+  }
+  
+  &.up {
+    transform: translateY(0);
+  }
 
   &.floating {
     background: rgba(2, 6, 23, 0.85);
@@ -33,17 +41,14 @@ const TopbarContainer = styled.header`
 
   &.up, &.top {
     pointer-events: auto;
-    opacity: 1;
-    transform: none;
   }
 
   @media screen and (max-width: 768px) {
-    position: fixed;
+    position: sticky;
     border-bottom: none !important;
     background: rgba(2, 6, 23, 0.95);
-    top: 48px;
+    top: 0;
     bottom: initial;
-    transform: translateY(-100%);
   }
 
   nav {
