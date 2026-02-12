@@ -1,23 +1,25 @@
 import React, { useState } from 'react';
 import { ComposableMap, Geographies, Geography } from 'react-simple-maps';
 import { Tooltip } from 'react-tooltip';
-import { motion } from 'framer-motion';
+import styled from '@emotion/styled';
 
 const INDIA_TOPO_JSON = require('../../../data/india.topo.json');
+
+const Wrapper = styled.div`
+  svg:focus {
+    outline: none;
+  }
+`;
 
 const StateWiseRegistrationMap = ({ data }) => {
   const geographyStyle = {
     default: {
       outline: 'none',
-      stroke: 'rgba(56, 189, 248, 0.2)',
-      strokeWidth: 0.5,
     },
     hover: {
-      fill: 'rgba(56, 189, 248, 0.3)',
+      fill: '#ccc',
       transition: 'all 250ms',
       outline: 'none',
-      stroke: 'rgba(56, 189, 248, 0.6)',
-      strokeWidth: 1,
     },
     pressed: {
       outline: 'none',
@@ -78,27 +80,17 @@ const StateWiseRegistrationMap = ({ data }) => {
   const colorScale = (val) => {
     if (data?.registrations > 0) {
       const pc = (val / data?.registrations) * 1000;
-      if (pc > 50) return 'rgba(255, 0, 0, 0.9)';
-      if (pc > 40) return 'rgba(255, 0, 0, 0.7)';
-      if (pc > 30) return 'rgba(255, 0, 0, 0.5)';
-      if (pc > 10) return 'rgba(56, 189, 248, 0.4)';
-      if (pc > 0) return 'rgba(56, 189, 248, 0.2)';
+      if (pc > 50) return '#9a311f';
+      if (pc > 40) return '#e2492d';
+      if (pc > 30) return '#ff5533';
+      if (pc > 10) return '#ff8a75';
+      if (pc > 0) return '#ffcec5';
     }
-    return 'rgba(15, 23, 42, 0.8)';
+    return '#EEE';
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.9 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6 }}
-      className="p-6 rounded-xl border border-sky-digital/20 bg-sky-digital/5"
-      style={{ outline: 'none' }}
-    >
-      <div className="text-center mb-4">
-        <div className="font-mono text-xs text-sky-digital uppercase tracking-widest">State-wise Participation</div>
-      </div>
+    <Wrapper>
       <ComposableMap
         projectionConfig={{
           scale: 450,
@@ -107,7 +99,7 @@ const StateWiseRegistrationMap = ({ data }) => {
         projection="geoMercator"
         width={100}
         height={320}
-        style={{ width: '100%', maxHeight: '75vh', height: '900px', outline: 'none' }}
+        style={{ width: '100%', maxHeight: '75vh', height: '900px' }}
       >
         <Geographies geography={INDIA_TOPO_JSON}>
           {({ geographies }) =>
@@ -117,7 +109,7 @@ const StateWiseRegistrationMap = ({ data }) => {
                 <Geography
                   key={geo.rsmKey}
                   geography={geo}
-                  fill={current ? colorScale(current.value) : 'rgba(15, 23, 42, 0.8)'}
+                  fill={current ? colorScale(current.value) : '#EEE'}
                   style={geographyStyle}
                   data-tooltip-id="map-tooltip"
                   data-tooltip-content={`${geo.properties.name}: ${current ? current.value : 'NA'}`}
@@ -127,17 +119,8 @@ const StateWiseRegistrationMap = ({ data }) => {
           }
         </Geographies>
       </ComposableMap>
-      <Tooltip
-        id="map-tooltip"
-        style={{
-          backgroundColor: 'rgba(2, 6, 23, 0.95)',
-          color: '#38BDF8',
-          border: '1px solid rgba(56, 189, 248, 0.3)',
-          fontFamily: 'monospace',
-          fontSize: '12px'
-        }}
-      />
-    </motion.div>
+      <Tooltip id="map-tooltip" style={{ backgroundColor: "#222", color: "#fff" }} />
+    </Wrapper>
   );
 };
 
