@@ -36,10 +36,10 @@ const TopbarContainer = styled.header`
   }
 
   @media screen and (max-width: 768px) {
-    position: fixed;
+    position: sticky;
     border-bottom: none !important;
     background: rgba(2, 6, 23, 0.95);
-    top: 48px;
+    top: 0;
     bottom: initial;
     transform: none;
   }

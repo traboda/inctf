@@ -9,7 +9,7 @@ import OperationalNotesSection from '../src/components/mission-outreach/Operatio
 const MissionOutreachPage = () => {
     return (
         <SiteView>
-            <div className="bg-obsidian min-h-screen text-ghost-white relative overflow-hidden" id="mission-outreach-page">
+            <div className="bg-obsidian min-h-screen text-ghost-white relative" id="mission-outreach-page">
                 <div className="scanlines fixed inset-0 pointer-events-none z-50"></div>
 
                 {/* Starfield Background  */}

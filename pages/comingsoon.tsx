@@ -9,7 +9,7 @@ import Link from 'next/link';
 const ComingSoon = () => {
     return (
         <SiteView meta={{ title: "Coming Soon" }}>
-            <div className="bg-obsidian min-h-screen text-ghost-white relative overflow-hidden flex flex-col">
+            <div className="bg-obsidian min-h-screen text-ghost-white relative flex flex-col">
 
                 {/* Scanlines */}
                 <div className="scanlines fixed inset-0 pointer-events-none z-50"></div>

@@ -8,7 +8,7 @@ import SiteView from '../src/components/SiteView';
 const MissionControl = () => {
     return (
         <SiteView meta={{ title: "Mission Control | InCTF Jr" }}>
-            <section className="min-h-screen bg-black text-white relative overflow-hidden font-mono flex flex-col 
+            <section className="min-h-screen bg-black text-white relative font-mono flex flex-col 
                 before:content-[''] before:absolute before:inset-0 before:bg-[linear-gradient(rgba(56,189,248,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(56,189,248,0.03)_1px,transparent_1px)] before:bg-[size:50px_50px] before:z-[1] before:pointer-events-none
                 after:content-[''] after:absolute after:inset-0 after:bg-[url('/assets/images/mission-control/globe.png')] after:bg-repeat-y after:bg-[center_top] after:bg-[length:800px_auto] md:after:bg-[length:1300px_auto] after:opacity-20 md:after:opacity-35 after:z-0 after:pointer-events-none">
                 <Navbar />
