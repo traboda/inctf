@@ -326,12 +326,12 @@ const TopBar = ({ UTMSource = null }) => {
         </CloseButton>
         {showRegCard &&
           <div
-            className="flex bg-white px-3 md:p-4 py-6 items-end rounded-t-2xl md:rounded-r-none md:rounded-bl-2xl justify-center"
+            className="flex bg-obsidian border border-sky-digital/30 px-3 md:p-4 py-6 items-end rounded-t-2xl md:rounded-r-none md:rounded-bl-2xl justify-center shadow-[0_0_30px_rgba(56,189,248,0.2)]"
           >
             <iframe
               className="border-0"
               style={{ width: '500px', maxWidth: '100vw', height: '190px', overflow: 'auto' }}
-              src={`https://app.traboda.com/contest/inctfj-21-lr/reg-frame?color=000&primary=F13F17&primary_text=fff${UTMSource ? `&utm_source=${UTMSource}` : ''}`}
+              src={`https://app.traboda.com/contest/inctfj-21-lr/reg-frame?color=020617&primary=38BDF8&primary_text=000${UTMSource ? `&utm_source=${UTMSource}` : ''}`}
             />
           </div>}
       </Modal>
