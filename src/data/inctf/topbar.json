@@ -44,25 +44,25 @@
     },
     {
       "label": "Championship",
-      "link": "/comingsoon",
+      "link": "/championship",
       "items": [
         {
           "label": "Why Participate?",
-          "link": "/comingsoon"
+          "link": "/championship#why-participate"
         },
         {
           "label": "Guidelines & Rules",
-          "link": "/comingsoon"
+          "link": "/rules"
         },
         {
           "label": "Prizes",
           "badge": "3 Lks+",
           "badgeColor": "bg-green-100",
-          "link": "/comingsoon"
+          "link": "/championship#prizes"
         },
         {
           "label": "Past Winners",
-          "link": "/comingsoon"
+          "link": "/"
         }
       ]
     },
