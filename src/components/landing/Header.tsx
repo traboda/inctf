@@ -77,132 +77,7 @@ const HeaderContainer = styled.section`
   }
 `;
 
-const GlitchText = ({ text, className = "" }: { text: string, className?: string }) => {
-  const [displayText, setDisplayText] = React.useState("");
-  const [showCursor, setShowCursor] = React.useState(true);
-  const [typingComplete, setTypingComplete] = React.useState(false);
-
-  React.useEffect(() => {
-    let index = 0;
-    const typeInterval = setInterval(() => {
-      if (index <= text.length) {
-        setDisplayText(text.substring(0, index));
-        index++;
-      } else {
-        clearInterval(typeInterval);
-        setTypingComplete(true);
-        setShowCursor(false);
-      }
-    }, 100);
-
-    return () => clearInterval(typeInterval);
-  }, [text]);
-
-  return (
-    <span className={`relative inline-block ${className}`}>
-      <style jsx>{`
-        @keyframes glitch {
-          2%, 64% {
-            transform: translate(2px, 0) skew(0deg);
-          }
-          4%, 60% {
-            transform: translate(-2px, 0) skew(0deg);
-          }
-          62% {
-            transform: translate(0, 0) skew(5deg);
-          }
-        }
-        
-        @keyframes glitchTop {
-          2%, 64% {
-            transform: translate(2px, -2px);
-          }
-          4%, 60% {
-            transform: translate(-2px, 2px);
-          }
-          62% {
-            transform: translate(13px, -1px) skew(-13deg);
-          }
-        }
-        
-        @keyframes glitchBottom {
-          2%, 64% {
-            transform: translate(-2px, 0);
-          }
-          4%, 60% {
-            transform: translate(-2px, 0);
-          }
-          62% {
-            transform: translate(-22px, 5px) skew(21deg);
-          }
-        }
-        
-        .glitch-container {
-          position: relative;
-          display: inline-block;
-        }
-        
-        .glitch-wrapper {
-          position: relative;
-          display: inline-block;
-          animation: glitch 1s linear infinite;
-        }
-        
-        .glitch-wrapper::before,
-        .glitch-wrapper::after {
-          content: attr(data-text);
-          position: absolute;
-          left: 0;
-          top: 0;
-          width: 100%;
-          height: 100%;
-        }
-        
-        .glitch-wrapper::before {
-          color: #ff0000;
-          animation: glitchTop 1s linear infinite;
-          clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
-          -webkit-clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
-        }
-        
-        .glitch-wrapper::after {
-          color: #00ffff;
-          animation: glitchBottom 1.5s linear infinite;
-          clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
-          -webkit-clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
-        }
-        
-        .glitch-main {
-          position: relative;
-          z-index: 1;
-          color: #ffffff;
-          text-shadow: 
-            1px 1px 0 rgba(0, 255, 255, 0.8),
-            2px 2px 0 rgba(0, 255, 255, 0.7),
-            3px 3px 0 rgba(0, 255, 255, 0.6),
-            4px 4px 0 rgba(0, 200, 200, 0.5),
-            5px 5px 0 rgba(0, 150, 150, 0.4),
-            6px 6px 0 rgba(255, 0, 0, 0.3),
-            7px 7px 0 rgba(255, 0, 0, 0.2),
-            8px 8px 20px rgba(0, 0, 0, 0.5);
-          transform: skewY(-2deg);
-        }
-      `}</style>
-      <span className="glitch-container">
-        {!typingComplete ? (
-          <span className="glitch-main">
-            {displayText}
-            {showCursor && <span className="animate-pulse">|</span>}
-          </span>
-        ) : (
-          <span className="glitch-wrapper" data-text={displayText}>
-            <span className="glitch-main">{displayText}</span>
-          </span>
-        )}
-      </span>
-    </span>
-  );
-};
+import GlitchText from '../shared/GlitchText';
 
 // Holographic Flicker Component
 const HolographicFlicker = ({ children, delay = 0 }: { children: React.ReactNode, delay?: number }) => {
@@ -353,7 +228,7 @@ const LandingHeader = () => {
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="w-full lg:w-1/2 flex flex-col items-start ml-4"
+            className="w-full lg:w-1/2 flex flex-col items-start ml-4 lg:-mt-24"
           >
             {/* Mission Alert Status */}
             <motion.div
@@ -391,27 +266,27 @@ const LandingHeader = () => {
               </SectionCard>
 
               <div className="flex flex-col md:flex-row gap-4 justify-center w-full px-8">
-                <Link href="#mission-control" className="plain-link md:flex-1">
+                <Link href="/mission-control" className="plain-link md:flex-1">
                   <motion.button
                     initial={{ opacity: 0, y: 20, boxShadow: "4px 4px 0 rgba(255,255,255,0.5)" }}
                     animate={{ opacity: 1, y: 0, boxShadow: "4px 4px 0 rgba(255,255,255,0.5)" }}
                     transition={{ delay: 2, type: "spring" }}
                     whileHover={{ scale: 1.03, boxShadow: "0 0 40px rgba(244,63,94,0.6), 4px 4px 0 rgba(255,255,255,0.7)" }}
                     whileTap={{ scale: 0.95 }}
-                    className="w-full px-6 py-3 bg-gradient-to-br from-red-900 to-red-800 border-2 border-white/60 text-white font-mono tracking-wide"
+                    className="w-full px-8 py-4 whitespace-nowrap bg-gradient-to-br from-red-900 to-red-800 border-2 border-white/60 text-white font-mono tracking-wide"
                   >
                     [ Enter Mission Control ]
                   </motion.button>
                 </Link>
 
-                <Link href="#mission-brief" className="plain-link md:flex-1">
+                <Link href="/comingsoon" className="plain-link md:flex-1">
                   <motion.button
                     initial={{ opacity: 0, y: 20, boxShadow: "4px 4px 0 rgba(255,255,255,0.5)" }}
                     animate={{ opacity: 1, y: 0, boxShadow: "4px 4px 0 rgba(255,255,255,0.5)" }}
                     transition={{ delay: 2.2, type: "spring" }}
                     whileHover={{ scale: 1.03, boxShadow: "0 0 40px rgba(244,63,94,0.6), 4px 4px 0 rgba(255,255,255,0.7)" }}
                     whileTap={{ scale: 0.95 }}
-                    className="w-full px-6 py-3 bg-gradient-to-br from-red-900 to-red-800 border-2 border-white/60 text-white font-mono tracking-wide"
+                    className="w-full px-8 py-4 whitespace-nowrap bg-gradient-to-br from-red-900 to-red-800 border-2 border-white/60 text-white font-mono tracking-wide"
                   >
                     [ View Mission Brief ]
                   </motion.button>
@@ -427,7 +302,7 @@ const LandingHeader = () => {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.2 }}
-            className="w-full lg:w-1/2 mt-0 lg:mt-0 lg:-ml-16 relative flex justify-center items-center"
+            className="w-full lg:w-1/2 mt-0 lg:mt-12 lg:ml-12 relative flex justify-center items-center"
           >
             {/* Rotating HUD Rings */}
             <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-sky-digital/20 rounded-full animate-spin-slow pointer-events-none"></div>
@@ -444,7 +319,7 @@ const LandingHeader = () => {
                 <img
                   src="/inctf/assets/design/Homepage/satellite_laser.webp"
                   alt="InCTF Satellite"
-                  className="w-[80%] md:w-[650px] lg:w-[800px] h-auto object-contain md:filter-none filter blur-sm opacity-20 md:opacity-100 scale-150 md:scale-100"
+                  className="w-[80%] md:w-[650px] lg:w-[800px] h-auto object-contain md:filter-none filter blur-sm opacity-20 md:opacity-100 scale-150 md:scale-100 brightness-125"
                   draggable="false"
                   style={{
                     filter: 'drop-shadow(0 0 30px rgba(56, 189, 248, 0.4))'

@@ -11,7 +11,7 @@ import SiteView from '../src/components/SiteView';
 const LandingPage = () => {
   return (
     <SiteView>
-      <div className="bg-obsidian min-h-screen text-ghost-white relative overflow-hidden" id="landing-page">
+      <div className="bg-obsidian min-h-screen text-ghost-white relative" id="landing-page">
         <div className="scanlines fixed inset-0 pointer-events-none z-50"></div>
 
         {/* Blurred Satellite Background - Fixed */}
@@ -90,7 +90,7 @@ const LandingPage = () => {
 
         <TopBar />
 
-        <section className="min-h-screen relative z-10 overflow-x-hidden pt-20 flex flex-col justify-center">
+        <section className="min-h-screen relative z-10 overflow-x-hidden pt-0 flex flex-col justify-center">
           <LandingHeader />
         </section>
 

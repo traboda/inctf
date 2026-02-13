@@ -1,94 +1,13 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { keyframes } from '@emotion/react';
 import PartnerTiersGrid from './PartnerTiersGrid';
+import GlitchText from '../shared/GlitchText';
 
 const SectionContainer = styled.section`
   position: relative;
   width: 100%;
   padding: 80px 0;
   min-height: 400px;
-`;
-
-// Keyframes for glitch effect
-const glitch = keyframes`
-  2%, 64% {
-    transform: translate(2px, 0) skew(0deg);
-  }
-  4%, 60% {
-    transform: translate(-2px, 0) skew(0deg);
-  }
-  62% {
-    transform: translate(0, 0) skew(5deg);
-  }
-`;
-
-const glitchTop = keyframes`
-  2%, 64% {
-    transform: translate(2px, -2px);
-  }
-  4%, 60% {
-    transform: translate(-2px, 2px);
-  }
-  62% {
-    transform: translate(13px, -1px) skew(-13deg);
-  }
-`;
-
-const glitchBottom = keyframes`
-  2%, 64% {
-    transform: translate(-2px, 0);
-  }
-  4%, 60% {
-    transform: translate(-2px, 0);
-  }
-  62% {
-    transform: translate(-22px, 5px) skew(21deg);
-  }
-`;
-
-const GlitchWrapper = styled.span`
-  position: relative;
-  display: inline-block;
-  animation: ${glitch} 1s linear infinite;
-  font-family: 'JetBrains Mono', monospace;
-  font-weight: 800;
-  font-size: 40px;
-  line-height: 52px;
-  
-  &::before,
-  &::after {
-    content: attr(data-text);
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-  }
-  
-  &::before {
-    color: #ff0000;
-    animation: ${glitchTop} 1s linear infinite;
-    clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
-    -webkit-clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
-  }
-  
-  &::after {
-    color: #00ffff;
-    animation: ${glitchBottom} 1.5s linear infinite;
-    clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
-    -webkit-clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
-  }
-`;
-
-const GlitchMain = styled.span`
-  position: relative;
-  z-index: 1;
-  color: #ffffff;
-  text-shadow: 
-    2px 0 #0a0a14,
-    -1px 0 rgba(255, 0, 0, 0.5),
-    -2px 0 rgba(0, 255, 255, 0.5);
 `;
 
 const PerformanceTiersSection = () => {
@@ -106,6 +25,16 @@ const PerformanceTiersSection = () => {
         }}
       />
 
+      {/* Satellite Image - Right Side */}
+      <div className="absolute right-0 top-1/2 -translate-y-1/2 z-5 opacity-30">
+        <img
+          src="/inctf/assets/design/Homepage/satellite_laser.webp"
+          alt=""
+          className="w-[850px] h-auto"
+          style={{ filter: 'blur(5px) drop-shadow(0 0 20px rgba(56, 189, 248, 0.3))' }}
+        />
+      </div>
+
       {/* Red horizontal line - Vector 12 */}
       <div
         style={{
@@ -119,37 +48,12 @@ const PerformanceTiersSection = () => {
         }}
       />
 
-      {/* Satellite image on the right */}
-      <div
-        className="absolute pointer-events-none"
-        style={{
-          right: '20px',
-          top: '50%',
-          transform: 'translateY(-50%) rotate(-15deg)',
-          opacity: 0.6
-        }}
-      >
-        <img
-          src="/inctf/assets/design/MissionOutreachpage/image-removebg-preview(3).png"
-          alt=""
-          style={{
-            width: '200px',
-            filter: 'drop-shadow(0 0 15px rgba(56, 189, 248, 0.4))'
-          }}
-        />
-      </div>
-
       {/* Content */}
       <div className="relative z-10 text-center max-w-4xl mx-auto px-4">
         {/* Section Title */}
-        <h2 className="mb-6">
-          <GlitchWrapper data-text="PERFORMANCE TIERS &">
-            <GlitchMain>PERFORMANCE TIERS &</GlitchMain>
-          </GlitchWrapper>
-          <br />
-          <GlitchWrapper data-text="RECOGNITION">
-            <GlitchMain>RECOGNITION</GlitchMain>
-          </GlitchWrapper>
+        <h2 className="mb-6 flex flex-col items-center text-3xl md:text-5xl font-black">
+          <GlitchText text="PERFORMANCE TIERS &" className="mb-2" />
+          <GlitchText text="RECOGNITION" />
         </h2>
 
         {/* Subtitle */}
@@ -173,7 +77,7 @@ const PerformanceTiersSection = () => {
 
       {/* Right corner decoration - Vector 8 (rotated 180deg) */}
       <div
-        className="absolute border-r border-b"
+        className="absolute border-l border-t"
         style={{
           width: '40px',
           height: '44px',

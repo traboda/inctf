@@ -25,7 +25,7 @@ const SectionCard: React.FC<SectionCardProps> = ({
   bottomBracketOffset = { x: 0, y: -16 } // Default: -16px up (current -translate-y-4)
 }) => {
   return (
-    <div className="relative group p-6 md:p-8">
+    <div className="relative group p-4 md:p-8">
 
       {/* Top-Left L-Bracket (Cyan) */}
       <motion.div
@@ -64,7 +64,7 @@ const SectionCard: React.FC<SectionCardProps> = ({
         }}
         className={`
             relative z-10 
-            p-8 md:p-12 
+            p-6 md:p-12 
             overflow-hidden
             ${className}
           `}

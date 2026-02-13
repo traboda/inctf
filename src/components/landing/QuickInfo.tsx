@@ -52,7 +52,7 @@ const LandingMissionOutcomes = () => {
           <h2 className="text-3xl md:text-4xl font-black text-white mb-2 uppercase">MISSION OUTCOMES</h2>
           <div className="w-24 h-1 bg-gradient-to-r from-transparent via-alert-crimson to-transparent mx-auto"></div>
           <p className="text-slate-400 mt-4 font-mono text-sm uppercase tracking-widest">
-                  // REWARDS FOR SUCESSFUL OPERATIONS
+                  // REWARDS FOR SUCCESSFUL OPERATIONS
           </p>
         </div>
 

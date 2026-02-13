@@ -16,7 +16,7 @@ const OrganizersPage = () => {
 
   const getAvatar = (path) => {
     if (eventID && path)
-      return `/inctfj/assets/organizers/${path}`;
+      return `/inctf/assets/organizers/${path}`;
     return null;
   };
 

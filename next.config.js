@@ -16,8 +16,15 @@ const nextConfig = {
       },
     ],
   },
-  // Enable static export
-  output: 'export',
+
+  // Enable Emotion compiler for better performance
+  compiler: {
+    emotion: true,
+  },
+
+  // Optimize for AWS deployment 
+  output: 'standalone',
 };
 
 module.exports = nextConfig;
+
