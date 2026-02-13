@@ -27,7 +27,7 @@ const TopBarSearch = () => {
         {showSearchModal && (
         <motion.div
           layoutId="search-button"
-          className="w-screen h-screen bg-white fixed top-0 left-0"
+          className="w-screen h-screen bg-obsidian fixed top-0 left-0"
           style={{ zIndex: 9000 }}
           initial={{ borderRadius: 1000 }}
           exit={{ borderRadius: 1000 }}
@@ -35,7 +35,7 @@ const TopBarSearch = () => {
         >
           <div className="flex flex-col justify-center items-center w-full h-full">
             <button
-              className="fas fa-times text-xl absolute top-0 text-light hover:text-primary right-0 mt-4 mr-4 cursor-pointer"
+              className="fas fa-times text-xl absolute top-0 text-sky-digital hover:text-alert-crimson right-0 mt-4 mr-4 cursor-pointer transition-colors"
               onClick={() => {
                 clearAllBodyScrollLocks();
                 setSearchModal(false);
