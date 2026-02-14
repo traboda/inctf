@@ -9,7 +9,11 @@ const HeroContainer = styled.section`
   margin: 0 auto;
   padding: 0 33px;
   min-height: 657px;
+  margin-bottom: 50vh;
 `;
+
+import { motion } from 'framer-motion';
+import animations from '../../animation';
 
 const HeroSection = () => {
     const responsibilities = [
@@ -58,11 +62,17 @@ const HeroSection = () => {
 
             {/* Title with glitch effect - matching home page */}
             <h1 className="mb-8">
-                <GlitchText text="OPERATION VAJRA" strikethrough={true} className="text-white font-black text-4xl md:text-5xl" />
+                <GlitchText text="OPERATION VAJRA" strikethrough={true} triggerOnView={true} className="text-white font-black text-4xl md:text-5xl" />
             </h1>
 
             {/* Main content container */}
-            <div className="flex flex-col lg:flex-row items-start gap-8">
+            <motion.div
+                className="flex flex-col lg:flex-row items-start gap-8"
+                variants={animations}
+                initial="hiddenScale"
+                whileInView="tacticalFocus"
+                viewport={{ once: true, amount: 0.3 }}
+            >
 
                 {/* Left side - Satellite Image */}
                 <div className="w-full lg:w-1/2">
@@ -128,7 +138,8 @@ const HeroSection = () => {
                         {/* Responsibilities list */}
                         <ul className="space-y-4">
                             {responsibilities.map((item, index) => (
-                                <li
+                                <motion.li
+                                    variants={animations}
                                     key={index}
                                     className="flex items-start gap-3 p-2 rounded-lg transition-all duration-300 cursor-pointer hover:bg-[rgba(56,189,248,0.1)] hover:translate-x-2"
                                 >
@@ -149,12 +160,12 @@ const HeroSection = () => {
                                     >
                                         {item}
                                     </span>
-                                </li>
+                                </motion.li>
                             ))}
                         </ul>
                     </div>
                 </div>
-            </div>
+            </motion.div>
         </HeroContainer>
     );
 };

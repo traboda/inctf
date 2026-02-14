@@ -1,36 +1,68 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import { useInView } from 'framer-motion';
 
-const GlitchText = ({ text, className = "", delay = 0, strikethrough = false }: { text: string, className?: string, delay?: number, strikethrough?: boolean }) => {
+const GlitchText = ({ text, className = "", delay = 0, strikethrough = false, triggerOnView = false }: { text: string, className?: string, delay?: number, strikethrough?: boolean, triggerOnView?: boolean }) => {
   const [displayText, setDisplayText] = React.useState("");
   const [started, setStarted] = React.useState(false);
   const [typingComplete, setTypingComplete] = React.useState(false);
 
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.5 });
+
+  const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&";
+
   React.useEffect(() => {
+    if (triggerOnView && !isInView) return;
+
     const startTimeout = setTimeout(() => {
       setStarted(true);
     }, delay * 1000);
     return () => clearTimeout(startTimeout);
-  }, [delay]);
+  }, [delay, triggerOnView, isInView]);
 
   React.useEffect(() => {
     if (!started) return;
 
-    let index = 0;
-    const typeInterval = setInterval(() => {
-      if (index <= text.length) {
-        setDisplayText(text.substring(0, index));
-        index++;
-      } else {
-        clearInterval(typeInterval);
-        setTypingComplete(true);
-      }
-    }, 100);
+    if (triggerOnView) {
+      // Scrambling Decoding Animation
+      let iteration = 0;
+      const interval = setInterval(() => {
+        setDisplayText(text.split("").map((char, index) => {
+          if (index < iteration) {
+            return text[index];
+          }
+          return characters[Math.floor(Math.random() * characters.length)];
+        }).join(""));
 
-    return () => clearInterval(typeInterval);
-  }, [started, text]);
+        if (iteration >= text.length) {
+          clearInterval(interval);
+          setTypingComplete(true);
+          setDisplayText(text); // Ensure final text is correct
+        }
+
+        iteration += 1 / 3; // Slow down the reveal
+      }, 30);
+
+      return () => clearInterval(interval);
+    } else {
+      // Standard Typewriter Animation
+      let index = 0;
+      const typeInterval = setInterval(() => {
+        if (index <= text.length) {
+          setDisplayText(text.substring(0, index));
+          index++;
+        } else {
+          clearInterval(typeInterval);
+          setTypingComplete(true);
+        }
+      }, 100);
+
+      return () => clearInterval(typeInterval);
+    }
+  }, [started, text, triggerOnView]);
 
   return (
-    <span className={`relative inline-block ${className}`}>
+    <span ref={ref} className={`relative inline-block ${className}`}>
       <style jsx>{`
         @keyframes glitch {
           2%, 64% { transform: translate(2px, 0) skew(0deg); }

@@ -10,7 +10,12 @@ const SectionContainer = styled.section`
   overflow: hidden;
 `;
 
-const StepsGrid = styled.div`
+import { motion } from 'framer-motion';
+import animations from '../../animation';
+
+
+
+const StepsGrid = styled(motion.div)`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 40px 20px;
@@ -23,7 +28,7 @@ const StepsGrid = styled.div`
   }
 `;
 
-const StepCard = styled.div`
+const StepCard = styled(motion.div)`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -102,7 +107,7 @@ const ArrowLeft = styled.img`
   }
 `;
 
-const RowDividerContainer = styled.div`
+const RowDividerContainer = styled(motion.div)`
   grid-column: 3 / 4;
   display: flex;
   flex-direction: column;
@@ -209,7 +214,13 @@ const OperationalWorkflowSection = () => {
       />
 
       {/* Content */}
-      <div className="relative z-10">
+      <motion.div
+        className="relative z-10"
+        variants={animations}
+        initial="hiddenScale"
+        whileInView="tacticalFocus"
+        viewport={{ once: true, amount: 0.2 }}
+      >
         {/* Red line above title */}
         <div
           style={{
@@ -223,7 +234,7 @@ const OperationalWorkflowSection = () => {
         {/* Title */}
         <div className="text-center mb-8">
           <h2>
-            <GlitchText text="OPERATIONAL WORKFLOW" strikethrough={true} className="text-white font-bold text-3xl md:text-4xl" />
+            <GlitchText text="OPERATIONAL WORKFLOW" strikethrough={true} triggerOnView={true} className="text-white font-bold text-3xl md:text-4xl" />
           </h2>
         </div>
 
@@ -231,7 +242,7 @@ const OperationalWorkflowSection = () => {
         <StepsGrid>
           {/* Row 1: Steps 1, 2, 3 */}
           {stepsRow1.map((step, index) => (
-            <StepCard key={step.number}>
+            <StepCard key={step.number} variants={animations}>
               <StepNumberImage src={step.numberImage} alt={`Step ${step.number}`} />
               <StepTitle>{step.title}</StepTitle>
               <StepDescription dangerouslySetInnerHTML={{ __html: `> ${step.description}` }} />
@@ -240,13 +251,13 @@ const OperationalWorkflowSection = () => {
           ))}
 
           {/* Down Arrow Divider between rows */}
-          <RowDividerContainer>
+          <RowDividerContainer variants={animations}>
             <DownArrow src="/inctf/assets/design/MissionOutreachpage/right(1).png" alt="arrow" />
           </RowDividerContainer>
 
           {/* Row 2: Steps 6, 5, 4 (reverse order with left arrows) */}
           {stepsRow2.map((step, index) => (
-            <StepCard key={step.number}>
+            <StepCard key={step.number} variants={animations}>
               <StepNumberImage src={step.numberImage} alt={`Step ${step.number}`} />
               <StepTitle>{step.title}</StepTitle>
               <StepDescription dangerouslySetInnerHTML={{ __html: `> ${step.description}` }} />
@@ -254,7 +265,7 @@ const OperationalWorkflowSection = () => {
             </StepCard>
           ))}
         </StepsGrid>
-      </div>
+      </motion.div>
     </SectionContainer>
   );
 };
