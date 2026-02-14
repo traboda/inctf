@@ -405,7 +405,7 @@ const LandingHeader = () => {
                   </motion.button>
                 </Link>
 
-                <Link href="#mission-brief" className="plain-link md:flex-1">
+                <Link href="/mission-brief" className="plain-link md:flex-1">
                   <motion.button
                     initial={{ opacity: 0, y: 20, boxShadow: "4px 4px 0 rgba(255,255,255,0.5)" }}
                     animate={{ opacity: 1, y: 0, boxShadow: "4px 4px 0 rgba(255,255,255,0.5)" }}

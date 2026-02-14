@@ -1,6 +1,9 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { keyframes } from '@emotion/react';
+import { motion } from 'framer-motion';
+import animations from '../../animation';
+import TypewriterText from '../shared/TypewriterText';
 
 // Keyframes for glitch effect
 const glitch = keyframes`
@@ -224,13 +227,17 @@ const MissionBriefContent = () => {
                             letterSpacing: '3px',
                         }}
                     >
-                        SITUATION REPORT
+                        <TypewriterText text="SITUATION REPORT" delay={0.2} />
                     </h2>
                 </div>
 
                 {/* Report Content Box */}
-                <div
+                <motion.div
                     className="relative"
+                    variants={animations}
+                    initial="hiddenScale"
+                    whileInView="tacticalFocus"
+                    viewport={{ once: true, amount: 0.2 }}
                     style={{
                         background: 'rgba(2, 6, 23, 0.85)',
                         border: '1px solid rgba(56, 189, 248, 0.4)',
@@ -456,7 +463,7 @@ const MissionBriefContent = () => {
                             <ActiveText>[...ACTIVE...]</ActiveText>
                         </div>
                     </div>
-                </div>
+                </motion.div>
             </div>
 
             {/* THREAT ASSESSMENT Section */}
@@ -478,13 +485,17 @@ const MissionBriefContent = () => {
                             letterSpacing: '3px',
                         }}
                     >
-                        THREAT ASSESSMENT
+                        <TypewriterText text="THREAT ASSESSMENT" delay={0.2} />
                     </h2>
                 </div>
 
                 {/* Threat Assessment Content Box */}
-                <div
+                <motion.div
                     className="relative"
+                    variants={animations}
+                    initial="hiddenScale"
+                    whileInView="tacticalFocus"
+                    viewport={{ once: true, amount: 0.2 }}
                     style={{
                         background: 'rgba(2, 6, 23, 0.85)',
                         border: '1px solid rgba(56, 189, 248, 0.4)',
@@ -682,7 +693,7 @@ const MissionBriefContent = () => {
                             </span>
                         </div>
                     </div>
-                </div>
+                </motion.div>
             </div>
 
             {/* OPERATIONAL RESPONSE Section */}
@@ -704,7 +715,7 @@ const MissionBriefContent = () => {
                             letterSpacing: '3px',
                         }}
                     >
-                        OPERATIONAL RESPONSE
+                        <TypewriterText text="OPERATIONAL RESPONSE" delay={0.2} />
                     </h2>
                 </div>
 
@@ -725,8 +736,12 @@ const MissionBriefContent = () => {
                 </p>
 
                 {/* Objective Box */}
-                <div
+                <motion.div
                     className="relative mb-8"
+                    variants={animations}
+                    initial="hiddenScale"
+                    whileInView="tacticalFocus"
+                    viewport={{ once: true, amount: 0.2 }}
                     style={{
                         background: 'rgba(2, 6, 23, 0.85)',
                         border: '1px solid rgba(56, 189, 248, 0.4)',
@@ -761,7 +776,7 @@ const MissionBriefContent = () => {
                             'Restore command authority',
                             'Prevent autonomous hostile control',
                         ].map((item, index) => (
-                            <div key={index} className="flex items-center gap-4">
+                            <motion.div key={index} className="flex items-center gap-4" variants={animations}>
                                 <img
                                     src="/inctf/assets/design/MissionOutreachpage/right.png"
                                     alt=""
@@ -779,10 +794,10 @@ const MissionBriefContent = () => {
                                 >
                                     {item}
                                 </span>
-                            </div>
+                            </motion.div>
                         ))}
                     </div>
-                </div>
+                </motion.div>
 
                 {/* Closing paragraph */}
                 <p
@@ -819,7 +834,7 @@ const MissionBriefContent = () => {
                             letterSpacing: '3px',
                         }}
                     >
-                        MISSION PARAMETERS
+                        <TypewriterText text="MISSION PARAMETERS" delay={0.2} />
                     </h2>
                 </div>
 
@@ -839,8 +854,12 @@ const MissionBriefContent = () => {
                 </p>
 
                 {/* Parameters Box */}
-                <div
+                <motion.div
                     className="relative mb-8"
+                    variants={animations}
+                    initial="hiddenScale"
+                    whileInView="tacticalFocus"
+                    viewport={{ once: true, amount: 0.2 }}
                     style={{
                         background: 'rgba(2, 6, 23, 0.85)',
                         border: '1px solid rgba(56, 189, 248, 0.4)',
@@ -877,7 +896,7 @@ const MissionBriefContent = () => {
                             'Time-sensitive decision-making',
                             'Multi-layered system interactions',
                         ].map((item, index) => (
-                            <div key={index} className="flex items-center gap-4">
+                            <motion.div key={index} className="flex items-center gap-4" variants={animations}>
                                 <img
                                     src="/inctf/assets/design/MissionOutreachpage/right.png"
                                     alt=""
@@ -895,10 +914,10 @@ const MissionBriefContent = () => {
                                 >
                                     {item}
                                 </span>
-                            </div>
+                            </motion.div>
                         ))}
                     </div>
-                </div>
+                </motion.div>
 
                 {/* Closing paragraph */}
                 <p
@@ -915,6 +934,7 @@ const MissionBriefContent = () => {
                     <span style={{ color: '#38BDF8' }}>&gt;</span> Participants will encounter systems that resist standard approaches and challenges that require adaptive thinking rather than scripted solutions.
                 </p>
             </div>
+
             {/* COMMAND AUTHORITY Section */}
             <div className="max-w-[1215px] mx-auto px-8 mt-16">
                 {/* Section header with bullet */}
@@ -934,13 +954,17 @@ const MissionBriefContent = () => {
                             letterSpacing: '3px',
                         }}
                     >
-                        COMMAND AUTHORITY
+                        <TypewriterText text="COMMAND AUTHORITY" delay={0.2} />
                     </h2>
                 </div>
 
                 {/* Content Box */}
-                <div
+                <motion.div
                     className="relative"
+                    variants={animations}
+                    initial="hiddenScale"
+                    whileInView="tacticalFocus"
+                    viewport={{ once: true, amount: 0.2 }}
                     style={{
                         background: 'rgba(2, 6, 23, 0.85)',
                         border: '1px solid rgba(56, 189, 248, 0.4)',
@@ -998,7 +1022,7 @@ const MissionBriefContent = () => {
                             <span style={{ color: '#38BDF8' }}>&gt;</span> The mission framework draws from years of research, competitive problem design, and real-world security practice, ensuring technical depth and operational realism
                         </p>
                     </div>
-                </div>
+                </motion.div>
             </div>
 
             {/* FINAL DIRECTIVE Section */}
@@ -1020,13 +1044,17 @@ const MissionBriefContent = () => {
                             letterSpacing: '3px',
                         }}
                     >
-                        FINAL DIRECTIVE
+                        <TypewriterText text="FINAL DIRECTIVE" delay={0.2} />
                     </h2>
                 </div>
 
                 {/* Content Box */}
-                <div
+                <motion.div
                     className="relative"
+                    variants={animations}
+                    initial="hiddenScale"
+                    whileInView="tacticalFocus"
+                    viewport={{ once: true, amount: 0.2 }}
                     style={{
                         background: 'rgba(2, 6, 23, 0.85)',
                         border: '1px solid rgba(56, 189, 248, 0.4)',
@@ -1055,120 +1083,44 @@ const MissionBriefContent = () => {
                     <div className="absolute bottom-0 left-0 w-[30px] h-[30px] border-l-2 border-b-2" style={{ borderColor: '#38BDF8' }} />
                     <div className="absolute bottom-0 right-0 w-[30px] h-[30px] border-r-2 border-b-2" style={{ borderColor: '#38BDF8' }} />
 
-                    <div className="relative z-10 space-y-5">
-                        {/* Item 1 */}
-                        <div className="flex items-start gap-4">
-                            <img
-                                src="/inctf/assets/design/MissionOutreachpage/right.png"
-                                alt=""
-                                className="flex-shrink-0 mt-1"
-                                style={{ width: '32px', height: '32px' }}
-                            />
-                            <p
-                                style={{
-                                    fontFamily: "'Space Mono', monospace",
-                                    fontWeight: 400,
-                                    fontSize: '18px',
-                                    lineHeight: '30px',
-                                    color: '#94A3B8',
-                                }}
-                            >
-                                <span style={{ color: '#ffffff', fontWeight: 700 }}>ECHO-9</span> is{' '}
-                                <span style={{ color: '#FF0000', fontWeight: 700 }}>transmitting</span>.
-                            </p>
-                        </div>
+                    <div className="relative z-10 space-y-6">
+                        <p
+                            style={{
+                                fontFamily: "'Space Mono', monospace",
+                                fontWeight: 400,
+                                fontSize: '18px',
+                                lineHeight: '30px',
+                                color: '#38BDF8',
+                            }}
+                        >
+                            <span style={{ color: '#38BDF8' }}>&gt;</span> The window for intervention is opening.
+                        </p>
 
-                        {/* Item 2 */}
-                        <div className="flex items-start gap-4">
-                            <img
-                                src="/inctf/assets/design/MissionOutreachpage/right.png"
-                                alt=""
-                                className="flex-shrink-0 mt-1"
-                                style={{ width: '32px', height: '32px' }}
-                            />
-                            <p
-                                style={{
-                                    fontFamily: "'Space Mono', monospace",
-                                    fontWeight: 400,
-                                    fontSize: '18px',
-                                    lineHeight: '30px',
-                                    color: '#94A3B8',
-                                }}
-                            >
-                                <span style={{ color: '#ffffff', fontWeight: 700 }}>VAJRA Station</span> is{' '}
-                                <span style={{ color: '#FF0000', fontWeight: 700 }}>responding</span>.
-                            </p>
-                        </div>
+                        <p
+                            style={{
+                                fontFamily: "'Space Mono', monospace",
+                                fontWeight: 400,
+                                fontSize: '18px',
+                                lineHeight: '30px',
+                                color: '#38BDF8',
+                            }}
+                        >
+                            <span style={{ color: '#38BDF8' }}>&gt;</span> Engage protocols. Stand by for tasking orders.
+                        </p>
 
-                        {/* Item 3 */}
-                        <div className="flex items-start gap-4">
-                            <img
-                                src="/inctf/assets/design/MissionOutreachpage/right.png"
-                                alt=""
-                                className="flex-shrink-0 mt-1"
-                                style={{ width: '32px', height: '32px' }}
-                            />
-                            <p
-                                style={{
-                                    fontFamily: "'Space Mono', monospace",
-                                    fontWeight: 400,
-                                    fontSize: '18px',
-                                    lineHeight: '30px',
-                                    color: '#94A3B8',
-                                }}
-                            >
-                                <span style={{ color: '#ffffff', fontWeight: 700 }}>Command authority</span> is at{' '}
-                                <span style={{ color: '#FF0000', fontWeight: 700 }}>risk</span>.
-                            </p>
-                        </div>
-
-                        {/* Item 4 */}
-                        <div className="flex items-start gap-4">
-                            <img
-                                src="/inctf/assets/design/MissionOutreachpage/right.png"
-                                alt=""
-                                className="flex-shrink-0 mt-1"
-                                style={{ width: '32px', height: '32px' }}
-                            />
-                            <p
-                                style={{
-                                    fontFamily: "'Space Mono', monospace",
-                                    fontWeight: 400,
-                                    fontSize: '18px',
-                                    lineHeight: '30px',
-                                    color: '#94A3B8',
-                                }}
-                            >
-                                <span style={{ color: '#ffffff', fontWeight: 700 }}>Operation VAJRA</span> exists to determine who is capable of{' '}
-                                <span style={{ color: '#FF0000', fontWeight: 700 }}>restoring control</span>.
-                            </p>
-                        </div>
-
-                        {/* Item 5 */}
-                        <div className="flex items-start gap-4">
-                            <img
-                                src="/inctf/assets/design/MissionOutreachpage/right.png"
-                                alt=""
-                                className="flex-shrink-0 mt-1"
-                                style={{ width: '32px', height: '32px' }}
-                            />
-                            <p
-                                style={{
-                                    fontFamily: "'Space Mono', monospace",
-                                    fontWeight: 400,
-                                    fontSize: '18px',
-                                    lineHeight: '30px',
-                                    color: '#94A3B8',
-                                }}
-                            >
-                                Only those prepared to{' '}
-                                <span style={{ color: '#ffffff', fontWeight: 700 }}>analyse</span>,{' '}
-                                <span style={{ color: '#FF0000', fontWeight: 700 }}>adapt</span>, and{' '}
-                                <span style={{ color: '#ffffff', fontWeight: 700 }}>defend</span> will progress.
-                            </p>
-                        </div>
+                        <p
+                            style={{
+                                fontFamily: "'Space Mono', monospace",
+                                fontWeight: 400,
+                                fontSize: '18px',
+                                lineHeight: '30px',
+                                color: '#38BDF8',
+                            }}
+                        >
+                            <span style={{ color: '#38BDF8' }}>&gt;</span> Welcome to <span style={{ color: '#FF0000', fontWeight: 700 }}>Operation VAJRA</span>.
+                        </p>
                     </div>
-                </div>
+                </motion.div>
             </div>
         </div>
     );
