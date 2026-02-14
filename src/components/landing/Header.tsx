@@ -16,7 +16,8 @@ import SectionCard from './SectionCard';
 const HeaderContainer = styled.section`
   min-height: 90vh;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  
   position: relative;
   overflow: hidden;
 
@@ -371,7 +372,7 @@ const LandingHeader = () => {
             {/* Textbox and Buttons Container */}
             <div className="flex flex-col items-center w-full max-w-2xl">
               {/* Content Box with Border */}
-              {/* Content Box with Border */}
+
               <SectionCard className="mb-8 w-full">
                 <h1 className="text-5xl md:text-6xl font-black font-heading mb-8 text-ghost-white text-center">
                   <span className="hidden md:block text-3xl md:text-4xl font-mono text-ghost-white mb-4 tracking-wide">
@@ -391,27 +392,27 @@ const LandingHeader = () => {
               </SectionCard>
 
               <div className="flex flex-col md:flex-row gap-4 justify-center w-full px-8">
-                <Link href="/comingsoon" className="plain-link md:flex-1">
+                <Link href="/mission-control" className="plain-link md:flex-1">
                   <motion.button
                     initial={{ opacity: 0, y: 20, boxShadow: "4px 4px 0 rgba(255,255,255,0.5)" }}
                     animate={{ opacity: 1, y: 0, boxShadow: "4px 4px 0 rgba(255,255,255,0.5)" }}
                     transition={{ delay: 2, type: "spring" }}
                     whileHover={{ scale: 1.03, boxShadow: "0 0 40px rgba(244,63,94,0.6), 4px 4px 0 rgba(255,255,255,0.7)" }}
                     whileTap={{ scale: 0.95 }}
-                    className="w-full px-8 py-4 whitespace-nowrap bg-gradient-to-br from-red-900 to-red-800 border-2 border-white/60 text-white font-mono tracking-wide"
+                    className="w-full px-6 py-3 bg-gradient-to-br from-red-900 to-red-800 border-2 border-white/60 text-white font-mono tracking-wide whitespace-nowrap"
                   >
                     [ Enter Mission Control ]
                   </motion.button>
                 </Link>
 
-                <Link href="/comingsoon" className="plain-link md:flex-1">
+                <Link href="/mission-brief" className="plain-link md:flex-1">
                   <motion.button
                     initial={{ opacity: 0, y: 20, boxShadow: "4px 4px 0 rgba(255,255,255,0.5)" }}
                     animate={{ opacity: 1, y: 0, boxShadow: "4px 4px 0 rgba(255,255,255,0.5)" }}
                     transition={{ delay: 2.2, type: "spring" }}
                     whileHover={{ scale: 1.03, boxShadow: "0 0 40px rgba(244,63,94,0.6), 4px 4px 0 rgba(255,255,255,0.7)" }}
                     whileTap={{ scale: 0.95 }}
-                    className="w-full px-8 py-4 whitespace-nowrap bg-gradient-to-br from-red-900 to-red-800 border-2 border-white/60 text-white font-mono tracking-wide"
+                    className="w-full px-6 py-3 bg-gradient-to-br from-red-900 to-red-800 border-2 border-white/60 text-white font-mono tracking-wide whitespace-nowrap"
                   >
                     [ View Mission Brief ]
                   </motion.button>
@@ -439,7 +440,7 @@ const LandingHeader = () => {
                 initial={{ opacity: 0, y: -50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1.2, delay: 0.5 }}
-                className="relative z-10 floating md:static absolute inset-0 md:inset-auto flex justify-center items-center pointer-events-none md:pointer-events-auto -mt-20 lg:-mt-32"
+                className="relative z-10 floating md:static absolute inset-0 md:inset-auto flex justify-center items-center pointer-events-none md:pointer-events-auto mt-0"
               >
                 <img
                   src="/inctf/assets/design/Homepage/satellite_laser.webp"

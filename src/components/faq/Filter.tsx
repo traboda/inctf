@@ -27,7 +27,7 @@ const FAQFilter = ({ search, setSearch, tags, setTags, totalTags }) => {
           value={search}
           onChange={e => setSearch(e.target.value)}
           placeholder="Enter your question here..."
-          className={`outline-none pl-4 pr-12 py-2 border rounded-t-lg shadow-inner focus:border-yellow-600 w-full ${searchFocus ? '' : 'rounded-b-lg'}`}
+          className={`outline-none pl-4 pr-12 py-2 border border-sky-digital/20 rounded-lg shadow-inner bg-obsidian text-ghost-white placeholder-slate-satellite focus:border-sky-digital w-full font-mono ${searchFocus ? 'rounded-t-lg rounded-b-none' : ''}`}
           onFocus={() => setSearchFocus(true)}
           onBlur={() => setTimeout(() => setSearchFocus(false), 200)}
         />
@@ -39,10 +39,10 @@ const FAQFilter = ({ search, setSearch, tags, setTags, totalTags }) => {
             <button
               type="button"
               onClick={() => setSearch('')}
-              className="fa fa-times text-red-500 mr-4"
+              className="fa fa-times text-alert-crimson mr-4 hover:text-red-400 transition-colors"
             />
           )}
-          <button type="submit" className="fas fa-search hover:text-black opacity-50" />
+          <button type="submit" className="fas fa-search text-slate-satellite hover:text-sky-digital opacity-50 hover:opacity-100 transition-all" />
         </div>
         {searchFocus && <Dropdown search={search} setSearch={setSearch} />}
       </form>

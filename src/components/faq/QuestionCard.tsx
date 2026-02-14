@@ -9,14 +9,25 @@ import 'rc-tooltip/assets/bootstrap_white.css';
 const QuestionContainer = styled.div`
   padding: 0.75rem 1rem;
   width: 100%;
-  background: white;
-  color: #222;
+  background: rgba(56, 189, 248, 0.05);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  color: #F8FAFC;
   margin-bottom: 0.5rem;
   font-size: 17px;
+  border-radius: 8px;
+  transition: all 300ms ease;
+
+  &:hover {
+    background: rgba(56, 189, 248, 0.08);
+    border-color: rgba(56, 189, 248, 0.3);
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.1);
+  }
 
   p {
     margin-top: 8px;
     margin-bottom: 0;
+    color: #94A3B8;
+    font-family: 'JetBrains Mono', monospace;
   }
 
   button {
@@ -28,9 +39,11 @@ const QuestionContainer = styled.div`
     border: none;
     font-size: 22px;
     line-height: 1.5;
+    color: #F8FAFC;
+    font-family: 'Inter', sans-serif;
 
     i {
-      color: #fd7e14;
+      color: #38BDF8;
       font-size: 22px;
       margin-right: 8px;
       transition: transform 250ms ease-in;
@@ -47,6 +60,15 @@ const QuestionContainer = styled.div`
 
   li {
     margin: 5px 0;
+    color: #94A3B8;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  a {
+    color: #38BDF8;
+    &:hover {
+      color: #7DD3FC;
+    }
   }
 `;
 

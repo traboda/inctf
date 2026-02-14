@@ -10,7 +10,7 @@ import PageHeader from '../src/components/PageHeader';
 
 const PageWrap = styled.div`
     min-height: 50vh;
-    background: #FAFAFA;
+    background: #020617;
     display: flex;
     justify-content: center;
 `;
@@ -22,10 +22,11 @@ type TabButton = {
 const TabButton = styled.button<TabButton>`
       padding: 0.5rem 1rem 0.5rem 0;
       font-size: 24px;
+      font-family: 'Inter', sans-serif;
       background: none;
       border: none;
       font-weight: 600;
-      color: ${({ isActive }) => isActive ? '#fd7e14' : '#333'};
+      color: ${({ isActive }) => isActive ? '#38BDF8' : '#94A3B8'};
       &:hover, &:focus {
         outline: none!important;
       }
@@ -41,7 +42,35 @@ const StatsPage = () => {
   const editions = eventStats?.editions;
 
   return (<SiteView meta={{ title: 'Results & Statistics' }}>
-    <TopBar />
+    <div className="relative bg-obsidian min-h-screen">
+      {/* Scanlines Overlay */}
+      <div className="scanlines fixed inset-0 pointer-events-none z-50" />
+
+      {/* Starfield Background */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        <img src="/assets/images/icons/star.png" alt="" className="absolute top-[10%] left-[5%] w-1 opacity-20" />
+        <img src="/assets/images/icons/star.png" alt="" className="absolute top-[20%] left-[15%] w-1 opacity-10" />
+        <img src="/assets/images/icons/star.png" alt="" className="absolute top-[30%] left-[25%] w-1 opacity-15" />
+        <img src="/assets/images/icons/sparkle.png" alt="" className="absolute top-[15%] left-[35%] w-2 opacity-20" />
+        <img src="/assets/images/icons/star.png" alt="" className="absolute top-[40%] left-[45%] w-1 opacity-10" />
+        <img src="/assets/images/icons/star.png" alt="" className="absolute top-[50%] left-[55%] w-1 opacity-20" />
+        <img src="/assets/images/icons/sparkle.png" alt="" className="absolute top-[25%] left-[65%] w-2 opacity-15" />
+        <img src="/assets/images/icons/star.png" alt="" className="absolute top-[60%] left-[75%] w-1 opacity-10" />
+        <img src="/assets/images/icons/star.png" alt="" className="absolute top-[70%] left-[85%] w-1 opacity-20" />
+        <img src="/assets/images/icons/star.png" alt="" className="absolute top-[35%] left-[95%] w-1 opacity-15" />
+        <img src="/assets/images/icons/star.png" alt="" className="absolute top-[80%] left-[10%] w-1 opacity-10" />
+        <img src="/assets/images/icons/sparkle.png" alt="" className="absolute top-[45%] left-[20%] w-2 opacity-20" />
+        <img src="/assets/images/icons/star.png" alt="" className="absolute top-[90%] left-[30%] w-1 opacity-15" />
+        <img src="/assets/images/icons/star.png" alt="" className="absolute top-[55%] left-[40%] w-1 opacity-10" />
+        <img src="/assets/images/icons/star.png" alt="" className="absolute top-[65%] left-[50%] w-1 opacity-20" />
+        <img src="/assets/images/icons/sparkle.png" alt="" className="absolute top-[75%] left-[60%] w-2 opacity-15" />
+        <img src="/assets/images/icons/star.png" alt="" className="absolute top-[85%] left-[70%] w-1 opacity-10" />
+        <img src="/assets/images/icons/star.png" alt="" className="absolute top-[95%] left-[80%] w-1 opacity-20" />
+        <img src="/assets/images/icons/star.png" alt="" className="absolute top-[5%] left-[90%] w-1 opacity-15" />
+      </div>
+
+      <div className="relative z-10">
+        <TopBar />
     <PageHeader
       title="Results & Statistics"
       description="The results and statistics of the InCTF Junior editions showcasing the top cyber-security student talents in the country."
@@ -80,6 +109,8 @@ const StatsPage = () => {
       </div>
     </PageWrap>
     <Footer />
+      </div>
+    </div>
   </SiteView>);
 
 };

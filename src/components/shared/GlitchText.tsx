@@ -7,10 +7,6 @@ const GlitchText = ({ text, className = "" }: { text: string, className?: string
 
     React.useEffect(() => {
         let index = 0;
-        setDisplayText("");
-        setTypingComplete(false);
-        setShowCursor(true);
-
         const typeInterval = setInterval(() => {
             if (index <= text.length) {
                 setDisplayText(text.substring(0, index));
@@ -117,12 +113,12 @@ const GlitchText = ({ text, className = "" }: { text: string, className?: string
       `}</style>
             <span className="glitch-container">
                 {!typingComplete ? (
-                    <span className="glitch-main font-heading font-black text-4xl md:text-6xl tracking-wider">
+                    <span className="glitch-main">
                         {displayText}
                         {showCursor && <span className="animate-pulse">|</span>}
                     </span>
                 ) : (
-                    <span className="glitch-wrapper font-heading font-black text-4xl md:text-6xl tracking-wider" data-text={displayText}>
+                    <span className="glitch-wrapper" data-text={displayText}>
                         <span className="glitch-main">{displayText}</span>
                     </span>
                 )}

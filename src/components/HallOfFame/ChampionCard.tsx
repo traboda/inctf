@@ -16,13 +16,18 @@ const ChampionCardContainer = styled.div`
       font-weight: 600;
       font-size: calc(1rem + 0.5vw);
       margin-bottom: 5px;
+      color: #F8FAFC;
+      font-family: 'Inter', sans-serif;
    }
    .school-name {
-      color: #fd7e14;
+      color: #38BDF8;
       line-height: 1.2;
       margin-bottom: 3px;
+      font-family: 'JetBrains Mono', monospace;
    }
    font-size: 13px;
+   color: #94A3B8;
+   font-family: 'JetBrains Mono', monospace;
 `;
 
 const ChampionCard = ({ title, state, username, name, avatar, rank, institution } : Champion) => {
