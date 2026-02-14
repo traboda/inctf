@@ -2,7 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import Link from 'next/link';
 
-const PostCardWrapper = styled.a`
+const PostCardWrapper = styled.div`
   display: block;
   border: 1px solid rgba(56, 189, 248, 0.2);
   background: rgba(56, 189, 248, 0.05);
@@ -12,6 +12,7 @@ const PostCardWrapper = styled.a`
   height: 100%;
   transition: all 300ms ease;
   color: #F8FAFC;
+  cursor: pointer;
 
   h4 {
     font-weight: 600;
@@ -41,10 +42,8 @@ const PostCardWrapper = styled.a`
 const WriteUpCard = ({ title, id, category, difficulty }) => {
 
   return (
-    <Link href={`/writeup/${id}`}>
-      {/* @next-codemod-error This Link previously used the now removed `legacyBehavior` prop, and has a child that might not be an anchor. The codemod bailed out of lifting the child props to the Link. Check that the child component does not render an anchor, and potentially move the props manually to Link. */
-      }
-      <PostCardWrapper className="shadow-lg hover:shadow">
+    <Link href={`/writeup/${id}`} className="shadow-lg hover:shadow">
+      <PostCardWrapper>
         <h4>{title}</h4>
         <div className="mt-2">
           <span>
