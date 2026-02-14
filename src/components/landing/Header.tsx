@@ -391,7 +391,7 @@ const LandingHeader = () => {
               </SectionCard>
 
               <div className="flex flex-col md:flex-row gap-4 justify-center w-full px-8">
-                <Link href="#mission-control" className="plain-link md:flex-1">
+                <Link href="/mission-control" className="plain-link md:flex-1">
                   <motion.button
                     initial={{ opacity: 0, y: 20, boxShadow: "4px 4px 0 rgba(255,255,255,0.5)" }}
                     animate={{ opacity: 1, y: 0, boxShadow: "4px 4px 0 rgba(255,255,255,0.5)" }}
