@@ -3,7 +3,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#F13F17',
+        primary: '#38BDF8',
         obsidian: '#020617',
         'sky-digital': '#38BDF8',
         'alert-crimson': '#FF0000',
@@ -12,6 +12,7 @@ module.exports = {
       },
       fontFamily: {
         tactical: ['"JetBrains Mono"', 'monospace'],
+        mono: ['"JetBrains Mono"', 'monospace'],
         heading: ['"Inter"', 'sans-serif'],
         sans: ['"Inter"', 'sans-serif'],
       },

@@ -7,29 +7,36 @@ const TagSelectorContainer = styled.div`
     flex-wrap: wrap;
     align-items: center;
     .tag {
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.2);
       border-radius: 7px;
       padding: 0.5rem 1rem;
       cursor: pointer;
       margin: 0.25rem;
-      transition: all 250ms ease;
+      transition: all 300ms ease;
       font-size: 16px !important;
-      border-width: 1px;
+      color: #F8FAFC;
+      font-family: 'JetBrains Mono', monospace;
       
       &.small {
         padding: 0.25rem 1rem;
       }
 
       &:hover:not(.active) {
-        box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.1), 0 0 6px rgba(0, 0, 0, 0.05) !important;
+        background: rgba(56, 189, 248, 0.15);
+        border-color: rgba(56, 189, 248, 0.3);
+        box-shadow: 0 0 15px rgba(56, 189, 248, 0.1);
       }
 
       &.active {
-        background: #fd7e14;
-        color: white;
+        background: #38BDF8;
+        border-color: #38BDF8;
+        color: #020617;
+        box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
         
         &:hover {
-          background: #fd7e14;
+          background: #7DD3FC;
+          border-color: #7DD3FC;
         }
       }
     }

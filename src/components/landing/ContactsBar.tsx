@@ -15,17 +15,22 @@ const ContactsBarSection = styled.section`
     }
     a {
       font-size: 16px;
+      font-family: 'JetBrains Mono', monospace;
+      transition: all 0.2s ease;
       &:hover {
-         color: #fd7e14!important;
+         color: #38BDF8!important;
+         text-shadow: 0 0 8px rgba(56, 189, 248, 0.4);
       }
     }
     .social-bar {
         a {
           font-size: 32px;
-          color: #AAA;
+          color: #94A3B8;
           margin-right: 12px;
+          transition: all 0.2s ease;
           &:hover {
-            color: #fd7e14;
+            color: #38BDF8;
+            text-shadow: 0 0 8px rgba(56, 189, 248, 0.4);
           }
         };
     }

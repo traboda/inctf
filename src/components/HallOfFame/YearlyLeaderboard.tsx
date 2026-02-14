@@ -11,59 +11,68 @@ import FameCard from './FameCard';
 import ChampionCard from './ChampionCard';
 
 const SearchBar = styled.div`
-    background: white;
+    background: rgba(2, 6, 23, 0.6);
     border-radius: 0.5rem;
     z-index: 6000;
     input {
         display: flex;
-        background: white;
-        border: 2px solid rgb(74, 20, 140);
+        background: rgba(2, 6, 23, 0.8);
+        border: 2px solid rgba(56, 189, 248, 0.3);
         padding: 0.5rem 0.75rem;
         border-radius: 0.35rem;
-        color: #111;
+        color: #F8FAFC;
         width: 100%;
+        font-family: 'JetBrains Mono', monospace;
         &:focus {
           outline: none;
-          border-color: #fd7e14;
+          border-color: #38BDF8;
+          box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
+        }
+        &::placeholder {
+          color: #94A3B8;
         }
     }
     .state-filter-select {
          &:focus {
               outline: none!important;
-              border-color: #fd7e14!important;
+              border-color: #38BDF8!important;
          }
          .state-filter__control {
-            background: white;
-            border: 2px solid rgb(74, 20, 140);
+            background: rgba(2, 6, 23, 0.8);
+            border: 2px solid rgba(56, 189, 248, 0.3);
             border-radius: 0.35rem;
             &:focus {
               outline: none;
-              border-color: #fd7e14;
+              border-color: #38BDF8;
             }
         }
         .state-filter__single-value {
-            color: #fd7e14!important;
+            color: #38BDF8!important;
+            font-family: 'JetBrains Mono', monospace;
         }
         input {
             border: none!important;
             box-shadow: none!important;          
-            color: #fd7e14!important;
+            color: #38BDF8!important;
             &:focus {
                 outline: none;
             }
         }
         .state-filter__menu {
-             background: rgb(0,0,0);
-             color: #fd7e14;
+             background: rgba(2, 6, 23, 0.95);
+             border: 1px solid rgba(56, 189, 248, 0.3);
+             color: #F8FAFC;
              outline: none!important;
              .state-filter__option{
+                color: #94A3B8;
+                font-family: 'JetBrains Mono', monospace;
                 &:hover {
-                    background: #fd7e14!important;
-                    color: white;
+                    background: rgba(56, 189, 248, 0.2)!important;
+                    color: #F8FAFC;
                 }
                  &:focus {
               outline: none!important;
-              border-color: #fd7e14!important;
+              border-color: #38BDF8!important;
          }
              }
         }
@@ -114,8 +123,8 @@ const YearlyLeaderboard = ({ data }: YearlyLeaderboard) => {
     {data?.results?.champions?.length > 0 &&
     <div className="py-6">
       <div className="py-2">
-        <h3 style={{ color: '#fd7e14' }} className="mb-4 text-5xl font-semibold">Champions</h3>
-        <p className="text-lg opacity-80 mb-3">
+        <h3 style={{ color: '#38BDF8' }} className="mb-4 text-5xl font-semibold font-heading">Champions</h3>
+        <p className="text-lg opacity-80 mb-3 font-mono text-slate-satellite">
           The InCTF Junior 
           {' '}
           {data.year}
@@ -136,8 +145,8 @@ const YearlyLeaderboard = ({ data }: YearlyLeaderboard) => {
     {data?.results?.top10?.length > 0 &&
     <div className="py-6">
       <div className="py-2">
-        <h3 style={{ color: '#fd7e14' }} className="mb-4 text-5xl font-semibold">Top 10 Finalists</h3>
-        <p className="text-lg opacity-80 mb-3">
+        <h3 style={{ color: '#38BDF8' }} className="mb-4 text-5xl font-semibold font-heading">Top 10 Finalists</h3>
+        <p className="text-lg opacity-80 mb-3 font-mono text-slate-satellite">
           The top 10 finalists of InCTF Junior 
           {' '}
           {data?.year}
@@ -157,8 +166,8 @@ const YearlyLeaderboard = ({ data }: YearlyLeaderboard) => {
     {data?.results?.topWomen?.length > 0 &&
     <div className="py-6">
       <div className="py-2">
-        <h3 style={{ color: '#fd7e14' }} className="mb-4 text-5xl font-semibold">Top Women Achievers</h3>
-        <p className="text-lg opacity-80 mb-3">
+        <h3 style={{ color: '#38BDF8' }} className="mb-4 text-5xl font-semibold font-heading">Top Women Achievers</h3>
+        <p className="text-lg opacity-80 mb-3 font-mono text-slate-satellite">
           The top Women Achievers of InCTF Junior 
           {' '}
           {data?.year}
@@ -179,8 +188,8 @@ const YearlyLeaderboard = ({ data }: YearlyLeaderboard) => {
     {data?.results?.finalists?.length > 0 &&
     <div className="py-3">
       <div className="py-6">
-        <h3 style={{ color: '#fd7e14' }} className="text-5xl font-semibold mb-2">National-Level Finalists</h3>
-        <p className="mb-3 opacity-80 text-lg">
+        <h3 style={{ color: '#38BDF8' }} className="text-5xl font-semibold mb-2 font-heading">National-Level Finalists</h3>
+        <p className="mb-3 opacity-80 text-lg font-mono text-slate-satellite">
           Top participants who qualified for the national-level finals, ranked according to final published
           scoreboard based on most points earned by capturing the most number of flags in the lowest time.
         </p>
