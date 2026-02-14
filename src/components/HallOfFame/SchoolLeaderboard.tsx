@@ -7,13 +7,13 @@ const SchoolLeaderboard = ({ schools }) => {
   return schools?.length > 0 ?
     <div className="py-3">
       <div className="py-2">
-        <h3 style={{ color: '#fd7e14' }} className="mb-1 font-semibold">Top 10 Schools</h3>
-        <p style={{ opacity: 0.8 }} className="mb-3">Schools with most points</p>
+        <h3 style={{ color: '#38BDF8' }} className="mb-1 font-semibold font-heading">Top 10 Schools</h3>
+        <p style={{ opacity: 0.8 }} className="mb-3 font-mono text-slate-satellite">Schools with most points</p>
       </div>
-      <div className="px-0 w-full rounded-lg overflow-hidden border">
+      <div className="px-0 w-full rounded-lg overflow-hidden border border-sky-digital/20">
         <div
-          className="flex flex-wrap font-bold p-2 bg-white text-lg"
-          style={{ color: '#fd7e14' }}
+          className="flex flex-wrap font-bold p-2 bg-obsidian text-lg font-heading"
+          style={{ color: '#38BDF8' }}
         >
           <div className="w-2/4 px-2">
             School
