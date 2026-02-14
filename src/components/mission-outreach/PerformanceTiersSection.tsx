@@ -1,7 +1,9 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import { motion } from 'framer-motion';
 import PartnerTiersGrid from './PartnerTiersGrid';
 import GlitchText from '../shared/GlitchText';
+import animations from '../../animation';
 
 const SectionContainer = styled.section`
   position: relative;
@@ -49,11 +51,17 @@ const PerformanceTiersSection = () => {
       />
 
       {/* Content */}
-      <div className="relative z-10 text-center max-w-4xl mx-auto px-4">
+      <motion.div
+        className="relative z-10 text-center max-w-4xl mx-auto px-4"
+        variants={animations}
+        initial="hiddenScale"
+        whileInView="tacticalFocus"
+        viewport={{ once: true, amount: 0.5 }}
+      >
         {/* Section Title */}
         <h2 className="mb-6 flex flex-col items-center">
-          <GlitchText text="PERFORMANCE TIERS &" className="mb-2" />
-          <GlitchText text="RECOGNITION" />
+          <GlitchText text="PERFORMANCE TIERS &" strikethrough={true} triggerOnView={true} className="mb-2 text-white font-bold text-3xl md:text-4xl" />
+          <GlitchText text="RECOGNITION" strikethrough={true} triggerOnView={true} className="text-white font-bold text-3xl md:text-4xl" />
         </h2>
 
         {/* Subtitle */}
@@ -70,7 +78,7 @@ const PerformanceTiersSection = () => {
         >
           <span style={{ color: '#38BDF8' }}>&gt;</span> Mission Outreach performance is evaluated based on verified team registrations achieved using the assigned outreach code.
         </p>
-      </div>
+      </motion.div>
 
       {/* Partner Tiers Grid */}
       <PartnerTiersGrid />

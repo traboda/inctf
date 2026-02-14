@@ -2,13 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { Waypoint } from 'react-waypoint';
 
-import TopBar from '../src/components/shared/TopBar';
+import ThemeWrapper from '../src/components/shared/ThemeWrapper';
 import faq from '../src/data/faq';
 import QuestionCard from '../src/components/faq/QuestionCard';
 import Footer from '../src/components/shared/Footer';
 import FAQFilter from '../src/components/faq/Filter';
 import filteredFAQ from '../src/components/faq/filterUtils';
-import SiteView from '../src/components/SiteView';
 
 const totalTags = [...faq.reduce((acc, f) => {
   const _acc = new Set([...acc]);
@@ -63,7 +62,7 @@ const FAQPage = () => {
         <p className="text-slate-satellite font-mono">
           Your question in not one among our frequently asked questions.
           You could try rephrasing the question in a different way, or
-          can join our 
+          can join our
           {' '}
           <a href="/discord" target="_blank" className="text-sky-digital hover:text-sky-400 hover:underline">
             discord community
@@ -78,84 +77,37 @@ const FAQPage = () => {
   };
 
   return (
-    <SiteView meta={{ title: 'Frequently Asked Questions (FAQ)' }}>
-      <div className="bg-obsidian min-h-screen text-ghost-white relative overflow-hidden">
-        <div className="scanlines fixed inset-0 pointer-events-none z-50"></div>
-
-        {/* Starfield Background */}
-        <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-b from-obsidian via-slate-900/30 to-obsidian"></div>
-          
-          {/* Stars - Row 1 */}
-          <img src="/inctf/assets/design/Homepage/star.png" alt="" className="absolute opacity-20" style={{ top: '5%', left: '8%', width: '48px' }} />
-          <img src="/inctf/assets/design/Homepage/star.png" alt="" className="absolute opacity-20" style={{ top: '12%', left: '25%', width: '52px' }} />
-          <img src="/inctf/assets/design/Homepage/star.png" alt="" className="absolute opacity-20" style={{ top: '8%', left: '45%', width: '50px' }} />
-          <img src="/inctf/assets/design/Homepage/star.png" alt="" className="absolute opacity-20" style={{ top: '15%', left: '68%', width: '55px' }} />
-          <img src="/inctf/assets/design/Homepage/star.png" alt="" className="absolute opacity-20" style={{ top: '10%', left: '88%', width: '48px' }} />
-
-          {/* Stars - Row 2 */}
-          <img src="/inctf/assets/design/Homepage/star.png" alt="" className="absolute opacity-20" style={{ top: '28%', left: '12%', width: '54px' }} />
-          <img src="/inctf/assets/design/Homepage/star.png" alt="" className="absolute opacity-20" style={{ top: '35%', left: '38%', width: '50px' }} />
-          <img src="/inctf/assets/design/Homepage/star.png" alt="" className="absolute opacity-20" style={{ top: '32%', left: '62%', width: '56px' }} />
-          <img src="/inctf/assets/design/Homepage/star.png" alt="" className="absolute opacity-20" style={{ top: '38%', left: '82%', width: '52px' }} />
-
-          {/* Stars - Row 3 */}
-          <img src="/inctf/assets/design/Homepage/star.png" alt="" className="absolute opacity-20" style={{ top: '52%', left: '5%', width: '58px' }} />
-          <img src="/inctf/assets/design/Homepage/star.png" alt="" className="absolute opacity-20" style={{ top: '58%', left: '28%', width: '48px' }} />
-          <img src="/inctf/assets/design/Homepage/star.png" alt="" className="absolute opacity-20" style={{ top: '55%', left: '52%', width: '54px' }} />
-          <img src="/inctf/assets/design/Homepage/star.png" alt="" className="absolute opacity-20" style={{ top: '60%', left: '75%', width: '50px' }} />
-
-          {/* Stars - Row 4 */}
-          <img src="/inctf/assets/design/Homepage/star.png" alt="" className="absolute opacity-20" style={{ top: '75%', left: '15%', width: '52px' }} />
-          <img src="/inctf/assets/design/Homepage/star.png" alt="" className="absolute opacity-20" style={{ top: '82%', left: '42%', width: '56px' }} />
-          <img src="/inctf/assets/design/Homepage/star.png" alt="" className="absolute opacity-20" style={{ top: '78%', left: '65%', width: '48px' }} />
-          <img src="/inctf/assets/design/Homepage/star.png" alt="" className="absolute opacity-20" style={{ top: '85%', left: '90%', width: '54px' }} />
-
-          {/* Sparkles - Scattered */}
-          <img src="/inctf/assets/design/Homepage/sparkle.png" alt="" className="absolute opacity-10" style={{ top: '18%', left: '18%', width: '60px' }} />
-          <img src="/inctf/assets/design/Homepage/sparkle(1).png" alt="" className="absolute opacity-10" style={{ top: '25%', left: '55%', width: '64px' }} />
-          <img src="/inctf/assets/design/Homepage/sparkle(2).png" alt="" className="absolute opacity-10" style={{ top: '22%', left: '78%', width: '58px' }} />
-          <img src="/inctf/assets/design/Homepage/sparkle(3).png" alt="" className="absolute opacity-10" style={{ top: '45%', left: '20%', width: '62px' }} />
-          <img src="/inctf/assets/design/Homepage/sparkle.png" alt="" className="absolute opacity-10" style={{ top: '48%', left: '68%', width: '66px' }} />
-          <img src="/inctf/assets/design/Homepage/sparkle(1).png" alt="" className="absolute opacity-10" style={{ top: '68%', left: '35%', width: '60px' }} />
-          <img src="/inctf/assets/design/Homepage/sparkle(2).png" alt="" className="absolute opacity-10" style={{ top: '72%', left: '8%', width: '64px' }} />
-          <img src="/inctf/assets/design/Homepage/sparkle(3).png" alt="" className="absolute opacity-10" style={{ top: '88%', left: '25%', width: '58px' }} />
-          <img src="/inctf/assets/design/Homepage/sparkle.png" alt="" className="absolute opacity-10" style={{ top: '92%', left: '72%', width: '62px' }} />
-        </div>
-
-        <TopBar />
-
-        <section className="relative z-10 pt-20">
-          <h1 className="text-primary text-center text-3xl lg:text-6xl py-8 font-heading font-bold">Frequently Asked Questions</h1>
-          <div className="px-6 mx-auto pb-12" style={{ maxWidth: 800, minHeight: '50vh' }}>
-            <FAQFilter
-              search={search}
-              setSearch={setSearch}
-              tags={tags}
-              setTags={setTags}
-              totalTags={totalTags}
-            />
-            {renderFAQ()}
-            <Waypoint onEnter={() => updateTotalVisible(totalVisible + 4)}>
-              <div className="my-6 text-center">
+    <ThemeWrapper meta={{ title: 'Frequently Asked Questions (FAQ)' }}>
+      <section className="relative z-10 pt-20">
+        <h1 className="text-primary text-center text-3xl lg:text-6xl py-8 font-heading font-bold">Frequently Asked Questions</h1>
+        <div className="px-6 mx-auto pb-12" style={{ maxWidth: 800, minHeight: '50vh' }}>
+          <FAQFilter
+            search={search}
+            setSearch={setSearch}
+            tags={tags}
+            setTags={setTags}
+            totalTags={totalTags}
+          />
+          {renderFAQ()}
+          <Waypoint onEnter={() => updateTotalVisible(totalVisible + 4)}>
+            <div className="my-6 text-center">
               <div className="text-ghost-white font-mono">Did not find what you were looking for?</div>
               <div className="text-slate-satellite font-mono">
-                  Write to us at 
-                  {' '}
-                  <a 
-                    href="mailto:inctf@am.amrita.edu" 
-                    className="text-sky-digital hover:text-sky-400 hover:underline"
-                  >
-                    inctf@am.amrita.edu
-                  </a>
-                </div>
+                Write to us at
+                {' '}
+                <a
+                  href="mailto:inctf@am.amrita.edu"
+                  className="text-sky-digital hover:text-sky-400 hover:underline"
+                >
+                  inctf@am.amrita.edu
+                </a>
               </div>
-            </Waypoint>
-          </div>
-        </section>
-        <Footer />
-      </div>
-    </SiteView>
+            </div>
+          </Waypoint>
+        </div>
+      </section>
+      <Footer />
+    </ThemeWrapper>
   );
 
 };

@@ -4,6 +4,7 @@ import { keyframes } from '@emotion/react';
 import { motion } from 'framer-motion';
 import animations from '../../animation';
 import TypewriterText from '../shared/TypewriterText';
+import GlitchText from '../shared/GlitchText';
 
 // Keyframes for glitch effect
 const glitch = keyframes`
@@ -136,44 +137,7 @@ const ActiveText = styled.span`
 `;
 
 // GlitchText component with typing effect
-const GlitchText = ({ text, className = "" }: { text: string, className?: string }) => {
-    const [displayText, setDisplayText] = React.useState("");
-    const [typingComplete, setTypingComplete] = React.useState(false);
-    const [showCursor, setShowCursor] = React.useState(true);
 
-    React.useEffect(() => {
-        let index = 0;
-        const typeInterval = setInterval(() => {
-            if (index <= text.length) {
-                setDisplayText(text.substring(0, index));
-                index++;
-            } else {
-                clearInterval(typeInterval);
-                setTypingComplete(true);
-                setShowCursor(false);
-            }
-        }, 100);
-
-        return () => clearInterval(typeInterval);
-    }, [text]);
-
-    return (
-        <span className={`relative inline-block ${className}`}>
-            <span style={{ position: 'relative', display: 'inline-block' }}>
-                {!typingComplete ? (
-                    <GlitchMain>
-                        {displayText}
-                        {showCursor && <span className="animate-pulse">|</span>}
-                    </GlitchMain>
-                ) : (
-                    <GlitchWrapper data-text={displayText}>
-                        <GlitchMain>{displayText}</GlitchMain>
-                    </GlitchWrapper>
-                )}
-            </span>
-        </span>
-    );
-};
 
 const MissionBriefContent = () => {
     return (
@@ -181,7 +145,11 @@ const MissionBriefContent = () => {
             {/* OPERATION VAJRA - Mission Brief Header */}
             <div className="max-w-[1215px] mx-auto px-8 mb-12">
                 <h1 className="text-center">
-                    <GlitchText text="OPERATION VAJRA" />
+                    <GlitchText
+                        text="OPERATION VAJRA"
+                        strikethrough={true}
+                        className="font-mono font-extrabold text-[48px] leading-[63px] text-white"
+                    />
                     <span
                         style={{
                             fontFamily: "'JetBrains Mono', monospace",
@@ -446,9 +414,11 @@ const MissionBriefContent = () => {
                             >
                                 The source was confirmed:
                             </span>
-                            <GlitchWrapperSmall data-text="ECHO-9">
-                                <GlitchMain>ECHO-9</GlitchMain>
-                            </GlitchWrapperSmall>
+                            <GlitchText
+                                text="ECHO-9"
+                                strikethrough={true}
+                                className="font-mono font-extrabold text-[28px] leading-[36px] text-white"
+                            />
                             <span
                                 style={{
                                     fontFamily: "'Space Mono', monospace",

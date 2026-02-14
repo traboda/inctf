@@ -10,7 +10,12 @@ const SectionContainer = styled.section`
   overflow: hidden;
 `;
 
-const NoteCard = styled.div`
+import { motion } from 'framer-motion';
+import animations from '../../animation';
+
+
+
+const NoteCard = styled(motion.div)`
   box-sizing: border-box;
   width: 100%;
   max-width: 700px;
@@ -96,7 +101,13 @@ const OperationalNotesSection = () => {
       />
 
       {/* Content */}
-      <div className="relative z-10">
+      <motion.div
+        className="relative z-10"
+        variants={animations}
+        initial="hiddenScale"
+        whileInView="tacticalFocus"
+        viewport={{ once: true, amount: 0.3 }}
+      >
         {/* Red line above title */}
         <div
           style={{
@@ -110,19 +121,19 @@ const OperationalNotesSection = () => {
         {/* Title */}
         <div className="text-center mb-12">
           <h2>
-            <GlitchText text="OPERATIONAL NOTES" />
+            <GlitchText text="OPERATIONAL NOTES" strikethrough={true} triggerOnView={true} className="text-white font-bold text-3xl md:text-4xl" />
           </h2>
         </div>
 
         {/* Notes List */}
         <div className="px-4">
           {notes.map((note) => (
-            <NoteCard key={note.id}>
+            <NoteCard key={note.id} variants={animations}>
               <span dangerouslySetInnerHTML={{ __html: `> ${note.text}` }} />
             </NoteCard>
           ))}
         </div>
-      </div>
+      </motion.div>
     </SectionContainer>
   );
 };
