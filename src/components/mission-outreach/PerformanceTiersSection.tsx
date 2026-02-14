@@ -52,8 +52,8 @@ const PerformanceTiersSection = () => {
       <div className="relative z-10 text-center max-w-4xl mx-auto px-4">
         {/* Section Title */}
         <h2 className="mb-6 flex flex-col items-center">
-          <GlitchText text="PERFORMANCE TIERS &" className="mb-2" />
-          <GlitchText text="RECOGNITION" />
+          <GlitchText text="PERFORMANCE TIERS &" strikethrough={true} className="mb-2 text-white font-bold text-3xl md:text-4xl" />
+          <GlitchText text="RECOGNITION" strikethrough={true} className="text-white font-bold text-3xl md:text-4xl" />
         </h2>
 
         {/* Subtitle */}

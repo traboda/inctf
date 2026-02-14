@@ -118,12 +118,8 @@ const MissionControlPage = () => {
                                 {/* Main Title Wrapper */}
                                 <div className="relative">
                                     <h1 className="text-4xl md:text-6xl font-black font-heading tracking-tight uppercase text-white drop-shadow-[0_0_15px_rgba(56,189,248,0.8)] whitespace-nowrap z-20 relative">
-                                        <GlitchText text="OPERATION VAJRA" />
+                                        <GlitchText text="OPERATION VAJRA" strikethrough={true} className="text-white" />
                                     </h1>
-
-                                    {/* Strikethrough Line (Dark Line through text) */}
-                                    <div className="absolute top-1/2 left-0 w-full h-[2px] bg-black/80 z-30 mix-blend-overlay"></div>
-                                    <div className="absolute top-1/2 left-0 w-full h-[1px] bg-black z-30"></div>
                                 </div>
 
                                 {/* Hyphen with Red Lines */}

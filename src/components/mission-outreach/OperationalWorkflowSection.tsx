@@ -223,7 +223,7 @@ const OperationalWorkflowSection = () => {
         {/* Title */}
         <div className="text-center mb-8">
           <h2>
-            <GlitchText text="OPERATIONAL WORKFLOW" />
+            <GlitchText text="OPERATIONAL WORKFLOW" strikethrough={true} className="text-white font-bold text-3xl md:text-4xl" />
           </h2>
         </div>
 

@@ -110,7 +110,7 @@ const OperationalNotesSection = () => {
         {/* Title */}
         <div className="text-center mb-12">
           <h2>
-            <GlitchText text="OPERATIONAL NOTES" />
+            <GlitchText text="OPERATIONAL NOTES" strikethrough={true} className="text-white font-bold text-3xl md:text-4xl" />
           </h2>
         </div>
 
