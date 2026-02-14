@@ -12,38 +12,43 @@ import TopBarItem from './item';
 
 
 const TopbarContainer = styled.header`
-  position: sticky;
+  position: relative;
   top: 0;
   width: 100%;
   z-index: 8000;
   background: rgba(2, 6, 23, 0.7);
   backdrop-filter: blur(10px);
-   transition: all 300ms ease-in-out;
+  transition: transform 400ms cubic-bezier(0.4, 0, 0.2, 1), background 300ms ease, opacity 300ms ease;
   padding: 1rem 0.35rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  transform: translateY(-100%);
-  opacity: 0;
+  
+  /* Initial State (Visible) */
+  transform: translateY(0);
+  opacity: 1;
 
-  &.floating {
-    background: rgba(2, 6, 23, 0.85);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  /* Hiding State */
+  &.hidden-nav {
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
   }
 
-  &.up, &.top {
-    pointer-events: auto;
-    opacity: 1;
-    transform: none;
+  /* Floating State (Scrolled Down) */
+  &.floating {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(2, 6, 23, 0.90);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+    border-bottom: 1px solid rgba(56, 189, 248, 0.1);
   }
 
   @media screen and (max-width: 768px) {
-    position: fixed;
-    border-bottom: none !important;
     background: rgba(2, 6, 23, 0.95);
-    top: 48px;
-    bottom: initial;
-    transform: translateY(-100%);
+    /* Mobile specific adjustments if needed, but keeping sticky */
   }
 
   nav {
@@ -106,40 +111,42 @@ const TopBar = ({ UTMSource = null }) => {
   const [isAtTop, setIsAtTop] = useState(true);
   const [mounted, setMounted] = useState(false);
 
-  const topbarRef = useRef(null);
-  const scrollPrevStateRef = useRef(0);
+  // Use a ref for the last scroll position to avoid closure staleness
+  const lastScrollY = useRef(0);
+  const topbarRef = useRef<HTMLDivElement>(null);
 
   const onOpen = () => setShowMenu(!showMenu);
-
   const onClose = () => setShowMenu(false);
 
-  const onScroll = () => {
-    let st = window.pageYOffset || document.documentElement.scrollTop;
-    st = st <= 0 ? 0 : st;
-
-    setScrollDir(st > 100 && st > scrollPrevStateRef.current ? 'down' : 'up');
-    setIsAtTop(st <= 100);
-    scrollPrevStateRef.current = st;
-  };
-
   useEffect(() => {
-    // Prevent hydration mismatch by only running after mount
     setMounted(true);
 
-    // Initialize scroll position on mount
-    onScroll();
+    const updateScrollDir = () => {
+      const scrollY = window.scrollY;
 
-    document.addEventListener('scroll', onScroll, false);
-    return () => {
-      document.removeEventListener('scroll', onScroll, false);
+      // Threshold for "at top" behavior 
+      setIsAtTop(scrollY < 50);
+
+      // Determine scroll direction
+      const direction = scrollY > lastScrollY.current ? 'down' : 'up';
+
+
+      if (direction !== scrollDir && (scrollY - lastScrollY.current > 5 || direction === 'up')) {
+        setScrollDir(direction);
+      }
+
+      lastScrollY.current = scrollY > 0 ? scrollY : 0;
     };
-  }, []);
 
-  const isVisible = () => scrollDir === 'up' || isAtTop;
+    window.addEventListener('scroll', updateScrollDir);
+    return () => window.removeEventListener('scroll', updateScrollDir);
+  }, [scrollDir]);
+
+  const isVisible = scrollDir === 'up' || isAtTop;
 
   useEffect(() => {
-    setShowMenu(false);
-  }, [scrollDir]);
+    if (!isVisible) setShowMenu(false);
+  }, [isVisible]);
 
   const topbarConfig = require(`../../../data/${eventID}/topbar.json`);
 
@@ -186,7 +193,7 @@ const TopBar = ({ UTMSource = null }) => {
       <TopbarContainer
         suppressHydrationWarning
         ref={topbarRef}
-        className={mounted ? `${scrollDir} ${isAtTop ? 'top' : 'floating'}` : 'up top'}
+        className={`${!isVisible ? 'hidden-nav' : ''} ${!isAtTop ? 'floating' : ''}`}
       >
         <div className="flex flex-wrap justify-center items-center container">
           <div
@@ -228,7 +235,7 @@ const TopBar = ({ UTMSource = null }) => {
                         <TopBarItem
                           key={`topbar_menu_link_${i?.link}`}
                           item={i}
-                          isVisible={isVisible()}
+                          isVisible={isVisible}
                         />
                       ))}
                       <TopBarSearch />
@@ -335,7 +342,7 @@ const TopBar = ({ UTMSource = null }) => {
             />
           </div>}
       </Modal>
-      {isVisible() && showMenu &&
+      {isVisible && showMenu &&
         <MobileMenu onClose={onClose} config={topbarConfig} />}
     </>
   );

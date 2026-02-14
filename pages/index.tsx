@@ -11,10 +11,10 @@ import SiteView from '../src/components/SiteView';
 const LandingPage = () => {
   return (
     <SiteView>
-      <div className="bg-obsidian min-h-screen text-ghost-white relative overflow-hidden" id="landing-page">
+      <div className="bg-obsidian min-h-screen text-ghost-white relative overflow-x-hidden" id="landing-page">
         <div className="scanlines fixed inset-0 pointer-events-none z-50"></div>
 
-        {/* Blurred Satellite Background - Fixed */}
+        {/* Blurred Satellite Background  */}
         <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
           <img
             src="/inctf/assets/design/Homepage/satellite_laser.webp"
