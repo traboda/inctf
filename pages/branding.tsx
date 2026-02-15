@@ -16,7 +16,7 @@ const LogoWrap = styled.div`
       background-size: 30px 30px;
       background-position: 0 0,45px 45px;
       background-image: linear-gradient(45deg,rgba(56, 189, 248, 0.03) 25%,transparent 0,transparent 75%,rgba(56, 189, 248, 0.03) 0,rgba(56, 189, 248, 0.03)),linear-gradient(45deg,rgba(56, 189, 248, 0.03) 25%,transparent 0,transparent 75%,rgba(56, 189, 248, 0.03) 0,rgba(56, 189, 248, 0.03))
-};
+
     img {
       max-width: 100%;
     }
@@ -49,7 +49,7 @@ const BrandingPage = () => {
         {/* Starfield Background */}
         <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-b from-obsidian via-slate-900/30 to-obsidian"></div>
-          
+
           <img src="/inctf/assets/design/Homepage/star.png" alt="" className="absolute opacity-20" style={{ top: '10%', left: '15%', width: '50px' }} />
           <img src="/inctf/assets/design/Homepage/star.png" alt="" className="absolute opacity-20" style={{ top: '25%', left: '45%', width: '54px' }} />
           <img src="/inctf/assets/design/Homepage/star.png" alt="" className="absolute opacity-20" style={{ top: '40%', left: '75%', width: '48px' }} />
@@ -68,47 +68,48 @@ const BrandingPage = () => {
           <div className="pb-12">
             <div className="flex justify-center px-1 py-5">
               <div className="flex flex-wrap mx-0" style={{ maxWidth: '900px' }}>
-            <div className="md:w-1/3 p-2">
-              <LogoWrap>
-                <img src="/assets/images/branding/colorful.png" alt="Colorful Logo" />
-                <a href="/assets/images/branding/colorful.png">PNG</a>
-              </LogoWrap>
-            </div>
-            <div className="md:w-1/3 p-2">
-              <LogoWrap>
-                <img src="/assets/images/branding/light_version.png" alt="Light Logo" />
-                <a href="/assets/images/branding/light_version.png">PNG</a>
-              </LogoWrap>
-            </div>
-            <div className="md:w-1/3 p-2">
-              <LogoWrap>
-                <img src="/assets/images/branding/full_black.png" alt="Colorful Logo" />
-                <a href="/assets/images/branding/full_black.png">PNG</a>
-              </LogoWrap>
+                <div className="md:w-1/3 p-2">
+                  <LogoWrap>
+                    <img src="/assets/images/branding/colorful.png" alt="Colorful Logo" />
+                    <a href="/assets/images/branding/colorful.png">PNG</a>
+                  </LogoWrap>
+                </div>
+                <div className="md:w-1/3 p-2">
+                  <LogoWrap>
+                    <img src="/assets/images/branding/light_version.png" alt="Light Logo" />
+                    <a href="/assets/images/branding/light_version.png">PNG</a>
+                  </LogoWrap>
+                </div>
+                <div className="md:w-1/3 p-2">
+                  <LogoWrap>
+                    <img src="/assets/images/branding/full_black.png" alt="Colorful Logo" />
+                    <a href="/assets/images/branding/full_black.png">PNG</a>
+                  </LogoWrap>
+                </div>
+              </div>
             </div>
           </div>
+          <PageFooterExplorer
+            items={[
+              {
+                'title': 'Advisory Board',
+                'text': 'View our elite panel of advisors',
+                'link': '/advisory-board',
+              },
+              {
+                'title': 'Organizers',
+                'text': 'View our team of organizers',
+                'link': '/organizers',
+              },
+              {
+                'title': 'Our Reach & Impact',
+                'text': 'See our reach & impact',
+                'link': '/about#our-reach',
+              },
+            ]}
+          />
+          <Footer />
         </div>
-      </div>
-      <PageFooterExplorer
-        items={[
-          {
-            'title': 'Advisory Board',
-            'text': 'View our elite panel of advisors',
-            'link': '/advisory-board',
-          },
-          {
-            'title': 'Organizers',
-            'text': 'View our team of organizers',
-            'link': '/organizers',
-          },
-          {
-            'title': 'Our Reach & Impact',
-            'text': 'See our reach & impact',
-            'link': '/about#our-reach',
-          },
-        ]}
-      />
-      <Footer />
       </div>
     </SiteView>
   );
