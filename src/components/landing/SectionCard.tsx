@@ -64,7 +64,7 @@ const SectionCard: React.FC<SectionCardProps> = ({
         }}
         className={`
             relative z-10 
-            p-8 md:p-12 
+            p-4 md:p-8 lg:p-12 
             overflow-hidden
             ${className}
           `}
