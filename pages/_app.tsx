@@ -42,8 +42,8 @@ export default function InCTFJrWebApp({ Component, pageProps }) {
       {/* Google Analytics */}
       {gaId && (
         <>
-          <Script src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`} strategy="afterInteractive" />
-          <Script id="google-analytics" strategy="afterInteractive">
+          <Script src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`} strategy="worker" />
+          <Script id="google-analytics" strategy="worker">
             {`
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
@@ -55,6 +55,9 @@ export default function InCTFJrWebApp({ Component, pageProps }) {
           </Script>
         </>
       )}
+
+      {/* InCTF SDK */}
+      <Script src="https://play.inctf.in/sdk.js" strategy="worker" />
     </>
   );
 }

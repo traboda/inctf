@@ -52,7 +52,6 @@ class MyDocument extends Document {
 
           <Main />
           <NextScript />
-          <script src="https://play.inctf.in/sdk.js" />
         </body>
       </Html>
     );
