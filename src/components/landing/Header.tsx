@@ -250,18 +250,18 @@ const LandingHeader = () => {
               {/* Content Box with Border */}
 
               <SectionCard className="mb-8 w-full">
-                <h1 className="text-5xl md:text-6xl font-black font-heading mb-8 text-ghost-white text-center">
-                  <span className="hidden md:block text-3xl md:text-4xl font-mono text-ghost-white mb-4 tracking-wide">
+                <h1 className="text-4xl sm:text-5xl md:text-6xl font-black font-heading mb-6 md:mb-8 text-ghost-white text-center break-words">
+                  <span className="block text-2xl sm:text-3xl md:text-4xl font-mono text-ghost-white mb-2 md:mb-4 tracking-wide">
                     <TypewriterText text="Amrita InCTF 2026" delay={0.5} />
                   </span>
-                  <GlitchText text="OPERATION VAJRA" strikethrough={true} className="text-4xl md:text-5xl text-white font-black" />
+                  <GlitchText text="OPERATION VAJRA" strikethrough={true} className="text-3xl sm:text-4xl md:text-5xl text-white font-black" />
                 </h1>
 
-                <div className="text-lg md:text-xl text-sky-digital font-mono leading-relaxed space-y-6">
+                <div className="text-base sm:text-lg md:text-xl text-sky-digital font-mono leading-relaxed space-y-4 md:space-y-6">
                   <p>
-                    <span className="text-sky-digital">&gt;</span>  Operation VAJRA is a high-stakes cyber defence    simulation designed to identify, train, and elite India's next generation of security specialists. Built on the principles of national resilience, this mission tests technical proficiency under simulated high-pressure environments.
+                    <span className="text-sky-digital">&gt;</span>  Operation VAJRA is a high-stakes cyber defence simulation designed to identify, train, and elite India's next generation of security specialists. Built on the principles of national resilience, this mission tests technical proficiency under simulated high-pressure environments.
                   </p>
-                  <p className="mt-6">
+                  <p className="mt-4 md:mt-6">
                     <span className="text-sky-digital">&gt;</span>  A multi-month cybersecurity Capture The Flag contest conducted by Amrita Vishwa Vidyapeetham and team bi0s.
                   </p>
                 </div>

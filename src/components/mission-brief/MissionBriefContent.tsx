@@ -148,14 +148,14 @@ const MissionBriefContent = () => {
                     <GlitchText
                         text="OPERATION VAJRA"
                         strikethrough={true}
-                        className="font-mono font-extrabold text-[48px] leading-[63px] text-white"
+                        className="font-mono font-extrabold text-[32px] sm:text-[40px] md:text-[48px] leading-[1.2] md:leading-[63px] text-white"
                     />
                     <span
                         style={{
                             fontFamily: "'JetBrains Mono', monospace",
                             fontWeight: 400,
-                            fontSize: '48px',
-                            lineHeight: '63px',
+                            fontSize: 'clamp(24px, 5vw, 48px)',
+                            lineHeight: '1.2',
                             color: '#38BDF8',
                         }}
                     >
@@ -165,8 +165,8 @@ const MissionBriefContent = () => {
                         style={{
                             fontFamily: "'Space Mono', monospace",
                             fontWeight: 400,
-                            fontSize: '48px',
-                            lineHeight: '63px',
+                            fontSize: 'clamp(24px, 5vw, 48px)',
+                            lineHeight: '1.2',
                             color: '#F8FAFC',
                             fontStyle: 'italic',
                         }}
@@ -448,11 +448,11 @@ const MissionBriefContent = () => {
                         style={{
                             fontFamily: "'JetBrains Mono', monospace",
                             fontWeight: 800,
-                            fontSize: '32px',
-                            lineHeight: '42px',
+                            fontSize: 'clamp(24px, 4vw, 32px)',
+                            lineHeight: '1.2',
                             color: '#FF0000',
                             textTransform: 'uppercase',
-                            letterSpacing: '3px',
+                            letterSpacing: 'clamp(1px, 0.5vw, 3px)',
                         }}
                     >
                         <TypewriterText text="THREAT ASSESSMENT" delay={0.2} />
@@ -678,11 +678,11 @@ const MissionBriefContent = () => {
                         style={{
                             fontFamily: "'JetBrains Mono', monospace",
                             fontWeight: 800,
-                            fontSize: '32px',
-                            lineHeight: '42px',
+                            fontSize: 'clamp(24px, 4vw, 32px)',
+                            lineHeight: '1.2',
                             color: '#FF0000',
                             textTransform: 'uppercase',
-                            letterSpacing: '3px',
+                            letterSpacing: 'clamp(1px, 0.5vw, 3px)',
                         }}
                     >
                         <TypewriterText text="OPERATIONAL RESPONSE" delay={0.2} />
