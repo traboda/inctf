@@ -1,17 +1,15 @@
 import React, { useEffect } from 'react';
 import Head from 'next/head';
-import Script from 'next/script';
 
 const seoTags = {
   siteName: 'InCTF 2026',
-  tagLine: 'India’s First Ethical Hacking contest.',
-  description: 'Capture the Flag contest. India’s first hacking competition. Play CTFs, win prizes and get placed with our sponsors.',
+  tagLine: 'India\'s First Ethical Hacking contest.',
+  description: 'Capture the Flag contest. India\'s first hacking competition. Play CTFs, win prizes and get placed with our sponsors.',
 };
 
 const Base = ({ children, meta }) => {
 
   const title = `${meta && meta.title ? `${meta.title} |` : ''} ${seoTags.siteName} - ${seoTags.tagLine}`;
-  const GTMId = 'GTM-56DCPP26';
 
   useEffect(() => {
     // Only run in browser
@@ -25,19 +23,6 @@ const Base = ({ children, meta }) => {
   }, []);
 
   return (<React.Fragment>
-    {/* Google Tag Manager */}
-    <Script
-      id="gtm-script"
-      strategy="afterInteractive"
-      dangerouslySetInnerHTML={{
-        __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','${GTMId}');`,
-      }}
-    />
-
     <Head>
       <title>{title}</title>
       <meta charSet="utf-8" />
@@ -58,26 +43,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <link href="/images/icons/icon-384x384.png" rel="icon" type="image/png" sizes="384x384" />
       <link rel="apple-touch-icon" href="/images/icons/icon-512x512.png" />
       <link rel="shortcut icon" href="/images/icons/icon-72x72.png" />
-
-      {/* { GoogleAnalyticsID && <React.Fragment>
-        <script rel="preconnect" async src={`https://www.googletagmanager.com/gtag/js?id=${GoogleAnalyticsID}`} />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', '${GoogleAnalyticsID}');`,
-          }}
-        />
-      </React.Fragment>} */}
     </Head>
-
-    {/* Google Tag Manager (noscript) */}
-    <noscript>
-      <iframe
-        src={`https://www.googletagmanager.com/ns.html?id=${GTMId}`}
-        height="0"
-        width="0"
-        style={{ display: 'none', visibility: 'hidden' }}
-      />
-    </noscript>
 
     <div className="app" suppressHydrationWarning>
       {children}

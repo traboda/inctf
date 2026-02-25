@@ -25,9 +25,7 @@ const nextConfig = {
   // Optimize for AWS deployment 
   output: 'standalone',
 
-  experimental: {
-    nextScriptWorkers: true,
-  },
+  experimental: {},
 };
 
 module.exports = nextConfig;
