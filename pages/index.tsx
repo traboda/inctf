@@ -9,6 +9,7 @@ import CrewRewards from '../src/components/landing/CrewRewards';
 import MissionCredentials from '../src/components/landing/MissionCredentials';
 import SiteView from '../src/components/SiteView';
 import PastSponsorsMarquee from '../src/components/landing/PastSponsorsMarquee';
+import PastSpeakers from '../src/components/landing/PastSpeakers';
 
 const LandingPage = () => {
   return (
@@ -44,6 +45,9 @@ const LandingPage = () => {
         <section className="relative z-10 w-full overflow-hidden bg-obsidian border-t border-sky-digital/20">
           <PastSponsorsMarquee />
         </section>
+
+        {/* Past Speakers Section */}
+        <PastSpeakers />
 
         {/* Mission Brief Section */}
         <section className="min-h-screen flex flex-col justify-center">
