@@ -278,7 +278,7 @@ const LandingHeader = () => {
                     transition={{ delay: 2, type: "spring" }}
                     whileHover={{ scale: 1.03, boxShadow: "0 0 40px rgba(244,63,94,0.6), 4px 4px 0 rgba(255,255,255,0.7)" }}
                     whileTap={{ scale: 0.95 }}
-                    className="w-full h-full min-h-[56px] px-6 py-3 bg-gradient-to-br from-red-900 to-red-800 border-2 border-white/60 text-white font-mono tracking-wide whitespace-nowrap md:whitespace-normal flex items-center justify-center text-center"
+                    className="w-full h-full min-h-[56px] px-2 sm:px-6 py-3 bg-gradient-to-br from-red-900 to-red-800 border-2 border-white/60 text-white font-mono tracking-wide whitespace-nowrap flex items-center justify-center text-center text-sm md:text-base"
                   >
                     [ Enter Mission Control ]
                   </motion.button>
@@ -291,7 +291,7 @@ const LandingHeader = () => {
                     transition={{ delay: 2.2, type: "spring" }}
                     whileHover={{ scale: 1.03, boxShadow: "0 0 40px rgba(244,63,94,0.6), 4px 4px 0 rgba(255,255,255,0.7)" }}
                     whileTap={{ scale: 0.95 }}
-                    className="w-full h-full min-h-[56px] px-6 py-3 bg-gradient-to-br from-red-900 to-red-800 border-2 border-white/60 text-white font-mono tracking-wide whitespace-nowrap md:whitespace-normal flex items-center justify-center text-center"
+                    className="w-full h-full min-h-[56px] px-2 sm:px-6 py-3 bg-gradient-to-br from-red-900 to-red-800 border-2 border-white/60 text-white font-mono tracking-wide whitespace-nowrap flex items-center justify-center text-center text-sm md:text-base"
                   >
                     [ View Mission Brief ]
                   </motion.button>
