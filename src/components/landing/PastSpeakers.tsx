@@ -1,20 +1,78 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Speaker } from 'lucide-react';
+import { StaticImageData } from 'next/image';
+import SuvaBrata from '../../../public/assets/images/past_speakers/subabrata.jpg';
+import Lavi from '../../../public/assets/images/past_speakers/lavi.jpg';
+import Vipin from '../../../public/assets/images/past_speakers/vipin.jpg';
+import Uri from '../../../public/assets/images/past_speakers/uri.jpg';
+import Yogi from '../../../public/assets/images/past_speakers/yogi.jpg';
+import Britto from '../../../public/assets/images/past_speakers/britto.jpg';
+import Srinivas from '../../../public/assets/images/past_speakers/srinivas.jpg';
+import DrAmir from '../../../public/assets/images/past_speakers/amir.png';
+import Rushi from '../../../public/assets/images/past_speakers/rushi.png';
 
 interface Speaker {
     name: string;
     title: string;
     company: string;
-    image: string;
+    image: string | StaticImageData;
 }
 
 const speakers: Speaker[] = [
     {
-        name: 'X',
-        title: 'x',
-        company: 'X',
-        image: '',
+        name: 'Suvabrata Sinha',
+        title: 'Chief Information Security Officer',
+        company: 'NXP SEMICONDUCTORS',
+        image: SuvaBrata,
+    },
+    {
+        name: 'Lavi Lazorovitz',
+        title: 'Head of Research',
+        company: 'CYBERARK',
+        image: Lavi,
+    },
+    {
+        name: 'VIPIN PAVITHRAN',
+        title: 'FOUNDER & CHIEF MENTOR OF TEAM BIOS, AMFOSS,TEAM SHAKTI, INCTF & INCTFJ',
+        company: 'AMRITA UNIVERSITY',
+        image: Vipin,
+    },
+    {
+        name: 'URI SHAI',
+        title: 'INDEPENDENT CONSULTANT',
+        company: '',
+        image: Uri,
+    },
+    {
+        name: 'BRITTO SIDHAN',
+        title: 'GENERAL MANAGER',
+        company: 'GLOBAL SECURITY LAB, SCHNEIDER ELECTRIC',
+        image: Britto,
+    },
+    {
+        name: 'YOGI KAPUR',
+        title: 'DIRECTOR',
+        company: 'SOC, SALESFORCE',
+        image: Yogi,
+    },
+    {
+        name: 'SRINIVAS BHARADWAJ',
+        title: 'LEAD FOUNDER',
+        company: 'JNANA MARGA TECHNOLOGIES',
+        image: Srinivas,
+    },
+    {
+        name: 'DR. AMIR SCHREIBER',
+        title: 'SENIOR DIRECTOR',
+        company: 'BANK HAPOALIM',
+        image: DrAmir,
+    },
+    {
+        name: 'RUSHI',
+        title: 'Senior program manager',
+        company: 'MINISTRY OF HOME AFFAIRS, INDIA',
+        image: Rushi,
     },
 
 ];
@@ -31,29 +89,36 @@ const SpeakerCard: React.FC<{ speaker: Speaker; index: number }> = ({ speaker, i
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: index * 0.1, ease: 'easeOut' }}
         >
-            <div className="relative rounded-sm overflow-hidden border border-sky-400/20 bg-slate-900/60 backdrop-blur-sm transition-all duration-300 group-hover:border-sky-400/60 group-hover:shadow-[0_0_20px_rgba(56,189,248,0.15)]">
+            <div className="relative h-full min-h-[420px] md:min-h-[460px] rounded-lg overflow-hidden border border-sky-400/20 bg-slate-900/60 backdrop-blur-sm transition-all duration-300 group-hover:border-sky-400/60 group-hover:shadow-[0_0_20px_rgba(56,189,248,0.15)] p-6 flex flex-col">
 
                 <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-sky-400 z-10" />
                 <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-sky-400 z-10" />
 
-                {/* Photo */}
-                <div className="w-full h-56 md:h-64 overflow-hidden bg-slate-800/80">
-                    <img
-                        src={speaker.image}
-                        alt={speaker.name}
-                        className="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-500 scale-105 group-hover:scale-100"
-                    />
+                {/* Circular Photo */}
+                <div className="flex justify-center mb-6 flex-shrink-0">
+                    <div className="relative w-40 h-40 md:w-44 md:h-44">
+                        {/* Outer gradient ring */}
+                        <div className="absolute inset-0 rounded-full bg-gradient-to-br from-sky-400 via-purple-500 to-pink-500 p-[3px] group-hover:p-[4px] transition-all duration-300">
+                            <div className="w-full h-full rounded-full bg-slate-900 p-[2px]">
+                                <img
+                                    src={typeof speaker.image === 'string' ? speaker.image : speaker.image.src}
+                                    alt={speaker.name}
+                                    className="w-full h-full rounded-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                                />
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 {/* Info */}
-                <div className="p-5 border-t border-sky-400/20">
-                    <h3 className="font-heading font-semibold text-white text-base md:text-lg leading-tight mb-1">
+                <div className="text-center flex-grow flex flex-col justify-center">
+                    <h3 className="font-heading font-bold text-white text-base md:text-lg leading-tight mb-3 uppercase min-h-[3rem] flex items-center justify-center">
                         {speaker.name}
                     </h3>
-                    <p className="font-mono text-white/50 text-xs mb-1 uppercase tracking-widest">
+                    <p className="font-mono text-white/70 text-[10px] md:text-xs mb-2 uppercase tracking-wider leading-relaxed min-h-[2.5rem] line-clamp-3">
                         {speaker.title}
                     </p>
-                    <p className="font-mono text-sky-400 text-sm font-medium">
+                    <p className="font-mono text-sky-400 text-xs md:text-sm font-medium min-h-[1.5rem]">
                         {speaker.company}
                     </p>
                 </div>
@@ -93,7 +158,7 @@ const PastSpeakers: React.FC = () => {
                 >
                     <div>
                         <p className="font-mono text-sky-400 text-xs tracking-[0.3em] uppercase mb-3">
-                            [ MISSION BRIEFINGS ]
+                            [ Expert Speakers ]
                         </p>
                         <h2 className="font-heading text-white text-3xl md:text-4xl lg:text-5xl font-bold uppercase tracking-wider">
                             Past <span className="text-sky-400">Speakers</span>
