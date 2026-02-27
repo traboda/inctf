@@ -13,6 +13,7 @@ const data = require(`../../data/${eventID}/index.json`);
 import TypewriterText from '../shared/TypewriterText';
 import GlitchText from '../shared/GlitchText';
 import SectionCard from './SectionCard';
+import EarlyBirdPopup from './EarlyBirdPopup';
 
 const HeaderContainer = styled.section`
   min-height: 90vh;
@@ -214,6 +215,8 @@ const BorderFlicker = ({ children }: { children: React.ReactNode }) => {
 
 
 const LandingHeader = () => {
+  const [isPopupOpen, setIsPopupOpen] = React.useState(false);
+
   return (
     <HeaderContainer>
       <motion.div
@@ -267,32 +270,47 @@ const LandingHeader = () => {
                 </div>
               </SectionCard>
 
-              <div className="flex flex-col md:flex-row gap-4 justify-center w-full px-8">
-                <Link href="/mission-control" className="plain-link md:flex-1">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6 justify-center w-full px-4 sm:px-8 mt-4">
+                <Link href="/mission-control" className="plain-link w-full">
                   <motion.button
                     initial={{ opacity: 0, y: 20, boxShadow: "4px 4px 0 rgba(255,255,255,0.5)" }}
                     animate={{ opacity: 1, y: 0, boxShadow: "4px 4px 0 rgba(255,255,255,0.5)" }}
                     transition={{ delay: 2, type: "spring" }}
                     whileHover={{ scale: 1.03, boxShadow: "0 0 40px rgba(244,63,94,0.6), 4px 4px 0 rgba(255,255,255,0.7)" }}
                     whileTap={{ scale: 0.95 }}
-                    className="w-full px-6 py-3 bg-gradient-to-br from-red-900 to-red-800 border-2 border-white/60 text-white font-mono tracking-wide whitespace-nowrap"
+                    className="w-full h-full min-h-[56px] px-6 py-3 bg-gradient-to-br from-red-900 to-red-800 border-2 border-white/60 text-white font-mono tracking-wide whitespace-nowrap md:whitespace-normal flex items-center justify-center text-center"
                   >
                     [ Enter Mission Control ]
                   </motion.button>
                 </Link>
 
-                <Link href="/mission-brief" className="plain-link md:flex-1">
+                <Link href="/mission-brief" className="plain-link w-full">
                   <motion.button
                     initial={{ opacity: 0, y: 20, boxShadow: "4px 4px 0 rgba(255,255,255,0.5)" }}
                     animate={{ opacity: 1, y: 0, boxShadow: "4px 4px 0 rgba(255,255,255,0.5)" }}
                     transition={{ delay: 2.2, type: "spring" }}
                     whileHover={{ scale: 1.03, boxShadow: "0 0 40px rgba(244,63,94,0.6), 4px 4px 0 rgba(255,255,255,0.7)" }}
                     whileTap={{ scale: 0.95 }}
-                    className="w-full px-6 py-3 bg-gradient-to-br from-red-900 to-red-800 border-2 border-white/60 text-white font-mono tracking-wide whitespace-nowrap"
+                    className="w-full h-full min-h-[56px] px-6 py-3 bg-gradient-to-br from-red-900 to-red-800 border-2 border-white/60 text-white font-mono tracking-wide whitespace-nowrap md:whitespace-normal flex items-center justify-center text-center"
                   >
                     [ View Mission Brief ]
                   </motion.button>
                 </Link>
+
+                <div className="plain-link w-full md:col-span-2">
+                  <motion.button
+                    onClick={() => setIsPopupOpen(true)}
+                    initial={{ opacity: 0, y: 20, boxShadow: "4px 4px 0 rgba(255,255,255,0.5)" }}
+                    animate={{ opacity: 1, y: 0, boxShadow: "4px 4px 0 rgba(255,255,255,0.5)" }}
+                    transition={{ delay: 2.1, type: "spring" }}
+                    whileHover={{ scale: 1.03, boxShadow: "0 0 40px rgba(56,189,248,0.6), 4px 4px 0 rgba(255,255,255,0.7)" }}
+                    whileTap={{ scale: 0.95 }}
+                    className="w-full h-full min-h-[56px] px-6 py-3 bg-gradient-to-br from-blue-900 to-sky-900 border-2 border-white/60 text-white font-mono tracking-wide whitespace-nowrap md:whitespace-normal flex items-center justify-center text-center shadow-[0_0_15px_rgba(56,189,248,0.3)] relative overflow-hidden"
+                  >
+                    <span className="relative z-10">[ Claim Early Bird Access ]</span>
+                    <div className="absolute inset-0 bg-sky-400/20 blur-xl animate-pulse"></div>
+                  </motion.button>
+                </div>
               </div>
             </div>
 
@@ -332,6 +350,11 @@ const LandingHeader = () => {
           </motion.div>
         </div>
       </div>
+
+      <EarlyBirdPopup
+        isOpen={isPopupOpen}
+        onClose={() => setIsPopupOpen(false)}
+      />
     </HeaderContainer>
   );
 };
