@@ -37,7 +37,7 @@ const LandingPage = () => {
 
         <TopBar />
 
-        <section className="relative z-10 overflow-x-hidden pt-20 flex flex-col justify-center">
+        <section className="relative z-50 overflow-x-hidden pt-20 flex flex-col justify-center">
           <LandingHeader />
         </section>
 
@@ -50,9 +50,9 @@ const LandingPage = () => {
         {/* <PastSpeakers /> */}
 
         {/* Mission Brief Section */}
-        <section className="min-h-screen flex flex-col justify-center">
-          {/* <MissionBrief /> */}
-        </section>
+        {/* <section className="min-h-screen flex flex-col justify-center"> */}
+        {/* <MissionBrief /> */}
+        {/* </section> */}
 
         {/* Crew Eligibility Section */}
         <section className="min-h-screen flex flex-col justify-center">

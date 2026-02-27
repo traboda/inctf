@@ -73,8 +73,8 @@ const EarlyBirdPopup: React.FC<EarlyBirdPopupProps> = ({ isOpen, onClose }) => {
                   As an early respondent to Amrita InCTF 2026 — Operation VAJRA, you are granted exclusive access to:
                 </p>
 
-                <div className="text-rose-500 font-bold text-lg md:text-xl my-6 animate-pulse" style={{ textShadow: '0 0 10px rgba(244, 63, 94, 0.5)' }}>
-                  First Wave Early Bird Enrollment — 100% Discount
+                <div className="text-rose-500 font-bold text-lg md:text-xl my-8 mx-auto w-full px-4 animate-[pulse_3s_ease-in-out_infinite]" style={{ textShadow: '0 0 10px rgba(244, 63, 94, 0.4)' }}>
+                  First Wave Early Bird Enrollment <br className="hidden sm:block" /> — 100% Discount
                 </div>
 
                 <p>
