@@ -8,6 +8,7 @@ import CrewEligibility from '../src/components/landing/CrewEligibility';
 import CrewRewards from '../src/components/landing/CrewRewards';
 import MissionCredentials from '../src/components/landing/MissionCredentials';
 import SiteView from '../src/components/SiteView';
+import PastSponsorsMarquee from '../src/components/landing/PastSponsorsMarquee';
 
 const LandingPage = () => {
   return (
@@ -35,8 +36,13 @@ const LandingPage = () => {
 
         <TopBar />
 
-        <section className="min-h-screen relative z-10 overflow-x-hidden pt-20 flex flex-col justify-center">
+        <section className="relative z-10 overflow-x-hidden pt-20 flex flex-col justify-center">
           <LandingHeader />
+        </section>
+
+        {/* Past Sponsors Marquee */}
+        <section className="relative z-10 w-full overflow-hidden bg-obsidian border-t border-sky-digital/20">
+          <PastSponsorsMarquee />
         </section>
 
         {/* Mission Brief Section */}
