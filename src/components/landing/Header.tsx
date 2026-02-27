@@ -217,6 +217,11 @@ const BorderFlicker = ({ children }: { children: React.ReactNode }) => {
 const LandingHeader = () => {
   const [isPopupOpen, setIsPopupOpen] = React.useState(false);
 
+  // Auto-show popup on page load
+  React.useEffect(() => {
+    setIsPopupOpen(true);
+  }, []);
+
   return (
     <HeaderContainer>
       <motion.div

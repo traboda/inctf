@@ -9,7 +9,7 @@ import CrewRewards from '../src/components/landing/CrewRewards';
 import MissionCredentials from '../src/components/landing/MissionCredentials';
 import SiteView from '../src/components/SiteView';
 import PastSponsorsMarquee from '../src/components/landing/PastSponsorsMarquee';
-// import PastSpeakers from '../src/components/landing/PastSpeakers';
+import PastSpeakers from '../src/components/landing/PastSpeakers';
 
 const LandingPage = () => {
   return (
@@ -47,12 +47,12 @@ const LandingPage = () => {
         </section>
 
         {/* Past Speakers Section */}
-        {/* <PastSpeakers /> */}
+        <PastSpeakers/>
 
         {/* Mission Brief Section */}
-        {/* <section className="min-h-screen flex flex-col justify-center"> */}
-        {/* <MissionBrief /> */}
-        {/* </section> */}
+        <section className="min-h-screen flex flex-col justify-center">
+        <MissionBrief />
+        </section>
 
         {/* Crew Eligibility Section */}
         <section className="min-h-screen flex flex-col justify-center">
