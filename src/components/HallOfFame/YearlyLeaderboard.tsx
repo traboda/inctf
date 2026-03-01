@@ -133,8 +133,8 @@ const YearlyLeaderboard = ({ data }: YearlyLeaderboard) => {
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {data.results.champions.map((c) =>
-          (<div className="p-4 bg-white rounded-lg border" key={shortid.generate()}>
+          {data.results.champions.map((c, i) =>
+          (<div className="p-4 bg-white rounded-lg border" key={c.username || i}>
             <div>
               <ChampionCard {...c} />
             </div>
@@ -154,8 +154,8 @@ const YearlyLeaderboard = ({ data }: YearlyLeaderboard) => {
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
-          {data.results.top10.map((c) =>
-          (<div className="p-4 bg-white rounded-lg border" key={shortid.generate()}>
+          {data.results.top10.map((c, i) =>
+          (<div className="p-4 bg-white rounded-lg border" key={c.username || i}>
             <div>
               <ChampionCard {...c} />
             </div>
@@ -174,8 +174,8 @@ const YearlyLeaderboard = ({ data }: YearlyLeaderboard) => {
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
-          {data.results.topWomen?.map((c) =>
-          (<div className="p-4 bg-white rounded-lg border" key={shortid.generate()}>
+          {data.results.topWomen?.map((c, i) =>
+          (<div className="p-4 bg-white rounded-lg border" key={c.username || i}>
             <div>
               <ChampionCard {...c} />
             </div>
@@ -228,7 +228,7 @@ const YearlyLeaderboard = ({ data }: YearlyLeaderboard) => {
               (state ? s.state === state : true),
             ).map((l, i) => (
               <div key={i}>
-                <FameCard {...l} key={shortid.generate()} />
+                <FameCard {...l} key={l.username || i} />
               </div>
             ))}
           </GridHeight>

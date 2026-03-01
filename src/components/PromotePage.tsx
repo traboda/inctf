@@ -117,8 +117,8 @@ const PromotePage = () => {
             </div>
           </div>
           <ScrollContainer vertical className="scroll-container p-6 container mx-auto sm:px-4 flex w-full">
-            {data.promotionalVideos.map(({ cover, link }) =>
-            (<div key={shortid.generate()} className="flex items-center justify-center p-1">
+            {data.promotionalVideos.map(({ cover, link }: any, i: number) =>
+            (<div key={link || i} className="flex items-center justify-center p-1">
               <a href={link} target="_blank">
                 <img alt="download poster" className="inctf_video_cover" src={`/${eventID}/${cover}`} />
                 <div className="youtube_icon">

@@ -27,7 +27,7 @@ const SchoolLeaderboard = ({ schools }) => {
         </div>
         {schools.map((s, index) => (
           <div key={index}>
-            <div key={shortid.generate()} className="flex flex-wrap p-2 bg-white">
+            <div className="flex flex-wrap p-2 bg-white">
               <div style={{ fontSize: 'calc(12px + 0.35vw)' }} className="w-2/4 pr-4 pl-4 px-2">
                 <b>
                   {index + 1}

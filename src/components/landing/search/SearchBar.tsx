@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import { AnimatePresence, motion } from 'framer-motion';
 
 import Dropdown from './Dropdown';
@@ -39,9 +39,9 @@ const SearchBar = ({ placeholder = 'Type your question...', isFocused = false })
       </div>
       <AnimatePresence>
         {searchFocus && (
-        <motion.div initial={{ height: 0 }} animate={{ height: 'auto' }} exit={{ height: 0 }}>
-          <Dropdown search={search} />
-        </motion.div>
+          <motion.div initial={{ height: 0 }} animate={{ height: 'auto' }} exit={{ height: 0 }}>
+            <Dropdown search={search} />
+          </motion.div>
         )}
       </AnimatePresence>
     </div>
