@@ -148,7 +148,7 @@ const MissionBriefContent = () => {
                     <GlitchText
                         text="OPERATION VAJRA"
                         strikethrough={true}
-                        className="font-mono font-extrabold text-[32px] sm:text-[40px] md:text-[48px] leading-[1.2] md:leading-[63px] text-white"
+                        className="font-mono font-extrabold text-[26px] min-[400px]:text-[32px] sm:text-[40px] md:text-[48px] leading-[1.2] md:leading-[63px] text-white"
                     />
                     <span
                         style={{
@@ -298,7 +298,7 @@ const MissionBriefContent = () => {
                         </p>
 
                         {/* Indented items */}
-                        <div className="pl-8 space-y-2">
+                        <div className="pl-2 sm:pl-8 space-y-2">
                             <p
                                 style={{
                                     fontFamily: "'Space Mono', monospace",
@@ -318,7 +318,7 @@ const MissionBriefContent = () => {
                                     lineHeight: '30px',
                                     color: '#38BDF8',
                                 }}
-                                className="pl-4"
+                                className="pl-4 sm:pl-4"
                             >
                                 [ Not a distress signal ]
                             </p>
@@ -330,7 +330,7 @@ const MissionBriefContent = () => {
                                     lineHeight: '30px',
                                     color: '#FF0000',
                                 }}
-                                className="pl-8"
+                                className="pl-6 sm:pl-8"
                             >
                                 [ A structured transmission—encoded in an unfamiliar protocol ]
                             </p>

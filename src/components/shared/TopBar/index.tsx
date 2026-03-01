@@ -1,3 +1,4 @@
+'use client';
 import styled from '@emotion/styled';
 import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
@@ -70,7 +71,7 @@ const TopbarContainer = styled.header`
   }
 
   .logo {
-    max-height: 56px;
+    max-height: 80px;
   }
 
   img {
@@ -121,6 +122,8 @@ const TopBar = ({ UTMSource = null }) => {
   useEffect(() => {
     setMounted(true);
 
+    let ticking = false;
+
     const updateScrollDir = () => {
       const scrollY = window.scrollY;
 
@@ -130,16 +133,23 @@ const TopBar = ({ UTMSource = null }) => {
       // Determine scroll direction
       const direction = scrollY > lastScrollY.current ? 'down' : 'up';
 
-
       if (direction !== scrollDir && (scrollY - lastScrollY.current > 5 || direction === 'up')) {
         setScrollDir(direction);
       }
 
       lastScrollY.current = scrollY > 0 ? scrollY : 0;
+      ticking = false;
     };
 
-    window.addEventListener('scroll', updateScrollDir);
-    return () => window.removeEventListener('scroll', updateScrollDir);
+    const onScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateScrollDir);
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, [scrollDir]);
 
   const isVisible = scrollDir === 'up' || isAtTop;
@@ -200,7 +210,7 @@ const TopBar = ({ UTMSource = null }) => {
             className="hidden md:flex w-1/4 md:w-1/3 xl:w-1/4 md:text-center flex-wrap items-center md:justify-start justify-center px-2"
           >
             <Link className="w-full md:w-1/3" href="/">
-              <Logo isDark />
+              <img src="/inctf/assets/logo_dark.png" alt="InCTF Logo" className="logo" style={{ maxHeight: 65 }} />
             </Link>
             {topbarConfig?.associate?.link && (
               <a
@@ -282,7 +292,7 @@ const TopBar = ({ UTMSource = null }) => {
           <div className="flex md:hidden items-center justify-between w-full px-4">
             {/* Logo on Mobile */}
             <Link href="/">
-              <Logo isDark maxHeight={45} />
+              <img src="/inctf/assets/logo_dark.png" alt="InCTF Logo" className="logo" style={{ maxHeight: 60 }} />
             </Link>
 
             {/* Hamburger Menu Icon */}

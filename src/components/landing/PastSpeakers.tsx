@@ -1,3 +1,4 @@
+'use client';
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Speaker } from 'lucide-react';
@@ -84,19 +85,19 @@ const SpeakerCard: React.FC<{ speaker: Speaker; index: number }> = ({ speaker, i
     return (
         <motion.div
             ref={ref}
-            className="flex-shrink-0 w-64 md:w-72 group"
+            className="flex-shrink-0 w-[85vw] sm:w-72 md:w-80 snap-center group"
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: index * 0.1, ease: 'easeOut' }}
         >
-            <div className="relative h-full min-h-[420px] md:min-h-[460px] rounded-lg overflow-hidden border border-sky-400/20 bg-slate-900/60 backdrop-blur-sm transition-all duration-300 group-hover:border-sky-400/60 group-hover:shadow-[0_0_20px_rgba(56,189,248,0.15)] p-6 flex flex-col">
+            <div className="relative h-full min-h-[380px] md:min-h-[440px] rounded-lg overflow-hidden border border-sky-400/20 bg-slate-900/60 backdrop-blur-sm transition-all duration-300 group-hover:border-sky-400/80 group-hover:shadow-[0_0_25px_rgba(56,189,248,0.2)] p-5 md:p-8 flex flex-col items-center text-center">
 
                 <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-sky-400 z-10" />
                 <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-sky-400 z-10" />
 
                 {/* Circular Photo */}
-                <div className="flex justify-center mb-6 flex-shrink-0">
-                    <div className="relative w-40 h-40 md:w-44 md:h-44">
+                <div className="flex justify-center mb-5 md:mb-6 flex-shrink-0">
+                    <div className="relative w-32 h-32 md:w-44 md:h-44">
                         {/* Outer gradient ring */}
                         <div className="absolute inset-0 rounded-full bg-gradient-to-br from-sky-400 via-purple-500 to-pink-500 p-[3px] group-hover:p-[4px] transition-all duration-300">
                             <div className="w-full h-full rounded-full bg-slate-900 p-[2px]">
@@ -111,14 +112,14 @@ const SpeakerCard: React.FC<{ speaker: Speaker; index: number }> = ({ speaker, i
                 </div>
 
                 {/* Info */}
-                <div className="text-center flex-grow flex flex-col justify-center">
-                    <h3 className="font-heading font-bold text-white text-base md:text-lg leading-tight mb-3 uppercase min-h-[3rem] flex items-center justify-center">
+                <div className="flex-grow flex flex-col justify-center w-full">
+                    <h3 className="font-heading font-bold text-white text-lg md:text-xl leading-tight mb-2 md:mb-3 uppercase">
                         {speaker.name}
                     </h3>
-                    <p className="font-mono text-white/70 text-[10px] md:text-xs mb-2 uppercase tracking-wider leading-relaxed min-h-[2.5rem] line-clamp-3">
+                    <p className="font-mono text-white/80 text-[11px] md:text-xs mb-2 md:mb-3 uppercase tracking-wider leading-relaxed line-clamp-3 min-h-[2.5rem]">
                         {speaker.title}
                     </p>
-                    <p className="font-mono text-sky-400 text-xs md:text-sm font-medium min-h-[1.5rem]">
+                    <p className="font-mono text-sky-400 text-xs md:text-sm font-semibold tracking-wide mt-auto">
                         {speaker.company}
                     </p>
                 </div>
@@ -189,8 +190,8 @@ const PastSpeakers: React.FC = () => {
 
             <div
                 ref={scrollRef}
-                className="flex gap-5 md:gap-6 px-6 md:px-16 overflow-x-auto scrollbar-hide pb-4"
-                style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+                className="flex gap-4 md:gap-8 px-4 md:px-16 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-8 pt-4"
+                style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch' }}
             >
                 {speakers.map((speaker, index) => (
                     <SpeakerCard key={speaker.name} speaker={speaker} index={index} />

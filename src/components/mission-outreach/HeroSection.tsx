@@ -60,9 +60,8 @@ const HeroSection = () => {
                 }}
             />
 
-            {/* Title with glitch effect - matching home page */}
             <h1 className="mb-8">
-                <GlitchText text="OPERATION VAJRA" strikethrough={true} triggerOnView={true} className="text-white font-black text-4xl md:text-5xl" />
+                <GlitchText text="OPERATION VAJRA" strikethrough={true} triggerOnView={true} className="text-white font-black text-[26px] min-[400px]:text-3xl sm:text-4xl md:text-5xl" />
             </h1>
 
             {/* Main content container */}

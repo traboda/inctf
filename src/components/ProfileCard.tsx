@@ -1,9 +1,18 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
+interface ProfileCardProps {
+  name: string;
+  photo: string;
+  desg?: string | null;
+  org?: string | null;
+  linkedIn?: string | null;
+  twitter?: string | null;
+}
+
 const ProfileCard = ({
   name, photo, desg = '', org = null, linkedIn = null,
-}) => (
+}: ProfileCardProps) => (
   <motion.div
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
@@ -22,9 +31,9 @@ const ProfileCard = ({
     <div className="text-slate-400 font-mono text-sm">{desg}</div>
     {org && <div className="text-lg text-sky-400 font-mono mt-1">{org}</div>}
     {linkedIn && (
-    <div className="mt-3 text-3xl text-center">
-      <a href={linkedIn} target="_blank" className="fab fa-linkedin text-sky-digital hover:text-sky-400 transition-colors" />
-    </div>
+      <div className="mt-3 text-3xl text-center">
+        <a href={linkedIn} target="_blank" className="fab fa-linkedin text-sky-digital hover:text-sky-400 transition-colors" />
+      </div>
     )}
   </motion.div>
 );

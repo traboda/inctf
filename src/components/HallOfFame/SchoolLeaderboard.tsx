@@ -27,12 +27,12 @@ const SchoolLeaderboard = ({ schools }) => {
         </div>
         {schools.map((s, index) => (
           <div key={index}>
-            <div key={shortid.generate()} className="flex flex-wrap p-2 bg-white">
+            <div className="flex flex-wrap p-2 bg-white">
               <div style={{ fontSize: 'calc(12px + 0.35vw)' }} className="w-2/4 pr-4 pl-4 px-2">
                 <b>
                   {index + 1}
                   .
-                </b> 
+                </b>
                 {' '}
                 {s.name}
               </div>
@@ -47,7 +47,7 @@ const SchoolLeaderboard = ({ schools }) => {
         ))}
       </div>
       <div style={{ opacity: 0.8, fontSize: '11px' }} className="py-3 p-2">
-        <li>InCTF Jr. is an individual event, and the points for schools are calculated by adding up scores of all students from the school</li>
+        <li>Amrita InCTF is an individual event, and the points for schools are calculated by adding up scores of all students from the school</li>
         <li>Only Schools with minimum of 2 scoring participants are taken in consideration</li>
         <li>Students who incorrectly gave information of the school, or whose profile is not verified are not accounted for.</li>
       </div>

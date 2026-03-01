@@ -49,15 +49,15 @@ const Breadcrumb = ({ items }: Breadcrumb) => (
       </Link>
     </li>
     {items.length > 0 &&
-        items.map((i) =>
-          (<li key={shortid.generate()}>
-            {i.isActive ? <span className="text-sky-digital font-bold">{i.title}</span> : (
-              <Link href={i?.link || '#'}>
-                {i.title}
-              </Link>
-            )}
-          </li>),
+      items.map((item, index) =>
+      (<li key={item.link || index}>
+        {item.isActive ? <span className="text-sky-digital font-bold">{item.title}</span> : (
+          <Link href={item?.link || '#'}>
+            {item.title}
+          </Link>
         )}
+      </li>),
+      )}
   </BreadcrumbWrapper>);
 
 export default Breadcrumb;

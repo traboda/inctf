@@ -15,12 +15,12 @@ export type PageMeta = {
 };
 
 type SiteViewHeadTags = {
-  meta: PageMeta
+  meta?: PageMeta
 };
 
 const SiteViewHeadTags = ({ meta: _meta }: SiteViewHeadTags) => {
   const { meta, theme, analytics } = useContext(ConfigContext);
-  const pageTitle = _meta?.title ? `${_meta?.title} | ${meta?.title}` : `${meta.title} | ${meta.tagLine}`;
+  const pageTitle = _meta?.title ? `${_meta?.title} | ${meta?.title}` : `${meta?.title} | ${meta?.tagLine}`;
 
   return (
     <Head>
@@ -32,7 +32,7 @@ const SiteViewHeadTags = ({ meta: _meta }: SiteViewHeadTags) => {
       <meta name="description" content={_meta?.description || meta?.description} />
       {_meta?.author && <meta name="author" content={_meta?.author} />}
       {_meta?.noIndex && <meta name="robots" content="noindex" />}
-      {_meta?.image && <meta property="og:image" content={_meta.image} />}
+      {_meta?.image && <meta property="og:image" content={_meta?.image} />}
       <meta property="og:site_name" content={meta?.title} />
       <meta name="theme-color" content={theme?.primary} />
     </Head>

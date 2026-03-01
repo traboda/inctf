@@ -31,7 +31,7 @@ const INCTFJStats = ({ stats }) => {
         </div>
         <div className="w-16 h-0.5 bg-alert-crimson mx-auto mb-6"></div>
         <h2 className="text-center mb-12 text-3xl md:text-4xl lg:text-5xl font-bold font-mono text-ghost-white tracking-wide">
-          InCTF Jr 21 is one of the world's largest CTF
+          Amrita InCTF is one of the world's largest CTF
         </h2>
       </motion.div>
 

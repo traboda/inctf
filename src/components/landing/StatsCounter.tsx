@@ -16,7 +16,7 @@ const StatsContainer = styled.section`
 
 const LandingStatsBar = () => {
 
-  const [stats, setStats] = useState(null);
+  const [stats, setStats] = useState<any>(null);
   const [mounted, setMounted] = useState(false);
 
   const fetchStats = () => {

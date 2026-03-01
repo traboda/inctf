@@ -22,10 +22,7 @@ const nextConfig = {
     emotion: true,
   },
 
-  // Optimize for AWS deployment 
-  output: 'standalone',
-
-  experimental: {},
+  cacheComponents: true,
 };
 
 module.exports = nextConfig;

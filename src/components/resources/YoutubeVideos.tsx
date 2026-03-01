@@ -5,7 +5,7 @@ import TagSelector from '../TagSelector';
 
 const YoutubeVideosSection = () => {
 
-  const [tag, setTag] = useState(null);
+  const [tag, setTag] = useState<any>(null);
   const [keyword, setKeyword] = useState('');
 
   const filterOptions = [
@@ -50,7 +50,7 @@ const YoutubeVideosSection = () => {
             options={filterOptions}
             isClearable
             value={tag}
-                        // @ts-ignore
+            // @ts-ignore
             onChange={(t) => setTag(t?.value === tag?.value ? null : t)}
           />
         </div>
@@ -58,7 +58,7 @@ const YoutubeVideosSection = () => {
       <div className="flex flex-wrap">
         {VideoLinks.filter((v) =>
           (tag == null || (v?.tags?.length > 0 && v.tags.indexOf(tag?.value) != -1)) &&
-                    ((keyword?.length < 1) || (v.title?.toLowerCase().startsWith(keyword.toLowerCase()))),
+          ((keyword?.length < 1) || (v.title?.toLowerCase().startsWith(keyword.toLowerCase()))),
         ).map((v) => (
           <div
             key={v.videoID}

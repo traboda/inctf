@@ -25,40 +25,40 @@ const TopBarSearch = () => {
         />}
       <AnimatePresence>
         {showSearchModal && (
-        <motion.div
-          layoutId="search-button"
-          className="w-screen h-screen bg-obsidian fixed top-0 left-0"
-          style={{ zIndex: 9000 }}
-          initial={{ borderRadius: 1000 }}
-          exit={{ borderRadius: 1000 }}
-          animate={{ borderRadius: 0 }}
-        >
-          <div className="flex flex-col justify-center items-center w-full h-full">
-            <button
-              className="fas fa-times text-xl absolute top-0 text-sky-digital hover:text-alert-crimson right-0 mt-4 mr-4 cursor-pointer transition-colors"
-              onClick={() => {
-                clearAllBodyScrollLocks();
-                setSearchModal(false);
-              }}
-            />
-            <div
-              style={{ padding: '5vh 1rem 15vh 1rem' }}
-              className="container mx-auto flex flex-col items-center justify-center"
-            >
-              <div className="text-center w-full" style={{ maxWidth: 600 }}>
-                <Link href="/" className="flex justify-center mb-2">
+          <motion.div
+            layoutId="search-button"
+            className="w-screen h-screen bg-obsidian fixed top-0 left-0"
+            style={{ zIndex: 9000 }}
+            initial={{ borderRadius: 1000 }}
+            exit={{ borderRadius: 1000 }}
+            animate={{ borderRadius: 0 }}
+          >
+            <div className="flex flex-col justify-center items-center w-full h-full">
+              <button
+                className="fas fa-times text-xl absolute top-0 text-sky-digital hover:text-alert-crimson right-0 mt-4 mr-4 cursor-pointer transition-colors"
+                onClick={() => {
+                  clearAllBodyScrollLocks();
+                  setSearchModal(false);
+                }}
+              />
+              <div
+                style={{ padding: '5vh 1rem 15vh 1rem' }}
+                className="container mx-auto flex flex-col items-center justify-center"
+              >
+                <div className="text-center w-full" style={{ maxWidth: 600 }}>
+                  <Link href="/" className="flex justify-center mb-2">
 
-                  <Logo isDark maxHeight={120} />
+                    <Logo isDark maxHeight={120} />
 
-                </Link>
-                <SearchBar
-                  placeholder="Search your queries & questions about InCTF Jr"
-                  isFocused
-                />
+                  </Link>
+                  <SearchBar
+                    placeholder="Search your queries & questions about InCTF"
+                    isFocused
+                  />
+                </div>
               </div>
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
         )}
       </AnimatePresence>
     </div>

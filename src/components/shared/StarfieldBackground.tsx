@@ -1,39 +1,77 @@
-import React, { useEffect, useState } from 'react';
+'use client';
+import React, { useEffect, useState, useRef } from 'react';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger, useGSAP);
+}
 
 const StarfieldBackground: React.FC = () => {
-  const [scrollY, setScrollY] = useState(0);
   const [documentHeight, setDocumentHeight] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const starsRef = useRef<HTMLDivElement>(null);
+  const sparklesRef = useRef<HTMLDivElement>(null);
+
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
+    setIsClient(true);
     const updateHeight = () => {
       setDocumentHeight(document.documentElement.scrollHeight);
     };
 
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-
     updateHeight();
-    window.addEventListener('scroll', handleScroll, { passive: true });
+
     window.addEventListener('resize', updateHeight);
-    
+
     // Update height when content changes
     const observer = new MutationObserver(updateHeight);
     observer.observe(document.body, { childList: true, subtree: true });
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', updateHeight);
       observer.disconnect();
     };
   }, []);
 
-  // Calculate parallax offset - stars move upward slower than scroll (negative direction)
-  const parallaxOffset = scrollY * 0.5;
-  
-  // Calculate how many times we need to repeat the pattern
-  const patternHeight = typeof window !== 'undefined' ? window.innerHeight : 1000;
-  const repeatCount = Math.ceil((documentHeight + patternHeight) / patternHeight) + 1;
+  useGSAP(() => {
+    if (!isClient || !starsRef.current || !sparklesRef.current || documentHeight === 0) return;
+
+
+    const triggerEl = document.documentElement;
+
+    // Animate stars 
+    gsap.to(starsRef.current, {
+      y: () => -(triggerEl.scrollHeight - window.innerHeight) * 0.25, // Lowered from 0.4
+      ease: "none",
+      scrollTrigger: {
+        trigger: triggerEl,
+        start: "top top",
+        end: "bottom bottom",
+        scrub: 1.5,
+        invalidateOnRefresh: true
+      }
+    });
+
+    // Animate sparkles 
+    gsap.to(sparklesRef.current, {
+      y: () => -(triggerEl.scrollHeight - window.innerHeight) * 0.45, // Lowered from 0.8
+      ease: "none",
+      scrollTrigger: {
+        trigger: triggerEl,
+        start: "top top",
+        end: "bottom bottom",
+        scrub: 1.5,
+        invalidateOnRefresh: true
+      }
+    });
+  }, { dependencies: [documentHeight, isClient], scope: containerRef });
+
+  // Fallback pattern height logic to SSR default state 
+  const patternHeight = isClient ? window.innerHeight : 1000;
+  const repeatCount = isClient ? Math.ceil((documentHeight + patternHeight) / patternHeight) + 1 : 2;
 
   const StarPattern = ({ index }: { index: number }) => (
     <>
@@ -234,12 +272,12 @@ const StarfieldBackground: React.FC = () => {
   );
 
   return (
-    <div className="fixed inset-0 z-10 pointer-events-none overflow-hidden opacity-80">
-      {/* Stars Layer - moves with parallax */}
-      <div 
+    <div ref={containerRef} className="fixed inset-0 z-10 pointer-events-none overflow-hidden opacity-80">
+      {/* Stars Layer */}
+      <div
+        ref={starsRef}
         className="absolute will-change-transform"
-        style={{ 
-          transform: `translateY(-${parallaxOffset}px)`,
+        style={{
           top: 0,
           left: 0,
           right: 0,
@@ -251,11 +289,11 @@ const StarfieldBackground: React.FC = () => {
         ))}
       </div>
 
-      {/* Sparkles Layer - moves with different parallax speed */}
-      <div 
+      {/* Sparkles Layer */}
+      <div
+        ref={sparklesRef}
         className="absolute will-change-transform"
-        style={{ 
-          transform: `translateY(-${parallaxOffset * 0.6}px)`,
+        style={{
           top: 0,
           left: 0,
           right: 0,

@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
@@ -18,7 +19,7 @@ import EarlyBirdPopup from './EarlyBirdPopup';
 const HeaderContainer = styled.section`
   min-height: 90vh;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   
   position: relative;
   overflow: hidden;
@@ -223,144 +224,146 @@ const LandingHeader = () => {
   }, []);
 
   return (
-    <HeaderContainer>
-      <motion.div
-        className="scanlines"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.5, delay: 0.5 }}
-      ></motion.div>
-      <div className="container mx-auto px-4 relative z-20">
-        {/* HUD Elements */}
+    <>
+      <HeaderContainer suppressHydrationWarning>
+        <motion.div
+          className="scanlines"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.5, delay: 0.5 }}
+        ></motion.div>
+        <div className="container mx-auto px-4 relative z-20">
+          {/* HUD Elements */}
 
-        <div className="flex flex-wrap lg:flex-nowrap items-start gap-0">
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="w-full lg:w-1/2 flex flex-col items-start ml-4"
-          >
-            {/* Mission Alert Status */}
+          <div className="flex flex-wrap lg:flex-nowrap items-start gap-0">
             <motion.div
-              initial={{ opacity: 0, y: -20, scale: 0.9 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ delay: 0.5, type: "spring", stiffness: 120 }}
-              className="inline-flex items-center gap-3 mb-8 self-start"
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              className="w-full lg:w-1/2 flex flex-col items-start ml-4"
             >
-              <div className="w-2 h-2 rounded-full bg-sky-digital animate-pulse"></div>
-              <span className="font-tactical text-alert-crimson tracking-widest text-sm font-bold">
-                ALERT STATUS: <TypewriterText text="ACTIVE" className="underline" delay={1} />
-              </span>
-            </motion.div>
+              {/* Mission Alert Status */}
+              <motion.div
+                initial={{ opacity: 0, y: -20, scale: 0.9 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ delay: 0.5, type: "spring", stiffness: 120 }}
+                className="inline-flex items-center gap-3 mb-1 self-start"
+              >
+                <div className="w-2 h-2 rounded-full bg-sky-digital animate-pulse"></div>
+                <span className="font-tactical text-alert-crimson tracking-widest text-sm font-bold">
+                  ALERT STATUS: <TypewriterText text="ACTIVE" className="underline" delay={1} />
+                </span>
+              </motion.div>
 
-            {/* Textbox and Buttons Container */}
-            <div className="flex flex-col items-center w-full max-w-2xl">
-              {/* Content Box with Border */}
+              {/* Textbox and Buttons Container */}
+              <div className="flex flex-col items-center w-full max-w-2xl">
+                {/* Content Box with Border */}
 
-              <SectionCard className="mb-8 w-full">
-                <h1 className="text-4xl sm:text-5xl md:text-6xl font-black font-heading mb-6 md:mb-8 text-ghost-white text-center break-words">
-                  <span className="block text-2xl sm:text-3xl md:text-4xl font-mono text-ghost-white mb-2 md:mb-4 tracking-wide">
-                    <TypewriterText text="Amrita InCTF 2026" delay={0.5} />
-                  </span>
-                  <GlitchText text="OPERATION VAJRA" strikethrough={true} className="text-3xl sm:text-4xl md:text-5xl text-white font-black" />
-                </h1>
+                <SectionCard className="mb-0 w-full">
+                  <h1 className="text-[26px] min-[400px]:text-3xl sm:text-5xl md:text-6xl font-black font-heading mb-0 text-ghost-white text-center break-words">
+                    <span className="block text-[20px] min-[400px]:text-2xl sm:text-3xl md:text-4xl font-mono text-ghost-white mb-0 tracking-wide">
+                      <TypewriterText text="Amrita InCTF 2026" delay={0.5} />
+                    </span>
+                    <GlitchText text="OPERATION VAJRA" strikethrough={true} className="text-[26px] min-[400px]:text-3xl sm:text-4xl md:text-5xl text-white font-black" />
+                  </h1>
 
-                <div className="text-base sm:text-lg md:text-xl text-sky-digital font-mono leading-relaxed space-y-4 md:space-y-6">
-                  <p>
-                    <span className="text-sky-digital">&gt;</span>  Operation VAJRA is a high-stakes cyber defence simulation designed to identify, train, and elite India's next generation of security specialists. Built on the principles of national resilience, this mission tests technical proficiency under simulated high-pressure environments.
-                  </p>
-                  <p className="mt-4 md:mt-6">
-                    <span className="text-sky-digital">&gt;</span>  A multi-month cybersecurity Capture The Flag contest conducted by Amrita Vishwa Vidyapeetham and team bi0s.
-                  </p>
-                </div>
-              </SectionCard>
+                  <div className="text-base sm:text-lg md:text-xl text-sky-digital font-mono leading-relaxed space-y-3 md:space-y-4">
+                    <p>
+                      <span className="text-sky-digital">&gt;</span>  Operation VAJRA is a high-stakes cyber defence simulation designed to identify, train, and elite India's next generation of security specialists. Built on the principles of national resilience, this mission tests technical proficiency under simulated high-pressure environments.
+                    </p>
+                    <p className="mt-1">
+                      <span className="text-sky-digital">&gt;</span>  A multi-month cybersecurity Capture The Flag contest conducted by Amrita Vishwa Vidyapeetham and team bi0s.
+                    </p>
+                  </div>
+                </SectionCard>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6 justify-center w-full px-4 sm:px-8 mt-4">
-                <Link href="/mission-control" className="plain-link w-full">
-                  <motion.button
-                    initial={{ opacity: 0, y: 20, boxShadow: "4px 4px 0 rgba(255,255,255,0.5)" }}
-                    animate={{ opacity: 1, y: 0, boxShadow: "4px 4px 0 rgba(255,255,255,0.5)" }}
-                    transition={{ delay: 2, type: "spring" }}
-                    whileHover={{ scale: 1.03, boxShadow: "0 0 40px rgba(244,63,94,0.6), 4px 4px 0 rgba(255,255,255,0.7)" }}
-                    whileTap={{ scale: 0.95 }}
-                    className="w-full h-full min-h-[56px] px-2 sm:px-6 py-3 bg-gradient-to-br from-red-900 to-red-800 border-2 border-white/60 text-white font-mono tracking-wide whitespace-nowrap flex items-center justify-center text-center text-sm md:text-base"
-                  >
-                    [ Enter Mission Control ]
-                  </motion.button>
-                </Link>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-2 lg:gap-3 justify-center w-full px-4 sm:px-8 mt-1">
+                  <Link href="/mission-control" className="plain-link w-full">
+                    <motion.button
+                      initial={{ opacity: 0, y: 20, boxShadow: "4px 4px 0 rgba(255,255,255,0.5)" }}
+                      animate={{ opacity: 1, y: 0, boxShadow: "4px 4px 0 rgba(255,255,255,0.5)" }}
+                      transition={{ delay: 2, type: "spring" }}
+                      whileHover={{ scale: 1.03, boxShadow: "0 0 40px rgba(244,63,94,0.6), 4px 4px 0 rgba(255,255,255,0.7)" }}
+                      whileTap={{ scale: 0.95 }}
+                      className="w-full h-full min-h-[56px] px-2 sm:px-6 py-3 bg-gradient-to-br from-red-900 to-red-800 border-2 border-white/60 text-white font-mono tracking-wide whitespace-nowrap flex items-center justify-center text-center text-sm md:text-base"
+                    >
+                      [ Enter Mission Control ]
+                    </motion.button>
+                  </Link>
 
-                <Link href="/mission-brief" className="plain-link w-full">
-                  <motion.button
-                    initial={{ opacity: 0, y: 20, boxShadow: "4px 4px 0 rgba(255,255,255,0.5)" }}
-                    animate={{ opacity: 1, y: 0, boxShadow: "4px 4px 0 rgba(255,255,255,0.5)" }}
-                    transition={{ delay: 2.2, type: "spring" }}
-                    whileHover={{ scale: 1.03, boxShadow: "0 0 40px rgba(244,63,94,0.6), 4px 4px 0 rgba(255,255,255,0.7)" }}
-                    whileTap={{ scale: 0.95 }}
-                    className="w-full h-full min-h-[56px] px-2 sm:px-6 py-3 bg-gradient-to-br from-red-900 to-red-800 border-2 border-white/60 text-white font-mono tracking-wide whitespace-nowrap flex items-center justify-center text-center text-sm md:text-base"
-                  >
-                    [ View Mission Brief ]
-                  </motion.button>
-                </Link>
+                  <Link href="/mission-brief" className="plain-link w-full">
+                    <motion.button
+                      initial={{ opacity: 0, y: 20, boxShadow: "4px 4px 0 rgba(255,255,255,0.5)" }}
+                      animate={{ opacity: 1, y: 0, boxShadow: "4px 4px 0 rgba(255,255,255,0.5)" }}
+                      transition={{ delay: 2.2, type: "spring" }}
+                      whileHover={{ scale: 1.03, boxShadow: "0 0 40px rgba(244,63,94,0.6), 4px 4px 0 rgba(255,255,255,0.7)" }}
+                      whileTap={{ scale: 0.95 }}
+                      className="w-full h-full min-h-[56px] px-2 sm:px-6 py-3 bg-gradient-to-br from-red-900 to-red-800 border-2 border-white/60 text-white font-mono tracking-wide whitespace-nowrap flex items-center justify-center text-center text-sm md:text-base"
+                    >
+                      [ View Mission Brief ]
+                    </motion.button>
+                  </Link>
 
-                <div className="plain-link w-full md:col-span-2">
-                  <motion.button
-                    onClick={() => setIsPopupOpen(true)}
-                    initial={{ opacity: 0, y: 20, boxShadow: "4px 4px 0 rgba(255,255,255,0.5)" }}
-                    animate={{ opacity: 1, y: 0, boxShadow: "4px 4px 0 rgba(255,255,255,0.5)" }}
-                    transition={{ delay: 2.1, type: "spring" }}
-                    whileHover={{ scale: 1.03, boxShadow: "0 0 40px rgba(56,189,248,0.6), 4px 4px 0 rgba(255,255,255,0.7)" }}
-                    whileTap={{ scale: 0.95 }}
-                    className="w-full h-full min-h-[56px] px-6 py-3 bg-gradient-to-br from-blue-900 to-sky-900 border-2 border-white/60 text-white font-mono tracking-wide whitespace-nowrap md:whitespace-normal flex items-center justify-center text-center shadow-[0_0_15px_rgba(56,189,248,0.3)] relative overflow-hidden"
-                  >
-                    <span className="relative z-10">[ Claim Early Bird Access ]</span>
-                    <div className="absolute inset-0 bg-sky-400/20 blur-xl animate-pulse"></div>
-                  </motion.button>
+                  <div className="plain-link w-full md:col-span-2">
+                    <motion.button
+                      onClick={() => setIsPopupOpen(true)}
+                      initial={{ opacity: 0, y: 20, boxShadow: "4px 4px 0 rgba(255,255,255,0.5)" }}
+                      animate={{ opacity: 1, y: 0, boxShadow: "4px 4px 0 rgba(255,255,255,0.5)" }}
+                      transition={{ delay: 2.1, type: "spring" }}
+                      whileHover={{ scale: 1.03, boxShadow: "0 0 40px rgba(56,189,248,0.6), 4px 4px 0 rgba(255,255,255,0.7)" }}
+                      whileTap={{ scale: 0.95 }}
+                      className="w-full h-full min-h-[56px] px-6 py-3 bg-gradient-to-br from-blue-900 to-sky-900 border-2 border-white/60 text-white font-mono tracking-wide whitespace-nowrap md:whitespace-normal flex items-center justify-center text-center shadow-[0_0_15px_rgba(56,189,248,0.3)] relative overflow-hidden"
+                    >
+                      <span className="relative z-10">[ Claim Early Bird Access ]</span>
+                      <div className="absolute inset-0 bg-sky-400/20 blur-xl animate-pulse"></div>
+                    </motion.button>
+                  </div>
                 </div>
               </div>
-            </div>
 
 
 
-          </motion.div>
+            </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.2 }}
-            className="w-full lg:w-1/2 mt-0 lg:mt-0 lg:-ml-16 relative flex justify-center items-center"
-          >
-            {/* Rotating HUD Rings */}
-            <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-sky-digital/20 rounded-full animate-spin-slow pointer-events-none"></div>
-            <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] border border-dashed border-alert-crimson/20 rounded-full animate-reverse-spin pointer-events-none"></div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1, delay: 0.2 }}
+              className="w-full lg:w-1/2 mt-0 lg:mt-0 lg:-ml-16 relative flex justify-center items-center"
+            >
+              {/* Rotating HUD Rings */}
+              <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-sky-digital/20 rounded-full animate-spin-slow pointer-events-none"></div>
+              <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] border border-dashed border-alert-crimson/20 rounded-full animate-reverse-spin pointer-events-none"></div>
 
-            {/* Satellite Laser Image */}
-            <HolographicFlicker delay={0.5}>
-              <motion.div
-                initial={{ opacity: 0, y: -50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1.2, delay: 0.5 }}
-                className="relative z-10 floating md:static absolute inset-0 md:inset-auto flex justify-center items-center pointer-events-none md:pointer-events-auto mt-0"
-              >
-                <img
-                  src="/inctf/assets/design/Homepage/satellite_laser.webp"
-                  alt="InCTF Satellite"
-                  className="w-[80%] md:w-[650px] lg:w-[800px] h-auto object-contain md:filter-none filter blur-sm opacity-20 md:opacity-100 scale-150 md:scale-100"
-                  draggable="false"
-                  style={{
-                    filter: 'drop-shadow(0 0 30px rgba(56, 189, 248, 0.4))'
-                  }}
-                />
-              </motion.div>
-            </HolographicFlicker>
-          </motion.div>
+              {/* Satellite Laser Image */}
+              <HolographicFlicker delay={0.5}>
+                <motion.div
+                  initial={{ opacity: 0, y: -50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 1.2, delay: 0.5 }}
+                  className="relative z-10 floating md:static absolute inset-0 md:inset-auto flex justify-center items-center pointer-events-none md:pointer-events-auto mt-0"
+                >
+                  <img
+                    src="/inctf/assets/design/Homepage/satellite_laser.webp"
+                    alt="InCTF Satellite"
+                    className="w-[80%] md:w-[650px] lg:w-[800px] h-auto object-contain md:filter-none filter blur-sm opacity-20 md:opacity-100 scale-150 md:scale-100"
+                    draggable="false"
+                    style={{
+                      filter: 'drop-shadow(0 0 30px rgba(56, 189, 248, 0.4))'
+                    }}
+                  />
+                </motion.div>
+              </HolographicFlicker>
+            </motion.div>
+          </div>
         </div>
-      </div>
+      </HeaderContainer>
 
       <EarlyBirdPopup
         isOpen={isPopupOpen}
         onClose={() => setIsPopupOpen(false)}
       />
-    </HeaderContainer>
+    </>
   );
 };
 
