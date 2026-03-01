@@ -1,4 +1,5 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import gsap from 'gsap';
 import { X, Instagram, Facebook, Linkedin } from 'lucide-react';
 import TypewriterText from '../shared/TypewriterText';
@@ -43,9 +44,14 @@ const EarlyBirdPopup: React.FC<EarlyBirdPopupProps> = ({ isOpen, onClose }) => {
   const overlayRef = useRef<HTMLDivElement>(null);
   const modalRef = useRef<HTMLDivElement>(null);
   const progressBarRef = useRef<HTMLDivElement>(null);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    if (isOpen) {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (isOpen && mounted) {
       // 1. Give the homepage animations time to finish (wait 2.5s)
       const initDelay = 2.5;
 
@@ -89,7 +95,7 @@ const EarlyBirdPopup: React.FC<EarlyBirdPopupProps> = ({ isOpen, onClose }) => {
         tl.kill();
       };
     }
-  }, [isOpen]);
+  }, [isOpen, mounted]);
 
   const handleClose = () => {
     const tl = gsap.timeline({ onComplete: onClose });
@@ -97,10 +103,10 @@ const EarlyBirdPopup: React.FC<EarlyBirdPopupProps> = ({ isOpen, onClose }) => {
       .to(overlayRef.current, { opacity: 0, duration: 0.3 }, '<');
   };
 
-  if (!isOpen) return null;
+  if (!isOpen || !mounted) return null;
 
-  return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+  return createPortal(
+    <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4">
       {/* Overlay */}
       <div
         ref={overlayRef}
@@ -123,12 +129,11 @@ const EarlyBirdPopup: React.FC<EarlyBirdPopupProps> = ({ isOpen, onClose }) => {
           }}
         >
           <div
-            className="relative overflow-hidden"
+            className="relative overflow-y-auto overflow-x-hidden p-5 pt-8 md:p-8 md:pt-10 max-h-[75svh] scrollbar-thin scrollbar-thumb-sky-500/30 scrollbar-track-transparent"
             style={{
               margin: '4px',
               border: '1px solid rgba(34,211,238,0.25)',
               background: '#060a16',
-              padding: '40px 28px 36px',
             }}
           >
             {/* Sparkles */}
@@ -161,26 +166,26 @@ const EarlyBirdPopup: React.FC<EarlyBirdPopupProps> = ({ isOpen, onClose }) => {
             </button>
 
             {/* Content */}
-            <div className="relative z-10 text-center flex flex-col items-center">
-              <h2 className="font-mono text-xl md:text-2xl mb-5 leading-tight">
+            <div className="relative z-10 text-center flex flex-col items-center mt-2">
+              <h2 className="font-mono text-xl md:text-2xl mb-3 md:mb-5 leading-tight">
                 <span className="text-[#e2e8f0] font-bold">&gt; Hello,</span>
                 <span className="text-[#22b8cf]">Crew Member.</span>
               </h2>
 
-              <p className="font-mono text-[#5e8ca0] text-sm md:text-[15px] leading-relaxed max-w-md">
+              <p className="font-mono text-[#5e8ca0] text-[13px] md:text-[15px] leading-relaxed max-w-md">
                 <span className="text-[#5e8ca0]">&gt;</span> You are among the first to show interest in this
                 mission. As an early respondent to
               </p>
-              <p className="font-mono text-[#e2e8f0] font-bold text-sm md:text-base mt-1">
+              <p className="font-mono text-[#e2e8f0] font-bold text-[13px] md:text-base mt-1">
                 Amrita InCTF 2026 — Operation VAJRA,
               </p>
-              <p className="font-mono text-[#5e8ca0] text-sm md:text-[15px] mb-6">
+              <p className="font-mono text-[#5e8ca0] text-[13px] md:text-[15px] mb-4 md:mb-6 mt-1">
                 you are granted exclusive access to:
               </p>
 
-              <div className="my-3 mb-6">
+              <div className="my-2 mb-4 md:mb-6">
                 <p
-                  className="font-mono text-[#22b8cf] font-bold text-base md:text-lg"
+                  className="font-mono text-[#22b8cf] font-bold text-[15px] md:text-lg"
                   style={{ textShadow: '0 0 10px rgba(34,184,207,0.3)' }}
                 >
                   First Wave Early Bird Enrollment —
@@ -193,7 +198,7 @@ const EarlyBirdPopup: React.FC<EarlyBirdPopupProps> = ({ isOpen, onClose }) => {
                 </p>
               </div>
 
-              <div className="font-mono text-[#5e8ca0] text-sm md:text-[15px] leading-relaxed max-w-md space-y-4 mb-5">
+              <div className="font-mono text-[#5e8ca0] text-[13px] md:text-[15px] leading-relaxed max-w-md space-y-3 md:space-y-4 mb-4 md:mb-5">
                 <p>
                   <span className="text-[#5e8ca0]">&gt;</span> For a limited window, your registration has been
                   unlocked at <span className="text-[#dc2626] font-bold">₹0</span>.
@@ -205,19 +210,19 @@ const EarlyBirdPopup: React.FC<EarlyBirdPopupProps> = ({ isOpen, onClose }) => {
               </div>
 
               {/* Social Icons */}
-              <div className="flex justify-center gap-5 my-5">
-                <a href="https://www.instagram.com/inctf.in/" target="_blank" rel="noopener noreferrer" className="text-white/60 p-3 border border-cyan-400/20 bg-cyan-400/5 hover:text-cyan-400 hover:border-cyan-400/60 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_15px_rgba(0,255,255,0.3)]">
-                  <Instagram size={24} />
+              <div className="flex justify-center gap-4 md:gap-5 my-3 md:my-5">
+                <a href="https://www.instagram.com/inctf.in/" target="_blank" rel="noopener noreferrer" className="text-white/60 p-2 md:p-3 border border-cyan-400/20 bg-cyan-400/5 hover:text-cyan-400 hover:border-cyan-400/60 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_15px_rgba(0,255,255,0.3)]">
+                  <Instagram size={20} className="md:w-6 md:h-6" />
                 </a>
-                <a href="https://linkedin.com/company/inctf" target="_blank" rel="noopener noreferrer" className="text-white/60 p-3 border border-cyan-400/20 bg-cyan-400/5 hover:text-cyan-400 hover:border-cyan-400/60 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_15px_rgba(0,255,255,0.3)]">
-                  <Linkedin size={24} />
+                <a href="https://linkedin.com/company/inctf" target="_blank" rel="noopener noreferrer" className="text-white/60 p-2 md:p-3 border border-cyan-400/20 bg-cyan-400/5 hover:text-cyan-400 hover:border-cyan-400/60 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_15px_rgba(0,255,255,0.3)]">
+                  <Linkedin size={20} className="md:w-6 md:h-6" />
                 </a>
-                <a href="https://facebook.com/InCTF" target="_blank" rel="noopener noreferrer" className="text-white/60 p-3 border border-cyan-400/20 bg-cyan-400/5 hover:text-cyan-400 hover:border-cyan-400/60 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_15px_rgba(0,255,255,0.3)]">
-                  <Facebook size={24} />
+                <a href="https://facebook.com/InCTF" target="_blank" rel="noopener noreferrer" className="text-white/60 p-2 md:p-3 border border-cyan-400/20 bg-cyan-400/5 hover:text-cyan-400 hover:border-cyan-400/60 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_15px_rgba(0,255,255,0.3)]">
+                  <Facebook size={20} className="md:w-6 md:h-6" />
                 </a>
               </div>
 
-              <p className="font-mono text-[#5e8ca0] text-sm mb-3 max-w-md">
+              <p className="font-mono text-[#5e8ca0] text-[11px] md:text-[13px] mb-2 md:mb-3 max-w-md">
                 <span className="text-[#5e8ca0]">&gt;</span>{' '}
                 <TypewriterText text="Follow us while you're there for mission updates and announcements." delay={0.5} />
               </p>
@@ -250,7 +255,8 @@ const EarlyBirdPopup: React.FC<EarlyBirdPopupProps> = ({ isOpen, onClose }) => {
           </div>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 };
 
