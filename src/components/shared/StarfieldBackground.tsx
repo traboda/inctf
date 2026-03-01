@@ -1,7 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger, useGSAP);
+}
 
 const StarfieldBackground: React.FC = () => {
   const [documentHeight, setDocumentHeight] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const starsRef = useRef<HTMLDivElement>(null);
+  const sparklesRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const updateHeight = () => {
@@ -9,6 +19,7 @@ const StarfieldBackground: React.FC = () => {
     };
 
     updateHeight();
+
     window.addEventListener('resize', updateHeight);
 
     // Update height when content changes
@@ -20,6 +31,39 @@ const StarfieldBackground: React.FC = () => {
       observer.disconnect();
     };
   }, []);
+
+  useGSAP(() => {
+    if (!starsRef.current || !sparklesRef.current || documentHeight === 0) return;
+
+
+    const triggerEl = document.documentElement;
+
+    // Animate stars 
+    gsap.to(starsRef.current, {
+      y: () => -(triggerEl.scrollHeight - window.innerHeight) * 0.25, // Lowered from 0.4
+      ease: "none",
+      scrollTrigger: {
+        trigger: triggerEl,
+        start: "top top",
+        end: "bottom bottom",
+        scrub: 1.5,
+        invalidateOnRefresh: true
+      }
+    });
+
+    // Animate sparkles 
+    gsap.to(sparklesRef.current, {
+      y: () => -(triggerEl.scrollHeight - window.innerHeight) * 0.45, // Lowered from 0.8
+      ease: "none",
+      scrollTrigger: {
+        trigger: triggerEl,
+        start: "top top",
+        end: "bottom bottom",
+        scrub: 1.5,
+        invalidateOnRefresh: true
+      }
+    });
+  }, { dependencies: [documentHeight], scope: containerRef });
 
   // Calculate how many times we need to repeat the pattern
   const patternHeight = typeof window !== 'undefined' ? window.innerHeight : 1000;
@@ -224,10 +268,11 @@ const StarfieldBackground: React.FC = () => {
   );
 
   return (
-    <div className="fixed inset-0 z-10 pointer-events-none overflow-hidden opacity-80">
+    <div ref={containerRef} className="fixed inset-0 z-10 pointer-events-none overflow-hidden opacity-80">
       {/* Stars Layer */}
       <div
-        className="absolute"
+        ref={starsRef}
+        className="absolute will-change-transform"
         style={{
           top: 0,
           left: 0,
@@ -242,7 +287,8 @@ const StarfieldBackground: React.FC = () => {
 
       {/* Sparkles Layer */}
       <div
-        className="absolute"
+        ref={sparklesRef}
+        className="absolute will-change-transform"
         style={{
           top: 0,
           left: 0,
