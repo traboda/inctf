@@ -1,11 +1,18 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import TopBar from '../src/components/shared/TopBar';
 import SiteView from '../src/components/SiteView';
 import GlitchText from '../src/components/shared/GlitchText';
 import StarfieldBackground from '../src/components/shared/StarfieldBackground';
 
 import TypewriterText from '../src/components/shared/TypewriterText';
+
+// Register ScrollTrigger
+if (typeof window !== "undefined") {
+    gsap.registerPlugin(ScrollTrigger);
+}
 
 // Reusable Section Component
 const MissionSection = ({ title, children, className = "", isFirst, isLast }: { title: string, children: React.ReactNode, className?: string, isFirst?: boolean, isLast?: boolean }) => (
@@ -83,21 +90,56 @@ const MissionSection = ({ title, children, className = "", isFirst, isLast }: { 
 );
 
 const MissionControlPage = () => {
+    const globeRef = useRef<HTMLDivElement>(null);
+    const containerRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const ctx = gsap.context(() => {
+            if (globeRef.current && containerRef.current) {
+                // Determine how far the globe should move based on screen height
+                const yOffset = typeof window !== 'undefined' ? window.innerHeight * 0.4 : 400;
+
+                gsap.fromTo(globeRef.current,
+                    { y: 0 },
+                    {
+                        y: -yOffset, // Move up by 40vh over the course of the scroll
+                        ease: "none",
+                        scrollTrigger: {
+                            trigger: containerRef.current,
+                            start: "top top",
+                            end: "bottom top", // Or "bottom bottom" depending on desired speed
+                            scrub: 1, // Add a bit of smoothing (1 second delay to catch up)
+                        },
+                    }
+                );
+            }
+        });
+
+        return () => ctx.revert();
+    }, []);
+
     return (
         <SiteView>
-            <div className="bg-obsidian min-h-screen relative overflow-x-hidden text-ghost-white font-mono selection:bg-sky-digital/30">
-                {/* Background Globe */}
-                <div
-                    className="absolute inset-0 z-0 pointer-events-none"
-                    style={{
-                        backgroundImage: 'url(/assets/images/mission-control/globe.png)',
-                        backgroundSize: '1250px auto',
-                        backgroundRepeat: 'repeat-y',
-                        backgroundPosition: 'top 100px center',
-                        opacity: 0.25,
-                        mixBlendMode: 'screen'
-                    }}
-                />
+            <div ref={containerRef} className="bg-obsidian min-h-screen relative overflow-x-hidden text-ghost-white font-mono selection:bg-sky-digital/30">
+                {/* Background Globe Wrapper for clipping */}
+                <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+                    <div
+                        ref={globeRef}
+                        // Increase height to 150% so it doesn't run out of image when scrolled up
+                        className="absolute w-full h-[150%]"
+                        style={{
+                            top: 0,
+                            backgroundImage: 'url(/assets/images/mission-control/globe.png)',
+                            backgroundSize: '1250px auto',
+                            backgroundRepeat: 'repeat-y',
+                            backgroundPosition: 'top 100px center',
+                            opacity: 0.25,
+                            mixBlendMode: 'screen',
+                            // Add will-change for performance since it's being animated continuously
+                            willChange: 'transform'
+                        }}
+                    />
+                </div>
 
                 {/* Grid Overlay */}
                 <div className="absolute inset-0 z-0 pointer-events-none opacity-20 bg-[url('/inctf/assets/grid.svg')] bg-fixed"></div>
@@ -120,7 +162,7 @@ const MissionControlPage = () => {
 
                                 {/* Main Title Wrapper */}
                                 <div className="relative">
-                                    <h1 className="text-4xl md:text-6xl font-black font-heading tracking-tight uppercase text-white drop-shadow-[0_0_15px_rgba(56,189,248,0.8)] whitespace-nowrap z-20 relative">
+                                    <h1 className="text-[26px] min-[400px]:text-4xl md:text-6xl font-black font-heading tracking-tight uppercase text-white drop-shadow-[0_0_15px_rgba(56,189,248,0.8)] whitespace-nowrap z-20 relative">
                                         <GlitchText text="OPERATION VAJRA" strikethrough={true} className="text-white" />
                                     </h1>
                                 </div>
@@ -131,7 +173,7 @@ const MissionControlPage = () => {
                                     <div className="absolute -top-2 md:-top-4 left-1/2 -translate-x-1/2 w-12 md:w-20 h-[3px] bg-alert-crimson shadow-[0_0_10px_rgba(255,0,0,0.8)]"></div>
 
                                     {/* The Hyphen */}
-                                    <span className="text-4xl md:text-6xl font-black font-heading text-white drop-shadow-[0_0_15px_rgba(56,189,248,0.8)] pb-1">
+                                    <span className="text-[26px] min-[400px]:text-4xl md:text-6xl font-black font-heading text-white drop-shadow-[0_0_15px_rgba(56,189,248,0.8)] pb-1">
                                         -
                                     </span>
 
@@ -140,7 +182,7 @@ const MissionControlPage = () => {
                                 </div>
 
                                 {/* Subtitle */}
-                                <h1 className="text-4xl md:text-6xl font-black font-heading tracking-tight uppercase text-white drop-shadow-[0_0_15px_rgba(56,189,248,0.8)] whitespace-nowrap z-20 relative">
+                                <h1 className="text-[26px] min-[400px]:text-4xl md:text-6xl font-black font-heading tracking-tight uppercase text-white drop-shadow-[0_0_15px_rgba(56,189,248,0.8)] whitespace-nowrap z-20 relative">
                                     Operational Plan
                                 </h1>
                             </div>
