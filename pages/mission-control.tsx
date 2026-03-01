@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import TopBar from '../src/components/shared/TopBar';
 import SiteView from '../src/components/SiteView';
 import GlitchText from '../src/components/shared/GlitchText';
+import StarfieldBackground from '../src/components/shared/StarfieldBackground';
 
 import TypewriterText from '../src/components/shared/TypewriterText';
 
@@ -100,6 +101,8 @@ const MissionControlPage = () => {
 
                 {/* Grid Overlay */}
                 <div className="absolute inset-0 z-0 pointer-events-none opacity-20 bg-[url('/inctf/assets/grid.svg')] bg-fixed"></div>
+
+                <StarfieldBackground />
 
                 <TopBar />
 
