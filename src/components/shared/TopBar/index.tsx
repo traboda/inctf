@@ -121,6 +121,8 @@ const TopBar = ({ UTMSource = null }) => {
   useEffect(() => {
     setMounted(true);
 
+    let ticking = false;
+
     const updateScrollDir = () => {
       const scrollY = window.scrollY;
 
@@ -130,16 +132,23 @@ const TopBar = ({ UTMSource = null }) => {
       // Determine scroll direction
       const direction = scrollY > lastScrollY.current ? 'down' : 'up';
 
-
       if (direction !== scrollDir && (scrollY - lastScrollY.current > 5 || direction === 'up')) {
         setScrollDir(direction);
       }
 
       lastScrollY.current = scrollY > 0 ? scrollY : 0;
+      ticking = false;
     };
 
-    window.addEventListener('scroll', updateScrollDir);
-    return () => window.removeEventListener('scroll', updateScrollDir);
+    const onScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateScrollDir);
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, [scrollDir]);
 
   const isVisible = scrollDir === 'up' || isAtTop;

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
 const StarfieldBackground: React.FC = () => {
-  const [scrollY, setScrollY] = useState(0);
   const [documentHeight, setDocumentHeight] = useState(0);
 
   useEffect(() => {
@@ -9,28 +8,19 @@ const StarfieldBackground: React.FC = () => {
       setDocumentHeight(document.documentElement.scrollHeight);
     };
 
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-
     updateHeight();
-    window.addEventListener('scroll', handleScroll, { passive: true });
     window.addEventListener('resize', updateHeight);
-    
+
     // Update height when content changes
     const observer = new MutationObserver(updateHeight);
     observer.observe(document.body, { childList: true, subtree: true });
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', updateHeight);
       observer.disconnect();
     };
   }, []);
 
-  // Calculate parallax offset - stars move upward slower than scroll (negative direction)
-  const parallaxOffset = scrollY * 0.5;
-  
   // Calculate how many times we need to repeat the pattern
   const patternHeight = typeof window !== 'undefined' ? window.innerHeight : 1000;
   const repeatCount = Math.ceil((documentHeight + patternHeight) / patternHeight) + 1;
@@ -235,11 +225,10 @@ const StarfieldBackground: React.FC = () => {
 
   return (
     <div className="fixed inset-0 z-10 pointer-events-none overflow-hidden opacity-80">
-      {/* Stars Layer - moves with parallax */}
-      <div 
-        className="absolute will-change-transform"
-        style={{ 
-          transform: `translateY(-${parallaxOffset}px)`,
+      {/* Stars Layer */}
+      <div
+        className="absolute"
+        style={{
           top: 0,
           left: 0,
           right: 0,
@@ -251,11 +240,10 @@ const StarfieldBackground: React.FC = () => {
         ))}
       </div>
 
-      {/* Sparkles Layer - moves with different parallax speed */}
-      <div 
-        className="absolute will-change-transform"
-        style={{ 
-          transform: `translateY(-${parallaxOffset * 0.6}px)`,
+      {/* Sparkles Layer */}
+      <div
+        className="absolute"
+        style={{
           top: 0,
           left: 0,
           right: 0,
