@@ -1,6 +1,7 @@
 import '../src/styles/styles.css';
 import { ReactNode } from 'react';
 import Script from 'next/script';
+import { GoogleAnalytics } from '@next/third-parties/google';
 
 export const metadata = {
     title: 'InCTF 2026 | India\'s First Ethical Hacking Contest',
@@ -16,21 +17,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                 {children}
 
                 {/* Google Analytics */}
-                {gaId && (
-                    <>
-                        <Script src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`} strategy="afterInteractive" />
-                        <Script id="google-analytics" strategy="afterInteractive">
-                            {`
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', '${gaId}', {
-                  send_page_view: false,
-                });
-              `}
-                        </Script>
-                    </>
-                )}
+                {gaId && <GoogleAnalytics gaId={gaId} />}
 
                 {/* InCTF SDK */}
                 <Script src="https://play.inctf.in/sdk.js" strategy="afterInteractive" />
