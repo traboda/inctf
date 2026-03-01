@@ -18,7 +18,7 @@ const totalTags = [...faq.reduce((acc, f) => {
 const FAQPage = () => {
 
   const [totalVisible, setTotalVisible] = useState(10);
-  const [openQ, setOpen] = useState(0);
+  const [openQ, setOpen] = useState<number | null>(0);
   const [search, setSearch] = useState('');
   const [tags, setTags] = useState(new Set());
 

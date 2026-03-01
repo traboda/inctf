@@ -34,7 +34,7 @@ const EducationAccessibility = () => (
             plugins: {
               title: {
                 display: true,
-                text: 'InCTF Jr Participant Demographics',
+                text: 'Amrita InCTF Participant Demographics',
                 font: { size: 22 },
               },
               datalabels: {

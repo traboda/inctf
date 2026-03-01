@@ -1,3 +1,4 @@
+'use client';
 import styled from '@emotion/styled';
 import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
@@ -209,7 +210,7 @@ const TopBar = ({ UTMSource = null }) => {
             className="hidden md:flex w-1/4 md:w-1/3 xl:w-1/4 md:text-center flex-wrap items-center md:justify-start justify-center px-2"
           >
             <Link className="w-full md:w-1/3" href="/">
-              <Logo isDark />
+              <img src="/inctf/assets/logo_dark.png" alt="InCTF Logo" className="logo" style={{ maxHeight: 45 }} />
             </Link>
             {topbarConfig?.associate?.link && (
               <a
@@ -291,7 +292,7 @@ const TopBar = ({ UTMSource = null }) => {
           <div className="flex md:hidden items-center justify-between w-full px-4">
             {/* Logo on Mobile */}
             <Link href="/">
-              <Logo isDark maxHeight={45} />
+              <img src="/inctf/assets/logo_dark.png" alt="InCTF Logo" className="logo" style={{ maxHeight: 45 }} />
             </Link>
 
             {/* Hamburger Menu Icon */}

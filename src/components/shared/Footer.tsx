@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useContext } from 'react';
 import styled from '@emotion/styled';
 
@@ -55,7 +57,7 @@ const Footer = () => {
       <div className="flex md:justify-between md:flex-row flex-col">
         <div className="order-2 md:order-1 text-center md:text-left px-1">
           <div className="md:flex items-center block">
-            <img draggable="false" className="inline" alt="Amrita InCTF Junior" src={`/${eventID}/assets/${assets?.logo.light}`} />
+            <img draggable="false" className="inline" alt="Amrita InCTF" src={`/${eventID}/assets/${assets?.logo.light}`} />
             <div className="md:ml-6 py-3">
               <div className="line-height-1 opacity-80 my-2 md:mb-1 md:mt-0">
                 {footerConfig?.copyrightText}

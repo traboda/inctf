@@ -1,3 +1,4 @@
+'use client';
 import React, { useEffect, useState, useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
@@ -13,7 +14,10 @@ const StarfieldBackground: React.FC = () => {
   const starsRef = useRef<HTMLDivElement>(null);
   const sparklesRef = useRef<HTMLDivElement>(null);
 
+  const [isClient, setIsClient] = useState(false);
+
   useEffect(() => {
+    setIsClient(true);
     const updateHeight = () => {
       setDocumentHeight(document.documentElement.scrollHeight);
     };
@@ -33,7 +37,7 @@ const StarfieldBackground: React.FC = () => {
   }, []);
 
   useGSAP(() => {
-    if (!starsRef.current || !sparklesRef.current || documentHeight === 0) return;
+    if (!isClient || !starsRef.current || !sparklesRef.current || documentHeight === 0) return;
 
 
     const triggerEl = document.documentElement;
@@ -63,11 +67,11 @@ const StarfieldBackground: React.FC = () => {
         invalidateOnRefresh: true
       }
     });
-  }, { dependencies: [documentHeight], scope: containerRef });
+  }, { dependencies: [documentHeight, isClient], scope: containerRef });
 
-  // Calculate how many times we need to repeat the pattern
-  const patternHeight = typeof window !== 'undefined' ? window.innerHeight : 1000;
-  const repeatCount = Math.ceil((documentHeight + patternHeight) / patternHeight) + 1;
+  // Fallback pattern height logic to SSR default state 
+  const patternHeight = isClient ? window.innerHeight : 1000;
+  const repeatCount = isClient ? Math.ceil((documentHeight + patternHeight) / patternHeight) + 1 : 2;
 
   const StarPattern = ({ index }: { index: number }) => (
     <>

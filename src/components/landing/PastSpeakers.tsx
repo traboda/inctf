@@ -1,3 +1,4 @@
+'use client';
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Speaker } from 'lucide-react';

@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
@@ -223,7 +224,7 @@ const LandingHeader = () => {
   }, []);
 
   return (
-    <HeaderContainer>
+    <HeaderContainer suppressHydrationWarning>
       <motion.div
         className="scanlines"
         initial={{ opacity: 0 }}

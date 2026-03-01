@@ -18,7 +18,7 @@ const TelegramRedirect = () => {
   return (
     <SiteView meta={{ title: `Join ${eventID} Telegram Server` }}>
       <div className="flex flex-col items-center justify-center w-screen h-screen">
-        <Image src={`/${eventID}/assets/logo_dark.png`} alt={eventID} height={300} width={200} />
+        <Image src={`/${eventID || 'inctf'}/assets/logo_dark.png`} alt={eventID || 'inctf'} height={300} width={200} />
         <h1 className="mt-5">
           Thank you for joining
           {eventID}

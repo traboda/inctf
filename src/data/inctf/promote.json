@@ -1,8 +1,8 @@
 {
-    "promoteHeader": "Promote InCTF Jr",
+    "promoteHeader": "Promote Amrita InCTF",
     "downloadHeader": "Download Posters",
     "desc": "Click on the image to download the poster, and feel free to share them anywhere! (Drag to view more posters)",
-    "promotionalImages":[
+    "promotionalImages": [
         "assets/images/posters/p6.jpg",
         "assets/images/posters/p7.jpg",
         "assets/images/posters/1.jpg",
@@ -13,7 +13,7 @@
         "assets/images/posters/6.jpg"
     ],
     "promotionalVideosHeader": "Promotional Videos",
-    "promotionalVideos":[
+    "promotionalVideos": [
         {
             "cover": "assets/images/covers/videos/2019_promo_1.png",
             "link": "https://youtu.be/MICFZTmNOog"

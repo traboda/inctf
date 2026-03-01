@@ -18,7 +18,7 @@ const DiscordRedirect = () => {
   return (
     <ThemeWrapper meta={{ title: `Join ${eventID} Discord Server` }} hideTopBar={true}>
       <div className="flex flex-col items-center justify-center w-screen h-screen relative z-10">
-        <Image src={`/${eventID}/assets/logo_dark.png`} alt={eventID} height={300} width={200} />
+        <Image src={`/${eventID || 'inctf'}/assets/logo_dark.png`} alt={eventID || 'inctf'} height={300} width={200} />
         <h1 className="mt-5 text-ghost-white font-heading text-2xl font-bold">
           Thank you for joining
           {' '}

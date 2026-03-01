@@ -72,9 +72,9 @@ type TagSelectorProps = {
 };
 
 const TagSelector = (props: TagSelectorProps) => {
-  const [tags, setTags] = useState([]);
+  const [tags, setTags] = useState<any[]>([]);
 
-  const handleTagClick = (_tag) => {
+  const handleTagClick = (_tag: any) => {
     if (props.multiple) {
       if (tags.includes(_tag.value)) {
         const _tags = [...tags];
@@ -96,7 +96,7 @@ const TagSelector = (props: TagSelectorProps) => {
     }
   };
 
-  const generateClassName = ({ value: val }) => {
+  const generateClassName = ({ value: val }: any) => {
     let _class = props.small ? 'small' : '';
     if (!props.fullWidth) _class += ' shadow-sm';
     if (props.multiple && tags.includes(val)) _class += ' active';
@@ -108,15 +108,15 @@ const TagSelector = (props: TagSelectorProps) => {
   return (<TagSelectorContainer className={props.fullWidth ? 'fullWidth' : ''}>
     <div className={`tag-container ${props.fullWidth ? 'shadow-sm' : ''}`}>
       {props.options.map(opt =>
-        (
-          <div
-            key={opt.value}
-            className={`tag ${generateClassName(opt)}`}
-            onClick={() => handleTagClick(opt)}
-          >
-            {opt.label}
-          </div>
-        ),
+      (
+        <div
+          key={opt.value}
+          className={`tag ${generateClassName(opt)}`}
+          onClick={() => handleTagClick(opt)}
+        >
+          {opt.label}
+        </div>
+      ),
       )}
     </div>
   </TagSelectorContainer>);

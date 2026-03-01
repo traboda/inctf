@@ -16,7 +16,7 @@ const BlogListingPage = ({ posts }) => {
         {/* Starfield Background */}
         <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-b from-obsidian via-slate-900/30 to-obsidian"></div>
-          
+
           {/* Stars */}
           <img src="/inctf/assets/design/Homepage/star.png" alt="" className="absolute opacity-20" style={{ top: '5%', left: '8%', width: '48px' }} />
           <img src="/inctf/assets/design/Homepage/star.png" alt="" className="absolute opacity-20" style={{ top: '12%', left: '25%', width: '52px' }} />
@@ -45,7 +45,7 @@ const BlogListingPage = ({ posts }) => {
         </div>
 
         <TopBar />
-        
+
         <div className="relative z-10">
           <div className="min-h-[20vh] flex py-12 items-center container mx-auto px-4 pt-20">
             <div>
@@ -76,7 +76,7 @@ const BlogListingPage = ({ posts }) => {
 };
 
 export async function getStaticProps() {
-  const posts = [];
+  const posts: any[] = [];
 
   Object.keys(postsIndex).forEach((key) => {
     const { query } = postsIndex[key];

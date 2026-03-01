@@ -1,3 +1,5 @@
+"use client";
+
 import React from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
@@ -98,7 +100,7 @@ const MissionCredentials = () => {
                 <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-8">
                     {/* Left Logo */}
                     <div className="w-48 md:w-64">
-                        <img src="/inctf/assets/logo_light.png" alt="Amrita InCTF Junior" className="w-full h-auto opacity-90" />
+                        <img src="/inctf/assets/logo_light.png" alt="Amrita InCTF 2026" className="w-full h-auto opacity-90" />
                     </div>
 
                     {/* Center Text */}

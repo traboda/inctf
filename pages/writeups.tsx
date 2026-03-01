@@ -12,7 +12,7 @@ import { loadYaml } from '../lib/loadYaml';
 const WriteupListingPage = ({ writeups }) => {
 
   const [keyword, setKeyword] = useState('');
-  const [category, setCategory] = useState(null);
+  const [category, setCategory] = useState<any>(null);
 
   const CHALLENGE_CATEGORIES = [
     {
@@ -81,10 +81,10 @@ const WriteupListingPage = ({ writeups }) => {
             </div>
             {writeups.length > 0 ?
               <div className="flex flex-wrap">
-                {writeups.filter((v) =>
+                {writeups.filter((v: any) =>
                   (category == null || v?.category.toLowerCase() === category.value.toLowerCase()) &&
                   ((keyword?.length < 1) || (v.title?.toLowerCase().startsWith(keyword.toLowerCase()))),
-                ).map((w, i) => (
+                ).map((w: any, i: number) => (
                   <div className="w-full md:w-1/2 lg:w-1/3 p-2" key={i}>
                     <WriteUpCard {...w} />
                   </div>
@@ -140,7 +140,7 @@ const WriteupListingPage = ({ writeups }) => {
 };
 
 export async function getStaticProps() {
-  const writeups = [];
+  const writeups: any[] = [];
 
   Object.keys(postsIndex).forEach((key) => {
     const { query } = postsIndex[key];
