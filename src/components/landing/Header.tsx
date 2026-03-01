@@ -18,7 +18,7 @@ import EarlyBirdPopup from './EarlyBirdPopup';
 const HeaderContainer = styled.section`
   min-height: 90vh;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   
   position: relative;
   overflow: hidden;
@@ -245,7 +245,7 @@ const LandingHeader = () => {
               initial={{ opacity: 0, y: -20, scale: 0.9 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ delay: 0.5, type: "spring", stiffness: 120 }}
-              className="inline-flex items-center gap-3 mb-8 self-start"
+              className="inline-flex items-center gap-3 mb-1 self-start"
             >
               <div className="w-2 h-2 rounded-full bg-sky-digital animate-pulse"></div>
               <span className="font-tactical text-alert-crimson tracking-widest text-sm font-bold">
@@ -257,25 +257,25 @@ const LandingHeader = () => {
             <div className="flex flex-col items-center w-full max-w-2xl">
               {/* Content Box with Border */}
 
-              <SectionCard className="mb-8 w-full">
-                <h1 className="text-4xl sm:text-5xl md:text-6xl font-black font-heading mb-6 md:mb-8 text-ghost-white text-center break-words">
-                  <span className="block text-2xl sm:text-3xl md:text-4xl font-mono text-ghost-white mb-2 md:mb-4 tracking-wide">
+              <SectionCard className="mb-0 w-full">
+                <h1 className="text-4xl sm:text-5xl md:text-6xl font-black font-heading mb-0 text-ghost-white text-center break-words">
+                  <span className="block text-2xl sm:text-3xl md:text-4xl font-mono text-ghost-white mb-0 tracking-wide">
                     <TypewriterText text="Amrita InCTF 2026" delay={0.5} />
                   </span>
                   <GlitchText text="OPERATION VAJRA" strikethrough={true} className="text-3xl sm:text-4xl md:text-5xl text-white font-black" />
                 </h1>
 
-                <div className="text-base sm:text-lg md:text-xl text-sky-digital font-mono leading-relaxed space-y-4 md:space-y-6">
+                <div className="text-base sm:text-lg md:text-xl text-sky-digital font-mono leading-relaxed space-y-3 md:space-y-4">
                   <p>
                     <span className="text-sky-digital">&gt;</span>  Operation VAJRA is a high-stakes cyber defence simulation designed to identify, train, and elite India's next generation of security specialists. Built on the principles of national resilience, this mission tests technical proficiency under simulated high-pressure environments.
                   </p>
-                  <p className="mt-4 md:mt-6">
+                  <p className="mt-1">
                     <span className="text-sky-digital">&gt;</span>  A multi-month cybersecurity Capture The Flag contest conducted by Amrita Vishwa Vidyapeetham and team bi0s.
                   </p>
                 </div>
               </SectionCard>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6 justify-center w-full px-4 sm:px-8 mt-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-2 lg:gap-3 justify-center w-full px-4 sm:px-8 mt-1">
                 <Link href="/mission-control" className="plain-link w-full">
                   <motion.button
                     initial={{ opacity: 0, y: 20, boxShadow: "4px 4px 0 rgba(255,255,255,0.5)" }}
