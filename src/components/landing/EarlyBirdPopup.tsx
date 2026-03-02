@@ -81,14 +81,14 @@ const EarlyBirdPopup: React.FC<EarlyBirdPopupProps> = ({ isOpen, onClose }) => {
       if (progressBarRef.current) {
         gsap.fromTo(progressBarRef.current,
           { width: '100%' },
-          { width: '0%', duration: 10, ease: 'none', delay: initDelay + 0.6 }
+          { width: '0%', duration: 25, ease: 'none', delay: initDelay + 0.6 }
         );
       }
 
       // Auto-close timer
       const timer = setTimeout(() => {
         handleClose();
-      }, (10000 + (initDelay * 1000) + 600));
+      }, (25000 + (initDelay * 1000) + 600));
 
       return () => {
         clearTimeout(timer);
@@ -160,9 +160,9 @@ const EarlyBirdPopup: React.FC<EarlyBirdPopupProps> = ({ isOpen, onClose }) => {
             {/* Close button */}
             <button
               onClick={handleClose}
-              className="absolute top-3 right-3 text-cyan-400/40 hover:text-red-500 hover:rotate-90 transition-all duration-200 z-20"
+              className="absolute top-3 right-3 z-20 p-2 rounded-md text-red-500 border border-red-500/60 bg-red-500/10 hover:bg-red-600 hover:text-white hover:border-red-600 hover:shadow-[0_0_20px_rgba(255,0,0,0.9)] hover:scale-110 transition-all duration-200"
             >
-              <X size={18} />
+              <X size={20} />
             </button>
 
             {/* Content */}
