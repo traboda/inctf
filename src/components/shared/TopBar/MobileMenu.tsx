@@ -119,7 +119,7 @@ const MobileMenu = ({ onClose, config }) => {
       <div className="menu-footer">
         {cta && (
           <Link href={cta.link || '#'} onClick={onClose} className="block w-full">
-            <button className="w-full py-4 border border-sky-digital bg-sky-digital/10 text-sky-digital font-bold font-tactical uppercase tracking-wider hover:bg-sky-digital hover:text-black transition-all duration-300 shadow-[0_0_15px_rgba(56,189,248,0.2)] hover:shadow-[0_0_30px_rgba(56,189,248,0.4)]">
+            <button className="w-full py-4 border border-alert-crimson bg-alert-crimson/10 text-alert-crimson font-bold font-tactical uppercase tracking-wider hover:bg-alert-crimson hover:text-white transition-all duration-300 shadow-[0_0_15px_rgba(244,63,94,0.25)] hover:shadow-[0_0_30px_rgba(244,63,94,0.6)]">
               {cta.buttonText}
             </button>
           </Link>
