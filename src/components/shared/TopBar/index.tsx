@@ -290,28 +290,51 @@ const TopBar = ({ UTMSource = null }) => {
             </div>
           </div>
           <div className="flex md:hidden items-center justify-between w-full px-4">
-            {/* Logo on Mobile */}
-            <Link href="/">
-              <img src="/inctf/assets/logo_dark.png" alt="InCTF Logo" className="logo" style={{ maxHeight: 60 }} />
-            </Link>
 
-            {/* Hamburger Menu Icon */}
+          {/* Logo */}
+          <Link href="/">
+            <img
+              src="/inctf/assets/logo_dark.png"
+              alt="InCTF Logo"
+              className="logo"
+              style={{ maxHeight: 60 }}
+            />
+          </Link>
+
+          {/* Right Controls */}
+          <div className="flex items-center gap-2">
+
+            {/* Register Button */}
+            {topbarConfig?.CTA?.type === 'link' ? (
+              <Link
+                href={topbarConfig.CTA.link}
+                target="_blank"
+                className="px-3 py-1 border border-alert-crimson bg-alert-crimson/10 text-alert-crimson font-bold uppercase tracking-wider text-xs rounded-none hover:bg-alert-crimson hover:text-white transition-all duration-300"
+              >
+                Register
+              </Link>
+            ) : null}
+
+            {/* Hamburger */}
             <button
               onClick={onOpen}
-              className="p-2 hover:bg-sky-digital/10 transition-all duration-300 rounded group"
+              className="p-2 hover:bg-sky-digital/10 transition-all duration-300 rounded"
               aria-label="Toggle Menu"
             >
               {showMenu ? (
-                <svg className="w-7 h-7 text-sky-digital transform transition-transform duration-300 group-hover:rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-7 h-7 text-sky-digital" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               ) : (
-                <svg className="w-7 h-7 text-sky-digital transition-all duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-7 h-7 text-sky-digital" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
               )}
             </button>
+
           </div>
+
+        </div>
         </div>
       </TopbarContainer>
       <Modal
