@@ -275,7 +275,7 @@ const TopBar = ({ UTMSource = null }) => {
                       {topbarConfig?.CTA.type === 'link' && (
                         <div className="md:block hidden">
                           <Link href={topbarConfig?.CTA?.link} target="_blank">
-                            <span className="px-6 py-2 rounded-none border border-sky-digital bg-sky-digital/10 text-sky-digital font-bold font-tactical uppercase tracking-wider hover:bg-sky-digital hover:text-black transition-all duration-300 ml-3 shadow-[0_0_10px_rgba(56,189,248,0.2)] hover:shadow-[0_0_20px_rgba(56,189,248,0.4)] cursor-pointer inline-flex items-center">
+                            <span className="px-6 py-2 rounded-none border border-alert-crimson bg-alert-crimson/10 text-alert-crimson font-bold font-tactical uppercase tracking-wider hover:bg-alert-crimson hover:text-white transition-all duration-300 ml-3 shadow-[0_0_10px_rgba(244,63,94,0.25)] hover:shadow-[0_0_25px_rgba(244,63,94,0.6)] cursor-pointer inline-flex items-center">
                               {topbarConfig?.CTA?.buttonText}
                               {' '}
                               <i className="fa fa-chevron-right ml-1" />

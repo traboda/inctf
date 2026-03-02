@@ -16,8 +16,8 @@
   "topbarCTAText": "Have you got stuck? Need Help? Join our discord server, ask your doubts & get support from our experts.",
   "CTA": {
     "type": "link",
-    "link": "#",
-    "buttonText": "Coming Soon"
+    "link": "https://register.inctf.in",
+    "buttonText": "Register Now"
   },
   "menu": [
     {
