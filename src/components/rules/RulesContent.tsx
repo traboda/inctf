@@ -13,6 +13,11 @@ const rules = require(`../../data/${eventID}/rules.json`);
 
 const RulesContainer = styled('div')`
     padding: 1rem 2vw;
+        a {
+            color: #38BDF8;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
     h1 {
         font-size: 2.5rem;
         margin-bottom: 1rem;
