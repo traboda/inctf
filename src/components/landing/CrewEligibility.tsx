@@ -46,7 +46,7 @@ const CrewEligibility = () => {
 
                         <div className="space-y-6 text-sky-digital font-mono text-base md:text-lg leading-relaxed">
                             <p>
-                                <span className="text-sky-digital">&gt;</span>  Undergraduate students (2nd, 3rd, and 4th year)
+                                <span className="text-sky-digital">&gt;</span>  Undergraduate students (1st, 2nd, 3rd, and 4th year)
                             </p>
 
                             <p>
@@ -58,7 +58,7 @@ const CrewEligibility = () => {
                             </p>
 
                             <p>
-                                <span className="text-sky-digital">&gt;</span>  Teams consisting of 3 to 5 members
+                                <span className="text-sky-digital">&gt;</span>  Teams consisting of 2 to 5 members
                             </p>
                         </div>
 
