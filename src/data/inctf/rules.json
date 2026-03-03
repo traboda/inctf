@@ -3,153 +3,322 @@
         {
             "tag": "h1",
             "text": [
-                "InCTF 2026 – Official Rules"
-            ]
-        },
-        {
-            "tag": "p",
-            "text": [
-                "Organized by: Team bi0s, Amrita Vishwa Vidyapeetham",
-                "Venue: Amrita Vishwa Vidyapeetham, Bengaluru Campus",
-                "Platform: Traboda",
-                "Mode: Offline (Onsite Finals)"
+                "AMRITA InCTF 2026 - Official Rules & Terms"
             ]
         },
         {
             "tag": "h2",
             "text": [
-                "About InCTF"
+                "OPERATION VAJRA"
             ]
         },
         {
             "tag": "p",
             "text": [
-                "India Capture The Flag (InCTF) is an annual national cybersecurity competition. By registering, all participants agree to follow these rules."
+                "Welcome to Amrita InCTF 2026 - Operation VAJRA, India's premier national-level ethical hacking Capture The Flag (CTF) competition, conducted by Amrita Vishwa Vidyapeetham in collaboration with team bi0s. By registering for, accessing, or participating in InCTF 2026 in any capacity, you agree to be legally bound by these Terms & Conditions. Please read this document carefully before completing your registration."
             ]
         },
         {
             "tag": "h2",
             "text": [
-                "Eligibility Criteria"
+                "1. About the Event"
             ]
         },
         {
             "tag": "p",
             "text": [
-                "To compete in the onsite finals and be eligible for prizes, participants must:"
-            ]
-        },
-        {
-            "tag": "ul",
-            "text": [
-                "Be a current undergraduate (UG) or postgraduate (PG) student.",
-                "Be a citizen of the Republic of India."
-            ]
-        },
-        {
-            "tag": "h3",
-            "text": [
-                "Beginner Category Policy"
-            ]
-        },
-        {
-            "tag": "ul",
-            "text": [
-                "InCTF supports new talent.",
-                "Participants with prior experience (e.g., internships, active CTF club involvement, competitive achievements, advanced training) are not considered beginners.",
-                "Misrepresenting your experience will lead to disqualification from the Beginner category and potentially the entire competition.",
-                "Beginner teams will be ranked with all participants and receive special recognition during the finals."
-            ]
-        },
-        {
-            "tag": "h3",
-            "text": [
-                "Educational Background"
+                "Amrita InCTF 2026 (\"InCTF\" or \"the Event\") is a multi-month cybersecurity Capture The Flag contest. Themed as Operation VAJRA, it is a high-stakes cyber defence simulation designed to identify, train, and elevate India's next generation of security specialists. The competition tests technical proficiency under simulated high-pressure environments, built on the principles of national resilience."
             ]
         },
         {
             "tag": "p",
             "text": [
-                "All participants must be actively enrolled UG or PG students. If you are in a non-traditional educational format or are an independent learner, you must notify the organizers for eligibility verification."
-            ]
-        },
-        {
-            "tag": "h3",
-            "text": [
-                "Team Composition"
-            ]
-        },
-        {
-            "tag": "ul",
-            "text": [
-                "Teams must have a minimum of two (2) and a maximum of four (4) members.",
-                "All team members must meet the individual eligibility criteria.",
-                "Teams must be finalized during registration. No changes or substitutions are allowed after registration is complete."
+                "The Event is hosted by Amrita Vishwa Vidyapeetham and organized in collaboration with team bi0s. It has been operational continuously since 2010 and is recognized as India's premier ethical hacking contest for students."
             ]
         },
         {
             "tag": "h2",
             "text": [
-                "Participation Conduct"
+                "2. Eligibility"
             ]
         },
         {
             "tag": "p",
             "text": [
-                "Participants must uphold academic honesty and ethical standards."
-            ]
-        },
-        {
-            "tag": "h3",
-            "text": [
-                "Prohibited Actions Include:"
+                "Participation in InCTF 2026 is open to the following categories of individuals:"
             ]
         },
         {
             "tag": "ul",
             "text": [
-                "Sharing answers, hints, or solutions with others",
-                "Using solutions that were already available before the contest",
-                "Violating these rules will result in disqualification and may affect your ability to participate in future InCTF events."
-            ]
-        },
-        {
-            "tag": "h2",
-            "text": [
-                "Certificates"
+                "Undergraduate students currently enrolled in their 1st, 2nd, 3rd, or 4th year of study",
+                "Students from relevant disciplines including Computer Science, Information Technology, Artificial Intelligence, Cyber Security, Electronics and Communication Engineering (ECE), and related fields",
+                "Cybersecurity-interested professionals from the industry who meet the contest criteria"
             ]
         },
         {
             "tag": "p",
             "text": [
-                "Certificates will be issued based on your registration profile. Please ensure accuracy. You can make corrections until the contest begins. Post-event corrections must be requested via email within seven (7) days."
+                "Teams must consist of 2 to 5 members. All team members must independently satisfy the eligibility criteria. Providing false information about eligibility during registration may result in immediate disqualification without refund."
             ]
         },
         {
-            "tag": "h3",
+            "tag": "h2",
             "text": [
-                "Types of Certificates:"
+                "3. Registration & Participation"
+            ]
+        },
+        {
+            "tag": "p",
+            "text": [
+                "To participate in InCTF 2026, all teams must complete the official registration process through the designated Mission Control portal at register.inctf.in. Registration constitutes your acceptance of these Terms & Conditions in full."
             ]
         },
         {
             "tag": "ul",
             "text": [
-                "Participation Certificate: For all teams with a non-zero score in the Online Qualifier (Digital PDF, emailed).",
-                "Certificate of Appreciation: For performing teams in the Online Qualifier (Digital PDF, emailed).",
-                "Certificate of Achievement: For winning teams in the Onsite Finals (Physical copy, mailed to registered addresses)."
-            ]
-        },
-        {
-            "tag": "h2",
-            "text": [
-                "Support and Queries"
+                "Each participant must register using accurate personal and institutional information",
+                "Each team must have a minimum of 2 and a maximum of 5 members at the time of registration",
+                "Duplicate or fraudulent registrations will be cancelled without notice or refund",
+                "Participants are responsible for ensuring that their registration details remain current and accurate throughout the competition period"
             ]
         },
         {
             "tag": "p",
             "text": [
-                "For help with eligibility, registration, or profile updates, contact:",
-                 "<a href=\"mailto:inctf@am.amrita.edu\">📧 inctf@am.amrita.edu</a>"
+                "Organizers reserve the right to verify the eligibility and identity of any participant or team at any stage of the competition."
+            ]
+        },
+        {
+            "tag": "h2",
+            "text": [
+                "4. Payment Terms"
+            ]
+        },
+        {
+            "tag": "h3",
+            "text": [
+                "4.1 Registration Fee"
+            ]
+        },
+        {
+            "tag": "p",
+            "text": [
+                "A registration fee may be applicable for participation in InCTF 2026. The applicable fee, payment modes, and deadlines will be communicated through the official event portal at register.inctf.in and via official communication channel."
+            ]
+        },
+        {
+            "tag": "h3",
+            "text": [
+                "4.2 No-Refund Policy"
+            ]
+        },
+        {
+            "tag": "p",
+            "text": [
+                "ALL REGISTRATION FEES ARE STRICTLY NON-REFUNDABLE. Once a registration has been submitted and payment has been processed, no refunds will be issued under any circumstances, including but not limited to:"
+            ]
+        },
+        {
+            "tag": "ul",
+            "text": [
+                "Voluntary withdrawal or team dissolution after payment",
+                "Failure to meet eligibility requirements discovered after registration",
+                "Inability to attend or participate due to personal, academic, technical, or professional reasons",
+                "Changes in event format, schedule, or delivery mode",
+                "Disqualification due to violation of the rules or code of conduct",
+                "Force majeure events, including but not limited to natural disasters, government-imposed restrictions, or technical outages"
+            ]
+        },
+        {
+            "tag": "p",
+            "text": [
+                "Note: By completing the payment process, participants and their guardians (where applicable) expressly acknowledge and accept this no-refund policy."
+            ]
+        },
+        {
+            "tag": "h3",
+            "text": [
+                "4.3 Payment Disputes"
+            ]
+        },
+        {
+            "tag": "p",
+            "text": [
+                "Any disputes regarding payment processing errors (e.g., double charges, failed transactions) must be reported to the organizing team within 7 days of the transaction. Disputes raised after this window will not be entertained. Refunds will only be considered in verified cases of technical payment failure where the registration was not successfully recorded."
+            ]
+        },
+        {
+            "tag": "h3",
+            "text": [
+                "4.4 Prizes"
+            ]
+        },
+        {
+            "tag": "p",
+            "text": [
+                "A prize pool worth INR 5 Lakhs (subject to change) will be awarded to top-performing categories of winners during the Final Deployment phase. Prizes are non-transferable and may be subject to applicable tax deductions as per Indian law. The organizers reserve the right to modify prize structures at their discretion with prior notice."
+            ]
+        },
+        {
+            "tag": "h2",
+            "text": [
+                "5. Code of Conduct"
+            ]
+        },
+        {
+            "tag": "p",
+            "text": [
+                "All participants are expected to uphold the highest standards of integrity and ethical behavior throughout the competition. Violations of the code of conduct may result in immediate disqualification without refund."
+            ]
+        },
+        {
+            "tag": "ul",
+            "text": [
+                "Participants must not engage in any activity that could compromise the integrity of the competition infrastructure or other participants' systems",
+                "Attacks on the competition platform, scoreboard, or other teams' infrastructure outside of designated challenge environments are strictly prohibited",
+                "Flag sharing, collusion between teams, or any form of cheating is forbidden",
+                "Discrimination, harassment, or abusive conduct toward other participants, organizers, or volunteers will not be tolerated",
+                "Participants must comply with all applicable laws and regulations, including the Information Technology Act, 2000 and its amendments",
+                "Social engineering attacks targeting competition staff or other participants are prohibited"
+            ]
+        },
+        {
+            "tag": "h2",
+            "text": [
+                "6. Intellectual Property"
+            ]
+        },
+        {
+            "tag": "p",
+            "text": [
+                "All challenge content, materials, problems, and associated resources provided as part of InCTF 2026 are the exclusive intellectual property of Amrita Vishwa Vidyapeetham and/or team bi0s. Participants are granted a limited, non-exclusive license to use such materials solely for the purpose of competing in InCTF 2026."
+            ]
+        },
+        {
+            "tag": "ul",
+            "text": [
+                "Participants may not reproduce, distribute, publish, or publicly disclose challenge content, flags, or solutions during the course of the event",
+                "Write-ups and solutions may only be shared publicly after the official conclusion of the relevant competition phase, as announced by the organizers",
+                "Submissions made by participants during the competition may be used by the organizers for educational and promotional purposes"
+            ]
+        },
+        {
+            "tag": "h2",
+            "text": [
+                "7. Data Privacy"
+            ]
+        },
+        {
+            "tag": "p",
+            "text": [
+                "By registering, participants consent to the collection, storage, and processing of their personal information (including name, email, institution, and performance data) for the purpose of operating and administering InCTF 2026. This data may also be used for:"
+            ]
+        },
+        {
+            "tag": "ul",
+            "text": [
+                "Communication of event updates, schedules, and announcements",
+                "Certificate and prize distribution",
+                "Identification and recommendation for internship and hiring opportunities (with participant consent)",
+                "Statistical reporting and event promotion"
+            ]
+        },
+        {
+            "tag": "p",
+            "text": [
+                "Participant data will not be sold to third parties. Sponsors and partner organizations may receive aggregated data. Data handling is governed by applicable Indian data protection laws."
+            ]
+        },
+        {
+            "tag": "h2",
+            "text": [
+                "8. Limitation of Liability"
+            ]
+        },
+        {
+            "tag": "p",
+            "text": [
+                "Amrita Vishwa Vidyapeetham, team bi0s, their employees, volunteers, and affiliates shall not be liable for:"
+            ]
+        },
+        {
+            "tag": "ul",
+            "text": [
+                "Any loss of data, system damage, or disruption caused during participation",
+                "Technical difficulties, connectivity issues, or platform downtime",
+                "Any indirect, consequential, or incidental loss arising from participation in InCTF 2026",
+                "Decisions made by sponsors or partner organizations regarding hiring or internship offers"
+            ]
+        },
+        {
+            "tag": "p",
+            "text": [
+                "Participants assume all risks associated with participation in a cybersecurity competition environment and acknowledge that the organizers make no warranties, express or implied, regarding the outcomes of participation."
+            ]
+        },
+        {
+            "tag": "h2",
+            "text": [
+                "9. Modifications to Terms"
+            ]
+        },
+        {
+            "tag": "p",
+            "text": [
+                "The organizers reserve the right to amend, update, or modify these Terms & Conditions at any time. Participants will be notified of material changes through the official event portal and registered email addresses. Continued participation following such notification constitutes acceptance of the revised terms."
+            ]
+        },
+        {
+            "tag": "h2",
+            "text": [
+                "10. Disqualification & Sanctions"
+            ]
+        },
+        {
+            "tag": "p",
+            "text": [
+                "The organizing team retains sole discretion to disqualify any participant or team found to be in violation of these Terms & Conditions or the event rules. Disqualified teams forfeit all prizes, awards, and registration fees without recourse. Decisions made by the organizing committee regarding disqualification are final and binding."
+            ]
+        },
+        {
+            "tag": "h2",
+            "text": [
+                "11. Governing Law & Jurisdiction"
+            ]
+        },
+        {
+            "tag": "p",
+            "text": [
+                "These Terms & Conditions shall be governed by and construed in accordance with the laws of India. Any disputes arising from or in connection with InCTF 2026 shall be subject to the exclusive jurisdiction of the courts located in Coimbatore, Tamil Nadu, India."
+            ]
+        },
+        {
+            "tag": "h2",
+            "text": [
+                "12. Contact Information"
+            ]
+        },
+        {
+            "tag": "p",
+            "text": [
+                "For queries related to registration, payment, or these Terms & Conditions, please contact the organizing team through the official channels:"
+            ]
+        },
+        {
+            "tag": "ul",
+            "text": [
+                "Website: <a href=\"https://www.inctf.in\" target=\"_blank\" rel=\"noopener noreferrer\">www.inctf.in</a>",
+                "Discord: <a href=\"https://discord.gg/pJWzURVMMH\" target=\"_blank\" rel=\"noopener noreferrer\">https://discord.gg/pJWzURVMMH</a> (Join via the link on the official website)",
+                "Mission Control Portal: <a href=\"https://inctf.in/mission-control\" target=\"_blank\" rel=\"noopener noreferrer\">inctf.in/mission-control</a>"
+            ]
+        },
+        {
+            "tag": "p",
+            "text": [
+                "For technical issues related to payment, please include your registration ID including transaction order ID and reference in all communications.\n\n",
+                "By registering for Amrita InCTF 2026 - Operation VAJRA, you confirm that you have read, understood, and agreed to these Terms & Conditions in their entirety.\n\n",
+                "© 2026 Amrita Vishwa Vidyapeetham | InCTF. All Rights Reserved."
             ]
         }
     ]
