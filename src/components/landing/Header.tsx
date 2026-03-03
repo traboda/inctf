@@ -217,11 +217,8 @@ const BorderFlicker = ({ children }: { children: React.ReactNode }) => {
 
 const LandingHeader = () => {
   const [isPopupOpen, setIsPopupOpen] = React.useState(false);
-
-  // Auto-show popup on page load
-  React.useEffect(() => {
-    setIsPopupOpen(true);
-  }, []);
+  const [shouldAutoOpen, setShouldAutoOpen] = React.useState(true);
+  const hasAutoOpenedRef = React.useRef(false);
 
   return (
     <>
@@ -306,7 +303,16 @@ const LandingHeader = () => {
 
                   <div className="plain-link w-full md:col-span-2">
                     <motion.button
-                      onClick={() => setIsPopupOpen(true)}
+                      onClick={() => {
+                        setShouldAutoOpen(false);
+                        setIsPopupOpen(true);
+                      }}
+                      onAnimationComplete={() => {
+                        if (!hasAutoOpenedRef.current && shouldAutoOpen) {
+                          hasAutoOpenedRef.current = true;
+                          setIsPopupOpen(true);
+                        }
+                      }}
                       initial={{ opacity: 0, y: 20, boxShadow: "4px 4px 0 rgba(255,255,255,0.5)" }}
                       animate={{ opacity: 1, y: 0, boxShadow: "4px 4px 0 rgba(255,255,255,0.5)" }}
                       transition={{ delay: 2.1, type: "spring" }}
