@@ -52,16 +52,12 @@ const EarlyBirdPopup: React.FC<EarlyBirdPopupProps> = ({ isOpen, onClose }) => {
 
   useEffect(() => {
     if (isOpen && mounted) {
-      // 1. Give the homepage animations time to finish (wait 2.5s)
-      const initDelay = 2.5;
-
       const tl = gsap.timeline();
 
       // Fade in overlay
       tl.to(overlayRef.current, {
         opacity: 1,
         duration: 0.4,
-        delay: initDelay,
         ease: 'power2.out',
       });
 
@@ -81,14 +77,14 @@ const EarlyBirdPopup: React.FC<EarlyBirdPopupProps> = ({ isOpen, onClose }) => {
       if (progressBarRef.current) {
         gsap.fromTo(progressBarRef.current,
           { width: '100%' },
-          { width: '0%', duration: 25, ease: 'none', delay: initDelay + 0.6 }
+          { width: '0%', duration: 25, ease: 'none', delay: 0.6 }
         );
       }
 
       // Auto-close timer
       const timer = setTimeout(() => {
         handleClose();
-      }, (25000 + (initDelay * 1000) + 600));
+      }, 25600);
 
       return () => {
         clearTimeout(timer);
