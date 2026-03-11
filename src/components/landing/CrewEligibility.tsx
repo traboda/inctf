@@ -58,7 +58,7 @@ const CrewEligibility = () => {
                             </p>
 
                             <p>
-                                <span className="text-sky-digital">&gt;</span>  Teams consisting of 2 to 5 members
+                                <span className="text-sky-digital">&gt;</span>  Teams consisting of 1 to 5 members
                             </p>
                         </div>
 
