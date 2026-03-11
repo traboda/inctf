@@ -23,6 +23,15 @@ const nextConfig = {
   },
 
   cacheComponents: true,
+
+  async redirects() {
+    return [
+      // Temporarily disabled pages — remove these entries to re-enable
+      { source: '/organizers', destination: '/404', permanent: false },
+      { source: '/advisory-board', destination: '/404', permanent: false },
+      { source: '/sponsors', destination: '/404', permanent: false },
+    ];
+  },
 };
 
 module.exports = nextConfig;
