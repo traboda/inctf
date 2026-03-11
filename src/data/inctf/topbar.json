@@ -27,18 +27,6 @@
         {
           "label": "Our Reach & Statistics",
           "link": "/about#our-reach"
-        },
-        {
-          "label": "Organizing Team",
-          "link": "/organizers"
-        },
-        {
-          "label": "Advisory Board",
-          "link": "/advisory-board"
-        },
-        {
-          "label": "Past Sponsors",
-          "link": "/sponsors"
         }
       ]
     },
@@ -53,16 +41,6 @@
         {
           "label": "Guidelines & Rules",
           "link": "/rules"
-        },
-        {
-          "label": "Prizes",
-          "badge": "3 Lks+",
-          "badgeColor": "bg-green-100",
-          "link": "championship/#prizes"
-        },
-        {
-          "label": "Past Winners",
-          "link": "/"
         }
       ]
     },
@@ -114,5 +92,32 @@
       "label": "Mission Outreach",
       "link": "/mission-outreach"
     }
-  ]
+  ],
+  "disabledMenuItems": {
+    "note": "Temporarily hidden links. Move back into menu[].items to re-enable.",
+    "items": [
+      {
+        "label": "Organizing Team",
+        "link": "/organizers"
+      },
+      {
+        "label": "Advisory Board",
+        "link": "/advisory-board"
+      },
+      {
+        "label": "Past Sponsors",
+        "link": "/sponsors"
+      },
+      {
+        "label": "Prizes",
+        "badge": "3 Lks+",
+        "badgeColor": "bg-green-100",
+        "link": "championship/#prizes"
+      },
+      {
+        "label": "Past Winners",
+        "link": "/"
+      }
+    ]
+  }
 }
