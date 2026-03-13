@@ -15,6 +15,8 @@ const HeroContainer = styled.section`
 import { motion } from 'framer-motion';
 import animations from '../../animation';
 
+const AMBASSADOR_SIGNUP_URL = 'https://forms.gle/p4Um5FE5vtUzFZfY8';
+
 const HeroSection = () => {
     const responsibilities = [
         "Representing Operation VAJRA within their institutions and communities.",
@@ -162,6 +164,21 @@ const HeroSection = () => {
                                 </motion.li>
                             ))}
                         </ul>
+
+                        <a
+                            href={AMBASSADOR_SIGNUP_URL}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center justify-center mt-8 px-6 py-3 rounded-md font-semibold tracking-wide transition-all duration-300 shadow-[0_0_10px_rgba(56,189,248,0.2)] hover:-translate-y-0.5 hover:scale-[1.02] hover:shadow-[0_0_28px_rgba(56,189,248,0.85)]"
+                            style={{
+                                fontFamily: "'Space Mono', monospace",
+                                color: '#0B1120',
+                                background: '#38BDF8',
+                                border: '1px solid rgba(56, 189, 248, 0.7)'
+                            }}
+                        >
+                            Sign Up for Ambassador Program
+                        </a>
                     </div>
                 </div>
             </motion.div>
