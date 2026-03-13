@@ -9,7 +9,7 @@ const HeroContainer = styled.section`
   margin: 0 auto;
   padding: 0 33px;
   min-height: 657px;
-  margin-bottom: 50vh;
+  margin-bottom: 80px;
 `;
 
 import { motion } from 'framer-motion';
