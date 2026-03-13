@@ -14,7 +14,7 @@ const data = require(`../../data/${eventID}/index.json`);
 import TypewriterText from '../shared/TypewriterText';
 import GlitchText from '../shared/GlitchText';
 import SectionCard from './SectionCard';
-import EarlyBirdPopup from './EarlyBirdPopup';
+// import EarlyBirdPopup from './EarlyBirdPopup';
 
 const HeaderContainer = styled.section`
   min-height: 90vh;
@@ -301,7 +301,7 @@ const LandingHeader = () => {
                     </motion.button>
                   </Link>
 
-                  <div className="plain-link w-full md:col-span-2">
+                  {/* <div className="plain-link w-full md:col-span-2">
                     <motion.button
                       onClick={() => {
                         setShouldAutoOpen(false);
@@ -323,7 +323,7 @@ const LandingHeader = () => {
                       <span className="relative z-10">[ Claim Early Bird Access ]</span>
                       <div className="absolute inset-0 bg-sky-400/20 blur-xl animate-pulse"></div>
                     </motion.button>
-                  </div>
+                  </div> */}
                 </div>
               </div>
 
@@ -365,10 +365,10 @@ const LandingHeader = () => {
         </div>
       </HeaderContainer>
 
-      <EarlyBirdPopup
+      {/* <EarlyBirdPopup
         isOpen={isPopupOpen}
         onClose={() => setIsPopupOpen(false)}
-      />
+      /> */}
     </>
   );
 };
