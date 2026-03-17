@@ -270,7 +270,7 @@ const LandingHeader = () => {
 
       if (boxes.length) {
         const tl = gsap.timeline({ delay: 0.1 });
-        tl.from(boxes, 
+        tl.from(boxes,
           { scale: 0.85, opacity: 0, duration: 0.4, ease: "back.out(1.2)", stagger: 0.08 }
         );
       }
@@ -346,7 +346,7 @@ const LandingHeader = () => {
                       ))}
                     </div>
 
-                    <motion.div 
+                    <motion.div
                       key="register-btn-wrap"
                       initial={{ scale: 0.85, opacity: 0, y: 10 }}
                       animate={{ scale: 1, opacity: 1, y: 0 }}
@@ -356,7 +356,7 @@ const LandingHeader = () => {
                       <a
                         href="https://register.inctf.in"
                         target="_blank"
-                        className="bg-black/95 hover:bg-black text-alert-crimson font-mono text-sm sm:text-base font-black tracking-wider px-7 py-2.5 sm:px-10 sm:py-3 rounded-md border-2 border-alert-crimson shadow-[0_0_12px_rgba(244,63,94,0.3)] hover:shadow-[0_0_20px_rgba(244,63,94,0.6)] hover:text-red-400 hover:border-red-400 transition-all duration-300 flex items-center justify-center uppercase mt-1 register-btn"
+                        className="bg-black/95 hover:bg-black text-alert-crimson font-mono text-sm sm:text-base font-black tracking-wider px-7 py-2.5 sm:px-10 sm:py-3 rounded-md border-2 border-alert-crimson shadow-[0_0_12px_rgba(244,63,94,0.3)] hover:shadow-[0_0_20px_rgba(244,63,94,0.6)] hover:text-red-400 hover:border-red-400 transition-all duration-300 flex items-center justify-center uppercase mt-1 register-btn opacity-70"
                         onClick={() => { if (typeof window !== 'undefined' && (window as any).gtag) (window as any).gtag('event', 'register_cta_click', { cta_location: 'countdown' }); }}
                       >
                         REGISTER NOW
