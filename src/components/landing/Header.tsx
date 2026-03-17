@@ -489,7 +489,7 @@ const LandingHeader = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 2.5, duration: 0.8 }}
-              className="relative md:absolute left-0 right-0 md:bottom-4 flex flex-col items-center gap-1 cursor-pointer z-30 mt-8 md:mt-0 w-fit mx-auto"
+              className="relative md:absolute md:bottom-2 w-full md:w-auto left-0 md:left-1/2 md:-translate-x-1/2 flex flex-col items-center gap-1 cursor-pointer z-30 mt-8 md:mt-0"
             >
               <div
                 onClick={() => gsap.to(window, { duration: 0.8, scrollTo: { y: "#mission-grid", offsetY: 240 }, ease: "power2.inOut" })}
