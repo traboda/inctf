@@ -309,7 +309,15 @@ const TopBar = ({ UTMSource = null }) => {
                       {/*) : */}
                       {topbarConfig?.CTA.type === 'link' && (
                         <div className="md:block hidden">
-                          <Link href={topbarConfig?.CTA?.link} target="_blank">
+                          <Link
+                            href={topbarConfig?.CTA?.link}
+                            target="_blank"
+                            onClick={() => {
+                              if (typeof window !== 'undefined' && (window as any).gtag) {
+                                (window as any).gtag('event', 'register_cta_click', { cta_location: 'top_bar' });
+                              }
+                            }}
+                          >
                             <span className="px-6 py-2 rounded-none border border-alert-crimson bg-alert-crimson/10 text-alert-crimson font-bold font-tactical uppercase tracking-wider hover:bg-alert-crimson hover:text-white transition-all duration-300 ml-3 shadow-[0_0_10px_rgba(244,63,94,0.25)] hover:shadow-[0_0_25px_rgba(244,63,94,0.6)] cursor-pointer inline-flex items-center">
                               {topbarConfig?.CTA?.buttonText}
                               {' '}
@@ -345,6 +353,11 @@ const TopBar = ({ UTMSource = null }) => {
                 href={topbarConfig.CTA.link}
                 target="_blank"
                 className="px-3 py-1 border border-alert-crimson bg-alert-crimson/10 text-alert-crimson font-bold uppercase tracking-wider text-xs rounded-none hover:bg-alert-crimson hover:text-white transition-all duration-300"
+                onClick={() => {
+                  if (typeof window !== 'undefined' && (window as any).gtag) {
+                    (window as any).gtag('event', 'register_cta_click', { cta_location: 'top_bar_mobile' });
+                  }
+                }}
               >
                 Register
               </Link>
