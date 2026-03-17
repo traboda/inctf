@@ -15,6 +15,7 @@ import JoinMissionControl from '../src/components/landing/JoinMissionControl';
 import BentoCard from '../src/components/landing/BentoCard';
 import Link from 'next/link';
 import BentoGridContainer from '../src/components/landing/BentoGridContainer';
+import BentoHoverButton from '../src/components/landing/BentoHoverButton';
 
 // Opt into Cache Components via 'use cache' (This will cache the public, non-personalized output of this component at build time)
 // export const dynamic = 'force-static'; 
@@ -120,16 +121,12 @@ export default async function LandingPage() {
                                         Receive mission updates, briefings, timelines, and official communications.
                                     </p>
                                     <div className="flex flex-col md:flex-row gap-4 justify-center mt-auto">
-                                        <Link href="/mission-control" className="w-full md:w-auto">
-                                            <button className="w-full md:w-auto px-3 sm:px-6 py-2.5 sm:py-3 bg-gradient-to-br from-red-900 to-red-800 border border-white/40 text-white font-mono font-bold tracking-wider rounded text-xs sm:text-sm hover:brightness-110 shadow-[0_0_12px_rgba(244,63,94,0.3)] hover:shadow-[0_0_22px_rgba(244,63,94,0.6)] transition">
-                                                [ Enter Mission Control ]
-                                            </button>
-                                        </Link>
-                                        <Link href="/mission-brief" className="w-full md:w-auto">
-                                            <button className="w-full md:w-auto px-3 sm:px-6 py-2.5 sm:py-3 bg-gradient-to-br from-red-900 to-red-800 border border-white/40 text-white font-mono font-bold tracking-wider rounded text-xs sm:text-sm hover:brightness-110 shadow-[0_0_12px_rgba(244,63,94,0.3)] hover:shadow-[0_0_22px_rgba(244,63,94,0.6)] transition">
-                                                [ View Mission Brief ]
-                                            </button>
-                                        </Link>
+                                        <BentoHoverButton href="/mission-control" className="w-full md:w-auto px-3 sm:px-6 py-2.5 sm:py-3 bg-gradient-to-br from-red-900 to-red-800 border border-white/40 text-white font-mono font-bold tracking-wider rounded text-xs sm:text-sm hover:brightness-110 shadow-[0_0_12px_rgba(244,63,94,0.3)] hover:shadow-[0_0_22px_rgba(244,63,94,0.6)] transition-all duration-300">
+                                            [ Enter Mission Control ]
+                                        </BentoHoverButton>
+                                        <BentoHoverButton href="/mission-brief" className="w-full md:w-auto px-3 sm:px-6 py-2.5 sm:py-3 bg-gradient-to-br from-red-900 to-red-800 border border-white/40 text-white font-mono font-bold tracking-wider rounded text-xs sm:text-sm hover:brightness-110 shadow-[0_0_12px_rgba(244,63,94,0.3)] hover:shadow-[0_0_22px_rgba(244,63,94,0.6)] transition-all duration-300">
+                                            [ View Mission Brief ]
+                                        </BentoHoverButton>
                                     </div>
                                 </div>
                             </BentoCard>

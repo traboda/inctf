@@ -356,7 +356,7 @@ const LandingHeader = () => {
                       <a
                         href="https://register.inctf.in"
                         target="_blank"
-                        className="bg-black/95 hover:bg-black text-alert-crimson font-mono text-sm sm:text-base font-black tracking-wider px-7 py-2.5 sm:px-10 sm:py-3 rounded-md border-2 border-alert-crimson shadow-[0_0_12px_rgba(244,63,94,0.3)] hover:shadow-[0_0_20px_rgba(244,63,94,0.6)] hover:text-red-400 hover:border-red-400 transition-all duration-300 flex items-center justify-center uppercase mt-1 register-btn opacity-70"
+                        className="bg-red-950/40 hover:bg-red-600 text-alert-crimson hover:text-white font-mono text-sm sm:text-base font-bold tracking-wider px-9 py-3 sm:px-14 sm:py-3.5 rounded-md border-2 border-alert-crimson hover:border-red-600 shadow-[0_0_12px_rgba(244,63,94,0.3)] hover:shadow-[0_0_20px_rgba(244,63,94,0.6)] transition-all duration-300 flex items-center justify-center uppercase mt-1 register-btn opacity-70 hover:opacity-100"
                         onClick={() => { if (typeof window !== 'undefined' && (window as any).gtag) (window as any).gtag('event', 'register_cta_click', { cta_location: 'countdown' }); }}
                       >
                         REGISTER NOW
@@ -439,7 +439,7 @@ const LandingHeader = () => {
                       initial={{ opacity: 0, y: 20, boxShadow: "4px 4px 0 rgba(255,255,255,0.5)" }}
                       animate={{ opacity: 1, y: 0, boxShadow: "4px 4px 0 rgba(255,255,255,0.5)" }}
                       transition={{ delay: 2.3, type: "spring" }}
-                      whileHover={{ scale: 1.02, boxShadow: "0 0 30px rgba(56,189,248,0.4), 4px 4px 0 rgba(255,255,255,0.7)" }}
+                      whileHover={{ scale: 1.02, backgroundColor: "#dc2626", color: "#ffffff", borderColor: "#dc2626", boxShadow: "0 0 30px rgba(244,63,94,0.5), 4px 4px 0 rgba(255,255,255,0.7)" }}
                       whileTap={{ scale: 0.98 }}
                       className="w-full h-full min-h-[52px] px-6 py-3 bg-gradient-to-br from-cyan-950/80 to-sky-900/80 border-2 border-cyan-400/50 text-cyan-50 font-mono tracking-wider flex items-center justify-center text-center relative overflow-hidden font-bold cursor-pointer"
                     >

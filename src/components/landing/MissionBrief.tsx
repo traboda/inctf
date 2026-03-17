@@ -56,13 +56,11 @@ const MissionBrief = () => {
                         {/* Know More Button */}
                         <div className="flex justify-center mt-10">
                             <Link href="/comingsoon">
-                                <motion.button
-                                    whileHover={{ scale: 1.03 }}
-                                    whileTap={{ scale: 0.95 }}
-                                    className="px-8 py-3 border-2 border-sky-digital/60 text-sky-digital font-mono text-lg hover:bg-sky-digital/10 transition-all font-bold tracking-wide"
+                                <button
+                                    className="px-8 py-3 border-2 border-sky-digital/60 text-sky-digital font-mono text-lg hover:!bg-red-600 hover:!text-white hover:!border-red-600 transition-all duration-300 font-bold tracking-wide hover:scale-103 active:scale-95"
                                 >
                                     [ Know More ]
-                                </motion.button>
+                                </button>
                             </Link>
                         </div>
                     </SectionCard>
