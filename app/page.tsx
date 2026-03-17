@@ -52,22 +52,22 @@ export default async function LandingPage() {
             <PastSpeakers />
 
             {/* Mission Brief Section */}
-            <section className="min-h-screen flex flex-col justify-center">
+            <section className="py-12">
                 <MissionBrief />
             </section>
 
             {/* Crew Eligibility Section */}
-            <section className="min-h-screen flex flex-col justify-center">
+            <section className="py-12">
                 <CrewEligibility />
             </section>
 
             {/* Crew Rewards Section */}
-            <section className="min-h-screen flex flex-col justify-center">
+            {/* <section className="py-12">
                 <CrewRewards />
-            </section>
+            </section> */}
 
             {/* Mission Credentials & Footer Section */}
-            <section className="min-h-screen flex flex-col justify-center">
+            <section className="py-12">
                 <MissionCredentials />
             </section>
         </div>

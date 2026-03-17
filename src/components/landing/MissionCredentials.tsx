@@ -8,7 +8,6 @@ import SectionCard from './SectionCard';
 import DecodedText from '../shared/DecodedText';
 
 const CredentialsContainer = styled.section`
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
