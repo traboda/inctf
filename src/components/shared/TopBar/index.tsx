@@ -111,6 +111,7 @@ const TopBar = ({ UTMSource = null }) => {
   const [scrollDir, setScrollDir] = useState('up');
   const [isAtTop, setIsAtTop] = useState(true);
   const [mounted, setMounted] = useState(false);
+  const [isBannerDismissed, setIsBannerDismissed] = useState(false);
 
   // Use a ref for the last scroll position to avoid closure staleness
   const lastScrollY = useRef(0);
@@ -121,6 +122,20 @@ const TopBar = ({ UTMSource = null }) => {
 
   useEffect(() => {
     setMounted(true);
+
+    const itemStr = localStorage.getItem('discord_banner_dismissed');
+    if (itemStr) {
+      try {
+        const item = JSON.parse(itemStr);
+        if (Date.now() > item.expiry) {
+          localStorage.removeItem('discord_banner_dismissed');
+        } else {
+          setIsBannerDismissed(true);
+        }
+      } catch (e) {
+        localStorage.removeItem('discord_banner_dismissed');
+      }
+    }
 
     let ticking = false;
 
@@ -160,10 +175,19 @@ const TopBar = ({ UTMSource = null }) => {
 
   const topbarConfig = require(`../../../data/${eventID}/topbar.json`);
 
+  const onDismiss = () => {
+    setIsBannerDismissed(true);
+    const item = {
+      value: 'true',
+      expiry: Date.now() + 7 * 24 * 60 * 60 * 1000 // 7 days
+    };
+    localStorage.setItem('discord_banner_dismissed', JSON.stringify(item));
+  };
+
   return (
     <>
-      {topbarConfig?.topbarCTA && (
-        <div style={{ fontSize: '14px' }} className="block p-2 bg-slate-900/90 backdrop-blur-sm text-cyan-400 relative z-[7000]">
+      {topbarConfig?.topbarCTA && !isBannerDismissed && (
+        <div style={{ fontSize: '14px' }} className="block p-2 bg-slate-900/90 backdrop-blur-sm text-cyan-400 relative z-[7000] pr-8">
           {/* Desktop Version */}
           <div className="hidden md:flex items-center justify-between container mx-auto">
             <div className="px-3 font-mono tracking-tight">
@@ -198,6 +222,17 @@ const TopBar = ({ UTMSource = null }) => {
               </Link>
             )}
           </div>
+
+          {/* Absolute Close X */}
+          <button 
+            onClick={onDismiss} 
+            className="absolute right-3 top-1/2 -translate-y-1/2 text-sky-400 hover:text-white transition-all p-1"
+            title="Dismiss Announcement"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+            </svg>
+          </button>
         </div>
       )}
       <TopbarContainer

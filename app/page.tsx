@@ -9,6 +9,7 @@ import CrewRewards from '../src/components/landing/CrewRewards';
 import MissionCredentials from '../src/components/landing/MissionCredentials';
 import PastSponsorsMarquee from '../src/components/landing/PastSponsorsMarquee';
 import PastSpeakers from '../src/components/landing/PastSpeakers';
+import CurrentSponsors from '../src/components/landing/CurrentSponsors';
 
 // Opt into Cache Components via 'use cache' (This will cache the public, non-personalized output of this component at build time)
 // export const dynamic = 'force-static'; 

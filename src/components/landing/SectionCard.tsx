@@ -14,6 +14,7 @@ const CardContainer = styled(motion.div)`
 interface SectionCardProps {
   children: React.ReactNode;
   className?: string;
+  paddingClassName?: string;
   delay?: number;
   bottomBracketOffset?: { x?: number; y?: number }; // Custom offset for bottom bracket
 }
@@ -21,11 +22,12 @@ interface SectionCardProps {
 const SectionCard: React.FC<SectionCardProps> = ({
   children,
   className = "",
+  paddingClassName = "",
   delay = 0,
   bottomBracketOffset = { x: 0, y: -16 } // Default: -16px up (current -translate-y-4)
 }) => {
   return (
-    <div className="relative group p-6 md:p-8">
+    <div className={`relative group ${paddingClassName || 'p-5 md:p-6'}`}>
 
       {/* Top-Left L-Bracket (Cyan) */}
       <motion.div
@@ -64,7 +66,7 @@ const SectionCard: React.FC<SectionCardProps> = ({
         }}
         className={`
             relative z-10 
-            p-4 md:p-8 lg:p-12 
+            ${className?.includes('!p-') ? '' : 'p-4 md:p-6 lg:p-8'} 
             overflow-hidden
             ${className}
           `}

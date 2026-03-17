@@ -1,10 +1,10 @@
 'use client';
 import React from 'react';
 import styled from '@emotion/styled';
-import { motion } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
-import { AlertTriangle, Radio, Terminal, ChevronRight, Crosshair } from 'lucide-react';
+import { AlertTriangle, Radio, Terminal, ChevronRight, Crosshair, Banknote, Users, ShieldCheck, Award, Zap } from 'lucide-react';
 
 import animations from '../../animation';
 
@@ -14,12 +14,14 @@ const data = require(`../../data/${eventID}/index.json`);
 import TypewriterText from '../shared/TypewriterText';
 import GlitchText from '../shared/GlitchText';
 import SectionCard from './SectionCard';
+import CurrentSponsors from './CurrentSponsors';
 // import EarlyBirdPopup from './EarlyBirdPopup';
 
 const HeaderContainer = styled.section`
   min-height: 90vh;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  padding-top: clamp(20px, 3vh, 50px);
   
   position: relative;
   overflow: hidden;
@@ -219,6 +221,38 @@ const LandingHeader = () => {
   const [isPopupOpen, setIsPopupOpen] = React.useState(false);
   const [shouldAutoOpen, setShouldAutoOpen] = React.useState(true);
   const hasAutoOpenedRef = React.useRef(false);
+  const [isMounted, setIsMounted] = React.useState(false);
+
+  // Sticky CTA trigger
+  const heroRef = React.useRef(null);
+  const isInView = useInView(heroRef, { amount: 0.1 });
+  const showSticky = !isInView;
+
+  const [timeLeft, setTimeLeft] = React.useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+
+  React.useEffect(() => {
+    setIsMounted(true);
+    const targetDate = new Date('2026-04-30T00:00:00');
+    const interval = setInterval(() => {
+      const now = new Date();
+      const diff = targetDate.getTime() - now.getTime();
+
+      if (diff <= 0) {
+        clearInterval(interval);
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      setTimeLeft({ days, hours, minutes, seconds });
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <>
@@ -237,7 +271,7 @@ const LandingHeader = () => {
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              className="w-full lg:w-1/2 flex flex-col items-start ml-4"
+              className="w-full lg:w-1/2 flex flex-col items-start ml-4 mt-[-10px] sm:mt-[-20px] lg:mt-[-50px]"
             >
               {/* Mission Alert Status */}
               <motion.div
@@ -253,10 +287,10 @@ const LandingHeader = () => {
               </motion.div>
 
               {/* Textbox and Buttons Container */}
-              <div className="flex flex-col items-center w-full max-w-2xl">
+              <div className="flex flex-col items-center w-full max-w-3xl">
                 {/* Content Box with Border */}
 
-                <SectionCard className="mb-0 w-full">
+                <SectionCard className="mb-0 w-full !p-3 md:!p-5" paddingClassName="p-3 md:p-4">
                   <h1 className="text-[26px] min-[400px]:text-3xl sm:text-5xl md:text-6xl font-black font-heading mb-0 text-ghost-white text-center break-words">
                     <span className="block text-[20px] min-[400px]:text-2xl sm:text-3xl md:text-4xl font-mono text-ghost-white mb-0 tracking-wide">
                       <TypewriterText text="Amrita InCTF 2026" delay={0.5} />
@@ -264,13 +298,81 @@ const LandingHeader = () => {
                     <GlitchText text="OPERATION VAJRA" strikethrough={true} className="text-[26px] min-[400px]:text-3xl sm:text-4xl md:text-5xl text-white font-black" />
                   </h1>
 
-                  <div className="text-base sm:text-lg md:text-xl text-sky-digital font-mono leading-relaxed space-y-3 md:space-y-4">
-                    <p>
-                      <span className="text-sky-digital">&gt;</span>  Operation VAJRA is a high-stakes cyber defence simulation designed to identify, train, and elite India's next generation of security specialists. Built on the principles of national resilience, this mission tests technical proficiency under simulated high-pressure environments.
-                    </p>
-                    <p className="mt-1">
-                      <span className="text-sky-digital">&gt;</span>  A multi-month cybersecurity Capture The Flag contest conducted by Amrita Vishwa Vidyapeetham and team bi0s.
-                    </p>
+                  {/* 3-Stat Strip */}
+                  <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 py-3 border-y border-sky-digital/20 w-full mt-4 font-mono text-xs sm:text-sm text-cyan-400 font-bold uppercase tracking-wider text-center">
+                    <div className="flex items-center gap-1"><Banknote size={14} /> ₹5L Prize Pool</div>
+                    <div className="hidden sm:block text-sky-digital/40">|</div>
+                    <div className="flex items-center gap-1"><Users size={14} /> Open to UG Students</div>
+                    <div className="hidden sm:block text-sky-digital/40">|</div>
+                    <div className="flex items-center gap-1"><ShieldCheck size={14} /> Teams of 1-5</div>
+                  </div>
+
+                  {/* Countdown Timer */}
+                  {isMounted && (
+                    <div className="my-2 text-center w-full border-b border-sky-digital/10 pb-3">
+                    <div className="text-[10px] font-mono text-alert-crimson font-bold animate-pulse uppercase tracking-widest mb-1">[ REGISTRATION CLOSES IN ]</div>
+                    <div className="flex justify-center gap-2 font-mono">
+                      {Object.entries(timeLeft).map(([label, value]) => (
+                        <div key={label} className="flex flex-col items-center">
+                          <div className="w-9 h-9 sm:w-11 sm:h-11 flex items-center justify-center border border-alert-crimson/60 bg-alert-crimson/5 text-alert-crimson font-bold text-base sm:text-xl rounded shadow-[0_0_8px_rgba(244,63,94,0.15)] relative">
+                            {String(value).padStart(2, '0')}
+                          </div>
+                          <div className="text-[7px] text-sky-digital/50 mt-1 uppercase tracking-wider">{label}</div>
+                        </div>
+                      ))}
+                    </div>
+
+                    <div className="mt-4 flex justify-center">
+                      <a
+                        href="https://register.inctf.in"
+                        target="_blank"
+                        className="bg-black/90 hover:bg-black/100 text-alert-crimson font-mono text-sm font-black tracking-wider px-6 py-2.5 rounded-none border border-alert-crimson shadow-[0_0_12px_rgba(244,63,94,0.4)] hover:shadow-[0_0_20px_rgba(244,63,94,0.7)] hover:text-red-400 hover:border-red-400 transition-all duration-300 flex items-center justify-center uppercase"
+                        onClick={() => { if (typeof window !== 'undefined' && (window as any).gtag) (window as any).gtag('event', 'register_cta_click', { cta_location: 'countdown' }); }}
+                      >
+                        REGISTER NOW
+                      </a>
+                    </div>
+                  </div>
+                  )}
+
+                  {/* Value Prop Cards Grid - Replacing Description */}
+                  <div className="grid grid-cols-2 gap-2 sm:gap-3 mt-1 w-full text-left">
+                    {[
+                      { icon: <Banknote size={18} />, title: "₹5 Lakh Prize Pool", desc: "Top teams win cash in final phase" },
+                      { icon: <Users size={18} />, title: "Internship Visibility", desc: "Skills-first hiring exposure to tech firms" },
+                      { icon: <ShieldCheck size={18} />, title: "Real-World Training", desc: "Hands-on scenarios built by practitioners" },
+                      { icon: <Award size={18} />, title: "Certified & Recognized", desc: "Spotlight for finalists & National Cert for all" }
+                    ].map((prop, index) => (
+                      <motion.div
+                        key={index}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.8 + index * 0.1 }}
+                        className="flex flex-col min-[380px]:flex-row items-start gap-1.5 min-[380px]:gap-3 bg-slate-900/40 border border-sky-digital/10 p-2 sm:p-3 rounded group hover:border-cyan-400/40 transition-all duration-300 backdrop-blur-sm"
+                      >
+                        <div className="text-cyan-400 mt-0.5 group-hover:scale-110 transition-transform duration-300">
+                          {prop.icon}
+                        </div>
+                        <div>
+                          <h3 className="font-heading font-bold text-white text-sm mb-0.5 tracking-wide">
+                            {prop.title}
+                          </h3>
+                          <p className="font-mono text-xs text-sky-digital/70 leading-relaxed">
+                            {prop.desc}
+                          </p>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
+
+                  {/* Card Sponsors Footer */}
+                  <div className="mt-3 pt-3 border-t border-sky-digital/10 flex flex-col items-center justify-center gap-2">
+                    <div className="text-[10px] font-mono text-cyan-400/60 uppercase tracking-widest text-center">Powered by TCS & Co-Powered by NIQ</div>
+                    <div className="flex items-center gap-5">
+                      <img src="/inctf/assets/images/current_sponsors/Tata_Consultancy_Services_old_logo.svg.png" alt="TCS Logo" className="h-10 sm:h-14 w-auto object-contain brightness-0 invert opacity-90" />
+                      <div className="w-[2px] h-8 bg-white/20"></div>
+                      <img src="/inctf/assets/images/current_sponsors/NIQ-logo-bright-blue-web.png" alt="NIQ Logo" className="h-7 sm:h-10 w-auto object-contain brightness-0 invert opacity-90" />
+                    </div>
                   </div>
                 </SectionCard>
 
@@ -335,7 +437,7 @@ const LandingHeader = () => {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1, delay: 0.2 }}
-              className="w-full lg:w-1/2 mt-0 lg:mt-0 lg:-ml-16 relative flex justify-center items-center"
+              className="w-full lg:w-1/2 mt-0 lg:mt-0 lg:translate-x-12 relative flex justify-center items-center"
             >
               {/* Rotating HUD Rings */}
               <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-sky-digital/20 rounded-full animate-spin-slow pointer-events-none"></div>
@@ -364,6 +466,7 @@ const LandingHeader = () => {
           </div>
         </div>
       </HeaderContainer>
+
 
       {/* <EarlyBirdPopup
         isOpen={isPopupOpen}
