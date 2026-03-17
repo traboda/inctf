@@ -34,10 +34,10 @@ const MissionBrief = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8 }}
-                    className="max-w-2xl mx-auto"
+                    className="w-full h-full"
                 >
                     {/* Mission Brief Box */}
-                    <SectionCard className="mb-20" bottomBracketOffset={{ y: -48 }}>
+                    <SectionCard bottomBracketOffset={{ y: -48 }}>
                         <div className="w-12 h-0.5 bg-alert-crimson mx-auto mb-6"></div>
                         <h2 className="text-4xl md:text-5xl font-bold font-mono text-ghost-white text-center mb-10 tracking-wider">
                             <DecodedText text="Mission Brief" revealSpeed={80} />

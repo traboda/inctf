@@ -4,6 +4,13 @@ import styled from '@emotion/styled';
 import { motion, useInView } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollToPlugin);
+}
 import { AlertTriangle, Radio, Terminal, ChevronRight, Crosshair, Banknote, Users, ShieldCheck, Award, Zap } from 'lucide-react';
 
 import animations from '../../animation';
@@ -254,6 +261,24 @@ const LandingHeader = () => {
     return () => clearInterval(interval);
   }, []);
 
+  useGSAP(() => {
+    if (!isMounted) return;
+
+    const timer = setTimeout(() => {
+      const boxes = document.querySelectorAll('.countdown-box');
+      const btn = document.querySelectorAll('.register-btn');
+
+      if (boxes.length) {
+        const tl = gsap.timeline({ delay: 0.1 });
+        tl.from(boxes, 
+          { scale: 0.85, opacity: 0, duration: 0.4, ease: "back.out(1.2)", stagger: 0.08 }
+        );
+      }
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, [isMounted]);
+
   return (
     <>
       <HeaderContainer suppressHydrationWarning>
@@ -287,10 +312,10 @@ const LandingHeader = () => {
               </motion.div>
 
               {/* Textbox and Buttons Container */}
-              <div className="flex flex-col items-center w-full max-w-3xl">
+              <div className="flex flex-col items-center w-full max-w-4xl">
                 {/* Content Box with Border */}
 
-                <SectionCard className="mb-0 w-full !p-3 md:!p-5" paddingClassName="p-3 md:p-4">
+                <SectionCard className="mb-0 w-full !p-2.5 md:!p-3.5" paddingClassName="p-2 md:p-2.5">
                   <h1 className="text-[26px] min-[400px]:text-3xl sm:text-5xl md:text-6xl font-black font-heading mb-0 text-ghost-white text-center break-words">
                     <span className="block text-[20px] min-[400px]:text-2xl sm:text-3xl md:text-4xl font-mono text-ghost-white mb-0 tracking-wide">
                       <TypewriterText text="Amrita InCTF 2026" delay={0.5} />
@@ -299,7 +324,7 @@ const LandingHeader = () => {
                   </h1>
 
                   {/* 3-Stat Strip */}
-                  <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 py-3 border-y border-sky-digital/20 w-full mt-4 font-mono text-xs sm:text-sm text-cyan-400 font-bold uppercase tracking-wider text-center">
+                  <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 py-2 border-y border-sky-digital/20 w-full mt-2 font-mono text-xs sm:text-sm text-cyan-400 font-bold uppercase tracking-wider text-center">
                     <div className="flex items-center gap-1"><Banknote size={14} /> ₹5L Prize Pool</div>
                     <div className="hidden sm:block text-sky-digital/40">|</div>
                     <div className="flex items-center gap-1"><Users size={14} /> Open to UG Students</div>
@@ -308,38 +333,42 @@ const LandingHeader = () => {
                   </div>
 
                   {/* Countdown Timer */}
-                  {isMounted && (
-                    <div className="my-2 text-center w-full border-b border-sky-digital/10 pb-3">
-                    <div className="text-[10px] font-mono text-alert-crimson font-bold animate-pulse uppercase tracking-widest mb-1">[ REGISTRATION CLOSES IN ]</div>
-                    <div className="flex justify-center gap-2 font-mono">
+                  <div className="my-1 text-center w-full border-b border-sky-digital/10 pb-2">
+                    <div className="text-[10px] sm:text-xs font-mono text-alert-crimson font-bold animate-pulse uppercase tracking-widest mb-1.5">[ REGISTRATION CLOSES IN ]</div>
+                    <div className="flex justify-center gap-2 sm:gap-3 font-mono">
                       {Object.entries(timeLeft).map(([label, value]) => (
-                        <div key={label} className="flex flex-col items-center">
-                          <div className="w-9 h-9 sm:w-11 sm:h-11 flex items-center justify-center border border-alert-crimson/60 bg-alert-crimson/5 text-alert-crimson font-bold text-base sm:text-xl rounded shadow-[0_0_8px_rgba(244,63,94,0.15)] relative">
+                        <div key={label} className="flex flex-col items-center countdown-box">
+                          <div className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center border-2 border-alert-crimson bg-alert-crimson/5 text-alert-crimson font-bold text-base sm:text-xl rounded-lg shadow-[0_0_10px_rgba(244,63,94,0.15)] relative" suppressHydrationWarning>
                             {String(value).padStart(2, '0')}
                           </div>
-                          <div className="text-[7px] text-sky-digital/50 mt-1 uppercase tracking-wider">{label}</div>
+                          <div className="text-[8px] sm:text-[10px] text-sky-digital/50 mt-1 uppercase tracking-wider font-semibold">{label}</div>
                         </div>
                       ))}
                     </div>
 
-                    <div className="mt-4 flex justify-center">
+                    <motion.div 
+                      key="register-btn-wrap"
+                      initial={{ scale: 0.85, opacity: 0, y: 10 }}
+                      animate={{ scale: 1, opacity: 1, y: 0 }}
+                      transition={{ delay: 0.4, type: "spring", stiffness: 100 }}
+                      className="mt-2.5 flex justify-center"
+                    >
                       <a
                         href="https://register.inctf.in"
                         target="_blank"
-                        className="bg-black/90 hover:bg-black/100 text-alert-crimson font-mono text-sm font-black tracking-wider px-6 py-2.5 rounded-none border border-alert-crimson shadow-[0_0_12px_rgba(244,63,94,0.4)] hover:shadow-[0_0_20px_rgba(244,63,94,0.7)] hover:text-red-400 hover:border-red-400 transition-all duration-300 flex items-center justify-center uppercase"
+                        className="bg-black/95 hover:bg-black text-alert-crimson font-mono text-sm sm:text-base font-black tracking-wider px-7 py-2.5 sm:px-10 sm:py-3 rounded-md border-2 border-alert-crimson shadow-[0_0_12px_rgba(244,63,94,0.3)] hover:shadow-[0_0_20px_rgba(244,63,94,0.6)] hover:text-red-400 hover:border-red-400 transition-all duration-300 flex items-center justify-center uppercase mt-1 register-btn"
                         onClick={() => { if (typeof window !== 'undefined' && (window as any).gtag) (window as any).gtag('event', 'register_cta_click', { cta_location: 'countdown' }); }}
                       >
                         REGISTER NOW
                       </a>
-                    </div>
+                    </motion.div>
                   </div>
-                  )}
 
                   {/* Value Prop Cards Grid - Replacing Description */}
                   <div className="grid grid-cols-2 gap-2 sm:gap-3 mt-1 w-full text-left">
                     {[
                       { icon: <Banknote size={18} />, title: "₹5 Lakh Prize Pool", desc: "Top teams win cash in final phase" },
-                      { icon: <Users size={18} />, title: "Internship Visibility", desc: "Skills-first hiring exposure to tech firms" },
+                      { icon: <Users size={18} />, title: "Internship Oppurtunities", desc: "Skills-first hiring exposure to tech firms" },
                       { icon: <ShieldCheck size={18} />, title: "Real-World Training", desc: "Hands-on scenarios built by practitioners" },
                       { icon: <Award size={18} />, title: "Certified & Recognized", desc: "Spotlight for finalists & National Cert for all" }
                     ].map((prop, index) => (
@@ -366,7 +395,7 @@ const LandingHeader = () => {
                   </div>
 
                   {/* Card Sponsors Footer */}
-                  <div className="mt-3 pt-3 border-t border-sky-digital/10 flex flex-col items-center justify-center gap-2">
+                  <div className="mt-2 pt-2 border-t border-sky-digital/10 flex flex-col items-center justify-center gap-1.5">
                     <div className="text-[10px] font-mono text-cyan-400/60 uppercase tracking-widest text-center">Powered by TCS & Co-Powered by NIQ</div>
                     <div className="flex items-center gap-5">
                       <img src="/inctf/assets/images/current_sponsors/Tata_Consultancy_Services_old_logo.svg.png" alt="TCS Logo" className="h-10 sm:h-14 w-auto object-contain brightness-0 invert opacity-90" />
@@ -402,30 +431,22 @@ const LandingHeader = () => {
                       [ View Mission Brief ]
                     </motion.button>
                   </Link>
-
-                  {/* <div className="plain-link w-full md:col-span-2">
+                  <div className="w-full md:col-span-2">
                     <motion.button
                       onClick={() => {
-                        setShouldAutoOpen(false);
-                        setIsPopupOpen(true);
-                      }}
-                      onAnimationComplete={() => {
-                        if (!hasAutoOpenedRef.current && shouldAutoOpen) {
-                          hasAutoOpenedRef.current = true;
-                          setIsPopupOpen(true);
-                        }
+                        gsap.to(window, { duration: 0.8, scrollTo: { y: "#mission-grid", offsetY: 320 }, ease: "power2.inOut" });
                       }}
                       initial={{ opacity: 0, y: 20, boxShadow: "4px 4px 0 rgba(255,255,255,0.5)" }}
                       animate={{ opacity: 1, y: 0, boxShadow: "4px 4px 0 rgba(255,255,255,0.5)" }}
-                      transition={{ delay: 2.1, type: "spring" }}
-                      whileHover={{ scale: 1.03, boxShadow: "0 0 40px rgba(56,189,248,0.6), 4px 4px 0 rgba(255,255,255,0.7)" }}
-                      whileTap={{ scale: 0.95 }}
-                      className="w-full h-full min-h-[56px] px-6 py-3 bg-gradient-to-br from-blue-900 to-sky-900 border-2 border-white/60 text-white font-mono tracking-wide whitespace-nowrap md:whitespace-normal flex items-center justify-center text-center shadow-[0_0_15px_rgba(56,189,248,0.3)] relative overflow-hidden"
+                      transition={{ delay: 2.3, type: "spring" }}
+                      whileHover={{ scale: 1.02, boxShadow: "0 0 30px rgba(56,189,248,0.4), 4px 4px 0 rgba(255,255,255,0.7)" }}
+                      whileTap={{ scale: 0.98 }}
+                      className="w-full h-full min-h-[52px] px-6 py-3 bg-gradient-to-br from-cyan-950/80 to-sky-900/80 border-2 border-cyan-400/50 text-cyan-50 font-mono tracking-wider flex items-center justify-center text-center relative overflow-hidden font-bold cursor-pointer"
                     >
-                      <span className="relative z-10">[ Claim Early Bird Access ]</span>
-                      <div className="absolute inset-0 bg-sky-400/20 blur-xl animate-pulse"></div>
+                      <span className="relative z-10">[ Know More ]</span>
+                      <div className="absolute inset-0 bg-sky-400/10 blur-xl animate-pulse"></div>
                     </motion.button>
-                  </div> */}
+                  </div>
                 </div>
               </div>
 
@@ -463,6 +484,28 @@ const LandingHeader = () => {
                 </motion.div>
               </HolographicFlicker>
             </motion.div>
+            {/* Scroll to Explore */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 2.5, duration: 0.8 }}
+              className="absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 cursor-pointer z-30"
+            >
+              <div
+                onClick={() => gsap.to(window, { duration: 0.8, scrollTo: { y: "#mission-grid", offsetY: 240 }, ease: "power2.inOut" })}
+                className="flex flex-col items-center gap-1 cursor-pointer"
+              >
+                <span className="font-mono text-[9px] sm:text-[10px] text-cyan-400/50 uppercase tracking-widest animate-pulse">[ Scroll to Explore ]</span>
+                <motion.div
+                  animate={{ y: [0, 6, 0] }}
+                  transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+                  className="text-cyan-400/80"
+                >
+                  <ChevronRight className="rotate-90 w-5 h-5" />
+                </motion.div>
+              </div>
+            </motion.div>
+
           </div>
         </div>
       </HeaderContainer>
