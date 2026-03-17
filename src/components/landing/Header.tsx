@@ -458,7 +458,7 @@ const LandingHeader = () => {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1, delay: 0.2 }}
-              className="w-full lg:w-1/2 mt-0 lg:mt-0 lg:translate-x-12 relative flex justify-center items-center"
+              className="hidden md:flex w-full lg:w-[42%] mt-0 lg:mt-0 lg:translate-x-12 relative justify-center items-center"
             >
               {/* Rotating HUD Rings */}
               <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-sky-digital/20 rounded-full animate-spin-slow pointer-events-none"></div>
@@ -489,7 +489,7 @@ const LandingHeader = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 2.5, duration: 0.8 }}
-              className="absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 cursor-pointer z-30"
+              className="relative md:absolute left-0 right-0 md:bottom-4 flex flex-col items-center gap-1 cursor-pointer z-30 mt-8 md:mt-0 w-fit mx-auto"
             >
               <div
                 onClick={() => gsap.to(window, { duration: 0.8, scrollTo: { y: "#mission-grid", offsetY: 240 }, ease: "power2.inOut" })}
