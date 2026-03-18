@@ -554,7 +554,7 @@ const questions = [
       'Yes, it\'s a team participation.',
     ],
     'answer': <>
-      Yes, it's a team participation, usually with teams of up to 3 members. Please check the current year's rules for confirmation.
+      Yes, it's a team participation, usually with teams of 1 to 5 members. Please check the current year's rules for confirmation.
     </>,
     tags: ['rules'],
   },
