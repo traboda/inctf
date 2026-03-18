@@ -8,7 +8,6 @@ import SectionCard from './SectionCard';
 import DecodedText from '../shared/DecodedText';
 
 const CrewEligibilityContainer = styled.section`
-  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -35,10 +34,10 @@ const CrewEligibility = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8 }}
-                    className="max-w-3xl mx-auto"
+                    className="w-full h-full"
                 >
                     {/* Crew Eligibility Box */}
-                    <SectionCard className="mb-20" bottomBracketOffset={{ y: -48 }}>
+                    <SectionCard bottomBracketOffset={{ y: -48 }}>
                         <div className="w-12 h-0.5 bg-alert-crimson mx-auto mb-6"></div>
                         <h2 className="text-4xl md:text-5xl font-bold font-mono text-ghost-white text-center mb-10 tracking-wider">
                             <DecodedText text="Mission CREW ELIGIBILITY" revealSpeed={60} />
@@ -65,13 +64,11 @@ const CrewEligibility = () => {
                         {/* Know More Button */}
                         <div className="flex justify-center mt-10">
                             <Link href="/comingsoon">
-                                <motion.button
-                                    whileHover={{ scale: 1.03 }}
-                                    whileTap={{ scale: 0.95 }}
-                                    className="px-8 py-3 border-2 border-sky-digital/60 text-sky-digital font-mono text-lg hover:bg-sky-digital/10 transition-all font-bold tracking-wide"
+                                <button
+                                    className="px-8 py-3 border-2 border-sky-digital/60 text-sky-digital font-mono text-lg hover:!bg-red-600 hover:!text-white hover:!border-red-600 transition-all duration-300 font-bold tracking-wide hover:scale-103 active:scale-95"
                                 >
                                     [ Know More ]
-                                </motion.button>
+                                </button>
                             </Link>
                         </div>
                     </SectionCard>

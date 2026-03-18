@@ -8,7 +8,6 @@ import SectionCard from './SectionCard';
 import DecodedText from '../shared/DecodedText';
 
 const MissionBriefContainer = styled.section`
-  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -35,10 +34,10 @@ const MissionBrief = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8 }}
-                    className="max-w-2xl mx-auto"
+                    className="w-full h-full"
                 >
                     {/* Mission Brief Box */}
-                    <SectionCard className="mb-20" bottomBracketOffset={{ y: -48 }}>
+                    <SectionCard bottomBracketOffset={{ y: -48 }}>
                         <div className="w-12 h-0.5 bg-alert-crimson mx-auto mb-6"></div>
                         <h2 className="text-4xl md:text-5xl font-bold font-mono text-ghost-white text-center mb-10 tracking-wider">
                             <DecodedText text="Mission Brief" revealSpeed={80} />
@@ -57,13 +56,11 @@ const MissionBrief = () => {
                         {/* Know More Button */}
                         <div className="flex justify-center mt-10">
                             <Link href="/comingsoon">
-                                <motion.button
-                                    whileHover={{ scale: 1.03 }}
-                                    whileTap={{ scale: 0.95 }}
-                                    className="px-8 py-3 border-2 border-sky-digital/60 text-sky-digital font-mono text-lg hover:bg-sky-digital/10 transition-all font-bold tracking-wide"
+                                <button
+                                    className="px-8 py-3 border-2 border-sky-digital/60 text-sky-digital font-mono text-lg hover:!bg-red-600 hover:!text-white hover:!border-red-600 transition-all duration-300 font-bold tracking-wide hover:scale-103 active:scale-95"
                                 >
                                     [ Know More ]
-                                </motion.button>
+                                </button>
                             </Link>
                         </div>
                     </SectionCard>
