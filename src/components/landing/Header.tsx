@@ -14,6 +14,7 @@ if (typeof window !== 'undefined') {
 import { AlertTriangle, Radio, Terminal, ChevronRight, Crosshair, Banknote, Users, ShieldCheck, Award, Zap } from 'lucide-react';
 
 import animations from '../../animation';
+import { trackRegisterClick } from '../../utils/trackRegisterClick';
 
 const eventID = process.env.EVENT_ID || process.env.NEXT_PUBLIC_EVENT_ID;
 const data = require(`../../data/${eventID}/index.json`);
@@ -356,8 +357,14 @@ const LandingHeader = () => {
                       <a
                         href="https://register.inctf.in"
                         target="_blank"
+                        rel="noopener noreferrer"
                         className="bg-red-950/40 hover:bg-red-600 text-alert-crimson hover:text-white font-mono text-sm sm:text-base font-bold tracking-wider px-9 py-3 sm:px-14 sm:py-3.5 rounded-md border-2 border-alert-crimson hover:border-red-600 shadow-[0_0_12px_rgba(244,63,94,0.3)] hover:shadow-[0_0_20px_rgba(244,63,94,0.6)] transition-all duration-300 flex items-center justify-center uppercase mt-1 register-btn opacity-70 hover:opacity-100"
-                        onClick={() => { if (typeof window !== 'undefined' && (window as any).gtag) (window as any).gtag('event', 'register_cta_click', { cta_location: 'countdown' }); }}
+                        onClick={(event) =>
+                          trackRegisterClick(event, {
+                            ctaLocation: 'countdown',
+                            url: 'https://register.inctf.in',
+                          })
+                        }
                       >
                         REGISTER NOW
                       </a>
@@ -398,9 +405,25 @@ const LandingHeader = () => {
                   <div className="mt-2 pt-2 border-t border-sky-digital/10 flex flex-col items-center justify-center gap-1.5">
                     <div className="text-[10px] font-mono text-cyan-400/60 uppercase tracking-widest text-center">Powered by TCS & Co-Powered by NIQ</div>
                     <div className="flex items-center gap-5">
-                      <img src="/inctf/assets/images/current_sponsors/Tata_Consultancy_Services_old_logo.svg.png" alt="TCS Logo" className="h-10 sm:h-14 w-auto object-contain brightness-0 invert opacity-90" />
+                        <a
+                          href="https://www.tcs.com/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label="Visit TCS"
+                          className="transition-opacity duration-300 hover:opacity-100"
+                        >
+                          <img src="/inctf/assets/images/current_sponsors/Tata_Consultancy_Services_old_logo.svg.png" alt="TCS Logo" className="h-10 sm:h-14 w-auto object-contain brightness-0 invert opacity-90" />
+                        </a>
                       <div className="w-[2px] h-8 bg-white/20"></div>
-                      <img src="/inctf/assets/images/current_sponsors/NIQ-logo-bright-blue-web.png" alt="NIQ Logo" className="h-7 sm:h-10 w-auto object-contain brightness-0 invert opacity-90" />
+                        <a
+                          href="https://nielseniq.com/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label="Visit NIQ"
+                          className="transition-opacity duration-300 hover:opacity-100"
+                        >
+                          <img src="/inctf/assets/images/current_sponsors/NIQ-logo-bright-blue-web.png" alt="NIQ Logo" className="h-7 sm:h-10 w-auto object-contain brightness-0 invert opacity-90" />
+                        </a>
                     </div>
                   </div>
                 </SectionCard>
