@@ -14,6 +14,7 @@ if (typeof window !== 'undefined') {
 import { AlertTriangle, Radio, Terminal, ChevronRight, Crosshair, Banknote, Users, ShieldCheck, Award, Zap } from 'lucide-react';
 
 import animations from '../../animation';
+import { trackRegisterClick } from '../../utils/trackRegisterClick';
 
 const eventID = process.env.EVENT_ID || process.env.NEXT_PUBLIC_EVENT_ID;
 const data = require(`../../data/${eventID}/index.json`);
@@ -356,8 +357,14 @@ const LandingHeader = () => {
                       <a
                         href="https://register.inctf.in"
                         target="_blank"
+                        rel="noopener noreferrer"
                         className="bg-red-950/40 hover:bg-red-600 text-alert-crimson hover:text-white font-mono text-sm sm:text-base font-bold tracking-wider px-9 py-3 sm:px-14 sm:py-3.5 rounded-md border-2 border-alert-crimson hover:border-red-600 shadow-[0_0_12px_rgba(244,63,94,0.3)] hover:shadow-[0_0_20px_rgba(244,63,94,0.6)] transition-all duration-300 flex items-center justify-center uppercase mt-1 register-btn opacity-70 hover:opacity-100"
-                        onClick={() => { if (typeof window !== 'undefined' && (window as any).gtag) (window as any).gtag('event', 'register_cta_click', { cta_location: 'countdown' }); }}
+                        onClick={(event) =>
+                          trackRegisterClick(event, {
+                            ctaLocation: 'countdown',
+                            url: 'https://register.inctf.in',
+                          })
+                        }
                       >
                         REGISTER NOW
                       </a>

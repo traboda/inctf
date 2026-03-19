@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import Link from 'next/link';
 
 import SocialMediaLinks from '../SocialMediaLinks';
+import { trackRegisterClick } from '../../../utils/trackRegisterClick';
 import { ChevronDown, ChevronUp, X } from 'lucide-react';
 
 const SideBarMenu = styled.div`
@@ -120,10 +121,15 @@ const MobileMenu = ({ onClose, config }) => {
         {cta && (
           <Link
             href={cta.link || '#'}
-            onClick={() => {
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={(event) => {
               onClose?.();
-              if (typeof window !== 'undefined' && (window as any).gtag) {
-                (window as any).gtag('event', 'register_cta_click', { cta_location: 'mobile_nav' });
+              if (cta.link) {
+                trackRegisterClick(event, {
+                  ctaLocation: 'mobile_nav',
+                  url: cta.link,
+                });
               }
             }}
             className="block w-full"

@@ -5,6 +5,7 @@ import { Terminal, ArrowRight, Radio } from 'lucide-react';
 import Link from 'next/link';
 
 import animation from '@/src/animation';
+import { trackRegisterClick } from '@/src/utils/trackRegisterClick';
 
 const eventID = process.env.EVENT_ID || process.env.NEXT_PUBLIC_EVENT_ID;
 const data = require(`../../data/${eventID}/index.json`);
@@ -52,6 +53,14 @@ const LandingJoinMissionControl = ({ UTMSource }: { UTMSource?: string }) => {
           {/* Primary Action */}
           <a
             href={registerUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={(event) =>
+              trackRegisterClick(event, {
+                ctaLocation: UTMSource ? `cta_reg_${UTMSource}` : 'cta_reg',
+                url: registerUrl,
+              })
+            }
             className="group relative px-8 py-4 bg-sky-digital text-black font-bold font-heading text-lg tracking-wider uppercase overflow-hidden"
           >
             <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
