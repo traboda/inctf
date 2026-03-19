@@ -398,9 +398,25 @@ const LandingHeader = () => {
                   <div className="mt-2 pt-2 border-t border-sky-digital/10 flex flex-col items-center justify-center gap-1.5">
                     <div className="text-[10px] font-mono text-cyan-400/60 uppercase tracking-widest text-center">Powered by TCS & Co-Powered by NIQ</div>
                     <div className="flex items-center gap-5">
-                      <img src="/inctf/assets/images/current_sponsors/Tata_Consultancy_Services_old_logo.svg.png" alt="TCS Logo" className="h-10 sm:h-14 w-auto object-contain brightness-0 invert opacity-90" />
+                        <a
+                          href="https://www.tcs.com/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label="Visit TCS"
+                          className="transition-opacity duration-300 hover:opacity-100"
+                        >
+                          <img src="/inctf/assets/images/current_sponsors/Tata_Consultancy_Services_old_logo.svg.png" alt="TCS Logo" className="h-10 sm:h-14 w-auto object-contain brightness-0 invert opacity-90" />
+                        </a>
                       <div className="w-[2px] h-8 bg-white/20"></div>
-                      <img src="/inctf/assets/images/current_sponsors/NIQ-logo-bright-blue-web.png" alt="NIQ Logo" className="h-7 sm:h-10 w-auto object-contain brightness-0 invert opacity-90" />
+                        <a
+                          href="https://nielseniq.com/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label="Visit NIQ"
+                          className="transition-opacity duration-300 hover:opacity-100"
+                        >
+                          <img src="/inctf/assets/images/current_sponsors/NIQ-logo-bright-blue-web.png" alt="NIQ Logo" className="h-7 sm:h-10 w-auto object-contain brightness-0 invert opacity-90" />
+                        </a>
                     </div>
                   </div>
                 </SectionCard>
