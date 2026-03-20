@@ -361,7 +361,6 @@ const LandingHeader = () => {
                         className="bg-red-950/40 hover:bg-red-600 text-alert-crimson hover:text-white font-mono text-sm sm:text-base font-bold tracking-wider px-9 py-3 sm:px-14 sm:py-3.5 rounded-md border-2 border-alert-crimson hover:border-red-600 shadow-[0_0_12px_rgba(244,63,94,0.3)] hover:shadow-[0_0_20px_rgba(244,63,94,0.6)] transition-all duration-300 flex items-center justify-center uppercase mt-1 register-btn opacity-70 hover:opacity-100"
                         onClick={(event) =>
                           trackRegisterClick(event, {
-                            ctaLocation: 'countdown',
                             url: 'https://register.inctf.in',
                           })
                         }
