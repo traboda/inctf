@@ -297,7 +297,7 @@ const LandingHeader = () => {
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              className="w-full lg:w-1/2 flex flex-col items-start ml-4 mt-[-10px] sm:mt-[-20px] lg:mt-[-50px]"
+              className="w-full lg:w-1/2 flex flex-col items-start ml-4"
             >
               {/* Mission Alert Status */}
               <motion.div
@@ -313,10 +313,10 @@ const LandingHeader = () => {
               </motion.div>
 
               {/* Textbox and Buttons Container */}
-              <div className="flex flex-col items-center w-full max-w-4xl">
+              <div className="flex flex-col w-full max-w-4xl mt-5 sm:mt-8">
                 {/* Content Box with Border */}
 
-                <SectionCard className="mb-0 w-full !p-2.5 md:!p-3.5" paddingClassName="p-2 md:p-2.5">
+                <SectionCard className="mb-0 w-full !p-2.5 md:!p-3.5" paddingClassName="p-0">
                   <h1 className="text-[26px] min-[400px]:text-3xl sm:text-5xl md:text-6xl font-black font-heading mb-0 text-ghost-white text-center break-words">
                     <span className="block text-[20px] min-[400px]:text-2xl sm:text-3xl md:text-4xl font-mono text-ghost-white mb-0 tracking-wide">
                       <TypewriterText text="Amrita InCTF 2026" delay={0.5} />
@@ -334,7 +334,7 @@ const LandingHeader = () => {
                   </div>
 
                   {/* Countdown Timer */}
-                  <div className="my-1 text-center w-full border-b border-sky-digital/10 pb-2">
+                  <div className="my-3 text-center w-full border-b border-sky-digital/10 pb-2 mt-3">
                     <div className="text-[10px] sm:text-xs font-mono text-alert-crimson font-bold animate-pulse uppercase tracking-widest mb-1.5">[ REGISTRATION CLOSES IN ]</div>
                     <div className="flex justify-center gap-2 sm:gap-3 font-mono">
                       {Object.entries(timeLeft).map(([label, value]) => (
@@ -374,28 +374,25 @@ const LandingHeader = () => {
                   {/* Value Prop Cards Grid - Replacing Description */}
                   <div className="grid grid-cols-2 gap-2 sm:gap-3 mt-1 w-full text-left">
                     {[
-                      { icon: <Banknote size={18} />, title: "₹5 Lakh Prize Pool", desc: "Top teams win cash in final phase" },
-                      { icon: <Users size={18} />, title: "Internship Oppurtunities", desc: "Skills-first hiring exposure to tech firms" },
-                      { icon: <ShieldCheck size={18} />, title: "Real-World Training", desc: "Hands-on scenarios built by practitioners" },
-                      { icon: <Award size={18} />, title: "Certified & Recognized", desc: "Spotlight for finalists & National Cert for all" }
+                      { icon: <Banknote size={18} />, title: "₹5 Lakh Prize Pool" },
+                      { icon: <Users size={18} />, title: "Internship Oppurtunities" },
+                      { icon: <ShieldCheck size={18} />, title: "Real-World Training" },
+                      { icon: <Award size={18} />, title: "Certified & Recognized" }
                     ].map((prop, index) => (
                       <motion.div
                         key={index}
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.8 + index * 0.1 }}
-                        className="flex flex-col min-[380px]:flex-row items-start gap-1.5 min-[380px]:gap-3 bg-slate-900/40 border border-sky-digital/10 p-2 sm:p-3 rounded group hover:border-cyan-400/40 transition-all duration-300 backdrop-blur-sm"
+                        className="flex flex-col min-[380px]:flex-row items-start gap-1.5 min-[380px]:gap-3 bg-slate-900/50 border border-sky-digital/30 p-2 sm:p-3 rounded backdrop-blur-sm shadow-[0_0_25px_rgba(56,189,248,0.35)]"
                       >
-                        <div className="text-cyan-400 mt-0.5 group-hover:scale-110 transition-transform duration-300">
+                        <div className="text-cyan-400 mt-0.5">
                           {prop.icon}
                         </div>
                         <div>
                           <h3 className="font-heading font-bold text-white text-sm mb-0.5 tracking-wide">
                             {prop.title}
                           </h3>
-                          <p className="font-mono text-xs text-sky-digital/70 leading-relaxed">
-                            {prop.desc}
-                          </p>
                         </div>
                       </motion.div>
                     ))}
@@ -428,7 +425,7 @@ const LandingHeader = () => {
                   </div>
                 </SectionCard>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-2 lg:gap-3 justify-center w-full px-4 sm:px-8 mt-1">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-2 lg:gap-3 justify-center w-full mt-4">
                   <Link href="/mission-control" className="plain-link w-full">
                     <motion.button
                       initial={{ opacity: 0, y: 20, boxShadow: "4px 4px 0 rgba(255,255,255,0.5)" }}
@@ -512,7 +509,7 @@ const LandingHeader = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 2.5, duration: 0.8 }}
-              className="relative md:absolute md:bottom-2 w-full md:w-auto left-0 md:left-1/2 md:-translate-x-1/2 flex flex-col items-center gap-1 cursor-pointer z-30 mt-8 md:mt-0"
+              className="relative md:absolute md:bottom-2 w-full md:w-auto left-0 md:left-1/2 md:-translate-x-1/2 flex md:hidden flex-col items-center gap-1 cursor-pointer z-30 mt-8 md:mt-0"
             >
               <div
                 onClick={() => gsap.to(window, { duration: 0.8, scrollTo: { y: "#mission-grid", offsetY: 240 }, ease: "power2.inOut" })}

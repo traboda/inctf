@@ -61,7 +61,7 @@ export default async function LandingPage() {
             <section className="py-16 relative z-30" id="mission-grid">
                 <div className="container mx-auto px-4">
                     <BentoGridContainer>
-                        
+
                         {/* 1. Mission Brief (Desktop: 2/3 wide, Row 1 Left | Mobile Rank 1) */}
                         <div className="md:col-span-2 flex w-full bento-card-wrapper opacity-0">
                             <BentoCard title="Mission Brief">
@@ -72,7 +72,7 @@ export default async function LandingPage() {
                                     </div>
                                     <div className="mt-auto text-center">
                                         <Link href="/mission-brief">
-                                            <button className="px-6 py-2 border border-alert-crimson text-alert-crimson font-mono uppercase tracking-wider text-sm hover:bg-alert-crimson/10 transition shadow-[0_0_12px_rgba(244,63,94,0.25)] hover:shadow-[0_0_20px_rgba(244,63,94,0.5)]">
+                                            <button className="px-6 py-2 border border-alert-crimson text-alert-crimson hover:bg-alert-crimson hover:text-white hover:-translate-y-1 font-mono uppercase tracking-wider text-sm transition shadow-[0_0_12px_rgba(244,63,94,0.25)] hover:shadow-[0_0_20px_rgba(244,63,94,0.5)]">
                                                 [ Know More ]
                                             </button>
                                         </Link>
@@ -93,7 +93,7 @@ export default async function LandingPage() {
                                     </ul>
                                     <div className="mt-auto text-center">
                                         <Link href="/eligibility">
-                                            <button className="px-6 py-2 border border-alert-crimson text-alert-crimson font-mono uppercase tracking-wider text-sm hover:bg-alert-crimson/10 transition shadow-[0_0_12px_rgba(244,63,94,0.25)] hover:shadow-[0_0_20px_rgba(244,63,94,0.5)]">
+                                            <button className="px-6 py-2 border border-alert-crimson text-alert-crimson hover:bg-alert-crimson hover:text-white hover:-translate-y-1 font-mono uppercase tracking-wider text-sm transition shadow-[0_0_12px_rgba(244,63,94,0.25)] hover:shadow-[0_0_20px_rgba(244,63,94,0.5)]">
                                                 [ Know More ]
                                             </button>
                                         </Link>
@@ -121,10 +121,10 @@ export default async function LandingPage() {
                                         Receive mission updates, briefings, timelines, and official communications.
                                     </p>
                                     <div className="flex flex-col md:flex-row gap-4 justify-center mt-auto">
-                                        <BentoHoverButton href="/mission-control" className="w-full md:w-auto px-3 sm:px-6 py-2.5 sm:py-3 bg-gradient-to-br from-red-900 to-red-800 border border-white/40 text-white font-mono font-bold tracking-wider rounded text-xs sm:text-sm hover:brightness-110 shadow-[0_0_12px_rgba(244,63,94,0.3)] hover:shadow-[0_0_22px_rgba(244,63,94,0.6)] transition-all duration-300">
+                                        <BentoHoverButton href="/mission-control" className="w-full md:w-auto px-10 sm:px-16 py-4 sm:py-5 bg-gradient-to-br from-red-900 to-red-800 border border-white/40 text-white font-mono font-bold tracking-wider rounded text-xs sm:text-sm hover:brightness-110 shadow-[0_0_12px_rgba(244,63,94,0.3)] hover:shadow-[0_0_22px_rgba(244,63,94,0.6)] transition-all duration-300">
                                             [ Enter Mission Control ]
                                         </BentoHoverButton>
-                                        <BentoHoverButton href="/mission-brief" className="w-full md:w-auto px-3 sm:px-6 py-2.5 sm:py-3 bg-gradient-to-br from-red-900 to-red-800 border border-white/40 text-white font-mono font-bold tracking-wider rounded text-xs sm:text-sm hover:brightness-110 shadow-[0_0_12px_rgba(244,63,94,0.3)] hover:shadow-[0_0_22px_rgba(244,63,94,0.6)] transition-all duration-300">
+                                        <BentoHoverButton href="/mission-brief" className="w-full md:w-auto px-10 sm:px-16 py-4 sm:py-5 bg-gradient-to-br from-red-900 to-red-800 border border-white/40 text-white font-mono font-bold tracking-wider rounded text-xs sm:text-sm hover:brightness-110 shadow-[0_0_12px_rgba(244,63,94,0.3)] hover:shadow-[0_0_22px_rgba(244,63,94,0.6)] transition-all duration-300">
                                             [ View Mission Brief ]
                                         </BentoHoverButton>
                                     </div>

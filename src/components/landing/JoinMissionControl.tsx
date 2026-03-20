@@ -31,7 +31,7 @@ const JoinMissionControl = () => {
                             whileHover={{ scale: 1.03, boxShadow: "0 0 40px rgba(244,63,94,0.6), 4px 4px 0 rgba(255,255,255,0.7)" }}
                             whileTap={{ scale: 0.95 }}
                             style={{ boxShadow: "4px 4px 0 rgba(255,255,255,0.5)" }}
-                            className="px-8 py-4 bg-gradient-to-br from-red-900 to-red-800 border-2 border-white/60 text-white font-mono font-bold text-lg tracking-wide rounded"
+                            className="px-16 py-6 bg-gradient-to-br from-red-900 to-red-800 border-2 border-white/60 text-white font-mono font-bold text-lg tracking-wide rounded"
                         >
                             [ Enter Mission Control ]
                         </motion.button>
@@ -42,7 +42,7 @@ const JoinMissionControl = () => {
                             whileHover={{ scale: 1.03, boxShadow: "0 0 40px rgba(244,63,94,0.6), 4px 4px 0 rgba(255,255,255,0.7)" }}
                             whileTap={{ scale: 0.95 }}
                             style={{ boxShadow: "4px 4px 0 rgba(255,255,255,0.5)" }}
-                            className="px-8 py-4 bg-gradient-to-br from-red-900 to-red-800 border-2 border-white/60 text-white font-mono font-bold text-lg tracking-wide rounded"
+                            className="px-16 py-6 bg-gradient-to-br from-red-900 to-red-800 border-2 border-white/60 text-white font-mono font-bold text-lg tracking-wide rounded"
                         >
                             [ View Mission Brief ]
                         </motion.button>
