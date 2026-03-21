@@ -24,6 +24,7 @@ import GlitchText from '../shared/GlitchText';
 import SectionCard from './SectionCard';
 import CurrentSponsors from './CurrentSponsors';
 // import EarlyBirdPopup from './EarlyBirdPopup';
+import BentoGalleryCollage from './BentoGalleryCollage';
 
 const HeaderContainer = styled.section`
   min-height: 90vh;
@@ -257,6 +258,7 @@ const LandingHeader = () => {
       const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
       setTimeLeft({ days, hours, minutes, seconds });
+
     }, 1000);
 
     return () => clearInterval(interval);
@@ -297,7 +299,7 @@ const LandingHeader = () => {
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              className="w-full lg:w-1/2 flex flex-col items-start ml-4"
+              className="w-full lg:w-1/2 flex flex-col items-start -mt-4 lg:-mt-12 xl:-mt-16 ml-4"
             >
               {/* Mission Alert Status */}
               <motion.div
@@ -336,6 +338,7 @@ const LandingHeader = () => {
                   {/* Countdown Timer */}
                   <div className="my-3 text-center w-full border-b border-sky-digital/10 pb-2 mt-3">
                     <div className="text-[10px] sm:text-xs font-mono text-alert-crimson font-bold animate-pulse uppercase tracking-widest mb-1.5">[ REGISTRATION CLOSES IN ]</div>
+
                     <div className="flex justify-center gap-2 sm:gap-3 font-mono">
                       {Object.entries(timeLeft).map(([label, value]) => (
                         <div key={label} className="flex flex-col items-center countdown-box">
@@ -401,25 +404,25 @@ const LandingHeader = () => {
                   <div className="mt-2 pt-2 border-t border-sky-digital/10 flex flex-col items-center justify-center gap-1.5">
                     <div className="text-[10px] font-mono text-cyan-400/60 uppercase tracking-widest text-center">Powered by TCS & Co-Powered by NIQ</div>
                     <div className="flex items-center gap-5">
-                        <a
-                          href="https://www.tcs.com/"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label="Visit TCS"
-                          className="transition-opacity duration-300 hover:opacity-100"
-                        >
-                          <img src="/inctf/assets/images/current_sponsors/Tata_Consultancy_Services_old_logo.svg.png" alt="TCS Logo" className="h-10 sm:h-14 w-auto object-contain brightness-0 invert opacity-90" />
-                        </a>
+                      <a
+                        href="https://www.tcs.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Visit TCS"
+                        className="transition-opacity duration-300 hover:opacity-100"
+                      >
+                        <img src="/inctf/assets/images/current_sponsors/Tata_Consultancy_Services_old_logo.svg.png" alt="TCS Logo" className="h-10 sm:h-14 w-auto object-contain brightness-0 invert opacity-90" />
+                      </a>
                       <div className="w-[2px] h-8 bg-white/20"></div>
-                        <a
-                          href="https://nielseniq.com/"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label="Visit NIQ"
-                          className="transition-opacity duration-300 hover:opacity-100"
-                        >
-                          <img src="/inctf/assets/images/current_sponsors/NIQ-logo-bright-blue-web.png" alt="NIQ Logo" className="h-7 sm:h-10 w-auto object-contain brightness-0 invert opacity-90" />
-                        </a>
+                      <a
+                        href="https://nielseniq.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Visit NIQ"
+                        className="transition-opacity duration-300 hover:opacity-100"
+                      >
+                        <img src="/inctf/assets/images/current_sponsors/NIQ-logo-bright-blue-web.png" alt="NIQ Logo" className="h-7 sm:h-10 w-auto object-contain brightness-0 invert opacity-90" />
+                      </a>
                     </div>
                   </div>
                 </SectionCard>
@@ -494,7 +497,7 @@ const LandingHeader = () => {
                   <img
                     src="/inctf/assets/design/Homepage/satellite_laser.webp"
                     alt="InCTF Satellite"
-                    className="w-[80%] md:w-[650px] lg:w-[800px] h-auto object-contain md:filter-none filter blur-sm opacity-20 md:opacity-100 scale-150 md:scale-100"
+                    className="w-[80%] md:w-[650px] lg:w-[800px] h-auto object-contain md:filter-none filter blur-sm opacity-20 md:opacity-50 scale-150 md:scale-100 mt-24 ml-24"
                     draggable="false"
                     style={{
                       filter: 'drop-shadow(0 0 30px rgba(56, 189, 248, 0.4))'
@@ -502,6 +505,11 @@ const LandingHeader = () => {
                   />
                 </motion.div>
               </HolographicFlicker>
+
+              {/* Bento Grid Collage Overlay */}
+              <div className="absolute inset-0 z-20 flex items-center justify-center p-4">
+                <BentoGalleryCollage />
+              </div>
             </motion.div>
             {/* Scroll to Explore */}
             <motion.div
