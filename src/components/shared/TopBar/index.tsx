@@ -315,7 +315,6 @@ const TopBar = ({ UTMSource = null }) => {
                             target="_blank"
                             onClick={(event) => {
                               trackRegisterClick(event, {
-                                ctaLocation: 'top_bar',
                                 url: topbarConfig?.CTA?.link,
                               });
                             }}
@@ -357,7 +356,6 @@ const TopBar = ({ UTMSource = null }) => {
                 className="px-3 py-1 border border-alert-crimson bg-alert-crimson/10 text-alert-crimson font-bold uppercase tracking-wider text-xs rounded-none hover:bg-alert-crimson hover:text-white transition-all duration-300"
                 onClick={(event) => {
                   trackRegisterClick(event, {
-                    ctaLocation: 'top_bar_mobile',
                     url: topbarConfig.CTA.link,
                   });
                 }}
