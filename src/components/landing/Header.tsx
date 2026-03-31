@@ -24,7 +24,6 @@ import GlitchText from '../shared/GlitchText';
 import SectionCard from './SectionCard';
 import CurrentSponsors from './CurrentSponsors';
 // import EarlyBirdPopup from './EarlyBirdPopup';
-import BentoGalleryCollage from './BentoGalleryCollage';
 
 const HeaderContainer = styled.section`
   min-height: 90vh;
@@ -299,7 +298,7 @@ const LandingHeader = () => {
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              className="w-full lg:w-1/2 flex flex-col items-start -mt-4 lg:-mt-12 xl:-mt-16 ml-4"
+              className="w-full lg:w-3/5 flex flex-col items-start mt-12 lg:-mt-12 xl:-mt-16 ml-4 md:ml-0"
             >
               {/* Mission Alert Status */}
               <motion.div
@@ -315,19 +314,19 @@ const LandingHeader = () => {
               </motion.div>
 
               {/* Textbox and Buttons Container */}
-              <div className="flex flex-col w-full max-w-4xl mt-5 sm:mt-8">
+              <div className="flex flex-col w-full max-w-4xl mt-12 md:mt-20 sm:mt-8">
                 {/* Content Box with Border */}
 
-                <SectionCard className="mb-0 w-full !p-2.5 md:!p-3.5" paddingClassName="p-0">
-                  <h1 className="text-[26px] min-[400px]:text-3xl sm:text-5xl md:text-6xl font-black font-heading mb-0 text-ghost-white text-center break-words">
+                <SectionCard className="mb-0 w-full !p-6 md:!py-16 md:!px-12" paddingClassName="p-0">
+                  <h1 className="text-[32px] min-[400px]:text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black font-heading mb-0 text-ghost-white text-center break-words">
                     <span className="block text-[20px] min-[400px]:text-2xl sm:text-3xl md:text-4xl font-mono text-ghost-white mb-0 tracking-wide">
                       <TypewriterText text="Amrita InCTF 2026" delay={0.5} />
                     </span>
-                    <GlitchText text="OPERATION VAJRA" strikethrough={true} className="text-[26px] min-[400px]:text-3xl sm:text-4xl md:text-5xl text-white font-black" />
+                    <GlitchText text="OPERATION VAJRA" strikethrough={true} className="text-[28px] min-[400px]:text-3xl sm:text-5xl md:text-6xl text-white font-black" />
                   </h1>
 
                   {/* 3-Stat Strip */}
-                  <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 py-2 border-y border-sky-digital/20 w-full mt-2 font-mono text-xs sm:text-sm text-cyan-400 font-bold uppercase tracking-wider text-center">
+                  <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-8 py-4 border-y border-sky-digital/20 w-full mt-8 font-mono font-bold uppercase tracking-wider text-center">
                     <div className="flex items-center gap-1"><Banknote size={14} /> ₹5L Prize Pool</div>
                     <div className="hidden sm:block text-sky-digital/40">|</div>
                     <div className="flex items-center gap-1"><Users size={14} /> Open to UG Students</div>
@@ -335,7 +334,8 @@ const LandingHeader = () => {
                     <div className="flex items-center gap-1"><ShieldCheck size={14} /> Teams of 1-5</div>
                   </div>
 
-                  {/* Countdown Timer */}
+                  {/* Countdown Timer (Commented Out) */}
+                  {/* 
                   <div className="my-3 text-center w-full border-b border-sky-digital/10 pb-2 mt-3">
                     <div className="text-[10px] sm:text-xs font-mono text-alert-crimson font-bold animate-pulse uppercase tracking-widest mb-1.5">[ REGISTRATION CLOSES IN ]</div>
 
@@ -372,9 +372,10 @@ const LandingHeader = () => {
                       </a>
                     </motion.div>
                   </div>
+                  */}
 
                   {/* Value Prop Cards Grid - Replacing Description */}
-                  <div className="grid grid-cols-2 gap-2 sm:gap-3 mt-1 w-full text-left">
+                  <div className="grid grid-cols-2 gap-4 sm:gap-6 mt-8 w-full text-left">
                     {[
                       { icon: <Banknote size={18} />, title: "₹5 Lakh Prize Pool" },
                       { icon: <Users size={18} />, title: "Internship Oppurtunities" },
@@ -392,7 +393,7 @@ const LandingHeader = () => {
                           {prop.icon}
                         </div>
                         <div>
-                          <h3 className="font-heading font-bold text-white text-sm mb-0.5 tracking-wide">
+                          <h3 className="font-heading font-bold text-white text-base md:text-lg mb-0.5 tracking-wide">
                             {prop.title}
                           </h3>
                         </div>
@@ -400,10 +401,11 @@ const LandingHeader = () => {
                     ))}
                   </div>
 
-                  {/* Card Sponsors Footer */}
-                  <div className="mt-2 pt-2 border-t border-sky-digital/10 flex flex-col items-center justify-center gap-1.5">
-                    <div className="text-[10px] font-mono text-cyan-400/60 uppercase tracking-widest text-center">Powered by TCS & Co-Powered by NIQ</div>
-                    <div className="flex items-center gap-5">
+                  {/* Card Sponsors Footer (Moved to page body) */}
+                  {/* 
+                  <div className="mt-8 pt-8 border-t border-sky-digital/10 flex flex-col items-center justify-center gap-4">
+                    <div className="text-xs font-mono text-cyan-400/60 uppercase tracking-[0.2em] text-center">Powered by TCS & Co-Powered by NIQ</div>
+                    <div className="flex items-center gap-8">
                       <a
                         href="https://www.tcs.com/"
                         target="_blank"
@@ -411,9 +413,9 @@ const LandingHeader = () => {
                         aria-label="Visit TCS"
                         className="transition-opacity duration-300 hover:opacity-100"
                       >
-                        <img src="/inctf/assets/images/current_sponsors/Tata_Consultancy_Services_old_logo.svg.png" alt="TCS Logo" className="h-10 sm:h-14 w-auto object-contain brightness-0 invert opacity-90" />
+                        <img src="/inctf/assets/images/current_sponsors/Tata_Consultancy_Services_old_logo.svg.png" alt="TCS Logo" className="h-8 sm:h-12 w-auto object-contain brightness-0 invert opacity-90" />
                       </a>
-                      <div className="w-[2px] h-8 bg-white/20"></div>
+                      <div className="w-[1px] h-6 bg-white/10"></div>
                       <a
                         href="https://nielseniq.com/"
                         target="_blank"
@@ -421,13 +423,14 @@ const LandingHeader = () => {
                         aria-label="Visit NIQ"
                         className="transition-opacity duration-300 hover:opacity-100"
                       >
-                        <img src="/inctf/assets/images/current_sponsors/NIQ-logo-bright-blue-web.png" alt="NIQ Logo" className="h-7 sm:h-10 w-auto object-contain brightness-0 invert opacity-90" />
+                        <img src="/inctf/assets/images/current_sponsors/NIQ-logo-bright-blue-web.png" alt="NIQ Logo" className="h-6 sm:h-8 w-auto object-contain brightness-0 invert opacity-90" />
                       </a>
                     </div>
                   </div>
+                  */}
                 </SectionCard>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-2 lg:gap-3 justify-center w-full mt-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6 justify-center w-full mt-6 md:mt-8">
                   <Link href="/mission-control" className="plain-link w-full">
                     <motion.button
                       initial={{ opacity: 0, y: 20, boxShadow: "4px 4px 0 rgba(255,255,255,0.5)" }}
@@ -470,17 +473,16 @@ const LandingHeader = () => {
                     </motion.button>
                   </div>
                 </div>
+
+                {/* Relocated Sponsors Row */}
               </div>
-
-
-
             </motion.div>
 
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1, delay: 0.2 }}
-              className="hidden md:flex w-full lg:w-[42%] mt-0 lg:mt-0 lg:translate-x-12 relative justify-center items-center"
+              className="hidden md:flex w-full lg:w-[45%] mt-0 lg:mt-0 lg:translate-x-4 relative justify-center items-center"
             >
               {/* Rotating HUD Rings */}
               <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-sky-digital/20 rounded-full animate-spin-slow pointer-events-none"></div>
@@ -494,10 +496,10 @@ const LandingHeader = () => {
                   transition={{ duration: 1.2, delay: 0.5 }}
                   className="relative z-10 floating md:static absolute inset-0 md:inset-auto flex justify-center items-center pointer-events-none md:pointer-events-auto mt-0"
                 >
-                  <img
-                    src="/inctf/assets/design/Homepage/satellite_laser.webp"
-                    alt="InCTF Satellite"
-                    className="w-[80%] md:w-[650px] lg:w-[800px] h-auto object-contain md:filter-none filter blur-sm opacity-20 md:opacity-50 scale-150 md:scale-100 mt-24 ml-24"
+                    <img
+                      src="/inctf/assets/design/Homepage/satellite_laser.webp"
+                      alt="InCTF Satellite"
+                      className="w-[68%] md:w-[550px] lg:w-[680px] h-auto object-contain md:filter-none filter blur-none opacity-40 md:opacity-90 scale-150 md:scale-100 mt-4 ml-24"
                     draggable="false"
                     style={{
                       filter: 'drop-shadow(0 0 30px rgba(56, 189, 248, 0.4))'
@@ -506,10 +508,6 @@ const LandingHeader = () => {
                 </motion.div>
               </HolographicFlicker>
 
-              {/* Bento Grid Collage Overlay */}
-              <div className="absolute inset-0 z-20 flex items-center justify-center p-4">
-                <BentoGalleryCollage />
-              </div>
             </motion.div>
             {/* Scroll to Explore */}
             <motion.div

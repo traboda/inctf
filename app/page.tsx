@@ -8,7 +8,8 @@ import CrewEligibility from '../src/components/landing/CrewEligibility';
 import CrewRewards from '../src/components/landing/CrewRewards';
 import MissionCredentials from '../src/components/landing/MissionCredentials';
 import PastSponsorsMarquee from '../src/components/landing/PastSponsorsMarquee';
-import PastSpeakers from '../src/components/landing/PastSpeakers';
+import CurrentSpeakers from '../src/components/landing/CurrentSpeakers';
+import OperationTimeline from '../src/components/landing/OperationTimeline';
 import CurrentSponsors from '../src/components/landing/CurrentSponsors';
 import Footer from '../src/components/shared/Footer';
 import JoinMissionControl from '../src/components/landing/JoinMissionControl';
@@ -47,6 +48,7 @@ export default async function LandingPage() {
 
             <section className="relative z-50 overflow-x-hidden pt-12 md:pt-10 flex flex-col justify-center -mt-4 md:-mt-8">
                 <LandingHeader />
+                <CurrentSponsors />
             </section>
 
             {/* Past Sponsors Marquee */}
@@ -54,8 +56,11 @@ export default async function LandingPage() {
                 <PastSponsorsMarquee />
             </section>
 
-            {/* Past Speakers Section */}
-            <PastSpeakers />
+            {/* Mission Timeline Section */}
+            <OperationTimeline />
+
+            {/* Current Speakers Section */}
+            <CurrentSpeakers />
 
             {/* Bento Grid Section */}
             <section className="py-16 relative z-30" id="mission-grid">
@@ -121,10 +126,10 @@ export default async function LandingPage() {
                                         Receive mission updates, briefings, timelines, and official communications.
                                     </p>
                                     <div className="flex flex-col md:flex-row gap-4 justify-center mt-auto">
-                                        <BentoHoverButton href="/mission-control" className="w-full md:w-auto px-10 sm:px-16 py-4 sm:py-5 bg-gradient-to-br from-red-900 to-red-800 border border-white/40 text-white font-mono font-bold tracking-wider rounded text-xs sm:text-sm hover:brightness-110 shadow-[0_0_12px_rgba(244,63,94,0.3)] hover:shadow-[0_0_22px_rgba(244,63,94,0.6)] transition-all duration-300">
+                                        <BentoHoverButton href="/mission-control" className="w-full md:w-auto px-6 sm:px-16 py-4 sm:py-5 bg-gradient-to-br from-red-900 to-red-800 border border-white/40 text-white font-mono font-bold tracking-wider rounded text-[10px] sm:text-sm hover:brightness-110 shadow-[0_0_12px_rgba(244,63,94,0.3)] hover:shadow-[0_0_22px_rgba(244,63,94,0.6)] transition-all duration-300 whitespace-nowrap flex items-center justify-center">
                                             [ Enter Mission Control ]
                                         </BentoHoverButton>
-                                        <BentoHoverButton href="/mission-brief" className="w-full md:w-auto px-10 sm:px-16 py-4 sm:py-5 bg-gradient-to-br from-red-900 to-red-800 border border-white/40 text-white font-mono font-bold tracking-wider rounded text-xs sm:text-sm hover:brightness-110 shadow-[0_0_12px_rgba(244,63,94,0.3)] hover:shadow-[0_0_22px_rgba(244,63,94,0.6)] transition-all duration-300">
+                                        <BentoHoverButton href="/mission-brief" className="w-full md:w-auto px-6 sm:px-16 py-4 sm:py-5 bg-gradient-to-br from-red-900 to-red-800 border border-white/40 text-white font-mono font-bold tracking-wider rounded text-[10px] sm:text-sm hover:brightness-110 shadow-[0_0_12px_rgba(244,63,94,0.3)] hover:shadow-[0_0_22px_rgba(244,63,94,0.6)] transition-all duration-300 whitespace-nowrap flex items-center justify-center">
                                             [ View Mission Brief ]
                                         </BentoHoverButton>
                                     </div>
