@@ -2,6 +2,7 @@ import type { MouseEvent } from 'react';
 
 type RegisterClickOptions = {
   url: string;
+  ctaLocation?: string;
   target?: '_blank' | '_self';
 };
 
@@ -9,7 +10,7 @@ const NAVIGATION_FALLBACK_DELAY_MS = 500;
 
 export function trackRegisterClick(
   event: MouseEvent<HTMLAnchorElement>,
-  { url, target = '_blank' }: RegisterClickOptions,
+  { url, ctaLocation = 'general', target = '_blank' }: RegisterClickOptions,
 ) {
   if (typeof window === 'undefined') {
     return;
@@ -49,6 +50,7 @@ export function trackRegisterClick(
   window.gtag('event', 'register_cta_click', {
     transport_type: 'beacon',
     event_callback: navigateOnce,
+    cta_location: ctaLocation,
   });
 
   window.setTimeout(navigateOnce, NAVIGATION_FALLBACK_DELAY_MS);
