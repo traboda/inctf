@@ -1,7 +1,14 @@
 'use client';
 import React, { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, X } from 'lucide-react';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 interface Speaker {
     name: string;
@@ -29,17 +36,11 @@ const speakers: Speaker[] = [
 ];
 
 const SpeakerCard: React.FC<{ speaker: Speaker; index: number; onClick: () => void }> = ({ speaker, index, onClick }) => {
-    const ref = useRef<HTMLDivElement>(null);
-    const isInView = useInView(ref, { once: true });
     const isClickable = !!speaker.bio;
 
     return (
-        <motion.div
-            ref={ref}
-            className={`flex-shrink-0 w-[85vw] sm:w-72 md:w-80 snap-center group ${isClickable ? 'cursor-pointer' : 'cursor-default'}`}
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: index * 0.1, ease: 'easeOut' }}
+        <div
+            className={`speaker-card flex-shrink-0 w-[85vw] sm:w-72 md:w-80 snap-center group opacity-0 ${isClickable ? 'cursor-pointer' : 'cursor-default'}`}
             onClick={isClickable ? onClick : undefined}
         >
             <div className={`relative h-full min-h-[380px] md:min-h-[440px] rounded-lg overflow-hidden border border-sky-400/20 bg-slate-900/40 backdrop-blur-sm transition-all duration-300 p-5 md:p-8 flex flex-col items-center text-center ${isClickable ? 'group-hover:border-sky-400/80 group-hover:shadow-[0_0_25px_rgba(56,189,248,0.15)]' : ''
@@ -88,15 +89,50 @@ const SpeakerCard: React.FC<{ speaker: Speaker; index: number; onClick: () => vo
                 <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-sky-400/50 z-10" />
                 <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-sky-400/50 z-10" />
             </div>
-        </motion.div>
+        </div>
     );
 };
 
 const CurrentSpeakers: React.FC = () => {
+    const containerRef = useRef<HTMLDivElement>(null);
     const scrollRef = useRef<HTMLDivElement>(null);
-    const titleRef = useRef<HTMLDivElement>(null);
-    const isTitleInView = useInView(titleRef, { once: true });
     const [selectedSpeaker, setSelectedSpeaker] = React.useState<Speaker | null>(null);
+
+    useGSAP(() => {
+        if (!containerRef.current) return;
+
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: containerRef.current,
+                start: 'top 85%',
+                toggleActions: 'play none none none'
+            }
+        });
+
+        // Animate Title
+        tl.fromTo('.speakers-header', 
+            { opacity: 0, y: 30 },
+            { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }
+        );
+
+        // Stagger Cards
+        tl.fromTo('.speaker-card',
+            { 
+                opacity: 0, 
+                y: 40,
+                scale: 0.95
+            },
+            { 
+                opacity: 1, 
+                y: 0, 
+                scale: 1,
+                duration: 0.8, 
+                stagger: 0.1, 
+                ease: 'power3.out'
+            },
+            '-=0.6'
+        );
+    }, { scope: containerRef });
 
     React.useEffect(() => {
         const header = document.querySelector('header');
@@ -126,15 +162,10 @@ const CurrentSpeakers: React.FC = () => {
     };
 
     return (
-        <section className="relative z-10 w-full py-16 md:py-24 overflow-hidden">
+        <section className="relative z-10 w-full py-16 md:py-24 overflow-hidden" ref={containerRef}>
             {/* Section Header */}
-            <div ref={titleRef} className="px-6 md:px-16 mb-10 md:mb-16">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={isTitleInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.5 }}
-                    className="flex flex-row items-end justify-between gap-2"
-                >
+            <div className="speakers-header px-6 md:px-16 mb-10 md:mb-16 opacity-0">
+                <div className="flex flex-row items-end justify-between gap-2">
                     <div>
                         <p className="font-mono text-sky-400 text-xs tracking-[0.3em] uppercase mb-3">
                             [ Expert Speakers ]
@@ -159,7 +190,7 @@ const CurrentSpeakers: React.FC = () => {
                             <ChevronRight size={20} />
                         </button>
                     </div>
-                </motion.div>
+                </div>
 
                 <div className="mt-6 h-[1px] w-full bg-gradient-to-r from-sky-400/60 via-sky-400/20 to-transparent" />
             </div>
@@ -180,7 +211,7 @@ const CurrentSpeakers: React.FC = () => {
             </div>
 
             {/* Speaker Bio Modal */}
-            <motion.div initial={false}>
+            <AnimatePresence>
                 {selectedSpeaker && (
                     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 md:p-10 text-left">
                         {/* Backdrop */}
@@ -248,7 +279,7 @@ const CurrentSpeakers: React.FC = () => {
                         </motion.div>
                     </div>
                 )}
-            </motion.div>
+            </AnimatePresence>
         </section>
     );
 };
