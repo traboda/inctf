@@ -7,7 +7,7 @@ import MissionBrief from '../src/components/landing/MissionBrief';
 import CrewEligibility from '../src/components/landing/CrewEligibility';
 import CrewRewards from '../src/components/landing/CrewRewards';
 import MissionCredentials from '../src/components/landing/MissionCredentials';
-import PastSponsorsMarquee from '../src/components/landing/PastSponsorsMarquee';
+import PastSponsorsTable from '../src/components/landing/PastSponsorsTable';
 import CurrentSpeakers from '../src/components/landing/CurrentSpeakers';
 import OperationTimeline from '../src/components/landing/OperationTimeline';
 import CurrentSponsors from '../src/components/landing/CurrentSponsors';
@@ -51,10 +51,6 @@ export default async function LandingPage() {
                 <CurrentSponsors />
             </section>
 
-            {/* Past Sponsors Marquee */}
-            <section className="relative z-10 w-full overflow-hidden bg-obsidian border-t border-sky-digital/20">
-                <PastSponsorsMarquee />
-            </section>
 
             {/* Mission Timeline Section */}
             <OperationTimeline />
@@ -140,6 +136,9 @@ export default async function LandingPage() {
                     </BentoGridContainer>
                 </div>
             </section>
+
+            {/* Past Sponsors */}
+            <PastSponsorsTable />
 
             {/* Footer */}
             <Footer />

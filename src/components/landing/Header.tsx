@@ -377,10 +377,10 @@ const LandingHeader = () => {
                   {/* Value Prop Cards Grid - Replacing Description */}
                   <div className="grid grid-cols-2 gap-4 sm:gap-6 mt-8 w-full text-left">
                     {[
-                      { icon: <Banknote size={18} />, title: "₹5 Lakh Prize Pool" },
-                      { icon: <Users size={18} />, title: "Internship Oppurtunities" },
-                      { icon: <ShieldCheck size={18} />, title: "Real-World Training" },
-                      { icon: <Award size={18} />, title: "Certified & Recognized" }
+                      { icon: <Banknote size={18} />, title: "₹5 Lakh Worth Grand Prize Pool" },
+                      { icon: <Users size={18} />, title: "Placement & Internship Opportunities" },
+                      { icon: <ShieldCheck size={18} />, title: "Expert Training & Sessions" },
+                      { icon: <Award size={18} />, title: "Get Certified & Recognized" }
                     ].map((prop, index) => (
                       <motion.div
                         key={index}

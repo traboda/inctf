@@ -1,43 +1,50 @@
 'use client';
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 
 interface Speaker {
     name: string;
     title: string;
     company: string;
     image: string;
+    bio?: string;
 }
 
 const speakers: Speaker[] = [
     {
-        name: 'Speaker Name',
-        title: 'Their Info',
-        company: 'EXPERT SPEAKER',
-        image: '/inctf/assets/images/current_speakers/speaker1.jpeg',
+        name: 'Sreepriya C',
+        title: '101 to Product Security Incident Response (PSIRT)',
+        company: 'Siemens',
+        image: '/inctf/assets/images/current_speakers/Sreepriya_C.jpeg',
+        bio: `Sreepriya Chalakkal is a Product Security Incident Response Team (PSIRT) engineer at Siemens, where she works on vulnerability handling and securing large-scale industrial and enterprise systems. Her expertise spans telecommunication security, protocol analysis, and real-world network infrastructures.\n\nPrior to this, she worked as a security researcher at ERNW GmbH, focusing on mobile and telecom security, including technologies like VoLTE and core network protocols.\n\nShe is a former core member and mentor of team bi0s and a strong advocate for diversity in cybersecurity. She founded Team Shakti and is a key organizer of ShaktiCon, contributing to building a more inclusive global security community.`
     },
     {
-        name: 'Speaker Name',
-        title: 'Their Info',
-        company: 'EXPERT SPEAKER',
-        image: '/inctf/assets/images/current_speakers/speaker2.jpeg',
+        name: 'Abhishek JM',
+        title: '',
+        company: 'Cred',
+        image: '/inctf/assets/images/current_speakers/Abhishek_JM.jpeg',
+        // Keeping bio and role blank/unclickable
+        bio: ''
     },
 ];
 
-const SpeakerCard: React.FC<{ speaker: Speaker; index: number }> = ({ speaker, index }) => {
+const SpeakerCard: React.FC<{ speaker: Speaker; index: number; onClick: () => void }> = ({ speaker, index, onClick }) => {
     const ref = useRef<HTMLDivElement>(null);
     const isInView = useInView(ref, { once: true });
+    const isClickable = !!speaker.bio;
 
     return (
         <motion.div
             ref={ref}
-            className="flex-shrink-0 w-[85vw] sm:w-72 md:w-80 snap-center group"
+            className={`flex-shrink-0 w-[85vw] sm:w-72 md:w-80 snap-center group ${isClickable ? 'cursor-pointer' : 'cursor-default'}`}
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: index * 0.1, ease: 'easeOut' }}
+            onClick={isClickable ? onClick : undefined}
         >
-            <div className="relative h-full min-h-[380px] md:min-h-[440px] rounded-lg overflow-hidden border border-sky-400/20 bg-slate-900/60 backdrop-blur-sm transition-all duration-300 group-hover:border-sky-400/80 group-hover:shadow-[0_0_25px_rgba(56,189,248,0.2)] p-5 md:p-8 flex flex-col items-center text-center">
+            <div className={`relative h-full min-h-[380px] md:min-h-[440px] rounded-lg overflow-hidden border border-sky-400/20 bg-slate-900/40 backdrop-blur-sm transition-all duration-300 p-5 md:p-8 flex flex-col items-center text-center ${isClickable ? 'group-hover:border-sky-400/80 group-hover:shadow-[0_0_25px_rgba(56,189,248,0.15)]' : ''
+                }`}>
 
                 <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-sky-400 z-10" />
                 <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-sky-400 z-10" />
@@ -69,6 +76,13 @@ const SpeakerCard: React.FC<{ speaker: Speaker; index: number }> = ({ speaker, i
                     <p className="font-mono text-sky-400 text-xs md:text-sm font-semibold tracking-wide mt-auto">
                         {speaker.company}
                     </p>
+                    {isClickable && (
+                        <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <span className="font-mono text-[9px] text-sky-400 border border-sky-400/30 px-3 py-1 rounded-full uppercase tracking-widest">
+                                View Intel
+                            </span>
+                        </div>
+                    )}
                 </div>
 
                 {/* Bottom Corner Accents */}
@@ -83,6 +97,7 @@ const CurrentSpeakers: React.FC = () => {
     const scrollRef = useRef<HTMLDivElement>(null);
     const titleRef = useRef<HTMLDivElement>(null);
     const isTitleInView = useInView(titleRef, { once: true });
+    const [selectedSpeaker, setSelectedSpeaker] = React.useState<Speaker | null>(null);
 
     const scroll = (direction: 'left' | 'right') => {
         if (scrollRef.current) {
@@ -139,9 +154,85 @@ const CurrentSpeakers: React.FC = () => {
                 style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch' }}
             >
                 {speakers.map((speaker, index) => (
-                    <SpeakerCard key={`${speaker.name}-${index}`} speaker={speaker} index={index} />
+                    <SpeakerCard
+                        key={`${speaker.name}-${index}`}
+                        speaker={speaker}
+                        index={index}
+                        onClick={() => setSelectedSpeaker(speaker)}
+                    />
                 ))}
             </div>
+
+            {/* Speaker Bio Modal */}
+            <motion.div initial={false}>
+                {selectedSpeaker && (
+                    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-10">
+                        {/* Backdrop */}
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            onClick={() => setSelectedSpeaker(null)}
+                            className="absolute inset-0 bg-black/80 backdrop-blur-xl"
+                        />
+
+                        {/* Modal Content */}
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                            animate={{ opacity: 1, scale: 1, y: 0 }}
+                            exit={{ opacity: 0, scale: 0.9, y: 20 }}
+                            className="relative w-full max-w-4xl bg-slate-900 border border-sky-400/30 rounded-lg overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.5)] flex flex-col md:flex-row max-h-[90vh]"
+                        >
+                            {/* Tactical Accents */}
+                            <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-sky-400 m-4 z-10" />
+                            <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-sky-400 m-4 z-10" />
+
+                            <button
+                                onClick={() => setSelectedSpeaker(null)}
+                                className="absolute top-6 right-6 z-20 p-2 text-sky-400 hover:text-white hover:bg-sky-400/20 transition-all rounded-md"
+                            >
+                                <X size={24} />
+                            </button>
+
+                            {/* Left Side: Photo & Quick Info */}
+                            <div className="w-full md:w-1/3 bg-slate-950 p-8 flex flex-col items-center justify-center border-b md:border-b-0 md:border-r border-sky-400/20">
+                                <div className="relative w-32 h-32 md:w-48 md:h-48 mb-6">
+                                    <div className="absolute inset-0 rounded-full bg-gradient-to-br from-sky-400 via-purple-500 to-pink-500 p-[3px]">
+                                        <div className="w-full h-full rounded-full bg-slate-900 p-[2px]">
+                                            <img
+                                                src={selectedSpeaker.image}
+                                                alt={selectedSpeaker.name}
+                                                className="w-full h-full rounded-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                                <h4 className="text-white font-heading font-bold text-xl md:text-2xl text-center mb-1 uppercase">
+                                    {selectedSpeaker.name}
+                                </h4>
+                                <p className="text-sky-400 font-mono text-sm uppercase tracking-widest text-center mb-4">
+                                    {selectedSpeaker.company}
+                                </p>
+                                <div className="h-px w-24 bg-sky-400/30" />
+                            </div>
+
+                            {/* Right Side: Bio & Mission Intel */}
+                            <div className="w-full md:w-2/3 p-8 md:p-12 overflow-y-auto">
+                                <div className="mb-8">
+                                    <h5 className="text-white font-heading text-lg md:text-xl font-semibold mb-6 uppercase tracking-wider border-b border-sky-400/10 pb-4">
+                                        {selectedSpeaker.title}
+                                    </h5>
+                                    <div className="prose prose-invert max-w-none">
+                                        <p className="text-white/80 font-mono text-sm leading-relaxed whitespace-pre-line mb-4">
+                                            {selectedSpeaker.bio}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </motion.div>
+                    </div>
+                )}
+            </motion.div>
         </section>
     );
 };
