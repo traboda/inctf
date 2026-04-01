@@ -99,6 +99,23 @@ const CurrentSpeakers: React.FC = () => {
     const isTitleInView = useInView(titleRef, { once: true });
     const [selectedSpeaker, setSelectedSpeaker] = React.useState<Speaker | null>(null);
 
+    React.useEffect(() => {
+        const header = document.querySelector('header');
+        if (selectedSpeaker) {
+            document.body.style.overflow = 'hidden';
+            if (window.innerWidth <= 768 && header) {
+                header.style.display = 'none';
+            }
+        } else {
+            document.body.style.overflow = 'unset';
+            if (header) header.style.display = 'flex';
+        }
+        return () => {
+            document.body.style.overflow = 'unset';
+            if (header) header.style.display = 'flex';
+        };
+    }, [selectedSpeaker]);
+
     const scroll = (direction: 'left' | 'right') => {
         if (scrollRef.current) {
             const amount = 320;
@@ -166,22 +183,22 @@ const CurrentSpeakers: React.FC = () => {
             {/* Speaker Bio Modal */}
             <motion.div initial={false}>
                 {selectedSpeaker && (
-                    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-10">
+                    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 md:p-10 text-left">
                         {/* Backdrop */}
                         <motion.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
                             onClick={() => setSelectedSpeaker(null)}
-                            className="absolute inset-0 bg-black/80 backdrop-blur-xl"
+                            className="absolute inset-0 bg-black/90 backdrop-blur-xl"
                         />
 
                         {/* Modal Content */}
                         <motion.div
-                            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                            initial={{ opacity: 0, scale: 0.95, y: 20 }}
                             animate={{ opacity: 1, scale: 1, y: 0 }}
-                            exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                            className="relative w-full max-w-4xl bg-slate-900 border border-sky-400/30 rounded-lg overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.5)] flex flex-col md:flex-row max-h-[90vh]"
+                            exit={{ opacity: 0, scale: 0.95, y: 20 }}
+                            className="relative w-full max-w-4xl bg-slate-900 border border-sky-400/30 rounded-lg overflow-y-auto md:overflow-hidden shadow-[0_0_80px_rgba(0,0,0,0.8),0_0_30px_rgba(56,189,248,0.1)] flex flex-col md:flex-row max-h-[90vh] md:max-h-[85vh]"
                         >
                             {/* Tactical Accents */}
                             <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-sky-400 m-4 z-10" />
