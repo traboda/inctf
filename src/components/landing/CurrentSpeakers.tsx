@@ -21,11 +21,10 @@ const speakers: Speaker[] = [
     },
     {
         name: 'Abhishek JM',
-        title: '',
+        title: 'Lead Security Engineer at CRED',
         company: 'Cred',
         image: '/inctf/assets/images/current_speakers/Abhishek_JM.jpeg',
-        // Keeping bio and role blank/unclickable
-        bio: ''
+        bio: `Abhishek JM is a Lead Security Engineer at CRED, specializing in mobile security and application security for large-scale fintech systems. He is also a trainer at 7ASecurity, where he has delivered hands-on training at global conferences including OWASP AppSec New Zealand, 44Con, and ThreatCon.\n\nWith extensive experience in offensive security, Abhishek leads security research projects such as Adhrit and EVABS, focusing on advanced mobile and application security testing. His work has been presented at premier venues like Black Hat (Asia, US, Europe) and OWASP Seasides, with his tool Adhrit gaining industry recognition.\n\nHe is an active contributor to the security community, regularly speaking at conferences and meetups, and has also served as a trainer for international security programs, helping mentor the next generation of cybersecurity professionals.`
     },
 ];
 
