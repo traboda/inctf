@@ -1,7 +1,13 @@
 "use client";
 
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef } from 'react';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 const sponsors = [
     { name: 'Schneider Electric', logo: '/assets/images/past_sponsors/Schneider.png' },
@@ -19,8 +25,62 @@ const sponsors = [
 ];
 
 const PastSponsorsTable = () => {
+    const containerRef = useRef<HTMLDivElement>(null);
+
+    useGSAP(() => {
+        if (!containerRef.current) return;
+
+        const cells = containerRef.current.querySelectorAll('.sponsor-cell');
+        
+        // Initial state set via CSS (opacity: 0)
+        
+        gsap.to(cells, {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.8,
+            stagger: 0.1,
+            ease: 'expo.out',
+            scrollTrigger: {
+                trigger: containerRef.current,
+                start: 'top 85%',
+                toggleActions: 'play none none none'
+            },
+            onStart: (target) => {
+                // Simplified Decoding jitter effect using random opacity jumps
+                gsap.to(cells, {
+                    opacity: 1,
+                    overwrite: 'auto'
+                });
+            }
+        });
+
+        // Add a secondary "decoding" flutter for each element
+        cells.forEach((cell, i) => {
+            gsap.fromTo(cell, 
+                { opacity: 0 },
+                {
+                    opacity: 1,
+                    duration: 0.1,
+                    repeat: 4,
+                    repeatDelay: 0.05,
+                    yoyo: true,
+                    delay: i * 0.1, // Match stagger
+                    scrollTrigger: {
+                        trigger: containerRef.current,
+                        start: 'top 85%',
+                    },
+                    onComplete: () => {
+                        gsap.set(cell, { opacity: 1 });
+                    }
+                }
+            );
+        });
+
+    }, { scope: containerRef });
+
     return (
-        <section className="w-full relative py-16 md:py-24 bg-obsidian/80 border-t border-sky-400/10" id="past-sponsors">
+        <section className="w-full relative py-16 md:py-24 bg-obsidian/80 border-t border-sky-400/10" id="past-sponsors" ref={containerRef}>
             <div className="container mx-auto px-4 max-w-6xl">
                 <div className="mb-12 flex flex-col items-center gap-4 text-center">
                     <div className="flex items-center gap-4 md:gap-6">
@@ -32,17 +92,14 @@ const PastSponsorsTable = () => {
                     </div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 border-l border-t border-sky-400/10">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 border-l border-t border-sky-400/10 relative">
+                    {/* Parent Grid Intersection Nodes (Top/Left edges) */}
+                    <div className="absolute -top-[5px] -left-[3px] text-sky-400/40 font-mono text-[10px] z-20">+</div>
+                    
                     {sponsors.map((sponsor, index) => (
-                        <motion.div
+                        <div
                             key={sponsor.name}
-                            initial={{ opacity: 0 }}
-                            whileInView={{ opacity: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: index * 0.05 }}
-                            className={`aspect-[5/2] flex items-center justify-center border-r border-b border-sky-400/10 group hover:bg-sky-400/5 transition-all duration-300 relative overflow-hidden ${
-                                sponsor.isLarge ? 'p-2' : 'p-8'
-                            }`}
+                            className={`sponsor-cell aspect-[5/2] flex items-center justify-center border-r border-b border-sky-400/10 group hover:bg-sky-400/5 transition-all duration-300 relative overflow-visible opacity-0 transform translate-y-4`}
                         >
                             <img
                                 src={sponsor.logo}
@@ -60,7 +117,19 @@ const PastSponsorsTable = () => {
                             <div className="absolute top-0 right-0 w-1.5 h-1.5 border-r border-t border-sky-400 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                             <div className="absolute bottom-0 left-0 w-1.5 h-1.5 border-l border-b border-sky-400 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                             <div className="absolute bottom-0 right-0 w-1.5 h-1.5 border-r border-b border-sky-400 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                        </motion.div>
+
+                            {/* Persistent Intersection Nodes (Bottom-Right of every cell) */}
+                            <div className="absolute -bottom-[6px] -right-[3px] text-sky-400/40 font-mono text-[10px] z-20">+</div>
+                            
+                            {/* Internal Top-Right intersections for the first row */}
+                            {index < 3 && (
+                                <div className="absolute -top-[6px] -right-[3px] text-sky-400/40 font-mono text-[10px] z-20">+</div>
+                            )}
+                            {/* Internal Bottom-Left intersections for the first column */}
+                            {index % 3 === 0 && (
+                                <div className="absolute -bottom-[6px] -left-[3px] text-sky-400/40 font-mono text-[10px] z-20">+</div>
+                            )}
+                        </div>
                     ))}
                 </div>
             </div>
