@@ -7,7 +7,7 @@ import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 if (typeof window !== 'undefined') {
-  gsap.registerPlugin(ScrollTrigger);
+    gsap.registerPlugin(ScrollTrigger);
 }
 
 interface Speaker {
@@ -32,6 +32,47 @@ const speakers: Speaker[] = [
         company: 'Cred',
         image: '/inctf/assets/images/current_speakers/Abhishek_JM.jpeg',
         bio: `Abhishek JM is a Lead Security Engineer at CRED, specializing in mobile security and application security for large-scale fintech systems. He is also a trainer at 7ASecurity, where he has delivered hands-on training at global conferences including OWASP AppSec New Zealand, 44Con, and ThreatCon.\n\nWith extensive experience in offensive security, Abhishek leads security research projects such as Adhrit and EVABS, focusing on advanced mobile and application security testing. His work has been presented at premier venues like Black Hat (Asia, US, Europe) and OWASP Seasides, with his tool Adhrit gaining industry recognition.\n\nHe is an active contributor to the security community, regularly speaking at conferences and meetups, and has also served as a trainer for international security programs, helping mentor the next generation of cybersecurity professionals.`
+    },
+    {
+        name: 'Akhil Mahendra',
+        title: 'Security Engineer',
+        company: 'Scapia',
+        image: '/inctf/assets/images/current_speakers/Akhil.webp',
+        bio: `Akhil Mahendra is a security engineering leader at Scapia, where he is building security foundations for a fast-growing fintech platform. He was previously a founding member of the security team at CRED, where he helped establish and scale product security and software supply chain security programs.\n\nWith over a decade of experience in application security, Akhil specializes in DevSecOps, supply chain security, and building scalable security frameworks. He is also the creator of widely used open-source tools such as SupplyShield and DepConfuse, aimed at tackling dependency and supply chain risks.\n\nAn active contributor to the security community, he is a former member of Team bi0s and has presented his work at leading conferences including Black Hat and Nullcon.`
+    },
+    {
+        name: 'Yadhu Krishna',
+        title: 'Product Security Engineer',
+        company: 'Cred',
+        image: '/inctf/assets/images/current_speakers/Yadhu.webp',
+        bio: `Yadhu is a passionate Security Engineer, currently leading the software supply chain security charter at CRED, with over four years of experience in security. He specializes in identifying security vulnerabilities and building scalable security solutions.\n\nHe has been a speaker at prominent security conferences, including Nullcon, BlackHat Asia and BlackHat Europe. As an open-source enthusiast and core maintainer of the SupplyShield project, he actively contributes to improving software supply chain security.\n\nHe has reported high-severity security issues in critical projects such as n8n, Node.js, Gunicorn, and Safari, earning multiple CVEs for his work. He also has been part of team bi0s (India's top CTF team) as a mentor, CTF player, and challenge creator.`
+    },
+    {
+        name: 'Meenakshi',
+        title: 'Senior Security Engineer',
+        company: 'Endor Labs',
+        image: '/inctf/assets/images/current_speakers/Meenakshi.png',
+        bio: `Meenakshi S L is a Security Researcher at Endor Labs specializing in vulnerability discovery and open-source software security. She previously worked with VMware's Purple Team. She has presented at international and community security conferences, including The Diana Initiative, ShaktiCon, and Nullcon Chapter events, and continues to deliver technical talks at security meetups such as bi0s Bangalore. She is a former competitive CTF player with Team bi0s and Team Shakti.`
+    },
+    {
+        name: 'Jayakrishna Menon',
+        title: 'Security Researcher',
+        company: 'Arizona State University',
+        image: '/inctf/assets/images/current_speakers/Jayakrishnan.jpeg',
+        bio: `Jayakrishna Menon Vadayath is a cybersecurity researcher and Ph.D. candidate at Arizona State University, working with the SEFCOM lab on automated vulnerability analysis, binary exploitation, fuzzing, and symbolic execution.\n\nHe is a co-captain of Team Shellphish and has been actively competing in elite CTFs since 2014, previously with team bi0s. He has also participated in Pwn2Own and was part of the DARPA AI Cyber Challenge (AIxCC) finalist team that won $2M for building an autonomous vulnerability discovery system.\n\nHis research has been published in top-tier venues such as USENIX Security, ACM CCS, and IEEE S&P, with notable work on scalable vulnerability discovery in real-world software and firmware systems.`
+    },
+    {
+        name: 'Rohit Narayanan M',
+        title: 'Security Engineer',
+        company: 'Scapia',
+        image: '/inctf/assets/images/current_speakers/RohitNarayanan.jpeg',
+    },
+    {
+        name: 'Suraj',
+        title: 'Reverse Engineer and Antibot Bypass Specialist',
+        company: 'Nielsen IQ',
+        image: '/inctf/assets/images/current_speakers/SurajKumar.png',
+        bio: `Suraj works as a Reverse Engineer and Antibot Bypass Specialist at Nielsen IQ, with around four years in the cybersecurity space. He was selected as a Google Summer of Code scholar. Outside of work, he spends time on malware analysis, mostly out of curiosity and interest.\n\nHe's particularly drawn to low-level systems and has spent a lot of time working with tools like debuggers, disassemblers, compilers, and decompilers - pretty much anything tied to reverse engineering. He enjoys digging into obfuscation techniques and figuring out how different protection mechanisms work under the hood.\n\nTo him, reverse engineering feels like a constant cat-and-mouse game, and he likes staying one step ahead. At Nielsen IQ, his work revolves around reverse engineering client-side frameworks, software, and mobile applications.`
     },
 ];
 
@@ -110,24 +151,24 @@ const CurrentSpeakers: React.FC = () => {
         });
 
         // Animate Title
-        tl.fromTo('.speakers-header', 
+        tl.fromTo('.speakers-header',
             { opacity: 0, y: 30 },
             { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }
         );
 
         // Stagger Cards
         tl.fromTo('.speaker-card',
-            { 
-                opacity: 0, 
+            {
+                opacity: 0,
                 y: 40,
                 scale: 0.95
             },
-            { 
-                opacity: 1, 
-                y: 0, 
+            {
+                opacity: 1,
+                y: 0,
                 scale: 1,
-                duration: 0.8, 
-                stagger: 0.1, 
+                duration: 0.8,
+                stagger: 0.1,
                 ease: 'power3.out'
             },
             '-=0.6'
