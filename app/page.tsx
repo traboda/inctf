@@ -1,7 +1,8 @@
-import React from 'react';
+"use client";
+
+import React, { useState, useEffect } from 'react';
 import TopBar from '../src/components/shared/TopBar';
 import StarfieldBackground from '../src/components/shared/StarfieldBackground';
-
 import LandingHeader from '../src/components/landing/Header';
 import MissionBrief from '../src/components/landing/MissionBrief';
 import CrewEligibility from '../src/components/landing/CrewEligibility';
@@ -17,19 +18,15 @@ import BentoCard from '../src/components/landing/BentoCard';
 import Link from 'next/link';
 import BentoGridContainer from '../src/components/landing/BentoGridContainer';
 import BentoHoverButton from '../src/components/landing/BentoHoverButton';
+import FloatingContactButton from '@/src/components/landing/FloatingContactForm';
 
-// Opt into Cache Components via 'use cache' (This will cache the public, non-personalized output of this component at build time)
-// export const dynamic = 'force-static'; 
-
-export default async function LandingPage() {
-    "use cache";
+export default function LandingPage() {
     return (
         <div className="bg-obsidian min-h-screen text-ghost-white relative overflow-x-hidden" id="landing-page">
             <div className="scanlines fixed inset-0 pointer-events-none z-50"></div>
 
             {/* Blurred Satellite Background  */}
             <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                     src="/inctf/assets/design/Homepage/satellite_laser.webp"
                     alt=""
@@ -51,7 +48,6 @@ export default async function LandingPage() {
                 <CurrentSponsors />
             </section>
 
-
             {/* Mission Timeline Section */}
             <OperationTimeline />
 
@@ -62,8 +58,7 @@ export default async function LandingPage() {
             <section className="py-16 relative z-30" id="mission-grid">
                 <div className="container mx-auto px-4">
                     <BentoGridContainer>
-
-                        {/* 1. Mission Brief (Desktop: 2/3 wide, Row 1 Left | Mobile Rank 1) */}
+                        {/* 1. Mission Brief */}
                         <div className="md:col-span-2 flex w-full bento-card-wrapper opacity-0">
                             <BentoCard title="Mission Brief">
                                 <div className="flex-grow flex flex-col justify-between">
@@ -82,7 +77,7 @@ export default async function LandingPage() {
                             </BentoCard>
                         </div>
 
-                        {/* 2. Crew Eligibility (Desktop: 1/3 wide, Row 1 Right | Mobile Rank 2) */}
+                        {/* 2. Crew Eligibility */}
                         <div className="md:col-span-1 flex w-full bento-card-wrapper opacity-0">
                             <BentoCard title="Crew Eligibility">
                                 <div className="flex-grow flex flex-col justify-between">
@@ -103,7 +98,7 @@ export default async function LandingPage() {
                             </BentoCard>
                         </div>
 
-                        {/* 3. Mission Credentials (Desktop: 1/3 wide, Row 2 Left | Mobile Rank 3) */}
+                        {/* 3. Mission Credentials */}
                         <div className="md:col-span-1 flex w-full bento-card-wrapper opacity-0">
                             <BentoCard title="Mission Credentials">
                                 <ul className="space-y-4 text-sky-digital font-mono text-sm md:text-base flex-grow">
@@ -114,7 +109,7 @@ export default async function LandingPage() {
                             </BentoCard>
                         </div>
 
-                        {/* 4. Join Mission Control (Desktop: 2/3 wide, Row 2 Right | Mobile Rank 4) */}
+                        {/* 4. Join Mission Control */}
                         <div className="md:col-span-2 flex w-full bento-card-wrapper opacity-0">
                             <BentoCard title="Join Mission Control">
                                 <div className="flex-grow flex flex-col justify-between">
@@ -132,7 +127,6 @@ export default async function LandingPage() {
                                 </div>
                             </BentoCard>
                         </div>
-
                     </BentoGridContainer>
                 </div>
             </section>
@@ -142,6 +136,9 @@ export default async function LandingPage() {
 
             {/* Footer */}
             <Footer />
+
+            {/* Floating Contact Button */}
+            <FloatingContactButton />
         </div>
     );
 }
