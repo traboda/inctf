@@ -13,17 +13,18 @@ const FloatingContactButton = () => {
     urgency: 'normal'
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState(null);
+  
+  // Fix: Add proper type for submitStatus
+  const [submitStatus, setSubmitStatus] = useState<'success' | 'error' | null>(null);
 
-  // Add your Web3Forms Access Key here
-  const WEB3FORMS_ACCESS_KEY = "307d219e-605a-4a1a-bffc-4207b30a2fa0";
+  const WEB3FORMS_ACCESS_KEY = '307d219e-605a-4a1a-bffc-4207b30a2fa0'; 
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
     
@@ -43,9 +44,6 @@ const FloatingContactButton = () => {
       
       // Optional: Add reply_to
       formDataToSend.append('replyto', formData.email);
-      
-      // Optional: Add redirect URL (if you want to redirect after submission)
-      // formDataToSend.append('redirect', 'https://your-website.com/thank-you');
 
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
@@ -344,7 +342,9 @@ const FloatingContactButton = () => {
                     cursor: 'pointer',
                   }}
                 >
+                  <option value="normal">Normal - Reply within 2-3 days</option>
                   <option value="urgent">Urgent - Reply within 24 hours</option>
+                  <option value="critical">Critical - Reply as soon as possible</option>
                 </select>
               </div>
 
@@ -363,7 +363,7 @@ const FloatingContactButton = () => {
                   value={formData.issue}
                   onChange={handleInputChange}
                   required
-                  rows="4"
+                  rows={4}
                   style={{
                     width: '100%',
                     padding: '10px',
