@@ -5,7 +5,7 @@ import { Calendar, Target, Trophy, MousePointer2, ChevronRight, ChevronDown } fr
 
 const timelineEvents = [
   {
-    date: "APR 01 - APR 31",
+    date: "APRIL",
     title: "Masterclass",
     description: "Talks + training + mock CTF",
     icon: <Calendar className="w-5 h-5" />,

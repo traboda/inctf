@@ -22,7 +22,7 @@
     "@emotion/react": "11.6.0",
     "@emotion/styled": "11.3.0",
     "@gsap/react": "^2.1.2",
-    "@next/third-parties": "^16.1.6",
+    "@next/third-parties": "^16.2.3",
     "body-scroll-lock": "3.1.5",
     "chart.js": "^4.3.0",
     "chartjs-plugin-datalabels": "^2.0.0",

@@ -99,7 +99,7 @@ const CurrentSponsors = () => {
                                     className="transition-all duration-500 hover:scale-105 filter drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]"
                                 >
                                     <img
-                                        src="/inctf/assets/images/conference/logos/traboda_light.png"
+                                        src="/inctf/assets/images/logos/traboda_light.png"
                                         alt="Traboda CyberLabs Logo"
                                         className="h-10 md:h-16 w-auto object-contain brightness-0 invert opacity-90 hover:opacity-100 transition-opacity"
                                     />
