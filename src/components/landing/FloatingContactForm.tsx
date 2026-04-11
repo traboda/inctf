@@ -342,9 +342,7 @@ const FloatingContactButton = () => {
                     cursor: 'pointer',
                   }}
                 >
-                  <option value="normal">Normal - Reply within 2-3 days</option>
                   <option value="urgent">Urgent - Reply within 24 hours</option>
-                  <option value="critical">Critical - Reply as soon as possible</option>
                 </select>
               </div>
 
@@ -439,7 +437,6 @@ const FloatingContactButton = () => {
                 marginTop: '16px',
                 fontFamily: 'monospace'
               }}>
-                We respect your privacy. Your information will only be used to respond to your enquiry.
               </p>
             </form>
           </div>
