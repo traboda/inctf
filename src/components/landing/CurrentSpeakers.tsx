@@ -1,7 +1,7 @@
 'use client';
 import React, { useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, X } from 'lucide-react';
+import { X } from 'lucide-react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -19,17 +19,24 @@ interface Speaker {
 }
 
 const speakers: Speaker[] = [
+     {
+        name: 'Rushi Mehta',
+        title: 'Program Manager',
+        company: 'MHA (I4C)',
+        image: '/inctf/assets/images/current_speakers/rushimehta.jpg',
+        bio: `Mr. Rushi Mehta brings deep expertise in cybersecurity, fighting organized crime, and dismantling criminal networks. His work has played a key role in strengthening India’s cyber resilience and improving its forensic capabilities.`
+    },
     {
         name: 'Sreepriya C',
-        title: '101 to Product Security Incident Response (PSIRT)',
+        title: 'Senior Security Analyst ',
         company: 'Siemens',
         image: '/inctf/assets/images/current_speakers/Sreepriya_C.jpeg',
         bio: `Sreepriya Chalakkal is a Product Security Incident Response Team (PSIRT) engineer at Siemens, where she works on vulnerability handling and securing large-scale industrial and enterprise systems. Her expertise spans telecommunication security, protocol analysis, and real-world network infrastructures.\n\nPrior to this, she worked as a security researcher at ERNW GmbH, focusing on mobile and telecom security, including technologies like VoLTE and core network protocols.\n\nShe is a former core member and mentor of team bi0s and a strong advocate for diversity in cybersecurity. She founded Team Shakti and is a key organizer of ShaktiCon, contributing to building a more inclusive global security community.`
     },
     {
         name: 'Abhishek JM',
-        title: 'Lead Security Engineer at CRED',
-        company: 'Cred',
+        title: 'Head of Mobile Security',
+        company: 'CRED',
         image: '/inctf/assets/images/current_speakers/Abhishek_JM.jpeg',
         bio: `Abhishek JM is a Lead Security Engineer at CRED, specializing in mobile security and application security for large-scale fintech systems. He is also a trainer at 7ASecurity, where he has delivered hands-on training at global conferences including OWASP AppSec New Zealand, 44Con, and ThreatCon.\n\nWith extensive experience in offensive security, Abhishek leads security research projects such as Adhrit and EVABS, focusing on advanced mobile and application security testing. His work has been presented at premier venues like Black Hat (Asia, US, Europe) and OWASP Seasides, with his tool Adhrit gaining industry recognition.\n\nHe is an active contributor to the security community, regularly speaking at conferences and meetups, and has also served as a trainer for international security programs, helping mentor the next generation of cybersecurity professionals.`
     },
@@ -37,13 +44,13 @@ const speakers: Speaker[] = [
         name: 'Akhil Mahendra',
         title: 'Security Engineer',
         company: 'Scapia',
-        image: '/inctf/assets/images/current_speakers/Akhil.webp',
+        image: '/inctf/assets/images/current_speakers/Akhil.jpeg',
         bio: `Akhil Mahendra is a security engineering leader at Scapia, where he is building security foundations for a fast-growing fintech platform. He was previously a founding member of the security team at CRED, where he helped establish and scale product security and software supply chain security programs.\n\nWith over a decade of experience in application security, Akhil specializes in DevSecOps, supply chain security, and building scalable security frameworks. He is also the creator of widely used open-source tools such as SupplyShield and DepConfuse, aimed at tackling dependency and supply chain risks.\n\nAn active contributor to the security community, he is a former member of Team bi0s and has presented his work at leading conferences including Black Hat and Nullcon.`
     },
     {
         name: 'Yadhu Krishna',
         title: 'Product Security Engineer',
-        company: 'Cred',
+        company: 'CRED',
         image: '/inctf/assets/images/current_speakers/Yadhu.webp',
         bio: `Yadhu is a passionate Security Engineer, currently leading the software supply chain security charter at CRED, with over four years of experience in security. He specializes in identifying security vulnerabilities and building scalable security solutions.\n\nHe has been a speaker at prominent security conferences, including Nullcon, BlackHat Asia and BlackHat Europe. As an open-source enthusiast and core maintainer of the SupplyShield project, he actively contributes to improving software supply chain security.\n\nHe has reported high-severity security issues in critical projects such as n8n, Node.js, Gunicorn, and Safari, earning multiple CVEs for his work. He also has been part of team bi0s (India's top CTF team) as a mentor, CTF player, and challenge creator.`
     },
@@ -71,8 +78,23 @@ const speakers: Speaker[] = [
         name: 'Suraj',
         title: 'Reverse Engineer and Antibot Bypass Specialist',
         company: 'Nielsen IQ',
-        image: '/inctf/assets/images/current_speakers/SurajKumar.png',
+        image: '/inctf/assets/images/current_speakers/Suraj.jpeg',
         bio: `Suraj works as a Reverse Engineer and Antibot Bypass Specialist at Nielsen IQ, with around four years in the cybersecurity space. He was selected as a Google Summer of Code scholar. Outside of work, he spends time on malware analysis, mostly out of curiosity and interest.\n\nHe's particularly drawn to low-level systems and has spent a lot of time working with tools like debuggers, disassemblers, compilers, and decompilers - pretty much anything tied to reverse engineering. He enjoys digging into obfuscation techniques and figuring out how different protection mechanisms work under the hood.\n\nTo him, reverse engineering feels like a constant cat-and-mouse game, and he likes staying one step ahead. At Nielsen IQ, his work revolves around reverse engineering client-side frameworks, software, and mobile applications.`
+    },
+    {
+        name: 'Srikesh',
+        title: 'Security Consultant',
+        company: 'CRED',
+        image: '/inctf/assets/images/current_speakers/Srikesh.jpg',
+        bio: `Srikesh R is a Security Engineer at CRED, working on mobile security and application security. Before CRED, he was a Security Analyst at HackIT, where he did malware hunting, threat detection, and offensive mobile security assessments. 
+        He was a former member at bi0s Pentest, where he led the mobile security team, authored challenges for various CTFs, and mentored newer members. Outside of work, he spends time pulling apart mobile malwares and digging into app internals.`
+    },
+    {
+        name: 'Yadhu Krishna K',
+        title: '',
+        company: 'Palo Alto Networks Unit 42',
+        image: '/inctf/assets/images/current_speakers/YadhuKrishnaK.jpg',
+        bio: `.`
     },
 ];
 
@@ -81,7 +103,7 @@ const SpeakerCard: React.FC<{ speaker: Speaker; index: number; onClick: () => vo
 
     return (
         <div
-            className={`speaker-card flex-shrink-0 w-[85vw] sm:w-72 md:w-80 snap-center group opacity-0 ${isClickable ? 'cursor-pointer' : 'cursor-default'}`}
+            className={`speaker-card group opacity-0 ${isClickable ? 'cursor-pointer' : 'cursor-default'}`}
             onClick={isClickable ? onClick : undefined}
         >
             <div className={`relative h-full min-h-[380px] md:min-h-[440px] rounded-lg overflow-hidden border border-sky-400/20 bg-slate-900/40 backdrop-blur-sm transition-all duration-300 p-5 md:p-8 flex flex-col items-center text-center ${isClickable ? 'group-hover:border-sky-400/80 group-hover:shadow-[0_0_25px_rgba(56,189,248,0.15)]' : ''
@@ -136,7 +158,6 @@ const SpeakerCard: React.FC<{ speaker: Speaker; index: number; onClick: () => vo
 
 const CurrentSpeakers: React.FC = () => {
     const containerRef = useRef<HTMLDivElement>(null);
-    const scrollRef = useRef<HTMLDivElement>(null);
     const [selectedSpeaker, setSelectedSpeaker] = React.useState<Speaker | null>(null);
 
     useGSAP(() => {
@@ -192,63 +213,34 @@ const CurrentSpeakers: React.FC = () => {
         };
     }, [selectedSpeaker]);
 
-    const scroll = (direction: 'left' | 'right') => {
-        if (scrollRef.current) {
-            const amount = 320;
-            scrollRef.current.scrollBy({
-                left: direction === 'right' ? amount : -amount,
-                behavior: 'smooth',
-            });
-        }
-    };
-
     return (
         <section className="relative z-10 w-full py-16 md:py-24 overflow-hidden" ref={containerRef}>
             {/* Section Header */}
             <div className="speakers-header px-6 md:px-16 mb-10 md:mb-16 opacity-0">
-                <div className="flex flex-row items-end justify-between gap-2">
-                    <div>
-                        <p className="font-mono text-sky-400 text-xs tracking-[0.3em] uppercase mb-3">
-                            [ Expert Speakers ]
-                        </p>
-                        <h2 className="font-heading text-white text-3xl md:text-4xl lg:text-5xl font-bold uppercase tracking-wider">
-                            Current <span className="text-sky-400">Speakers</span>
-                        </h2>
-                    </div>
-                    <div className="flex items-center gap-3 flex-shrink-0 mb-1">
-                        <button
-                            onClick={() => scroll('left')}
-                            className="group flex items-center justify-center p-2 border border-sky-400/30 text-sky-400 hover:bg-sky-400/10 hover:border-sky-400 transition-all duration-200 rounded-sm"
-                            aria-label="Scroll left"
-                        >
-                            <ChevronLeft size={20} />
-                        </button>
-                        <button
-                            onClick={() => scroll('right')}
-                            className="group flex items-center justify-center p-2 border border-sky-400/30 text-sky-400 hover:bg-sky-400/10 hover:border-sky-400 transition-all duration-200 rounded-sm"
-                            aria-label="Scroll right"
-                        >
-                            <ChevronRight size={20} />
-                        </button>
-                    </div>
+                <div>
+                    <p className="font-mono text-sky-400 text-xs tracking-[0.3em] uppercase mb-3">
+                        [ Expert Speakers ]
+                    </p>
+                    <h2 className="font-heading text-white text-3xl md:text-4xl lg:text-5xl font-bold uppercase tracking-wider">
+                        <span className="text-sky-400">Speakers</span>
+                    </h2>
                 </div>
 
                 <div className="mt-6 h-[1px] w-full bg-gradient-to-r from-sky-400/60 via-sky-400/20 to-transparent" />
             </div>
 
-            <div
-                ref={scrollRef}
-                className="flex gap-6 md:gap-8 px-8 md:px-16 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-8 pt-4 md:justify-center scroll-smooth"
-                style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch' }}
-            >
-                {speakers.map((speaker, index) => (
-                    <SpeakerCard
-                        key={`${speaker.name}-${index}`}
-                        speaker={speaker}
-                        index={index}
-                        onClick={() => setSelectedSpeaker(speaker)}
-                    />
-                ))}
+            {/* Responsive Grid Layout - Rows and Columns */}
+            <div className="px-6 md:px-16">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-6 md:gap-8 auto-rows-fr">
+                    {speakers.map((speaker, index) => (
+                        <SpeakerCard
+                            key={`${speaker.name}-${index}`}
+                            speaker={speaker}
+                            index={index}
+                            onClick={() => setSelectedSpeaker(speaker)}
+                        />
+                    ))}
+                </div>
             </div>
 
             {/* Speaker Bio Modal */}
