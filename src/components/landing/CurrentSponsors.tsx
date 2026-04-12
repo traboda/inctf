@@ -105,6 +105,31 @@ const CurrentSponsors = () => {
                                     />
                                 </a>
                             </div>
+
+                            <div className="flex items-center gap-4 w-full opacity-20">
+                                <div className="h-px flex-grow bg-gradient-to-r from-transparent to-sky-digital" />
+                                <div className="w-2 h-2 rotate-45 border border-sky-digital" />
+                                <div className="h-px flex-grow bg-gradient-to-l from-transparent to-sky-digital" />
+                            </div>
+
+                            {/* Community Partner Section */}
+                            <div className="flex flex-col items-center gap-6 w-full">
+                                <div className="text-white/60 font-mono text-xs uppercase tracking-[0.25em] mb-1">
+                                    Community Partner
+                                </div>
+                                <a
+                                    href="https://www.iotsrg.org/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="transition-all duration-500 hover:scale-105 filter drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]"
+                                >
+                                    <img
+                                        src="/inctf/assets/images/current_sponsors/Gold-IoTSRG.png"
+                                        alt="IoT Security Research Group"
+                                        className="h-10 md:h-16 w-auto object-contain brightness-0 invert opacity-90 hover:opacity-100 transition-opacity"
+                                    />
+                                </a>
+                            </div>
                         </div>
 
                         {/* Background Data Matrix (Very Subtle) */}
