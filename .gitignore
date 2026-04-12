@@ -6,3 +6,4 @@ sample.env
 .env
 .DS_Store
 out/
+pnpm-lock.yaml
