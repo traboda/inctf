@@ -18,6 +18,34 @@ interface Speaker {
     bio?: string;
 }
 
+const companyLogos: Record<string, string> = {
+    'MHA (I4C)': '/inctf/assets/images/sponsors/i4c.png',
+    'Siemens': '/inctf/assets/images/sponsors/Siemens.png',
+    'CRED': '/inctf/assets/images/sponsors/cred.png',
+    'Scapia': '/inctf/assets/images/sponsors/scapia.png',
+    'Endor Labs': '/inctf/assets/images/sponsors/Endor-Labs.png',
+    'Arizona State University': '/inctf/assets/images/sponsors/ASU.png',
+    'Nielsen IQ': '/inctf/assets/images/sponsors/NIQ.png',
+    'Palo Alto Networks Unit 42': '/inctf/assets/images/sponsors/unit42.png',
+};
+
+const fallbackLogo = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 60"%3E%3Crect width="140" height="60" fill="%231F2937"/%3E%3Ctext x="70" y="30" font-size="12" fill="%239CA3AF" text-anchor="middle" dy=".35em" font-family="monospace"%3ELOGO%3C/text%3E%3C/svg%3E';
+
+const CompanyLogo: React.FC<{ company: string; className?: string }> = ({ company, className = '' }) => {
+    const [hasError, setHasError] = React.useState(false);
+    const logoPath = companyLogos[company];
+    const src = !hasError && logoPath ? logoPath : fallbackLogo;
+
+    return (
+        <img
+            src={src}
+            alt={company}
+            className={className}
+            onError={() => setHasError(true)}
+        />
+    );
+};
+
 const speakers: Speaker[] = [
      {
         name: 'Rushi Mehta',
@@ -73,6 +101,7 @@ const speakers: Speaker[] = [
         title: 'Security Engineer',
         company: 'Scapia',
         image: '/inctf/assets/images/current_speakers/RohitNarayanan.jpeg',
+        bio: `.`
     },
     {
         name: 'Suraj',
@@ -136,9 +165,12 @@ const SpeakerCard: React.FC<{ speaker: Speaker; index: number; onClick: () => vo
                     <p className="font-mono text-white/80 text-[11px] md:text-xs mb-2 md:mb-3 uppercase tracking-wider leading-relaxed line-clamp-3 min-h-[2.5rem]">
                         {speaker.title}
                     </p>
-                    <p className="font-mono text-sky-400 text-xs md:text-sm font-semibold tracking-wide mt-auto">
-                        {speaker.company}
-                    </p>
+                    <div className="mt-auto w-full h-10 md:h-12 mb-1 flex items-center justify-center px-2">
+                        <CompanyLogo
+                            company={speaker.company}
+                            className="max-h-full w-auto max-w-[150px] object-contain filter brightness-0 invert opacity-90 group-hover:brightness-100 group-hover:invert-0 group-hover:opacity-100 transition-all duration-300"
+                        />
+                    </div>
                     {isClickable && (
                         <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                             <span className="font-mono text-[9px] text-sky-400 border border-sky-400/30 px-3 py-1 rounded-full uppercase tracking-widest">
@@ -290,9 +322,12 @@ const CurrentSpeakers: React.FC = () => {
                                 <h4 className="text-white font-heading font-bold text-xl md:text-2xl text-center mb-1 uppercase">
                                     {selectedSpeaker.name}
                                 </h4>
-                                <p className="text-sky-400 font-mono text-sm uppercase tracking-widest text-center mb-4">
-                                    {selectedSpeaker.company}
-                                </p>
+                                <div className="mb-4 h-10 md:h-12 w-full flex items-center justify-center px-2">
+                                    <CompanyLogo
+                                        company={selectedSpeaker.company}
+                                        className="max-h-full w-auto max-w-[180px] object-contain filter brightness-0 invert opacity-90 hover:brightness-100 hover:invert-0 hover:opacity-100 transition-all duration-300"
+                                    />
+                                </div>
                                 <div className="h-px w-24 bg-sky-400/30" />
                             </div>
 
