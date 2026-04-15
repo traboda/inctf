@@ -59,7 +59,7 @@ const speakers: Speaker[] = [
         title: 'Senior Security Analyst ',
         company: 'Siemens',
         image: '/inctf/assets/images/current_speakers/Sreepriya_C.jpeg',
-        bio: `Sreepriya Chalakkal is a Product Security Incident Response Team (PSIRT) engineer at Siemens, where she works on vulnerability handling and securing large-scale industrial and enterprise systems. Her expertise spans telecommunication security, protocol analysis, and real-world network infrastructures.\n\nPrior to this, she worked as a security researcher at ERNW GmbH, focusing on mobile and telecom security, including technologies like VoLTE and core network protocols.\n\nShe is a former core member and mentor of team bi0s and a strong advocate for diversity in cybersecurity. She founded Team Shakti and is a key organizer of ShaktiCon, contributing to building a more inclusive global security community.`
+        bio: `Sreepriya Chalakkal is a is a senior security analyst part of PSIRT team at Siemens, where she works on vulnerability handling and securing large-scale industrial and enterprise systems. Her expertise spans telecommunication security, protocol analysis, and real-world network infrastructures.\n\nPrior to this, she worked as a security researcher at ERNW GmbH, focusing on mobile and telecom security, including technologies like VoLTE and core network protocols.\n\nShe is a former core member and mentor of team bi0s and a strong advocate for diversity in cybersecurity. She founded Team Shakti and is a key organizer of ShaktiCon, contributing to building a more inclusive global security community.`
     },
     {
         name: 'Abhishek JM',
@@ -87,7 +87,7 @@ const speakers: Speaker[] = [
         title: 'Senior Security Engineer',
         company: 'Endor Labs',
         image: '/inctf/assets/images/current_speakers/Meenakshi.png',
-        bio: `Meenakshi S L is a Security Researcher at Endor Labs specializing in vulnerability discovery and open-source software security. She previously worked with VMware's Purple Team. She has presented at international and community security conferences, including The Diana Initiative, ShaktiCon, and Nullcon Chapter events, and continues to deliver technical talks at security meetups such as bi0s Bangalore. She is a former competitive CTF player with Team bi0s and Team Shakti.`
+        bio: `Meenakshi is a Senior Security Engineer at Endor Labs specializing in vulnerability discovery and open-source software security. She previously worked with VMware's Purple Team. She has presented at international and community security conferences, including The Diana Initiative, ShaktiCon, and Nullcon Chapter events, and continues to deliver technical talks at security meetups such as bi0s Bangalore. She is a former competitive CTF player with Team bi0s and Team Shakti.`
     },
     {
         name: 'Jayakrishna Menon',
