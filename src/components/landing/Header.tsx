@@ -327,11 +327,9 @@ const LandingHeader = () => {
 
                   {/* 3-Stat Strip */}
                   <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-8 py-4 border-y border-sky-digital/20 w-full mt-8 font-mono font-bold uppercase tracking-wider text-center">
-                    <div className="flex items-center gap-1"><Banknote size={14} /> ₹5L Prize Pool</div>
+                    <div className="flex items-center gap-1"><Users size={14} /> Open to UG & PG Students</div>
                     <div className="hidden sm:block text-sky-digital/40">|</div>
-                    <div className="flex items-center gap-1"><Users size={14} /> Open to UG Students</div>
-                    <div className="hidden sm:block text-sky-digital/40">|</div>
-                    <div className="flex items-center gap-1"><ShieldCheck size={14} /> Teams of 1-5</div>
+                    <div className="flex items-center gap-1"><ShieldCheck size={14} /> Team of 1-5</div>
                   </div>
 
                   {/* Countdown Timer (Commented Out) */}
