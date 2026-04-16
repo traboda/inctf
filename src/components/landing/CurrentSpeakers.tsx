@@ -21,12 +21,14 @@ interface Speaker {
 const companyLogos: Record<string, string> = {
     'MHA (I4C)': '/inctf/assets/images/sponsors/i4c.png',
     'Siemens': '/inctf/assets/images/sponsors/Siemens.png',
-    'CRED': '/inctf/assets/images/sponsors/cred.png',
+    'CRED': '/inctf/assets/images/sponsors/cred-light.png',
     'Scapia': '/inctf/assets/images/sponsors/scapia.png',
-    'Endor Labs': '/inctf/assets/images/sponsors/Endor-Labs.png',
+    'Endor Labs': '/inctf/assets/images/sponsors/Endor_Labs_Black_Logo.jpg',
     'Arizona State University': '/inctf/assets/images/sponsors/ASU.png',
     'Nielsen IQ': '/inctf/assets/images/sponsors/NIQ.png',
     'Palo Alto Networks Unit 42': '/inctf/assets/images/sponsors/unit42.png',
+    'Intel': '/inctf/assets/images/sponsors/intel.png',
+    'Ottersec': '/inctf/assets/images/sponsors/ottersec.png'
 };
 
 const fallbackLogo = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 60"%3E%3Crect width="140" height="60" fill="%231F2937"/%3E%3Ctext x="70" y="30" font-size="12" fill="%239CA3AF" text-anchor="middle" dy=".35em" font-family="monospace"%3ELOGO%3C/text%3E%3C/svg%3E';
@@ -97,11 +99,21 @@ const speakers: Speaker[] = [
         bio: `Jayakrishna Menon Vadayath is a cybersecurity researcher and Ph.D. candidate at Arizona State University, working with the SEFCOM lab on automated vulnerability analysis, binary exploitation, fuzzing, and symbolic execution.\n\nHe is a co-captain of Team Shellphish and has been actively competing in elite CTFs since 2014, previously with team bi0s. He has also participated in Pwn2Own and was part of the DARPA AI Cyber Challenge (AIxCC) finalist team that won $2M for building an autonomous vulnerability discovery system.\n\nHis research has been published in top-tier venues such as USENIX Security, ACM CCS, and IEEE S&P, with notable work on scalable vulnerability discovery in real-world software and firmware systems.`
     },
     {
-        name: 'Rohit Narayanan M',
-        title: 'Security Engineer',
-        company: 'Scapia',
-        image: '/inctf/assets/images/current_speakers/RohitNarayanan.jpeg',
-        bio: `.`
+        name: 'Rohit Krishnan',
+        title: '',
+        company: 'Intel',
+        image: '/inctf/assets/images/current_speakers/RohitK.jpeg',
+        bio: `Rohith Krishnan is a Security Research Scientist at Intel Corporation with over 8 years of experience in cybersecurity, specializing in platform, firmware, and hardware security. 
+        His work focuses on uncovering vulnerabilities across low-level system layers, including BIOS/UEFI, silicon root of trust, operating system, drivers and hypervisors. 
+        Beyond his research, Rohith is an active speaker in the security community and has presented at conferences such as Open Source India, where he shares insights on cutting-edge threats, hardware security, and real-world attack techniques.`
+    },
+    {
+        name: 'Vishvesh',
+        title: 'Security Researcher',
+        company: 'Ottersec',
+        image: '/inctf/assets/images/current_speakers/vishvesh.jpeg',
+        bio: `Vishvesh Rao is a security researcher at OtterSec, specializing in blockchain/Web3 security. He earned his B.Tech in Computer Science from Amrita University (2023), where he focused on cryptography and blockchain challenges. 
+        He co-led Amrita’s InCTF hackathons as an event organizer and speaker, for example, giving talks on JSON Web Token (JWT) vulnerabilities. Before OtterSec, Vishvesh interned at the Ethereum client Nethermind, auditing Solidity and Cairo smart contracts and DeFi applications.`
     },
     {
         name: 'Suraj',
@@ -117,6 +129,13 @@ const speakers: Speaker[] = [
         image: '/inctf/assets/images/current_speakers/Srikesh.jpg',
         bio: `Srikesh R is a Security Engineer at CRED, working on mobile security and application security. Before CRED, he was a Security Analyst at HackIT, where he did malware hunting, threat detection, and offensive mobile security assessments. 
         He was a former member at bi0s Pentest, where he led the mobile security team, authored challenges for various CTFs, and mentored newer members. Outside of work, he spends time pulling apart mobile malwares and digging into app internals.`
+    },
+    {
+        name: 'Rohit Narayanan M',
+        title: 'Security Engineer',
+        company: 'Scapia',
+        image: '/inctf/assets/images/current_speakers/RohitNarayanan.jpeg',
+        bio: `.`
     },
     {
         name: 'Yadhu Krishna K',
@@ -168,7 +187,7 @@ const SpeakerCard: React.FC<{ speaker: Speaker; index: number; onClick: () => vo
                     <div className="mt-auto w-full h-10 md:h-12 mb-1 flex items-center justify-center px-2">
                         <CompanyLogo
                             company={speaker.company}
-                            className="max-h-full w-auto max-w-[150px] object-contain filter brightness-0 invert opacity-90 group-hover:brightness-100 group-hover:invert-0 group-hover:opacity-100 transition-all duration-300"
+                            className="max-h-full w-auto max-w-[150px] object-contain filter grayscale brightness-90 opacity-90 group-hover:grayscale-0 group-hover:brightness-100 group-hover:opacity-100 transition-all duration-300"
                         />
                     </div>
                     {isClickable && (
@@ -263,7 +282,7 @@ const CurrentSpeakers: React.FC = () => {
 
             {/* Responsive Grid Layout - Rows and Columns */}
             <div className="px-6 md:px-16">
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-6 md:gap-8 auto-rows-fr">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-41 xl:grid-cols-5 gap-6 md:gap-8 auto-rows-fr">
                     {speakers.map((speaker, index) => (
                         <SpeakerCard
                             key={`${speaker.name}-${index}`}
@@ -325,7 +344,7 @@ const CurrentSpeakers: React.FC = () => {
                                 <div className="mb-4 h-10 md:h-12 w-full flex items-center justify-center px-2">
                                     <CompanyLogo
                                         company={selectedSpeaker.company}
-                                        className="max-h-full w-auto max-w-[180px] object-contain filter brightness-0 invert opacity-90 hover:brightness-100 hover:invert-0 hover:opacity-100 transition-all duration-300"
+                                        className="max-h-full w-auto max-w-[180px] object-contain filter grayscale brightness-90 opacity-90 hover:grayscale-0 hover:brightness-100 hover:opacity-100 transition-all duration-300"
                                     />
                                 </div>
                                 <div className="h-px w-24 bg-sky-400/30" />
