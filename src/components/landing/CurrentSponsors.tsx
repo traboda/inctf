@@ -11,7 +11,7 @@ const CurrentSponsors = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8, ease: "easeOut" }}
-                    className="relative w-full max-w-3xl group"
+                    className="relative w-full max-w-5xl group"
                 >
                     {/* Tactical Card Container - Enhanced Blue Visibility */}
                     <div className="relative overflow-hidden bg-slate-950/40 backdrop-blur-xl border border-sky-400/50 rounded-2xl p-8 md:p-12 shadow-[0_0_50px_rgba(0,0,0,0.5),0_0_20px_rgba(56,189,248,0.1)]">
@@ -74,6 +74,31 @@ const CurrentSponsors = () => {
                                 >
                                     <img
                                         src="/inctf/assets/images/current_sponsors/NIQ-logo-bright-blue-web.png"
+                                        alt="NIQ Logo"
+                                        className="h-8 md:h-12 w-auto object-contain brightness-0 invert opacity-90 hover:opacity-100 transition-opacity"
+                                    />
+                                </a>
+                            </div>
+
+                             {/* Tactical Divider */}
+                            <div className="flex items-center gap-4 w-full opacity-20">
+                                <div className="h-px flex-grow bg-gradient-to-r from-transparent to-sky-digital" />
+                                <div className="w-2 h-2 rotate-45 border border-sky-digital" />
+                                <div className="h-px flex-grow bg-gradient-to-l from-transparent to-sky-digital" />
+                            </div>
+
+                            <div className="flex flex-col items-center gap-6 w-full">
+                                <div className="text-white/60 font-mono text-xs uppercase tracking-[0.25em] mb-1">
+                                    Supported By
+                                </div>
+                                <a
+                                    href="https://www.siemens.com/en-gb/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="transition-all duration-500 hover:scale-105 filter drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]"
+                                >
+                                    <img
+                                        src="/inctf/assets/images/current_sponsors/Siemens.png"
                                         alt="NIQ Logo"
                                         className="h-8 md:h-12 w-auto object-contain brightness-0 invert opacity-90 hover:opacity-100 transition-opacity"
                                     />
