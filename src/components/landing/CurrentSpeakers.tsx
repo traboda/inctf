@@ -100,7 +100,7 @@ const speakers: Speaker[] = [
     },
     {
         name: 'Rohit Krishnan',
-        title: '',
+        title: 'Security Research Scientist',
         company: 'Intel',
         image: '/inctf/assets/images/current_speakers/RohitK.jpeg',
         bio: `Rohith Krishnan is a Security Research Scientist at Intel Corporation with over 8 years of experience in cybersecurity, specializing in platform, firmware, and hardware security. 
@@ -135,14 +135,15 @@ const speakers: Speaker[] = [
         title: 'Security Engineer',
         company: 'Scapia',
         image: '/inctf/assets/images/current_speakers/RohitNarayanan.jpeg',
-        bio: `.`
+        bio: `Rohit Narayanan M is a Security Engineer at Scapia. His work focuses on web security research, vulnerability discovery, and building scalable offensive-security platforms, with contributions spanning competitive CTFs, real-world security audits, and research in AI-driven vulnerability detection`
     },
     {
         name: 'Yadhu Krishna K',
-        title: '',
+        title: 'MDR Intern',
         company: 'Palo Alto Networks Unit 42',
         image: '/inctf/assets/images/current_speakers/YadhuKrishnaK.jpg',
-        bio: `.`
+        bio: `Yadhi is an MDR Intern at Palo Alto Networks Unit 42. He has participated in over 100+ CTF competitions during his college days and was part of the international first-place team at the Digital Forensics Challenge (DFC) in 2023 and 2024. 
+        Beyond competitions, he tries his best to contribute to the DFIR community by creating open-source tools, authoring CTF challenges, and conducting sessions on cybersecurity and digital forensics.`
     },
 ];
 
