@@ -142,7 +142,7 @@ const speakers: Speaker[] = [
         title: 'MDR Intern',
         company: 'Palo Alto Networks Unit 42',
         image: '/inctf/assets/images/current_speakers/YadhuKrishnaK.jpg',
-        bio: `Yadhi is an MDR Intern at Palo Alto Networks Unit 42. He has participated in over 100+ CTF competitions during his college days and was part of the international first-place team at the Digital Forensics Challenge (DFC) in 2023 and 2024. 
+        bio: `Yadhu is an MDR Intern at Palo Alto Networks Unit 42. He has participated in over 100+ CTF competitions during his college days and was part of the international first-place team at the Digital Forensics Challenge (DFC) in 2023 and 2024. 
         Beyond competitions, he tries his best to contribute to the DFIR community by creating open-source tools, authoring CTF challenges, and conducting sessions on cybersecurity and digital forensics.`
     },
 ];
