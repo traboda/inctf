@@ -49,47 +49,19 @@ const CompanyLogo: React.FC<{ company: string; className?: string }> = ({ compan
 };
 
 const speakers: Speaker[] = [
-     {
-        name: 'Rushi Mehta',
-        title: 'Program Manager',
-        company: 'MHA (I4C)',
-        image: '/inctf/assets/images/current_speakers/rushimehta.jpg',
-        bio: `Mr. Rushi Mehta brings deep expertise in cybersecurity, fighting organized crime, and dismantling criminal networks. His work has played a key role in strengthening India’s cyber resilience and improving its forensic capabilities.`
-    },
+    //  {
+    //     name: 'Rushi Mehta',
+    //     title: 'Program Manager',
+    //     company: 'MHA (I4C)',
+    //     image: '/inctf/assets/images/current_speakers/rushimehta.jpg',
+    //     bio: `Mr. Rushi Mehta brings deep expertise in cybersecurity, fighting organized crime, and dismantling criminal networks. His work has played a key role in strengthening India’s cyber resilience and improving its forensic capabilities.`
+    // },
     {
         name: 'Sreepriya C',
         title: 'Senior Security Analyst ',
         company: 'Siemens',
         image: '/inctf/assets/images/current_speakers/Sreepriya_C.jpeg',
         bio: `Sreepriya Chalakkal is a is a senior security analyst part of PSIRT team at Siemens, where she works on vulnerability handling and securing large-scale industrial and enterprise systems. Her expertise spans telecommunication security, protocol analysis, and real-world network infrastructures.\n\nPrior to this, she worked as a security researcher at ERNW GmbH, focusing on mobile and telecom security, including technologies like VoLTE and core network protocols.\n\nShe is a former core member and mentor of team bi0s and a strong advocate for diversity in cybersecurity. She founded Team Shakti and is a key organizer of ShaktiCon, contributing to building a more inclusive global security community.`
-    },
-    {
-        name: 'Abhishek JM',
-        title: 'Head of Mobile Security',
-        company: 'CRED',
-        image: '/inctf/assets/images/current_speakers/Abhishek_JM.jpeg',
-        bio: `Abhishek JM is a Lead Security Engineer at CRED, specializing in mobile security and application security for large-scale fintech systems. He is also a trainer at 7ASecurity, where he has delivered hands-on training at global conferences including OWASP AppSec New Zealand, 44Con, and ThreatCon.\n\nWith extensive experience in offensive security, Abhishek leads security research projects such as Adhrit and EVABS, focusing on advanced mobile and application security testing. His work has been presented at premier venues like Black Hat (Asia, US, Europe) and OWASP Seasides, with his tool Adhrit gaining industry recognition.\n\nHe is an active contributor to the security community, regularly speaking at conferences and meetups, and has also served as a trainer for international security programs, helping mentor the next generation of cybersecurity professionals.`
-    },
-    {
-        name: 'Akhil Mahendra',
-        title: 'Security Engineer',
-        company: 'Scapia',
-        image: '/inctf/assets/images/current_speakers/Akhil.jpeg',
-        bio: `Akhil Mahendra is a security engineering leader at Scapia, where he is building security foundations for a fast-growing fintech platform. He was previously a founding member of the security team at CRED, where he helped establish and scale product security and software supply chain security programs.\n\nWith over a decade of experience in application security, Akhil specializes in DevSecOps, supply chain security, and building scalable security frameworks. He is also the creator of widely used open-source tools such as SupplyShield and DepConfuse, aimed at tackling dependency and supply chain risks.\n\nAn active contributor to the security community, he is a former member of Team bi0s and has presented his work at leading conferences including Black Hat and Nullcon.`
-    },
-    {
-        name: 'Yadhu Krishna',
-        title: 'Product Security Engineer',
-        company: 'CRED',
-        image: '/inctf/assets/images/current_speakers/Yadhu.webp',
-        bio: `Yadhu is a passionate Security Engineer, currently leading the software supply chain security charter at CRED, with over four years of experience in security. He specializes in identifying security vulnerabilities and building scalable security solutions.\n\nHe has been a speaker at prominent security conferences, including Nullcon, BlackHat Asia and BlackHat Europe. As an open-source enthusiast and core maintainer of the SupplyShield project, he actively contributes to improving software supply chain security.\n\nHe has reported high-severity security issues in critical projects such as n8n, Node.js, Gunicorn, and Safari, earning multiple CVEs for his work. He also has been part of team bi0s (India's top CTF team) as a mentor, CTF player, and challenge creator.`
-    },
-    {
-        name: 'Meenakshi',
-        title: 'Senior Security Engineer',
-        company: 'Endor Labs',
-        image: '/inctf/assets/images/current_speakers/Meenakshi.png',
-        bio: `Meenakshi is a Senior Security Engineer at Endor Labs specializing in vulnerability discovery and open-source software security. She previously worked with VMware's Purple Team. She has presented at international and community security conferences, including The Diana Initiative, ShaktiCon, and Nullcon Chapter events, and continues to deliver technical talks at security meetups such as bi0s Bangalore. She is a former competitive CTF player with Team bi0s and Team Shakti.`
     },
     {
         name: 'Jayakrishna Menon',
@@ -99,8 +71,36 @@ const speakers: Speaker[] = [
         bio: `Jayakrishna Menon Vadayath is a cybersecurity researcher and Ph.D. candidate at Arizona State University, working with the SEFCOM lab on automated vulnerability analysis, binary exploitation, fuzzing, and symbolic execution.\n\nHe is a co-captain of Team Shellphish and has been actively competing in elite CTFs since 2014, previously with team bi0s. He has also participated in Pwn2Own and was part of the DARPA AI Cyber Challenge (AIxCC) finalist team that won $2M for building an autonomous vulnerability discovery system.\n\nHis research has been published in top-tier venues such as USENIX Security, ACM CCS, and IEEE S&P, with notable work on scalable vulnerability discovery in real-world software and firmware systems.`
     },
     {
+        name: 'Abhishek JM',
+        title: 'Head of Mobile Security',
+        company: 'CRED',
+        image: '/inctf/assets/images/current_speakers/Abhishek_JM.jpeg',
+        bio: `Abhishek JM is a Lead Security Engineer at CRED, specializing in mobile security and application security for large-scale fintech systems. He is also a trainer at 7ASecurity, where he has delivered hands-on training at global conferences including OWASP AppSec New Zealand, 44Con, and ThreatCon.\n\nWith extensive experience in offensive security, Abhishek leads security research projects such as Adhrit and EVABS, focusing on advanced mobile and application security testing. His work has been presented at premier venues like Black Hat (Asia, US, Europe) and OWASP Seasides, with his tool Adhrit gaining industry recognition.\n\nHe is an active contributor to the security community, regularly speaking at conferences and meetups, and has also served as a trainer for international security programs, helping mentor the next generation of cybersecurity professionals.`
+    },
+    // {
+    //     name: 'Akhil Mahendra',
+    //     title: 'Security Engineer',
+    //     company: 'Scapia',
+    //     image: '/inctf/assets/images/current_speakers/Akhil.jpeg',
+    //     bio: `Akhil Mahendra is a security engineering leader at Scapia, where he is building security foundations for a fast-growing fintech platform. He was previously a founding member of the security team at CRED, where he helped establish and scale product security and software supply chain security programs.\n\nWith over a decade of experience in application security, Akhil specializes in DevSecOps, supply chain security, and building scalable security frameworks. He is also the creator of widely used open-source tools such as SupplyShield and DepConfuse, aimed at tackling dependency and supply chain risks.\n\nAn active contributor to the security community, he is a former member of Team bi0s and has presented his work at leading conferences including Black Hat and Nullcon.`
+    // },
+    // {
+    //     name: 'Yadhu Krishna',
+    //     title: 'Product Security Engineer',
+    //     company: 'CRED',
+    //     image: '/inctf/assets/images/current_speakers/Yadhu.webp',
+    //     bio: `Yadhu is a passionate Security Engineer, currently leading the software supply chain security charter at CRED, with over four years of experience in security. He specializes in identifying security vulnerabilities and building scalable security solutions.\n\nHe has been a speaker at prominent security conferences, including Nullcon, BlackHat Asia and BlackHat Europe. As an open-source enthusiast and core maintainer of the SupplyShield project, he actively contributes to improving software supply chain security.\n\nHe has reported high-severity security issues in critical projects such as n8n, Node.js, Gunicorn, and Safari, earning multiple CVEs for his work. He also has been part of team bi0s (India's top CTF team) as a mentor, CTF player, and challenge creator.`
+    // },
+    {
+        name: 'Meenakshi',
+        title: 'Senior Security Engineer',
+        company: 'Endor Labs',
+        image: '/inctf/assets/images/current_speakers/Meenakshi.png',
+        bio: `Meenakshi is a Senior Security Engineer at Endor Labs specializing in vulnerability discovery and open-source software security. She previously worked with VMware's Purple Team. She has presented at international and community security conferences, including The Diana Initiative, ShaktiCon, and Nullcon Chapter events, and continues to deliver technical talks at security meetups such as bi0s Bangalore. She is a former competitive CTF player with Team bi0s and Team Shakti.`
+    },
+    {
         name: 'Rohit Krishnan',
-        title: '',
+        title: 'Security Research Scientist',
         company: 'Intel',
         image: '/inctf/assets/images/current_speakers/RohitK.jpeg',
         bio: `Rohith Krishnan is a Security Research Scientist at Intel Corporation with over 8 years of experience in cybersecurity, specializing in platform, firmware, and hardware security. 
@@ -135,14 +135,15 @@ const speakers: Speaker[] = [
         title: 'Security Engineer',
         company: 'Scapia',
         image: '/inctf/assets/images/current_speakers/RohitNarayanan.jpeg',
-        bio: `.`
+        bio: `Rohit Narayanan M is a Security Engineer at Scapia. His work focuses on web security research, vulnerability discovery, and building scalable offensive-security platforms, with contributions spanning competitive CTFs, real-world security audits, and research in AI-driven vulnerability detection`
     },
     {
         name: 'Yadhu Krishna K',
-        title: '',
+        title: 'MDR Intern',
         company: 'Palo Alto Networks Unit 42',
         image: '/inctf/assets/images/current_speakers/YadhuKrishnaK.jpg',
-        bio: `.`
+        bio: `Yadhu is an MDR Intern at Palo Alto Networks Unit 42. He has participated in over 100+ CTF competitions during his college days and was part of the international first-place team at the Digital Forensics Challenge (DFC) in 2023 and 2024. 
+        Beyond competitions, he tries his best to contribute to the DFIR community by creating open-source tools, authoring CTF challenges, and conducting sessions on cybersecurity and digital forensics.`
     },
 ];
 
