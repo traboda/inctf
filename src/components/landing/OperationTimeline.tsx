@@ -13,7 +13,7 @@ const timelineEvents = [
     coords: "01.04"
   },
   {
-    date: "MAY 23 / 24",
+    date: "June (TBD)",
     title: "Qualifiers",
     description: "Online jeopardy round",
     icon: <Target className="w-5 h-5" />,
