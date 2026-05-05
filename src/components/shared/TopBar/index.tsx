@@ -174,8 +174,8 @@ const TopBar = ({ UTMSource = null }) => {
     if (!isVisible) setShowMenu(false);
   }, [isVisible]);
 
-  const topbarConfig = {
-    associatedemo: {
+  const topbarConfig: any = {
+    associate: {
       logo: {
         light: "cbse_logo.jpg",
         dark: "cbse_logo.jpg"
@@ -281,7 +281,9 @@ const TopBar = ({ UTMSource = null }) => {
     CTA: {
       type: "link",
       link: "https://register.inctf.in",
-      buttonText: "Register Now"
+      buttonText: "Register Now",
+      title: "",
+      subTitle: ""
     }
   };
 
