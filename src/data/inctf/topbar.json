@@ -1,12 +1,4 @@
 {
-  "associate": {
-    "logo": {
-      "light": "cbse_logo.jpg",
-      "dark": "cbse_logo.jpg"
-    },
-    "alt": "Central Board of Secondary Education (CBSE)",
-    "link": "http://cbseacademic.nic.in/web_material/Circulars/2021/93_Circular_2021.pdf"
-  },
   "topbarCTA": [
     {
       "buttonText": "Join Discord Now",

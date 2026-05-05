@@ -175,14 +175,6 @@ const TopBar = ({ UTMSource = null }) => {
   }, [isVisible]);
 
   const topbarConfig: any = {
-    associate: {
-      logo: {
-        light: "cbse_logo.jpg",
-        dark: "cbse_logo.jpg"
-      },
-      alt: "Central Board of Secondary Education (CBSE)",
-      link: "http://cbseacademic.nic.in/web_material/Circulars/2021/93_Circular_2021.pdf"
-    },
     topbarCTA: [
       {
         buttonText: "Join Discord Now",
@@ -356,31 +348,9 @@ const TopBar = ({ UTMSource = null }) => {
           <div
             className="hidden md:flex w-1/4 md:w-1/3 xl:w-1/4 md:text-center flex-wrap items-center md:justify-start justify-center px-2"
           >
-            <Link className="w-full md:w-1/3" href="/">
+            <Link className="w-full" href="/">
               <img src="/inctf/assets/logo_dark.png" alt="InCTF Logo" className="logo" style={{ maxHeight: 65 }} />
             </Link>
-            {topbarConfig?.associate?.link && (
-              <a
-                target="_blank"
-                href={topbarConfig?.associate?.link}
-                className="w-2/3 pl-2 md:flex hidden flex-col items-start"
-                title="In association with CBSE"
-              >
-                <span
-                  className="uppercase tracking-widest opacity-80"
-                  style={{ fontSize: 8 }}
-                >
-                  In association with
-                </span>
-                <img
-                  alt="cbse"
-                  src={`/${eventID}/assets/${topbarConfig?.associate?.logo?.light}`}
-                  style={{ position: 'unset', maxHeight: 45, maxWidth: '100%' }}
-                  draggable="false"
-                  className="inline"
-                />
-              </a>
-            )}
           </div>
           <div className="md:w-2/3 xl:w-3/4 px-1 hidden md:flex items-center">
             <div className="flex w-full">
