@@ -89,8 +89,22 @@
       ]
     },
     {
-      "label": "Mission Outreach",
-      "link": "/mission-outreach"
+      "label": "Operation Vajra",
+      "link": "#",
+      "items": [
+        {
+          "label": "Mission Outreach",
+          "link": "/mission-outreach"
+        },
+        {
+          "label": "Mission Control",
+          "link": "/mission-control"
+        },
+        {
+          "label": "Mission Brief",
+          "link": "/mission-brief"
+        }
+      ]
     }
   ],
   "disabledMenuItems": {

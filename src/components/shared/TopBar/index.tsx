@@ -174,7 +174,116 @@ const TopBar = ({ UTMSource = null }) => {
     if (!isVisible) setShowMenu(false);
   }, [isVisible]);
 
-  const topbarConfig = require(`../../../data/${eventID}/topbar.json`);
+  const topbarConfig = {
+    associatedemo: {
+      logo: {
+        light: "cbse_logo.jpg",
+        dark: "cbse_logo.jpg"
+      },
+      alt: "Central Board of Secondary Education (CBSE)",
+      link: "http://cbseacademic.nic.in/web_material/Circulars/2021/93_Circular_2021.pdf"
+    },
+    topbarCTA: [
+      {
+        buttonText: "Join Discord Now",
+        link: "/discord"
+      }
+    ],
+    topbarCTAText: "Have you got stuck? Need Help? Join our discord server, ask your doubts & get support from our experts.",
+    menu: [
+      {
+        label: "About",
+        link: "/about",
+        items: [
+          {
+            label: "Our Reach & Statistics",
+            link: "/about#our-reach"
+          }
+        ]
+      },
+      {
+        label: "Championship",
+        link: "/championship",
+        items: [
+          {
+            label: "Why Participate?",
+            link: "/championship#why-participate"
+          },
+          {
+            label: "Guidelines & Rules",
+            link: "/rules"
+          }
+        ]
+      },
+      {
+        label: "Get Started",
+        link: "/resources",
+        items: [
+          {
+            label: "Cyber Workshops",
+            badge: "free",
+            link: "/trainings"
+          },
+          {
+            label: "Videos & Guides",
+            link: "/resources#videos"
+          },
+          {
+            label: "FAQ",
+            badge: "get answers",
+            link: "/faq"
+          },
+          {
+            label: "bi0s Wiki",
+            link: "https://wiki.bi0s.in/"
+          },
+          {
+            label: "Practice Challenges",
+            link: "https://app.traboda.com/"
+          },
+          {
+            label: "Writeups",
+            badge: "new",
+            badgeColor: "bg-yellow-100 text-yellow-800",
+            link: "/writeups"
+          },
+          {
+            label: "Promote InCTF",
+            link: "/promote"
+          },
+          {
+            label: "Get Help",
+            badge: "discord",
+            badgeColor: "bg-blue-100 text-blue-800",
+            link: "/discord"
+          }
+        ]
+      },
+      {
+        label: "Operation Vajra",
+        link: "#",
+        items: [
+          {
+            label: "Mission Outreach",
+            link: "/mission-outreach"
+          },
+          {
+            label: "Mission Control",
+            link: "/mission-control"
+          },
+          {
+            label: "Mission Brief",
+            link: "/mission-brief"
+          }
+        ]
+      }
+    ],
+    CTA: {
+      type: "link",
+      link: "https://register.inctf.in",
+      buttonText: "Register Now"
+    }
+  };
 
   const onDismiss = () => {
     setIsBannerDismissed(true);
