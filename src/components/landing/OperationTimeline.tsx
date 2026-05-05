@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Calendar, Target, Trophy, MousePointer2, ChevronRight, ChevronDown } from 'lucide-react';
+import { Calendar, Target, Trophy, MousePointer2, ChevronRight, ChevronDown, Terminal } from 'lucide-react';
 
 const timelineEvents = [
   {
@@ -21,7 +21,7 @@ const timelineEvents = [
     coords: "09.05"
   },
   {
-    date: "JULY",
+    date: "July",
     title: "Finals",
     description: "On-site competition",
     icon: <Trophy className="w-5 h-5" />,
@@ -52,21 +52,21 @@ const OperationTimeline = () => {
       <div className="absolute inset-0 bg-[url('/inctf/assets/design/Common/grid_pattern.svg')] bg-[length:50px_50px] opacity-[0.03] pointer-events-none z-0"></div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="px-6 md:px-16 mb-10 md:mb-20">
+        <div className="px-6 md:px-16 mb-10 md:mb-20 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <p className="font-mono text-sky-digital text-xs tracking-[0.3em] uppercase mb-3">
-              [ Operation Milestones ]
-            </p>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900/60 border border-sky-500/30 text-sky-400 font-mono text-xs tracking-widest uppercase mb-4 shadow-[0_0_10px_rgba(56,189,248,0.2)]">
+              <Terminal size={14} /> Operation Milestones
+            </div>
             <h2 className="font-heading text-white text-3xl md:text-4xl lg:text-5xl font-black uppercase tracking-wider">
               Mission <span className="text-sky-digital">Timeline</span>
             </h2>
           </motion.div>
-          <div className="mt-6 h-[1px] w-full bg-gradient-to-r from-sky-400/60 via-sky-400/20 to-transparent" />
+          <div className="mt-6 h-[1px] w-full bg-gradient-to-r from-transparent via-sky-400/40 to-transparent" />
         </div>
 
         <div className="relative max-w-6xl mx-auto">

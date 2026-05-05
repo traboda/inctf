@@ -1,124 +1,123 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
-import { Crosshair, Target, Activity, Wifi, Shield, Flag, Award, Eye, Lock } from 'lucide-react';
+import { Trophy, BookOpen, Terminal, Flag, ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 
-import animation from '@/src/animation';
-
-const eventID = process.env.EVENT_ID || process.env.NEXT_PUBLIC_EVENT_ID;
-const data = require(`../../data/${eventID}/index.json`);
-
-const OperationalSection = styled.section`
+const ChampionshipSection = styled.section`
   padding: 4rem 0;
   overflow: hidden;
 `;
 
-const PhaseCard = ({ phase, index }: any) => (
+const StepCard = ({ step, index }: { step: any; index: number }) => (
   <motion.div
     initial={{ opacity: 0, x: -50 }}
     whileInView={{ opacity: 1, x: 0 }}
     transition={{ delay: index * 0.1 }}
     viewport={{ once: true }}
-    className="relative pl-8 md:pl-0 border-l-2 md:border-l-0 md:border-t-2 border-sky-digital/30 md:pt-8 pb-8 md:pb-0 md:text-center group"
+    className="relative pl-8 md:pl-0 border-l-2 md:border-l-0 md:border-t-2 border-sky-500/30 md:pt-8 pb-8 md:pb-0 md:text-center group"
   >
-    <div className="absolute top-0 left-[-9px] md:top-[-9px] md:left-1/2 md:-translate-x-1/2 w-4 h-4 rounded-full bg-obsidian border-2 border-sky-digital group-hover:bg-sky-digital transition-colors"></div>
-    <div className="text-sky-digital font-tactical text-xs tracking-widest mb-2">PHASE {phase.id}</div>
-    <h3 className="text-xl font-bold text-white mb-2 font-heading">{phase.title}</h3>
-    <p className="text-slate-400 text-sm font-mono leading-relaxed">{phase.desc}</p>
+    <div className="absolute top-0 left-[-9px] md:top-[-9px] md:left-1/2 md:-translate-x-1/2 w-4 h-4 rounded-full bg-slate-900 border-2 border-sky-400 group-hover:bg-sky-400 transition-colors shadow-[0_0_10px_rgba(56,189,248,0.5)]"></div>
+    <div className="text-cyan-400 font-mono text-xs tracking-widest mb-3 flex items-center md:justify-center gap-2">
+      {step.icon} STEP 0{index + 1}
+    </div>
+    <h3 className="text-xl font-bold text-white mb-2 font-heading">{step.title}</h3>
+    <p className="text-slate-400 text-sm leading-relaxed">{step.desc}</p>
   </motion.div>
 );
 
-const LandingOperationalPlan = () => {
-  return (
-    <OperationalSection className="container mx-auto px-4" id="operational-plan">
+const steps = [
+  {
+    title: "Training",
+    desc: "Participants use InCTF training resources and supporting learning material to build fundamentals before competing.",
+    icon: <BookOpen size={16} />
+  },
+  {
+    title: "Practice",
+    desc: "Learners can use the bi0s wiki, challenge archive, and related learning channels to practice concepts and improve confidence.",
+    icon: <Terminal size={16} />
+  },
+  {
+    title: "Online CTF",
+    desc: "Participants compete in the core Capture The Flag contest.",
+    icon: <Flag size={16} />
+  },
+  {
+    title: "On-site Championship Finals",
+    desc: "Selected participants will be invited to attend the final round in person, where they will compete at the championship event.",
+    icon: <Trophy size={16} />
+  }
+];
+const MotionLink = motion(Link);
 
-      {/* Command Intent */}
+const LandingChampionshipWorks = () => {
+  return (
+    <ChampionshipSection className="container mx-auto px-6 md:px-8" id="how-it-works">
+      {/* Title & Subtitle */}
       <div className="text-center mb-16 max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl md:text-4xl font-black text-white mb-6 uppercase flex items-center justify-center gap-3">
-            <Crosshair size={32} className="text-alert-crimson" /> COMMAND INTENT
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900/60 border border-sky-500/30 text-sky-400 font-mono text-xs tracking-widest uppercase mb-4 shadow-[0_0_10px_rgba(56,189,248,0.2)]">
+            <Trophy size={14} /> Deployment / Operations
+          </div>
+          <h2 className="text-3xl md:text-5xl font-black text-white mb-4 uppercase tracking-wide">
+            How the <span className="text-sky-400">Championship Works</span>
           </h2>
-          <p className="text-lg md:text-xl text-slate-300 border-l-4 border-alert-crimson pl-6 py-2 bg-gradient-to-r from-alert-crimson/10 to-transparent text-left md:text-center md:border-l-0 md:border-t-4 md:pt-6">
-            {data.OperationalPlan.CommandIntent}
+          <p className="text-lg md:text-xl text-cyan-400 font-medium">
+            Training, practice, competition, and final deployment.
           </p>
         </motion.div>
       </div>
 
-      {/* Objectives */}
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
-        {data.OperationalPlan.Objectives.map((obj: string, i: number) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.1 }}
-            className="bg-sky-digital/5 border border-sky-digital/10 p-6 rounded hover:bg-sky-digital/10 transition-colors"
-          >
-            <Target size={24} className="text-sky-400 mb-4" />
-            <p className="text-slate-200 font-mono text-sm font-bold">{obj}</p>
-          </motion.div>
-        ))}
-      </div>
-
-      {/* Operation Phases */}
-      <div className="mb-20">
-        <h3 className="text-2xl font-bold text-white mb-10 text-center uppercase tracking-widest flex items-center justify-center gap-2">
-          <Activity className="text-sky-digital" /> Operation Phases
-        </h3>
-        <div className="grid md:grid-cols-5 gap-8 relative">
+      {/* 4-Step Process */}
+      <div className="mb-16">
+        <div className="grid md:grid-cols-4 gap-8 relative">
           {/* Connecting Line (Desktop) */}
-          <div className="hidden md:block absolute top-0 left-0 w-full h-0.5 bg-sky-digital/30"></div>
+          <div className="hidden md:block absolute top-0 left-0 w-full h-0.5 bg-sky-500/20"></div>
 
-          {data.OperationalPlan.Phases.map((phase: any, index: number) => (
-            <PhaseCard key={index} phase={phase} index={index} />
+          {steps.map((step, index) => (
+            <StepCard key={index} step={step} index={index} />
           ))}
         </div>
       </div>
 
-      {/* Principles & Communication */}
-      <div className="grid lg:grid-cols-2 gap-12">
-        {/* Principles */}
-        <div className="bg-obsidian border border-slate-700 p-8 rounded-xl">
-          <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
-            <Shield className="text-alert-crimson" /> COMMAND PRINCIPLES
-          </h3>
-          <ul className="space-y-4">
-            {data.OperationalPlan.Principles.map((item: string, i: number) => (
-              <li key={i} className="flex items-center gap-3 text-slate-300 font-mono">
-                <div className="w-2 h-2 bg-alert-crimson rotate-45"></div>
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
+      {/* Supporting Links */}
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.4 }}
+        className="flex flex-col sm:flex-row justify-center items-center gap-10 sm:gap-8 mt-12"
+      >
+        <MotionLink 
+          href="/championship"
+          initial={{ opacity: 0, y: 20, boxShadow: "4px 4px 0 rgba(255,255,255,0.5)" }}
+          whileInView={{ opacity: 1, y: 0, boxShadow: "4px 4px 0 rgba(255,255,255,0.5)" }}
+          whileHover={{ scale: 1.03, boxShadow: "0 0 40px rgba(244,63,94,0.6), 4px 4px 0 rgba(255,255,255,0.7)" }}
+          whileTap={{ scale: 0.95 }}
+          viewport={{ once: true }}
+          className="group w-full md:w-auto px-6 sm:px-8 py-4 sm:py-3 bg-gradient-to-br from-red-900 to-red-800 border-2 border-white/60 text-white font-mono tracking-wide whitespace-normal sm:whitespace-nowrap flex items-center justify-center text-center text-sm cursor-pointer leading-tight"
+        >
+          [ View Detailed Contest Format ]
+        </MotionLink>
+        <MotionLink 
+          href="/championship#finals"
+          initial={{ opacity: 0, y: 20, boxShadow: "4px 4px 0 rgba(255,255,255,0.5)" }}
+          whileInView={{ opacity: 1, y: 0, boxShadow: "4px 4px 0 rgba(255,255,255,0.5)" }}
+          whileHover={{ scale: 1.03, boxShadow: "0 0 40px rgba(244,63,94,0.6), 4px 4px 0 rgba(255,255,255,0.7)" }}
+          whileTap={{ scale: 0.95 }}
+          viewport={{ once: true }}
+          className="group w-full md:w-auto px-6 sm:px-8 py-4 sm:py-3 bg-gradient-to-br from-red-900 to-red-800 border-2 border-white/60 text-white font-mono tracking-wide whitespace-normal sm:whitespace-nowrap flex items-center justify-center text-center text-sm cursor-pointer leading-tight"
+        >
+          [ See Final Round Details ]
+        </MotionLink>
+      </motion.div>
 
-        {/* Mission Control */}
-        <div className="bg-sky-digital/5 border border-sky-digital/20 p-8 rounded-xl relative overflow-hidden">
-          <div className="absolute top-0 right-0 p-4 opacity-10 pointer-events-none">
-            <Wifi size={100} />
-          </div>
-          <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
-            <Wifi className="text-sky-digital" /> MISSION CONTROL
-          </h3>
-          <p className="text-slate-300 font-mono text-sm leading-relaxed mb-4">
-            {data.OperationalPlan.MissionControl.desc}
-          </p>
-          <div className="bg-alert-crimson/10 border border-alert-crimson/30 p-3 rounded flex items-start gap-3">
-            <Lock size={16} className="text-alert-crimson mt-1 shrink-0" />
-            <p className="text-alert-crimson text-xs font-bold font-tactical tracking-wide uppercase">
-              {data.OperationalPlan.MissionControl.note}
-            </p>
-          </div>
-        </div>
-      </div>
-
-    </OperationalSection>
+    </ChampionshipSection>
   );
 };
 
-export default LandingOperationalPlan;
+export default LandingChampionshipWorks;
