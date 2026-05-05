@@ -82,16 +82,6 @@ const PastSponsorsTable = () => {
     return (
         <section className="w-full relative py-16 md:py-24 bg-obsidian/80 border-t border-sky-400/10" id="past-sponsors" ref={containerRef}>
             <div className="container mx-auto px-4 max-w-6xl">
-                <div className="mb-12 flex flex-col items-center gap-4 text-center">
-                    <div className="flex items-center gap-4 md:gap-6">
-                        <div className="h-[1px] w-12 md:w-24 bg-gradient-to-r from-transparent to-sky-400/40"></div>
-                        <h3 className="text-white font-heading font-medium tracking-[0.2em] text-sm md:text-xl uppercase whitespace-nowrap">
-                            Our Past <span className="text-sky-400">Sponsors</span>
-                        </h3>
-                        <div className="h-[1px] w-12 md:w-24 bg-gradient-to-l from-transparent to-sky-400/40"></div>
-                    </div>
-                </div>
-
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 border-l border-t border-sky-400/10 relative">
                     {/* Parent Grid Intersection Nodes (Top/Left edges) */}
                     <div className="absolute -top-[5px] -left-[3px] text-sky-400/40 font-mono text-[10px] z-20">+</div>
