@@ -40,7 +40,7 @@ const GlitchText = ({ text, className = "", delay = 0, strikethrough = false, tr
           setDisplayText(text); // Ensure final text is correct
         }
 
-        iteration += 1 / 3; // Slow down the reveal
+        iteration += 1 / 1.5; // Faster reveal
       }, 30);
 
       return () => clearInterval(interval);
@@ -62,7 +62,7 @@ const GlitchText = ({ text, className = "", delay = 0, strikethrough = false, tr
   }, [started, text, triggerOnView]);
 
   return (
-    <span ref={ref} className={`relative inline-block ${className}`}>
+    <span ref={ref} className={`relative inline ${className}`}>
       <style jsx>{`
         @keyframes glitch {
           2%, 64% { transform: translate(2px, 0) skew(0deg); }
@@ -82,7 +82,7 @@ const GlitchText = ({ text, className = "", delay = 0, strikethrough = false, tr
         
         .glitch-wrapper {
           position: relative;
-          display: inline-block;
+          display: inline;
           animation: glitch 1s linear infinite;
         }
         
@@ -132,8 +132,8 @@ const GlitchText = ({ text, className = "", delay = 0, strikethrough = false, tr
         {text}
       </span>
 
-      {/* Absolute overlay for the actual effect */}
-      <span className="absolute top-0 left-0 whitespace-nowrap">
+      {/* Overlay for the actual effect */}
+      <span className="absolute top-0 left-0 w-full">
         {!typingComplete ? (
           <span className="glitch-main">
             {displayText}

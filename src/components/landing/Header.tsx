@@ -19,8 +19,8 @@ import { trackRegisterClick } from '../../utils/trackRegisterClick';
 const eventID = process.env.EVENT_ID || process.env.NEXT_PUBLIC_EVENT_ID;
 const data = require(`../../data/${eventID}/index.json`);
 
-import TypewriterText from '../shared/TypewriterText';
 import GlitchText from '../shared/GlitchText';
+import TypewriterText from '../shared/TypewriterText';
 import SectionCard from './SectionCard';
 import CurrentSponsors from './CurrentSponsors';
 // import EarlyBirdPopup from './EarlyBirdPopup';
@@ -301,175 +301,92 @@ const LandingHeader = () => {
               className="w-full lg:w-3/5 flex flex-col items-start mt-12 lg:-mt-12 xl:-mt-16 ml-4 md:ml-0"
             >
               {/* Mission Alert Status */}
-              <motion.div
-                initial={{ opacity: 0, y: -20, scale: 0.9 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ delay: 0.5, type: "spring", stiffness: 120 }}
-                className="inline-flex items-center gap-3 mb-1 self-start"
-              >
-                <div className="w-2 h-2 rounded-full bg-sky-digital animate-pulse"></div>
-                <span className="font-tactical text-alert-crimson tracking-widest text-sm font-bold">
-                  ALERT STATUS: <TypewriterText text="ACTIVE" className="underline" delay={1} />
-                </span>
-              </motion.div>
+              <div className="flex flex-wrap items-center gap-4 mb-2 self-start">
+                <motion.div
+                  initial={{ opacity: 0, y: -20, scale: 0.9 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  transition={{ delay: 0.5, type: "spring", stiffness: 120 }}
+                  className="inline-flex items-center gap-3"
+                >
+                  <div className="w-2 h-2 rounded-full bg-sky-digital animate-pulse"></div>
+                  <span className="font-tactical text-alert-crimson tracking-widest text-sm font-bold">
+                    ALERT STATUS: <TypewriterText text="ACTIVE" className="underline" delay={1} />
+                  </span>
+                </motion.div>
+              </div>
 
               {/* Textbox and Buttons Container */}
               <div className="flex flex-col w-full max-w-4xl mt-12 md:mt-20 sm:mt-8">
                 {/* Content Box with Border */}
 
-                <SectionCard className="mb-0 w-full !p-6 md:!py-16 md:!px-12" paddingClassName="p-0">
-                  <h1 className="text-[32px] min-[400px]:text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black font-heading mb-0 text-ghost-white text-center break-words">
-                    <span className="block text-[20px] min-[400px]:text-2xl sm:text-3xl md:text-4xl font-mono text-ghost-white mb-0 tracking-wide">
-                      <TypewriterText text="Amrita InCTF 2026" delay={0.5} />
+                <SectionCard className="mb-0 w-full !p-5 md:!py-10 md:!px-8" paddingClassName="p-0">
+                  <h1 className="text-[28px] sm:text-4xl md:text-5xl lg:text-6xl font-black font-heading mb-4 text-ghost-white text-left break-words leading-tight">
+                    <span className="block mb-2">
+                      <GlitchText 
+                        text="India's Cybersecurity Championship" 
+                        triggerOnView={true} 
+                        className="text-ghost-white"
+                      />
                     </span>
-                    <GlitchText text="OPERATION VAJRA" strikethrough={true} className="text-[28px] min-[400px]:text-3xl sm:text-5xl md:text-6xl text-white font-black" />
+                    <span className="block text-[20px] sm:text-2xl md:text-3xl text-white mt-2">
+                      for Students & Professionals
+                    </span>
                   </h1>
 
-                  {/* 3-Stat Strip */}
-                  <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-8 py-4 border-y border-sky-digital/20 w-full mt-8 font-mono font-bold uppercase tracking-wider text-center">
-                    <div className="flex items-center gap-1"><Users size={14} /> Open to UG & PG Students</div>
-                    <div className="hidden sm:block text-sky-digital/40">|</div>
-                    <div className="flex items-center gap-1"><ShieldCheck size={14} /> Team of 1-5</div>
+                  <div className="mt-6 text-left w-full">
+                    <p className="text-base sm:text-lg md:text-xl text-slate-300 font-medium leading-relaxed mb-4">
+                      InCTF is a multi-month, beginner-friendly ethical hacking programme with training, Capture The Flag contests, and a national-level final championship.
+                    </p>
+                    <p className="text-sm sm:text-base text-slate-400 font-mono border-l-2 border-sky-500/50 pl-4">
+                      Learn from Team bi0s, build real skills, win prizes, and get recognized through InCTF's national cybersecurity platform.
+                    </p>
                   </div>
-
-                  {/* Countdown Timer (Commented Out) */}
-                  {/* 
-                  <div className="my-3 text-center w-full border-b border-sky-digital/10 pb-2 mt-3">
-                    <div className="text-[10px] sm:text-xs font-mono text-alert-crimson font-bold animate-pulse uppercase tracking-widest mb-1.5">[ REGISTRATION CLOSES IN ]</div>
-
-                    <div className="flex justify-center gap-2 sm:gap-3 font-mono">
-                      {Object.entries(timeLeft).map(([label, value]) => (
-                        <div key={label} className="flex flex-col items-center countdown-box">
-                          <div className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center border-2 border-alert-crimson bg-alert-crimson/5 text-alert-crimson font-bold text-base sm:text-xl rounded-lg shadow-[0_0_10px_rgba(244,63,94,0.15)] relative" suppressHydrationWarning>
-                            {String(value).padStart(2, '0')}
-                          </div>
-                          <div className="text-[8px] sm:text-[10px] text-sky-digital/50 mt-1 uppercase tracking-wider font-semibold">{label}</div>
-                        </div>
-                      ))}
-                    </div>
-
-                    <motion.div
-                      key="register-btn-wrap"
-                      initial={{ scale: 0.85, opacity: 0, y: 10 }}
-                      animate={{ scale: 1, opacity: 1, y: 0 }}
-                      transition={{ delay: 0.4, type: "spring", stiffness: 100 }}
-                      className="mt-2.5 flex justify-center"
-                    >
-                      <a
-                        href="https://register.inctf.in"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="bg-red-950/40 hover:bg-red-600 text-alert-crimson hover:text-white font-mono text-sm sm:text-base font-bold tracking-wider px-9 py-3 sm:px-14 sm:py-3.5 rounded-md border-2 border-alert-crimson hover:border-red-600 shadow-[0_0_12px_rgba(244,63,94,0.3)] hover:shadow-[0_0_20px_rgba(244,63,94,0.6)] transition-all duration-300 flex items-center justify-center uppercase mt-1 register-btn opacity-70 hover:opacity-100"
-                        onClick={(event) =>
-                          trackRegisterClick(event, {
-                            url: 'https://register.inctf.in',
-                          })
-                        }
-                      >
-                        REGISTER NOW
-                      </a>
-                    </motion.div>
-                  </div>
-                  */}
-
-                  {/* Value Prop Cards Grid - Replacing Description */}
-                  <div className="grid grid-cols-2 gap-4 sm:gap-6 mt-8 w-full text-left">
-                    {[
-                      { icon: <Banknote size={18} />, title: "₹5 Lakh Worth Grand Prize Pool" },
-                      { icon: <Users size={18} />, title: "Placement & Internship Opportunities" },
-                      { icon: <ShieldCheck size={18} />, title: "Expert Training & Sessions" },
-                      { icon: <Award size={18} />, title: "Get Certified & Recognized" }
-                    ].map((prop, index) => (
-                      <motion.div
-                        key={index}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.8 + index * 0.1 }}
-                        className="flex flex-col min-[380px]:flex-row items-start gap-1.5 min-[380px]:gap-3 bg-slate-900/50 border border-sky-digital/30 p-2 sm:p-3 rounded backdrop-blur-sm shadow-[0_0_25px_rgba(56,189,248,0.35)]"
-                      >
-                        <div className="text-cyan-400 mt-0.5">
-                          {prop.icon}
-                        </div>
-                        <div>
-                          <h3 className="font-heading font-bold text-white text-base md:text-lg mb-0.5 tracking-wide">
-                            {prop.title}
-                          </h3>
-                        </div>
-                      </motion.div>
-                    ))}
-                  </div>
-
-                  {/* Card Sponsors Footer (Moved to page body) */}
-                  {/* 
-                  <div className="mt-8 pt-8 border-t border-sky-digital/10 flex flex-col items-center justify-center gap-4">
-                    <div className="text-xs font-mono text-cyan-400/60 uppercase tracking-[0.2em] text-center">Powered by TCS & Co-Powered by NIQ</div>
-                    <div className="flex items-center gap-8">
-                      <a
-                        href="https://www.tcs.com/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="Visit TCS"
-                        className="transition-opacity duration-300 hover:opacity-100"
-                      >
-                        <img src="/inctf/assets/images/current_sponsors/Tata_Consultancy_Services_old_logo.svg.png" alt="TCS Logo" className="h-8 sm:h-12 w-auto object-contain brightness-0 invert opacity-90" />
-                      </a>
-                      <div className="w-[1px] h-6 bg-white/10"></div>
-                      <a
-                        href="https://nielseniq.com/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="Visit NIQ"
-                        className="transition-opacity duration-300 hover:opacity-100"
-                      >
-                        <img src="/inctf/assets/images/current_sponsors/NIQ-logo-bright-blue-web.png" alt="NIQ Logo" className="h-6 sm:h-8 w-auto object-contain brightness-0 invert opacity-90" />
-                      </a>
-                    </div>
-                  </div>
-                  */}
                 </SectionCard>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6 justify-center w-full mt-6 md:mt-8">
-                  <Link href="/mission-control" className="plain-link w-full">
+                  <Link href="https://register.inctf.in" target="_blank" rel="noopener noreferrer" className="plain-link w-full">
                     <motion.button
                       initial={{ opacity: 0, y: 20, boxShadow: "4px 4px 0 rgba(255,255,255,0.5)" }}
                       animate={{ opacity: 1, y: 0, boxShadow: "4px 4px 0 rgba(255,255,255,0.5)" }}
                       transition={{ delay: 2, type: "spring" }}
                       whileHover={{ scale: 1.03, boxShadow: "0 0 40px rgba(244,63,94,0.6), 4px 4px 0 rgba(255,255,255,0.7)" }}
                       whileTap={{ scale: 0.95 }}
-                      className="w-full h-full min-h-[56px] px-2 sm:px-6 py-3 bg-gradient-to-br from-red-900 to-red-800 border-2 border-white/60 text-white font-mono tracking-wide whitespace-nowrap flex items-center justify-center text-center text-sm md:text-base"
+                      className="w-full h-full min-h-[56px] px-2 sm:px-6 py-3 bg-gradient-to-br from-red-900 to-red-800 border-2 border-white/60 text-white font-mono tracking-wide whitespace-nowrap flex items-center justify-center text-center text-sm md:text-base cursor-pointer"
                     >
-                      [ Enter Mission Control ]
+                      [ Register Now ]
                     </motion.button>
                   </Link>
 
-                  <Link href="/mission-brief" className="plain-link w-full">
-                    <motion.button
-                      initial={{ opacity: 0, y: 20, boxShadow: "4px 4px 0 rgba(255,255,255,0.5)" }}
-                      animate={{ opacity: 1, y: 0, boxShadow: "4px 4px 0 rgba(255,255,255,0.5)" }}
-                      transition={{ delay: 2.2, type: "spring" }}
-                      whileHover={{ scale: 1.03, boxShadow: "0 0 40px rgba(244,63,94,0.6), 4px 4px 0 rgba(255,255,255,0.7)" }}
-                      whileTap={{ scale: 0.95 }}
-                      className="w-full h-full min-h-[56px] px-2 sm:px-6 py-3 bg-gradient-to-br from-red-900 to-red-800 border-2 border-white/60 text-white font-mono tracking-wide whitespace-nowrap flex items-center justify-center text-center text-sm md:text-base"
-                    >
-                      [ View Mission Brief ]
-                    </motion.button>
-                  </Link>
-                  <div className="w-full md:col-span-2">
+                  <div className="w-full">
                     <motion.button
                       onClick={() => {
-                        gsap.to(window, { duration: 0.8, scrollTo: { y: "#mission-grid", offsetY: 320 }, ease: "power2.inOut" });
+                        gsap.to(window, { duration: 0.8, scrollTo: { y: "#how-it-works", offsetY: 100 }, ease: "power2.inOut" });
                       }}
                       initial={{ opacity: 0, y: 20, boxShadow: "4px 4px 0 rgba(255,255,255,0.5)" }}
                       animate={{ opacity: 1, y: 0, boxShadow: "4px 4px 0 rgba(255,255,255,0.5)" }}
-                      transition={{ delay: 2.3, type: "spring" }}
-                      whileHover={{ scale: 1.02, backgroundColor: "#dc2626", color: "#ffffff", borderColor: "#dc2626", boxShadow: "0 0 30px rgba(244,63,94,0.5), 4px 4px 0 rgba(255,255,255,0.7)" }}
-                      whileTap={{ scale: 0.98 }}
-                      className="w-full h-full min-h-[52px] px-6 py-3 bg-gradient-to-br from-cyan-950/80 to-sky-900/80 border-2 border-cyan-400/50 text-cyan-50 font-mono tracking-wider flex items-center justify-center text-center relative overflow-hidden font-bold cursor-pointer"
+                      transition={{ delay: 2.2, type: "spring" }}
+                      whileHover={{ scale: 1.03, backgroundColor: "#083344", boxShadow: "0 0 30px rgba(56,189,248,0.5), 4px 4px 0 rgba(255,255,255,0.7)" }}
+                      whileTap={{ scale: 0.95 }}
+                      className="w-full h-full min-h-[56px] px-2 sm:px-6 py-3 bg-slate-900/80 border-2 border-cyan-500/50 text-cyan-400 font-mono tracking-wide whitespace-nowrap flex items-center justify-center text-center text-sm md:text-base cursor-pointer"
                     >
-                      <span className="relative z-10">[ Know More ]</span>
-                      <div className="absolute inset-0 bg-sky-400/10 blur-xl animate-pulse"></div>
+                      [ How InCTF Works ]
                     </motion.button>
                   </div>
+                </div>
+
+                {/* Registration Alert Status */}
+                <div className="mt-6 w-full flex justify-center md:justify-start">
+                  <motion.div 
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 2.5 }}
+                    className="inline-flex items-center gap-3 bg-red-500/10 border border-red-500/40 px-4 py-2 rounded-sm backdrop-blur-sm"
+                  >
+                    <div className="w-2 h-2 rounded-full bg-alert-crimson animate-pulse shadow-[0_0_10px_rgba(244,63,94,0.7)]"></div>
+                    <span className="text-xs sm:text-sm font-mono text-red-400 tracking-widest font-black uppercase">
+                      REGISTRATIONS ARE ONGOING
+                    </span>
+                  </motion.div>
                 </div>
 
                 {/* Relocated Sponsors Row */}
@@ -529,6 +446,48 @@ const LandingHeader = () => {
               </div>
             </motion.div>
 
+          </div>
+
+          {/* Hero Quick Facts Row */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-16 md:mt-24 pb-12 w-full mx-auto relative z-20">
+            {/* Fact 1 */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.0 }}
+              className="bg-slate-900/40 border border-sky-500/20 p-5 md:p-6 rounded-lg backdrop-blur-sm"
+            >
+              <h4 className="text-cyan-400 font-mono font-bold text-sm md:text-base uppercase mb-2 tracking-wider flex items-center gap-2">
+                <Terminal size={16} /> What is InCTF?
+              </h4>
+              <p className="text-slate-300 text-sm leading-relaxed">India's first and flagship ethical hacking contest with a multi-month free programme.</p>
+            </motion.div>
+            
+            {/* Fact 2 */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.1 }}
+              className="bg-slate-900/40 border border-sky-500/20 p-5 md:p-6 rounded-lg backdrop-blur-sm"
+            >
+              <h4 className="text-cyan-400 font-mono font-bold text-sm md:text-base uppercase mb-2 tracking-wider flex items-center gap-2">
+                <Users size={16} /> Who can participate?
+              </h4>
+              <p className="text-slate-300 text-sm leading-relaxed">College students and working professionals in India.</p>
+            </motion.div>
+
+            {/* Fact 3 */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.2 }}
+              className="bg-slate-900/40 border border-sky-500/20 p-5 md:p-6 rounded-lg backdrop-blur-sm"
+            >
+              <h4 className="text-cyan-400 font-mono font-bold text-sm md:text-base uppercase mb-2 tracking-wider flex items-center gap-2">
+                <Award size={16} /> Prizes & Recognition
+              </h4>
+              <p className="text-slate-300 text-sm leading-relaxed">Prizes, certificates, and post-contest training opportunities for top performers.</p>
+            </motion.div>
           </div>
         </div>
       </HeaderContainer>
