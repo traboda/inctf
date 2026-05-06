@@ -25,9 +25,9 @@ const CurrentSponsors = () => {
                         {/* Top Accent Strip - More Vibrant with Glow */}
                         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-48 h-[2px] bg-gradient-to-r from-transparent via-cyan-400 to-transparent shadow-[0_0_15px_rgba(34,211,238,0.5)]" />
 
-                        <div className="flex flex-col items-center gap-10 relative z-10">
-                            {/* Primary Section Label - Matching Past Sponsors Style */}
-                            <div className="flex items-center gap-4 md:gap-6 w-full justify-center">
+                        <div className="flex flex-col items-center gap-8 relative z-10">
+                            {/* Primary Section Label */}
+                            <div className="flex items-center gap-4 md:gap-6 w-full justify-center mb-2">
                                 <div className="h-[1px] w-12 md:w-20 bg-gradient-to-r from-transparent to-sky-400 opacity-50"></div>
                                 <h3 className="text-white font-mono font-medium tracking-[0.25em] text-sm md:text-lg uppercase whitespace-nowrap">
                                     Our Current <span className="text-cyan-400 font-bold">Sponsors</span>
@@ -35,125 +35,58 @@ const CurrentSponsors = () => {
                                 <div className="h-[1px] w-12 md:w-20 bg-gradient-to-l from-transparent to-sky-400 opacity-50"></div>
                             </div>
 
-                            {/* Powered By Section */}
-                            <div className="flex flex-col items-center gap-6 w-full">
-                                <div className="text-white/60 font-mono text-xs uppercase tracking-[0.25em] mb-1">
-                                    Powered By
+                            {/* Grid/Flex Layout for Sponsors */}
+                            <div className="flex flex-wrap justify-center items-end gap-x-12 gap-y-10 w-full">
+                                
+                                {/* Powered By Section */}
+                                <div className="flex flex-col items-center gap-4">
+                                    <div className="text-white/60 font-mono text-xs uppercase tracking-[0.25em]">
+                                        Powered By
+                                    </div>
+                                    <a href="https://www.tcs.com/" target="_blank" rel="noopener noreferrer" className="transition-all duration-500 hover:scale-105 filter drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]">
+                                        <img src="/inctf/assets/images/current_sponsors/Tata_Consultancy_Services_old_logo.svg.png" alt="Tata Consultancy Services Logo" className="h-10 md:h-14 w-auto object-contain brightness-0 invert opacity-90 hover:opacity-100 transition-opacity" />
+                                    </a>
                                 </div>
-                                <a
-                                    href="https://www.tcs.com/"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="transition-all duration-500 hover:scale-105 filter drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]"
-                                >
-                                    <img
-                                        src="/inctf/assets/images/current_sponsors/Tata_Consultancy_Services_old_logo.svg.png"
-                                        alt="Tata Consultancy Services Logo"
-                                        className="h-10 md:h-16 w-auto object-contain brightness-0 invert opacity-90 hover:opacity-100 transition-opacity"
-                                    />
-                                </a>
-                            </div>
 
-                            {/* Tactical Divider */}
-                            <div className="flex items-center gap-4 w-full opacity-20">
-                                <div className="h-px flex-grow bg-gradient-to-r from-transparent to-sky-digital" />
-                                <div className="w-2 h-2 rotate-45 border border-sky-digital" />
-                                <div className="h-px flex-grow bg-gradient-to-l from-transparent to-sky-digital" />
-                            </div>
-
-                            {/* Co-Powered By Section */}
-                            <div className="flex flex-col items-center gap-6 w-full">
-                                <div className="text-white/60 font-mono text-xs uppercase tracking-[0.25em] mb-1">
-                                    Co-Powered By
+                                {/* Co-Powered By Section */}
+                                <div className="flex flex-col items-center gap-4">
+                                    <div className="text-white/60 font-mono text-xs uppercase tracking-[0.25em]">
+                                        Co-Powered By
+                                    </div>
+                                    <a href="https://nielseniq.com/" target="_blank" rel="noopener noreferrer" className="transition-all duration-500 hover:scale-105 filter drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]">
+                                        <img src="/inctf/assets/images/current_sponsors/NIQ-logo-bright-blue-web.png" alt="NIQ Logo" className="h-8 md:h-10 w-auto object-contain brightness-0 invert opacity-90 hover:opacity-100 transition-opacity" />
+                                    </a>
                                 </div>
-                                <a
-                                    href="https://nielseniq.com/"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="transition-all duration-500 hover:scale-105 filter drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]"
-                                >
-                                    <img
-                                        src="/inctf/assets/images/current_sponsors/NIQ-logo-bright-blue-web.png"
-                                        alt="NIQ Logo"
-                                        className="h-8 md:h-12 w-auto object-contain brightness-0 invert opacity-90 hover:opacity-100 transition-opacity"
-                                    />
-                                </a>
-                            </div>
 
-                             {/* Tactical Divider */}
-                            <div className="flex items-center gap-4 w-full opacity-20">
-                                <div className="h-px flex-grow bg-gradient-to-r from-transparent to-sky-digital" />
-                                <div className="w-2 h-2 rotate-45 border border-sky-digital" />
-                                <div className="h-px flex-grow bg-gradient-to-l from-transparent to-sky-digital" />
-                            </div>
-
-                            <div className="flex flex-col items-center gap-6 w-full">
-                                <div className="text-white/60 font-mono text-xs uppercase tracking-[0.25em] mb-1">
-                                    Supported By
+                                {/* Supported By Section */}
+                                <div className="flex flex-col items-center gap-4">
+                                    <div className="text-white/60 font-mono text-xs uppercase tracking-[0.25em]">
+                                        Supported By
+                                    </div>
+                                    <a href="https://www.siemens.com/en-gb/" target="_blank" rel="noopener noreferrer" className="transition-all duration-500 hover:scale-105 filter drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]">
+                                        <img src="/inctf/assets/images/current_sponsors/Siemens.png" alt="Siemens Logo" className="h-8 md:h-10 w-auto object-contain brightness-0 invert opacity-90 hover:opacity-100 transition-opacity" />
+                                    </a>
                                 </div>
-                                <a
-                                    href="https://www.siemens.com/en-gb/"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="transition-all duration-500 hover:scale-105 filter drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]"
-                                >
-                                    <img
-                                        src="/inctf/assets/images/current_sponsors/Siemens.png"
-                                        alt="NIQ Logo"
-                                        className="h-8 md:h-12 w-auto object-contain brightness-0 invert opacity-90 hover:opacity-100 transition-opacity"
-                                    />
-                                </a>
-                            </div>
 
-
-                            <div className="flex items-center gap-4 w-full opacity-20">
-                                <div className="h-px flex-grow bg-gradient-to-r from-transparent to-sky-digital" />
-                                <div className="w-2 h-2 rotate-45 border border-sky-digital" />
-                                <div className="h-px flex-grow bg-gradient-to-l from-transparent to-sky-digital" />
-                            </div>
-
-                            {/* Organizing Partner Section */}
-                            <div className="flex flex-col items-center gap-6 w-full">
-                                <div className="text-white/60 font-mono text-xs uppercase tracking-[0.25em] mb-1">
-                                    Organizing Partner
+                                {/* Organizing Partner Section */}
+                                <div className="flex flex-col items-center gap-4">
+                                    <div className="text-white/60 font-mono text-xs uppercase tracking-[0.25em]">
+                                        Organizing Partner
+                                    </div>
+                                    <a href="https://traboda.com/" target="_blank" rel="noopener noreferrer" className="transition-all duration-500 hover:scale-105 filter drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]">
+                                        <img src="/inctf/assets/images/logos/traboda_light.png" alt="Traboda CyberLabs Logo" className="h-10 md:h-14 w-auto object-contain brightness-0 invert opacity-90 hover:opacity-100 transition-opacity" />
+                                    </a>
                                 </div>
-                                <a
-                                    href="https://traboda.com/"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="transition-all duration-500 hover:scale-105 filter drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]"
-                                >
-                                    <img
-                                        src="/inctf/assets/images/logos/traboda_light.png"
-                                        alt="Traboda CyberLabs Logo"
-                                        className="h-10 md:h-16 w-auto object-contain brightness-0 invert opacity-90 hover:opacity-100 transition-opacity"
-                                    />
-                                </a>
-                            </div>
 
-                            <div className="flex items-center gap-4 w-full opacity-20">
-                                <div className="h-px flex-grow bg-gradient-to-r from-transparent to-sky-digital" />
-                                <div className="w-2 h-2 rotate-45 border border-sky-digital" />
-                                <div className="h-px flex-grow bg-gradient-to-l from-transparent to-sky-digital" />
-                            </div>
-
-                            {/* Community Partner Section */}
-                            <div className="flex flex-col items-center gap-6 w-full">
-                                <div className="text-white/60 font-mono text-xs uppercase tracking-[0.25em] mb-1">
-                                    Community Partner
+                                {/* Community Partner Section */}
+                                <div className="flex flex-col items-center gap-4">
+                                    <div className="text-white/60 font-mono text-xs uppercase tracking-[0.25em]">
+                                        Community Partner
+                                    </div>
+                                    <a href="https://www.iotsrg.org/" target="_blank" rel="noopener noreferrer" className="transition-all duration-500 hover:scale-105 filter drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]">
+                                        <img src="/inctf/assets/images/current_sponsors/Gold-IoTSRG.png" alt="IoT Security Research Group" className="h-10 md:h-14 w-auto object-contain brightness-0 invert opacity-90 hover:opacity-100 transition-opacity" />
+                                    </a>
                                 </div>
-                                <a
-                                    href="https://www.iotsrg.org/"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="transition-all duration-500 hover:scale-105 filter drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]"
-                                >
-                                    <img
-                                        src="/inctf/assets/images/current_sponsors/Gold-IoTSRG.png"
-                                        alt="IoT Security Research Group"
-                                        className="h-10 md:h-16 w-auto object-contain brightness-0 invert opacity-90 hover:opacity-100 transition-opacity"
-                                    />
-                                </a>
                             </div>
                         </div>
 

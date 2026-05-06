@@ -1,7 +1,7 @@
 'use client';
 import React, { useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X } from 'lucide-react';
+import { X, Award } from 'lucide-react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -268,13 +268,13 @@ const CurrentSpeakers: React.FC = () => {
     return (
         <section className="relative z-10 w-full py-16 md:py-24 overflow-hidden" ref={containerRef}>
             {/* Section Header */}
-            <div className="speakers-header px-6 md:px-16 mb-10 md:mb-16 opacity-0">
+            <div className="speakers-header px-6 md:px-16 mb-10 md:mb-16 opacity-0 text-center">
                 <div>
-                    <p className="font-mono text-sky-400 text-xs tracking-[0.3em] uppercase mb-3">
-                        [ Expert Speakers ]
-                    </p>
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900/60 border border-sky-500/30 text-sky-400 font-mono text-xs tracking-widest uppercase mb-4 shadow-[0_0_10px_rgba(56,189,248,0.2)]">
+                        <Award size={14} /> Expert Speakers
+                    </div>
                     <h2 className="font-heading text-white text-3xl md:text-4xl lg:text-5xl font-bold uppercase tracking-wider">
-                        <span className="text-sky-400">Speakers</span>
+                        <span className="text-white">Expert</span> <span className="text-sky-400">Speakers</span>
                     </h2>
                 </div>
 

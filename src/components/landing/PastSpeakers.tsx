@@ -1,7 +1,7 @@
 'use client';
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Speaker } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Award } from 'lucide-react';
 import { StaticImageData } from 'next/image';
 import SuvaBrata from '../../../public/assets/images/past_speakers/subabrata.jpg';
 import Lavi from '../../../public/assets/images/past_speakers/lavi.jpg';
@@ -155,12 +155,12 @@ const PastSpeakers: React.FC = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={isTitleInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.5 }}
-                    className="flex flex-col md:flex-row md:items-end md:justify-between gap-4"
+                    className="flex flex-col items-center justify-center gap-6"
                 >
-                    <div>
-                        <p className="font-mono text-sky-400 text-xs tracking-[0.3em] uppercase mb-3">
-                            [ Expert Speakers ]
-                        </p>
+                    <div className="w-full text-center">
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900/60 border border-sky-500/30 text-sky-400 font-mono text-xs tracking-widest uppercase mb-4 shadow-[0_0_10px_rgba(56,189,248,0.2)]">
+                            <Award size={14} /> Expert Speakers
+                        </div>
                         <h2 className="font-heading text-white text-3xl md:text-4xl lg:text-5xl font-bold uppercase tracking-wider">
                             Past <span className="text-sky-400">Speakers</span>
                         </h2>

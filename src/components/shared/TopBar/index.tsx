@@ -174,7 +174,110 @@ const TopBar = ({ UTMSource = null }) => {
     if (!isVisible) setShowMenu(false);
   }, [isVisible]);
 
-  const topbarConfig = require(`../../../data/${eventID}/topbar.json`);
+  const topbarConfig: any = {
+    topbarCTA: [
+      {
+        buttonText: "Join Discord Now",
+        link: "/discord"
+      }
+    ],
+    topbarCTAText: "Have you got stuck? Need Help? Join our discord server, ask your doubts & get support from our experts.",
+    menu: [
+      {
+        label: "About",
+        link: "/about",
+        items: [
+          {
+            label: "Our Reach & Statistics",
+            link: "/about#our-reach"
+          }
+        ]
+      },
+      {
+        label: "Championship",
+        link: "/championship",
+        items: [
+          {
+            label: "Why Participate?",
+            link: "/championship#why-participate"
+          },
+          {
+            label: "Guidelines & Rules",
+            link: "/rules"
+          }
+        ]
+      },
+      {
+        label: "Get Started",
+        link: "/resources",
+        items: [
+          {
+            label: "Cyber Workshops",
+            badge: "free",
+            link: "/trainings"
+          },
+          {
+            label: "Videos & Guides",
+            link: "/resources#videos"
+          },
+          {
+            label: "FAQ",
+            badge: "get answers",
+            link: "/faq"
+          },
+          {
+            label: "bi0s Wiki",
+            link: "https://wiki.bi0s.in/"
+          },
+          {
+            label: "Practice Challenges",
+            link: "https://app.traboda.com/"
+          },
+          {
+            label: "Writeups",
+            badge: "new",
+            badgeColor: "bg-yellow-100 text-yellow-800",
+            link: "/writeups"
+          },
+          {
+            label: "Promote InCTF",
+            link: "/promote"
+          },
+          {
+            label: "Get Help",
+            badge: "discord",
+            badgeColor: "bg-blue-100 text-blue-800",
+            link: "/discord"
+          }
+        ]
+      },
+      {
+        label: "Operation Vajra",
+        link: "#",
+        items: [
+          {
+            label: "Mission Outreach",
+            link: "/mission-outreach"
+          },
+          {
+            label: "Mission Control",
+            link: "/mission-control"
+          },
+          {
+            label: "Mission Brief",
+            link: "/mission-brief"
+          }
+        ]
+      }
+    ],
+    CTA: {
+      type: "link",
+      link: "https://register.inctf.in",
+      buttonText: "Register Now",
+      title: "",
+      subTitle: ""
+    }
+  };
 
   const onDismiss = () => {
     setIsBannerDismissed(true);
@@ -245,31 +348,9 @@ const TopBar = ({ UTMSource = null }) => {
           <div
             className="hidden md:flex w-1/4 md:w-1/3 xl:w-1/4 md:text-center flex-wrap items-center md:justify-start justify-center px-2"
           >
-            <Link className="w-full md:w-1/3" href="/">
+            <Link className="w-full" href="/">
               <img src="/inctf/assets/logo_dark.png" alt="InCTF Logo" className="logo" style={{ maxHeight: 65 }} />
             </Link>
-            {topbarConfig?.associate?.link && (
-              <a
-                target="_blank"
-                href={topbarConfig?.associate?.link}
-                className="w-2/3 pl-2 md:flex hidden flex-col items-start"
-                title="In association with CBSE"
-              >
-                <span
-                  className="uppercase tracking-widest opacity-80"
-                  style={{ fontSize: 8 }}
-                >
-                  In association with
-                </span>
-                <img
-                  alt="cbse"
-                  src={`/${eventID}/assets/${topbarConfig?.associate?.logo?.light}`}
-                  style={{ position: 'unset', maxHeight: 45, maxWidth: '100%' }}
-                  draggable="false"
-                  className="inline"
-                />
-              </a>
-            )}
           </div>
           <div className="md:w-2/3 xl:w-3/4 px-1 hidden md:flex items-center">
             <div className="flex w-full">

@@ -157,7 +157,7 @@ const MissionControlPageContent = () => {
 
                                 {/* Main Title Wrapper */}
                                 <div className="relative">
-                                    <h1 className="text-[26px] min-[400px]:text-4xl md:text-6xl font-black font-heading tracking-tight uppercase text-white drop-shadow-[0_0_15px_rgba(56,189,248,0.8)] whitespace-nowrap z-20 relative">
+                                    <h1 className="text-[26px] min-[400px]:text-4xl md:text-6xl font-black font-heading tracking-tight uppercase text-white drop-shadow-[0_0_15px_rgba(56,189,248,0.8)] z-20 relative">
                                         <GlitchText text="OPERATION VAJRA" strikethrough={true} className="text-white" />
                                     </h1>
                                 </div>
@@ -177,7 +177,7 @@ const MissionControlPageContent = () => {
                                 </div>
 
                                 {/* Subtitle */}
-                                <h1 className="text-[26px] min-[400px]:text-4xl md:text-6xl font-black font-heading tracking-tight uppercase text-white drop-shadow-[0_0_15px_rgba(56,189,248,0.8)] whitespace-nowrap z-20 relative">
+                                <h1 className="text-[26px] min-[400px]:text-4xl md:text-6xl font-black font-heading tracking-tight uppercase text-white drop-shadow-[0_0_15px_rgba(56,189,248,0.8)] z-20 relative">
                                     Operational Plan
                                 </h1>
                             </div>

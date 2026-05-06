@@ -1,32 +1,56 @@
 'use client';
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Calendar, Target, Trophy, MousePointer2, ChevronRight, ChevronDown } from 'lucide-react';
+import { Calendar, Target, Trophy, MousePointer2, ChevronRight, ChevronDown, Terminal } from 'lucide-react';
 
 const timelineEvents = [
   {
-    date: "APRIL",
-    title: "Masterclass",
-    description: "Talks + training + mock CTF",
+    date: "Phase 01",
+    title: "Registrations Open",
+    description: "Mission portal active. Team formation begins.",
     icon: <Calendar className="w-5 h-5" />,
-    status: "ready",
+    status: "active",
     coords: "01.04"
   },
   {
-    date: "June (TBD)",
-    title: "Qualifiers",
-    description: "Online jeopardy round",
-    icon: <Target className="w-5 h-5" />,
-    status: "locked",
-    coords: "09.05"
+    date: "Phase 02",
+    title: "Training Period",
+    description: "Access learning resources and interactive workshops.",
+    icon: <Terminal className="w-5 h-5" />,
+    status: "ready",
+    coords: "15.04"
   },
   {
-    date: "JULY",
-    title: "Finals",
-    description: "On-site competition",
+    date: "Phase 03",
+    title: "Practice & Prep",
+    description: "Solve past challenges in the archive.",
+    icon: <MousePointer2 className="w-5 h-5" />,
+    status: "ready",
+    coords: "01.05"
+  },
+  {
+    date: "Phase 04",
+    title: "Online CTF",
+    description: "The qualifiers. Top teams advance to the finals.",
+    icon: <Target className="w-5 h-5" />,
+    status: "locked",
+    coords: "09.06"
+  },
+  {
+    date: "Phase 05",
+    title: "Final Round",
+    description: "On-site showdown at Amrita University.",
     icon: <Trophy className="w-5 h-5" />,
+    status: "locked",
+    coords: "15.07"
+  },
+  {
+    date: "Phase 06",
+    title: "Next Steps",
+    description: "Internships and career growth.",
+    icon: <ChevronRight className="w-5 h-5" />,
     status: "final",
-    coords: "07.26"
+    coords: "01.08"
   }
 ];
 
@@ -52,71 +76,25 @@ const OperationTimeline = () => {
       <div className="absolute inset-0 bg-[url('/inctf/assets/design/Common/grid_pattern.svg')] bg-[length:50px_50px] opacity-[0.03] pointer-events-none z-0"></div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="px-6 md:px-16 mb-10 md:mb-20">
+        <div className="px-6 md:px-16 mb-10 md:mb-20 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <p className="font-mono text-sky-digital text-xs tracking-[0.3em] uppercase mb-3">
-              [ Operation Milestones ]
-            </p>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900/60 border border-sky-500/30 text-sky-400 font-mono text-xs tracking-widest uppercase mb-4 shadow-[0_0_10px_rgba(56,189,248,0.2)]">
+              <Terminal size={14} /> Operation Milestones
+            </div>
             <h2 className="font-heading text-white text-3xl md:text-4xl lg:text-5xl font-black uppercase tracking-wider">
               Mission <span className="text-sky-digital">Timeline</span>
             </h2>
           </motion.div>
-          <div className="mt-6 h-[1px] w-full bg-gradient-to-r from-sky-400/60 via-sky-400/20 to-transparent" />
+          <div className="mt-6 h-[1px] w-full bg-gradient-to-r from-transparent via-sky-400/40 to-transparent" />
         </div>
 
         <div className="relative max-w-6xl mx-auto">
-          {/* Energy Conduit SVG Line */}
-          <div className="absolute top-[4.5rem] left-0 w-full h-8 hidden md:block z-0 pointer-events-none">
-            <svg width="100%" height="100%" preserveAspectRatio="none" className="overflow-visible">
-              {/* Base Line */}
-              <line x1="0" y1="50%" x2="100%" y2="50%" stroke="currentColor" strokeWidth="1" className="text-sky-digital/20" />
-              
-              {/* Moving Pulse 1 */}
-              <motion.line 
-                x1="0" y1="50%" x2="100%" y2="50%" 
-                stroke="currentColor" 
-                strokeWidth="2" 
-                className="text-sky-digital shadow-[0_0_10px_rgba(56,189,248,0.5)]"
-                initial={{ pathLength: 0, pathOffset: 0 }}
-                animate={{ pathLength: 0.15, pathOffset: [0, 1] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-              />
-
-              {/* Moving Pulse 2 (Secondary) */}
-              <motion.line 
-                x1="0" y1="50%" x2="100%" y2="50%" 
-                stroke="currentColor" 
-                strokeWidth="1" 
-                className="text-white/40"
-                initial={{ pathLength: 0, pathOffset: 0 }}
-                animate={{ pathLength: 0.05, pathOffset: [0, 1] }}
-                transition={{ duration: 3, repeat: Infinity, ease: "linear", delay: 1.5 }}
-              />
-            </svg>
-            
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-0 md:gap-6 lg:gap-10 relative">
-            {/* Card Flow Arrows (Red) - Visible on desktop only */}
-            <div className="absolute top-[68%] left-[33.3%] -translate-x-1/2 -translate-y-1/2 hidden md:flex z-20 pointer-events-none text-red-600/80">
-              <ChevronRight size={24} strokeWidth={3} className="-mr-4" />
-              <ChevronRight size={24} strokeWidth={3} className="-mr-4" />
-              <ChevronRight size={24} strokeWidth={3} className="-mr-4" />
-              <ChevronRight size={24} strokeWidth={3} className="-mr-4" />
-              <ChevronRight size={24} strokeWidth={3} />
-            </div>
-            <div className="absolute top-[68%] left-[66.6%] -translate-x-1/2 -translate-y-1/2 hidden md:flex z-20 pointer-events-none text-red-600/80">
-              <ChevronRight size={24} strokeWidth={3} className="-mr-4" />
-              <ChevronRight size={24} strokeWidth={3} className="-mr-4" />
-              <ChevronRight size={24} strokeWidth={3} className="-mr-4" />
-              <ChevronRight size={24} strokeWidth={3} className="-mr-4" />
-              <ChevronRight size={24} strokeWidth={3} />
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-12 md:gap-x-6 lg:gap-x-10 relative">
 
             {timelineEvents.map((event, index) => (
               <motion.div
