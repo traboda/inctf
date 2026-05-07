@@ -49,7 +49,7 @@ const LandingFAQ = () => {
       question: "Is InCTF free?",
       answer: (
         <>
-          Yes, participation in InCTF is completely free for all eligible students. There are no hidden charges to access the training or compete in the qualifiers.
+          There is a small registration fee of ₹499 for all eligible students. There are no hidden charges to access the training.
         </>
       )
     },
