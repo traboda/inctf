@@ -266,7 +266,7 @@ const CurrentSpeakers: React.FC = () => {
     }, [selectedSpeaker]);
 
     return (
-        <section className="relative z-10 w-full py-16 md:py-24 overflow-hidden" ref={containerRef}>
+        <section className="relative z-20 w-full py-16 md:py-24 overflow-hidden" ref={containerRef}>
             {/* Section Header */}
             <div className="speakers-header px-6 md:px-16 mb-10 md:mb-16 opacity-0 text-center">
                 <div>
