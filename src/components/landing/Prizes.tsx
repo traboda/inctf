@@ -24,7 +24,7 @@ const LandingPrizeDetails = () => {
   };
 
   return (
-    <section className="relative py-24 bg-obsidian z-20" id="prizes">
+    <section className="relative py-24 z-20" id="prizes">
       <div className="container mx-auto px-6 md:px-8">
         <div className="text-center mb-16 max-w-3xl mx-auto">
           <motion.div
@@ -44,7 +44,7 @@ const LandingPrizeDetails = () => {
           </motion.div>
         </div>
 
-        <motion.div 
+        <motion.div
           className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8"
           variants={containerVariants}
           initial="hidden"
@@ -80,7 +80,7 @@ const LandingPrizeDetails = () => {
             </div>
             <h3 className="text-xl font-bold text-white mb-4 uppercase tracking-wide">Recognition</h3>
             <p className="text-slate-400 font-mono text-sm leading-relaxed">
-              Stand out to top recruiters. We highlight recruitment partners and offer exclusive internship opportunities with our sponsor organizations this year.
+              Stand out to top recruiters. We discover recruitment partners and offer exclusive internship opportunities with our sponsor organizations this year.
             </p>
           </motion.div>
         </motion.div>
