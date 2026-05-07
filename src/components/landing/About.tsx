@@ -48,7 +48,7 @@ const LandingAboutInCTF = () => (
                 <Target size={20} />
               </div>
               <p className="text-slate-300 leading-relaxed font-medium">
-                multi-month, completely free programme.
+                multi-month, world-class programme.
               </p>
             </li>
             <li className="flex items-start gap-4">
