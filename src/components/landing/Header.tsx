@@ -322,15 +322,13 @@ const LandingHeader = () => {
                 <SectionCard className="mb-0 w-full !p-5 md:!py-10 md:!px-8" paddingClassName="p-0">
                   <h1 className="text-[28px] sm:text-4xl md:text-5xl lg:text-6xl font-black font-heading mb-4 text-ghost-white text-left break-words leading-tight">
                     <span className="block mb-2">
-                      <GlitchText 
-                        text="India's Cybersecurity Championship" 
-                        triggerOnView={true} 
+                      <GlitchText
+                        text="India's Cybersecurity Championship"
+                        triggerOnView={true}
                         className="text-ghost-white"
                       />
                     </span>
-                    <span className="block text-[20px] sm:text-2xl md:text-3xl text-white mt-2">
-                      for Students & Professionals
-                    </span>
+
                   </h1>
 
                   <div className="mt-6 text-left w-full">
@@ -376,7 +374,7 @@ const LandingHeader = () => {
 
                 {/* Registration Alert Status */}
                 <div className="mt-6 w-full flex justify-center md:justify-start">
-                  <motion.div 
+                  <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 2.5 }}
@@ -411,10 +409,10 @@ const LandingHeader = () => {
                   transition={{ duration: 1.2, delay: 0.5 }}
                   className="relative z-10 floating md:static absolute inset-0 md:inset-auto flex justify-center items-center pointer-events-none md:pointer-events-auto mt-0"
                 >
-                    <img
-                      src="/inctf/assets/design/Homepage/satellite_laser.webp"
-                      alt="InCTF Satellite"
-                      className="w-[68%] md:w-[550px] lg:w-[680px] h-auto object-contain md:filter-none filter blur-none opacity-40 md:opacity-90 scale-150 md:scale-100 mt-4 ml-24"
+                  <img
+                    src="/inctf/assets/design/Homepage/satellite_laser.webp"
+                    alt="InCTF Satellite"
+                    className="w-[68%] md:w-[550px] lg:w-[680px] h-auto object-contain md:filter-none filter blur-none opacity-40 md:opacity-90 scale-150 md:scale-100 mt-4 ml-24"
                     draggable="false"
                     style={{
                       filter: 'drop-shadow(0 0 30px rgba(56, 189, 248, 0.4))'
@@ -451,7 +449,7 @@ const LandingHeader = () => {
           {/* Hero Quick Facts Row */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-16 md:mt-24 pb-12 w-full max-w-4xl mx-auto relative z-20">
             {/* Fact 2 */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.1 }}
@@ -464,7 +462,7 @@ const LandingHeader = () => {
             </motion.div>
 
             {/* Fact 3 */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.2 }}
