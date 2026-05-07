@@ -449,20 +449,7 @@ const LandingHeader = () => {
           </div>
 
           {/* Hero Quick Facts Row */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-16 md:mt-24 pb-12 w-full mx-auto relative z-20">
-            {/* Fact 1 */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.0 }}
-              className="bg-slate-900/40 border border-sky-500/20 p-5 md:p-6 rounded-lg backdrop-blur-sm"
-            >
-              <h4 className="text-cyan-400 font-mono font-bold text-sm md:text-base uppercase mb-2 tracking-wider flex items-center gap-2">
-                <Terminal size={16} /> What is InCTF?
-              </h4>
-              <p className="text-slate-300 text-sm leading-relaxed">India's first and flagship ethical hacking contest with a multi-month free programme.</p>
-            </motion.div>
-            
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-16 md:mt-24 pb-12 w-full max-w-4xl mx-auto relative z-20">
             {/* Fact 2 */}
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
