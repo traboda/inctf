@@ -31,13 +31,6 @@ const LandingResourcesSection = () => {
       link: "https://wiki.bi0s.in/"
     },
     {
-      title: "Challenge Archive",
-      description: "Practice using past challenges and archive resources.",
-      btnText: "Start Practicing",
-      icon: <Terminal size={28} />,
-      link: "https://traboda.com/"
-    },
-    {
       title: "Training Videos / Learning Content",
       description: "Use the training schedule and linked learning resources already exposed by InCTF.",
       btnText: "View Training",
@@ -54,7 +47,7 @@ const LandingResourcesSection = () => {
   ];
 
   return (
-    <section className="relative py-20 bg-obsidian z-20 border-t border-sky-digital/10" id="resources">
+    <section className="relative py-20 z-20" id="resources">
       <div className="container mx-auto px-6 md:px-8">
         <div className="text-center mb-16 max-w-3xl mx-auto">
           <motion.div
@@ -72,7 +65,7 @@ const LandingResourcesSection = () => {
         </div>
 
         <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
