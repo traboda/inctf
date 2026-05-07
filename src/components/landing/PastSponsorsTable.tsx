@@ -80,7 +80,7 @@ const PastSponsorsTable = () => {
     }, { scope: containerRef });
 
     return (
-        <section className="w-full relative py-16 md:py-24 bg-obsidian/80 border-t border-sky-400/10" id="past-sponsors" ref={containerRef}>
+        <div className="w-full relative py-8" id="past-sponsors" ref={containerRef}>
             <div className="container mx-auto px-4 max-w-6xl">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 border-l border-t border-sky-400/10 relative">
                     {/* Parent Grid Intersection Nodes (Top/Left edges) */}
@@ -123,7 +123,7 @@ const PastSponsorsTable = () => {
                     ))}
                 </div>
             </div>
-        </section>
+        </div>
     );
 };
 
