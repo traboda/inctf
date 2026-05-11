@@ -41,7 +41,7 @@ const LandingTrainingSection = () => {
                 InCTF provides comprehensive training-related content, including a live training schedule and a rich repository of learning resources. 
               </p>
               <p>
-                Participants can master cybersecurity fundamentals through public resources, guided material, and hands-on practice challenges both before and during the active competition cycle.
+                Participants can master cybersecurity fundamentals through public resources and guided material both before and during the active competition cycle.
               </p>
             </div>
 
@@ -88,8 +88,8 @@ const LandingTrainingSection = () => {
                   <Terminal size={20} />
                 </div>
                 <div>
-                  <h4 className="text-white font-bold mb-1">Archive & Writeups</h4>
-                  <p className="text-slate-400 text-sm">Participants can revise key concepts and techniques using archive-style material and detailed solution writeups.</p>
+                  <h4 className="text-white font-bold mb-1">Writeups</h4>
+                  <p className="text-slate-400 text-sm">Participants can revise key concepts and techniques using detailed solution writeups.</p>
                 </div>
               </li>
               <li className="flex items-start gap-4">

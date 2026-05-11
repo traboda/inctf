@@ -539,7 +539,7 @@ const questions = [
     'answer': <>
       Typically, InCTF consists of:
       <ul>
-        <li>Training Phase – Online learning resources and practice challenges</li>
+        <li>Training Phase – Online learning resources and materials</li>
         <li>Qualifier CTF – Online preliminary round</li>
         <li>Final CTF Round – For top performers, which may be online or on-site</li>
       </ul>

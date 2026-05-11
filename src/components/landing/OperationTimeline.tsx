@@ -47,7 +47,7 @@ const timelineEvents = [
   {
     date: "Phase 06",
     title: "Next Steps",
-    description: "Internships and career growth.",
+    description: "Internships and career pathways.",
     icon: <ChevronRight className="w-5 h-5" />,
     status: "final",
     coords: "01.08"
@@ -66,7 +66,7 @@ const RedReticleOverlay = () => (
 
 const OperationTimeline = () => {
   return (
-    <section className="py-24 bg-obsidian border-y border-sky-digital/10 relative overflow-hidden font-mono">
+    <section className="relative py-24 z-20 overflow-hidden font-mono">
       {/* HUD Scanlines */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.05] z-0 overflow-hidden">
         <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_2px,3px_100%] animate-scanlines"></div>
@@ -110,13 +110,13 @@ const OperationTimeline = () => {
                   <div className="w-20 h-20 bg-obsidian/40 backdrop-blur-sm rounded-xl flex items-center justify-center text-sky-digital transition-all duration-500 relative z-10 overflow-hidden">
                     {/* Interior Scanlines */}
                     <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.1)_50%)] bg-[length:100%_4px] opacity-20 group-hover:opacity-40"></div>
-                    
+
                     <div className="relative z-10 transition-transform duration-300 group-hover:scale-110">
                       {event.icon}
                     </div>
 
                   </div>
-                  
+
                   <RedReticleOverlay />
                 </div>
 
@@ -128,10 +128,10 @@ const OperationTimeline = () => {
                   >
                     {/* Hover Glow Effect */}
                     <div className="absolute -inset-4 bg-sky-digital/0 group-hover/card:bg-sky-digital/[0.03] transition-colors duration-500 rounded-xl"></div>
-                    
+
                     {/* Top Detail Rail */}
                     <div className="flex justify-between items-center mb-4 relative z-10 border-b border-sky-digital/10 pb-2">
-                       <span className="text-[10px] text-cyan-400 font-bold tracking-[0.2em] uppercase">SYSTEM_{event.status}</span>
+                      <span className="text-[10px] text-cyan-400 font-bold tracking-[0.2em] uppercase">SYSTEM_{event.status}</span>
                     </div>
 
                     <div className="space-y-3 relative z-10">

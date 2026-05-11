@@ -25,7 +25,7 @@ const LandingOrganizedBy = () => {
   ];
 
   return (
-    <section className="relative py-24 bg-obsidian z-20 border-t border-sky-400/10" id="organized-by">
+    <section className="relative py-24 z-20" id="organized-by">
       <div className="container mx-auto px-6 md:px-8 max-w-6xl">
         {/* Section Title */}
         <div className="text-center mb-16">

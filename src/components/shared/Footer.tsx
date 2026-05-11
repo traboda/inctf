@@ -42,7 +42,7 @@ const navLinks = [
 
 const Footer = () => {
     return (
-        <footer className="w-full relative z-10 bg-obsidian border-t border-white/5 overflow-hidden">
+        <footer className="w-full relative z-10 border-t border-white/5 overflow-hidden">
             {/* Subtle top glow */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[60%] h-px bg-gradient-to-r from-transparent via-sky-500/40 to-transparent" />
 

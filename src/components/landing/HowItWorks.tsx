@@ -34,7 +34,7 @@ const steps = [
   },
   {
     title: "Practice",
-    desc: "Learners can use the bi0s wiki, challenge archive, and related learning channels to practice concepts and improve confidence.",
+    desc: "Learners can use the bi0s wiki and related learning channels to practice concepts and improve confidence.",
     icon: <Terminal size={16} />
   },
   {
@@ -52,7 +52,7 @@ const MotionLink = motion(Link);
 
 const LandingChampionshipWorks = () => {
   return (
-    <ChampionshipSection className="container mx-auto px-6 md:px-8" id="how-it-works">
+    <ChampionshipSection className="container mx-auto px-6 md:px-8 relative z-20" id="how-it-works">
       {/* Title & Subtitle */}
       <div className="text-center mb-16 max-w-4xl mx-auto">
         <motion.div
@@ -67,7 +67,7 @@ const LandingChampionshipWorks = () => {
             How the <span className="text-sky-400">Championship Works</span>
           </h2>
           <p className="text-lg md:text-xl text-cyan-400 font-medium">
-            Training, practice, competition, and final deployment.
+            Training, practice, competition, and finals.
           </p>
         </motion.div>
       </div>
@@ -85,14 +85,14 @@ const LandingChampionshipWorks = () => {
       </div>
 
       {/* Supporting Links */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ delay: 0.4 }}
         className="flex flex-col sm:flex-row justify-center items-center gap-10 sm:gap-8 mt-12"
       >
-        <MotionLink 
+        <MotionLink
           href="/championship"
           initial={{ opacity: 0, y: 20, boxShadow: "4px 4px 0 rgba(255,255,255,0.5)" }}
           whileInView={{ opacity: 1, y: 0, boxShadow: "4px 4px 0 rgba(255,255,255,0.5)" }}
@@ -103,7 +103,7 @@ const LandingChampionshipWorks = () => {
         >
           [ View Detailed Contest Format ]
         </MotionLink>
-        <MotionLink 
+        <MotionLink
           href="/championship#finals"
           initial={{ opacity: 0, y: 20, boxShadow: "4px 4px 0 rgba(255,255,255,0.5)" }}
           whileInView={{ opacity: 1, y: 0, boxShadow: "4px 4px 0 rgba(255,255,255,0.5)" }}

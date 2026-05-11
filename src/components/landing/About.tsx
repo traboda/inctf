@@ -4,7 +4,7 @@ import { ShieldCheck, Target, Users, Terminal } from 'lucide-react';
 import animation from '@/src/animation';
 
 const LandingAboutInCTF = () => (
-  <section className="container mx-auto py-20 px-6 md:px-8" id="what-is-inctf">
+  <section className="container mx-auto py-20 px-6 md:px-8 relative z-20" id="what-is-inctf">
     <div className="flex flex-col lg:flex-row gap-12 items-center">
       {/* Main Brief Column */}
       <div className="lg:w-1/2">
@@ -48,7 +48,7 @@ const LandingAboutInCTF = () => (
                 <Target size={20} />
               </div>
               <p className="text-slate-300 leading-relaxed font-medium">
-                multi-month, world-class programme.
+                Multi-month, world-class programme.
               </p>
             </li>
             <li className="flex items-start gap-4">
@@ -68,7 +68,7 @@ const LandingAboutInCTF = () => (
               </p>
             </li>
           </ul>
-          
+
           <div className="mt-8 p-6 border border-sky-digital/30 bg-sky-digital/5 rounded relative">
             <div className="absolute top-0 left-0 w-4 h-4 border-t border-l border-sky-digital"></div>
             <div className="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-sky-digital"></div>

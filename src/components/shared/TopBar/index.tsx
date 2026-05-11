@@ -230,10 +230,6 @@ const TopBar = ({ UTMSource = null }) => {
             link: "https://wiki.bi0s.in/"
           },
           {
-            label: "Practice Challenges",
-            link: "https://app.traboda.com/"
-          },
-          {
             label: "Writeups",
             badge: "new",
             badgeColor: "bg-yellow-100 text-yellow-800",

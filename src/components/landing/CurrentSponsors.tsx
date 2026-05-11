@@ -30,22 +30,24 @@ const CurrentSponsors = () => {
                             <div className="flex items-center gap-4 md:gap-6 w-full justify-center mb-2">
                                 <div className="h-[1px] w-12 md:w-20 bg-gradient-to-r from-transparent to-sky-400 opacity-50"></div>
                                 <h3 className="text-white font-mono font-medium tracking-[0.25em] text-sm md:text-lg uppercase whitespace-nowrap">
-                                    Our Current <span className="text-cyan-400 font-bold">Sponsors</span>
+                                    Our <span className="text-cyan-400 font-bold">Sponsors</span>
                                 </h3>
                                 <div className="h-[1px] w-12 md:w-20 bg-gradient-to-l from-transparent to-sky-400 opacity-50"></div>
                             </div>
 
                             {/* Grid/Flex Layout for Sponsors */}
-                            <div className="flex flex-wrap justify-center items-end gap-x-12 gap-y-10 w-full">
-                                
+                            <div className="flex flex-wrap justify-center items-start gap-x-12 gap-y-10 w-full">
+
                                 {/* Powered By Section */}
                                 <div className="flex flex-col items-center gap-4">
                                     <div className="text-white/60 font-mono text-xs uppercase tracking-[0.25em]">
                                         Powered By
                                     </div>
-                                    <a href="https://www.tcs.com/" target="_blank" rel="noopener noreferrer" className="transition-all duration-500 hover:scale-105 filter drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]">
-                                        <img src="/inctf/assets/images/current_sponsors/Tata_Consultancy_Services_old_logo.svg.png" alt="Tata Consultancy Services Logo" className="h-10 md:h-14 w-auto object-contain brightness-0 invert opacity-90 hover:opacity-100 transition-opacity" />
-                                    </a>
+                                    <div className="flex items-center justify-center h-10 md:h-14">
+                                        <a href="https://www.tcs.com/" target="_blank" rel="noopener noreferrer" className="transition-all duration-500 hover:scale-105 filter drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]">
+                                            <img src="/inctf/assets/images/current_sponsors/Tata_Consultancy_Services_old_logo.svg.png" alt="Tata Consultancy Services Logo" className="h-10 md:h-14 w-auto object-contain brightness-0 invert opacity-90 hover:opacity-100 transition-opacity" />
+                                        </a>
+                                    </div>
                                 </div>
 
                                 {/* Co-Powered By Section */}
@@ -53,9 +55,11 @@ const CurrentSponsors = () => {
                                     <div className="text-white/60 font-mono text-xs uppercase tracking-[0.25em]">
                                         Co-Powered By
                                     </div>
-                                    <a href="https://nielseniq.com/" target="_blank" rel="noopener noreferrer" className="transition-all duration-500 hover:scale-105 filter drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]">
-                                        <img src="/inctf/assets/images/current_sponsors/NIQ-logo-bright-blue-web.png" alt="NIQ Logo" className="h-8 md:h-10 w-auto object-contain brightness-0 invert opacity-90 hover:opacity-100 transition-opacity" />
-                                    </a>
+                                    <div className="flex items-center justify-center h-10 md:h-14">
+                                        <a href="https://nielseniq.com/" target="_blank" rel="noopener noreferrer" className="transition-all duration-500 hover:scale-105 filter drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]">
+                                            <img src="/inctf/assets/images/current_sponsors/NIQ-logo-bright-blue-web.png" alt="NIQ Logo" className="h-8 md:h-10 w-auto object-contain brightness-0 invert opacity-90 hover:opacity-100 transition-opacity" />
+                                        </a>
+                                    </div>
                                 </div>
 
                                 {/* Supported By Section */}
@@ -63,9 +67,11 @@ const CurrentSponsors = () => {
                                     <div className="text-white/60 font-mono text-xs uppercase tracking-[0.25em]">
                                         Supported By
                                     </div>
-                                    <a href="https://www.siemens.com/en-gb/" target="_blank" rel="noopener noreferrer" className="transition-all duration-500 hover:scale-105 filter drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]">
-                                        <img src="/inctf/assets/images/current_sponsors/Siemens.png" alt="Siemens Logo" className="h-8 md:h-10 w-auto object-contain brightness-0 invert opacity-90 hover:opacity-100 transition-opacity" />
-                                    </a>
+                                    <div className="flex items-center justify-center h-10 md:h-14">
+                                        <a href="https://www.siemens.com/en-gb/" target="_blank" rel="noopener noreferrer" className="transition-all duration-500 hover:scale-105 filter drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]">
+                                            <img src="/inctf/assets/images/current_sponsors/Siemens.png" alt="Siemens Logo" className="h-8 md:h-10 w-auto object-contain brightness-0 invert opacity-90 hover:opacity-100 transition-opacity" />
+                                        </a>
+                                    </div>
                                 </div>
 
                                 {/* Organizing Partner Section */}
@@ -73,9 +79,11 @@ const CurrentSponsors = () => {
                                     <div className="text-white/60 font-mono text-xs uppercase tracking-[0.25em]">
                                         Organizing Partner
                                     </div>
-                                    <a href="https://traboda.com/" target="_blank" rel="noopener noreferrer" className="transition-all duration-500 hover:scale-105 filter drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]">
-                                        <img src="/inctf/assets/images/logos/traboda_light.png" alt="Traboda CyberLabs Logo" className="h-10 md:h-14 w-auto object-contain brightness-0 invert opacity-90 hover:opacity-100 transition-opacity" />
-                                    </a>
+                                    <div className="flex items-center justify-center h-10 md:h-14">
+                                        <a href="https://traboda.com/" target="_blank" rel="noopener noreferrer" className="transition-all duration-500 hover:scale-105 filter drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]">
+                                            <img src="/inctf/assets/images/logos/traboda_light.png" alt="Traboda CyberLabs Logo" className="h-10 md:h-14 w-auto object-contain brightness-0 invert opacity-90 hover:opacity-100 transition-opacity" />
+                                        </a>
+                                    </div>
                                 </div>
 
                                 {/* Community Partner Section */}
@@ -83,9 +91,11 @@ const CurrentSponsors = () => {
                                     <div className="text-white/60 font-mono text-xs uppercase tracking-[0.25em]">
                                         Community Partner
                                     </div>
-                                    <a href="https://www.iotsrg.org/" target="_blank" rel="noopener noreferrer" className="transition-all duration-500 hover:scale-105 filter drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]">
-                                        <img src="/inctf/assets/images/current_sponsors/Gold-IoTSRG.png" alt="IoT Security Research Group" className="h-10 md:h-14 w-auto object-contain brightness-0 invert opacity-90 hover:opacity-100 transition-opacity" />
-                                    </a>
+                                    <div className="flex items-center justify-center h-10 md:h-14">
+                                        <a href="https://www.iotsrg.org/" target="_blank" rel="noopener noreferrer" className="transition-all duration-500 hover:scale-105 filter drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]">
+                                            <img src="/inctf/assets/images/current_sponsors/Gold-IoTSRG.png" alt="IoT Security Research Group" className="h-10 md:h-14 w-auto object-contain brightness-0 invert opacity-90 hover:opacity-100 transition-opacity" />
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>

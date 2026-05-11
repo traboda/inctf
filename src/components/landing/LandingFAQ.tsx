@@ -41,7 +41,7 @@ const LandingFAQ = () => {
       question: "I'm a complete beginner. Can I still participate?",
       answer: (
         <>
-          Yes! InCTF is explicitly designed for beginners. We provide guided training, resources, and practice challenges to help you learn from scratch. Check out our <a href="#training" className="text-sky-400 hover:text-sky-300 underline underline-offset-2">Training & Learning</a> section to get started.
+          Yes! InCTF is explicitly designed for beginners. We provide guided training and resources to help you learn from scratch. Check out our <a href="#training" className="text-sky-400 hover:text-sky-300 underline underline-offset-2">Training & Learning</a> section to get started.
         </>
       )
     },
@@ -65,7 +65,7 @@ const LandingFAQ = () => {
       question: "Where can I practice before the contest?",
       answer: (
         <>
-          You can practice on <a href="https://traboda.com/" target="_blank" rel="noopener noreferrer" className="text-sky-400 hover:text-sky-300 underline underline-offset-2">Traboda</a>, read the <a href="https://wiki.bi0s.in/" target="_blank" rel="noopener noreferrer" className="text-sky-400 hover:text-sky-300 underline underline-offset-2">bi0s Wiki</a>, or explore our <a href="/writeups" className="text-sky-400 hover:text-sky-300 underline underline-offset-2">Writeups</a>. Find all the links in the <a href="#resources" className="text-sky-400 hover:text-sky-300 underline underline-offset-2">Resources</a> section.
+          You can read the <a href="https://wiki.bi0s.in/" target="_blank" rel="noopener noreferrer" className="text-sky-400 hover:text-sky-300 underline underline-offset-2">bi0s Wiki</a>, or explore our <a href="/writeups" className="text-sky-400 hover:text-sky-300 underline underline-offset-2">Writeups</a>. Find all the links in the <a href="#resources" className="text-sky-400 hover:text-sky-300 underline underline-offset-2">Resources</a> section.
         </>
       )
     },
@@ -80,7 +80,7 @@ const LandingFAQ = () => {
   ];
 
   return (
-    <section className="relative py-24 bg-obsidian z-20 border-t border-sky-400/10" id="landing-faq">
+    <section className="relative py-24 z-20" id="landing-faq">
       <div className="container mx-auto px-6 md:px-8 max-w-4xl">
         <div className="text-center mb-16">
           <motion.div
