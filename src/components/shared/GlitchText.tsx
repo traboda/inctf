@@ -62,28 +62,22 @@ const GlitchText = ({ text, className = "", delay = 0, strikethrough = false, tr
   }, [started, text, triggerOnView]);
 
   return (
-    <span ref={ref} className={`relative inline ${className}`}>
+    <span ref={ref} className={`relative inline-block ${className}`}>
       <style jsx>{`
-        @keyframes glitch {
-          2%, 64% { transform: translate(2px, 0) skew(0deg); }
-          4%, 60% { transform: translate(-2px, 0) skew(0deg); }
-          62% { transform: translate(0, 0) skew(5deg); }
+        @keyframes glitchSlow {
+          0%, 90%, 100% { transform: translate(0.04em, 0); }
+          92% { transform: translate(0.08em, -0.01em); }
+          94% { transform: translate(0.02em, 0.01em); }
         }
-        @keyframes glitchTop {
-          2%, 64% { transform: translate(2px, -2px); }
-          4%, 60% { transform: translate(-2px, 2px); }
-          62% { transform: translate(13px, -1px) skew(-13deg); }
-        }
-        @keyframes glitchBottom {
-          2%, 64% { transform: translate(-2px, 0); }
-          4%, 60% { transform: translate(-2px, 0); }
-          62% { transform: translate(-22px, 5px) skew(21deg); }
+        @keyframes glitchSlowBottom {
+          0%, 90%, 100% { transform: translate(-0.04em, 0); }
+          92% { transform: translate(-0.08em, 0.01em); }
+          94% { transform: translate(-0.02em, -0.01em); }
         }
         
         .glitch-wrapper {
           position: relative;
-          display: inline;
-          animation: glitch 1s linear infinite;
+          display: inline-block;
         }
         
         .glitch-wrapper::before,
@@ -94,57 +88,39 @@ const GlitchText = ({ text, className = "", delay = 0, strikethrough = false, tr
           top: 0;
           width: 100%;
           height: 100%;
+          z-index: -1;
+          pointer-events: none;
+          opacity: 1;
         }
         
         .glitch-wrapper::before {
           color: #ff0000;
-          animation: glitchTop 1s linear infinite;
-          clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
-          -webkit-clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+          animation: glitchSlow 8s ease-in-out infinite;
         }
         
         .glitch-wrapper::after {
           color: #00ffff;
-          animation: glitchBottom 1.5s linear infinite;
-          clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
-          -webkit-clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+          animation: glitchSlowBottom 8s ease-in-out infinite;
         }
         
         .glitch-main {
           position: relative;
           z-index: 1;
-          color: inherit; /* Inherit color to allow customization */
-          text-shadow: 
-            1px 1px 0 rgba(0, 255, 255, 0.8),
-            2px 2px 0 rgba(0, 255, 255, 0.7),
-            3px 3px 0 rgba(0, 255, 255, 0.6),
-            4px 4px 0 rgba(0, 200, 200, 0.5),
-            5px 5px 0 rgba(0, 150, 150, 0.4),
-            6px 6px 0 rgba(255, 0, 0, 0.3),
-            7px 7px 0 rgba(255, 0, 0, 0.2),
-            8px 8px 20px rgba(0, 0, 0, 0.5);
-          transform: skewY(-2deg);
+          color: inherit;
+          /* No shadow, no blur - pure clarity */
         }
       `}</style>
 
-      {/* Invisible spacer to reserve layout space */}
-      <span className="opacity-0 pointer-events-none select-none" aria-hidden="true">
-        {text}
-      </span>
-
-      {/* Overlay for the actual effect */}
-      <span className="absolute top-0 left-0 w-full">
-        {!typingComplete ? (
-          <span className="glitch-main">
-            {displayText}
-            <span className="animate-pulse">|</span>
-          </span>
-        ) : (
-          <span className="glitch-wrapper" data-text={text}>
-            <span className="glitch-main">{text}</span>
-          </span>
-        )}
-      </span>
+      {!typingComplete ? (
+        <span className="glitch-main">
+          {displayText}
+          <span className="animate-pulse">|</span>
+        </span>
+      ) : (
+        <span className="glitch-wrapper" data-text={text}>
+          <span className="glitch-main">{text}</span>
+        </span>
+      )}
 
       {/* Strikethrough Lines */}
       {strikethrough && (
