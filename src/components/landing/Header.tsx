@@ -319,8 +319,8 @@ const LandingHeader = () => {
               <div className="flex flex-col w-full max-w-4xl mt-12 md:mt-20 sm:mt-8">
                 {/* Content Box with Border */}
 
-                <SectionCard className="mb-0 w-full !p-5 md:!py-10 md:!px-8" paddingClassName="p-0">
-                  <h1 className="text-[28px] sm:text-4xl md:text-5xl lg:text-6xl font-black font-heading mb-4 text-ghost-white text-left break-words leading-tight">
+                <SectionCard className="mb-4 w-full !p-5 md:!py-10 md:!px-8" paddingClassName="p-0">
+                  <h1 className="text-[clamp(1.4rem,8vw,3.2rem)] font-black font-heading mb-6 text-ghost-white text-left break-words leading-tight">
                     <span className="block mb-2">
                       <GlitchText
                         text="India's Cybersecurity Championship"
@@ -341,7 +341,7 @@ const LandingHeader = () => {
                   </div>
                 </SectionCard>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6 justify-center w-full mt-6 md:mt-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6 justify-center w-full mt-8 md:mt-12">
                   <Link href="https://register.inctf.in" target="_blank" rel="noopener noreferrer" className="plain-link w-full">
                     <motion.button
                       initial={{ opacity: 0, y: 20, boxShadow: "4px 4px 0 rgba(255,255,255,0.5)" }}
