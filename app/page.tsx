@@ -15,7 +15,15 @@ import OperationTimeline from '../src/components/landing/OperationTimeline';
 import Footer from '../src/components/shared/Footer';
 import FloatingContactButton from '@/src/components/landing/FloatingContactForm';
 import LandingChampionshipWorks from '../src/components/landing/HowItWorks';
+import RegistrationEndingPopup from '../src/components/landing/RegistrationEndingPopup';
 export default function LandingPage() {
+    const [showRegPopup, setShowRegPopup] = useState(false);
+
+    useEffect(() => {
+        const timer = setTimeout(() => setShowRegPopup(true), 3000);
+        return () => clearTimeout(timer);
+    }, []);
+
     return (
         <div className="bg-obsidian min-h-screen text-ghost-white relative overflow-x-hidden" id="landing-page">
             {/* Blurred Satellite Background  */}
@@ -72,6 +80,12 @@ export default function LandingPage() {
 
             {/* Floating Contact Button */}
             <FloatingContactButton />
+
+            {/* Registration Ending Popup */}
+            <RegistrationEndingPopup
+                isOpen={showRegPopup}
+                onClose={() => setShowRegPopup(false)}
+            />
         </div>
     );
 }
