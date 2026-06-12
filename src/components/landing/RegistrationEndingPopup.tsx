@@ -117,7 +117,7 @@ const RegistrationEndingPopup: React.FC<RegistrationEndingPopupProps> = ({ isOpe
               </h2>
 
               <p className="font-mono text-[#94a3b8] text-sm md:text-base mb-6 max-w-sm">
-                Last chance to join the CTF challenge.
+                Last chance to secure your spot and compete in the CTF.
               </p>
 
               <div className="flex items-center gap-3 font-mono text-[#FF0000] text-base md:text-lg mb-6"
