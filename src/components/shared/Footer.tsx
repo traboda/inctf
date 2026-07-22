@@ -33,7 +33,7 @@ const socials = [
 
 const navLinks = [
     { name: 'Home', href: '/' },
-    { name: 'How it Works', href: '/#how-it-works' },
+    { name: 'CTF Rules', href: '/#ctf-rules-guidelines' },
     { name: 'Training', href: '/trainings' },
     { name: 'Resources', href: '/resources' },
     { name: 'Blog', href: '/blog' },
@@ -48,9 +48,9 @@ const Footer = () => {
 
             <div className="container mx-auto px-6 pt-16 pb-10">
 
-                {/* ── Registration Status ── */}
+                {/* ── Finals Schedule CTA ── */}
                 <div className="flex justify-center mb-14">
-                    <Link href="https://register.inctf.in" target="_blank" rel="noopener noreferrer">
+                    <Link href="/#event-schedule">
                         <motion.button
                             initial={{ opacity: 0, y: 10, boxShadow: "4px 4px 0 rgba(255,255,255,0.5)" }}
                             whileInView={{ opacity: 1, y: 0, boxShadow: "4px 4px 0 rgba(255,255,255,0.5)" }}
@@ -60,7 +60,7 @@ const Footer = () => {
                             className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-br from-red-900 to-red-800 border-2 border-white/60 text-white font-mono tracking-widest uppercase text-sm font-black cursor-pointer"
                         >
 
-                            [ Registrations Are Ongoing ]
+                            [ View Event Schedule ]
                         </motion.button>
                     </Link>
                 </div>

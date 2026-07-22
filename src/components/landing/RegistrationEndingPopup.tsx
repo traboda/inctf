@@ -113,27 +113,25 @@ const RegistrationEndingPopup: React.FC<RegistrationEndingPopupProps> = ({ isOpe
             {/* Content */}
             <div className="relative z-10 text-center flex flex-col items-center mt-6">
               <h2 className="font-heading text-2xl md:text-3xl font-bold text-[#e2e8f0] mb-2">
-                Registration Ends Soon!
+                Finals Briefing Available
               </h2>
 
               <p className="font-mono text-[#94a3b8] text-sm md:text-base mb-6 max-w-sm">
-                Last chance to secure your spot and compete in the CTF.
+                The registration window is closed. Review the finals schedule for current instructions.
               </p>
 
               <div className="flex items-center gap-3 font-mono text-[#FF0000] text-base md:text-lg mb-6"
                 style={{ textShadow: '0 0 10px rgba(255,0,0,0.3)' }}
               >
                 <span className="text-2xl">📅</span>
-                <span className="font-bold">Qualifiers: 20th–21st June</span>
+                <span className="font-bold">Finals: 7th–9th August</span>
               </div>
 
               <a
-                href="https://register.inctf.in"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/#event-schedule"
                 className="inline-block font-heading text-base md:text-lg font-semibold text-white bg-gradient-to-br from-red-900 to-red-800 border-2 border-white/60 px-8 py-3 rounded-sm hover:shadow-[0_0_30px_rgba(244,63,94,0.6)] hover:border-white transition-all duration-200"
               >
-                Sign Up Now 🚀
+                View Event Schedule
               </a>
             </div>
 

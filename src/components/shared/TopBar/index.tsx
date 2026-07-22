@@ -6,7 +6,6 @@ import Modal from 'react-modal';
 import { clearAllBodyScrollLocks } from 'body-scroll-lock';
 
 import Logo from '../Logo';
-import { trackRegisterClick } from '../../../utils/trackRegisterClick';
 
 import MobileMenu from './MobileMenu';
 import TopBarSearch from './search';
@@ -268,8 +267,8 @@ const TopBar = ({ UTMSource = null }) => {
     ],
     CTA: {
       type: "link",
-      link: "https://register.inctf.in",
-      buttonText: "Register Now",
+      link: "/discord",
+      buttonText: "Join Discord Now",
       title: "",
       subTitle: ""
     }
@@ -390,11 +389,6 @@ const TopBar = ({ UTMSource = null }) => {
                           <Link
                             href={topbarConfig?.CTA?.link}
                             target="_blank"
-                            onClick={(event) => {
-                              trackRegisterClick(event, {
-                                url: topbarConfig?.CTA?.link,
-                              });
-                            }}
                           >
                             <span className="px-6 py-2 rounded-none border border-alert-crimson bg-alert-crimson/10 text-alert-crimson font-bold font-tactical uppercase tracking-wider hover:bg-alert-crimson hover:text-white transition-all duration-300 ml-3 shadow-[0_0_10px_rgba(244,63,94,0.25)] hover:shadow-[0_0_25px_rgba(244,63,94,0.6)] cursor-pointer inline-flex items-center">
                               {topbarConfig?.CTA?.buttonText}
@@ -431,13 +425,8 @@ const TopBar = ({ UTMSource = null }) => {
                 href={topbarConfig.CTA.link}
                 target="_blank"
                 className="px-3 py-1 border border-alert-crimson bg-alert-crimson/10 text-alert-crimson font-bold uppercase tracking-wider text-xs rounded-none hover:bg-alert-crimson hover:text-white transition-all duration-300"
-                onClick={(event) => {
-                  trackRegisterClick(event, {
-                    url: topbarConfig.CTA.link,
-                  });
-                }}
               >
-                Register
+                {topbarConfig.CTA.buttonText}
               </Link>
             ) : null}
 
