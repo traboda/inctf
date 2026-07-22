@@ -518,30 +518,29 @@ const questions = [
   },
   {
     
-    'question': 'How do I register for InCTF?',
-    'keywords': ['register', 'registration'],
+    'question': 'How do finalists get event updates?',
+    'keywords': ['updates', 'finals', 'event'],
     'response': [
-      'You can register through the official InCTF website.',
+      'Finalists should follow the official InCTF website and communication channels for check-in, transport, and venue updates.',
     ],
     'answer': <>
-      You can register through the official InCTF website. Follow the instructions provided there and keep an eye 
-      on your registered email for updates.
+      Finalists should follow the official InCTF website and communication channels for check-in, transport, and venue updates.
     </>,
     tags: ['getting-started'],
   },
   {
     
-    'question': 'What are the phases in InCTF?',
-    'keywords': ['phases', 'stages'],
+    'question': 'What does the finals weekend look like?',
+    'keywords': ['phases', 'stages', 'schedule', 'finals'],
     'response': [
-      'Typically, InCTF consists of multiple phases:',
+      'The finals weekend is split into authentication, investigation, and debriefing phases.',
     ],
     'answer': <>
-      Typically, InCTF consists of:
+      The finals weekend consists of:
       <ul>
-        <li>Training Phase – Online learning resources and materials</li>
-        <li>Qualifier CTF – Online preliminary round</li>
-        <li>Final CTF Round – For top performers, which may be online or on-site</li>
+        <li>August 7: Authentication &amp; systems validation</li>
+        <li>August 8: Investigation (CTF finals)</li>
+        <li>August 9: Debriefing &amp; intelligence summit</li>
       </ul>
     </>,
     tags: ['structure'],
@@ -593,13 +592,13 @@ const questions = [
   },
   {
     
-    'question': 'Is there a registration fee?',
-    'keywords': ['fee', 'cost'],
+    'question': 'Will finalists need to pay for the event?',
+    'keywords': ['fee', 'cost', 'finals'],
     'response': [
-      'Yes. A team registration fee will be applicable.',
+      'Finalists should refer to the official event communication for any confirmed cost or travel information.',
     ],
     'answer': <>
-      Yes. A team registration fee will be applicable. Please refer to the official website for current details.
+      Finalists should refer to the official event communication for any confirmed cost or travel information.
     </>,
     tags: ['requirements'],
   },
@@ -636,14 +635,13 @@ const questions = [
   },
   {
     
-    'question': 'Will I get a certificate?',
+    'question': 'Will finalists get a certificate?',
     'keywords': ['certificate'],
     'response': [
-      'Yes. All participants who complete certain stages will receive digital certificates.',
+      'Yes. All finalists will receive certificates.',
     ],
     'answer': <>
-      Yes. All participants who complete certain stages (such as training or qualifiers) will receive digital 
-      certificates. Top performers receive additional awards and recognition.
+      Yes. All finalists will receive certificates during the closing ceremony. Top performers receive additional awards and recognition.
     </>,
     tags: ['certificate'],
   },

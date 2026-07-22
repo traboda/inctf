@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
-import { Trophy, BookOpen, Terminal, Flag, ArrowRight } from 'lucide-react';
+import { Trophy, BookOpen, Terminal, Flag } from 'lucide-react';
 import Link from 'next/link';
 
 const ChampionshipSection = styled.section`
@@ -48,8 +48,6 @@ const steps = [
     icon: <Trophy size={16} />
   }
 ];
-const MotionLink = motion(Link);
-
 const LandingChampionshipWorks = () => {
   return (
     <ChampionshipSection className="container mx-auto px-6 md:px-8 relative z-20" id="how-it-works">
@@ -83,38 +81,6 @@ const LandingChampionshipWorks = () => {
           ))}
         </div>
       </div>
-
-      {/* Supporting Links */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.4 }}
-        className="flex flex-col sm:flex-row justify-center items-center gap-10 sm:gap-8 mt-12"
-      >
-        <MotionLink
-          href="/championship"
-          initial={{ opacity: 0, y: 20, boxShadow: "4px 4px 0 rgba(255,255,255,0.5)" }}
-          whileInView={{ opacity: 1, y: 0, boxShadow: "4px 4px 0 rgba(255,255,255,0.5)" }}
-          whileHover={{ scale: 1.03, boxShadow: "0 0 40px rgba(244,63,94,0.6), 4px 4px 0 rgba(255,255,255,0.7)" }}
-          whileTap={{ scale: 0.95 }}
-          viewport={{ once: true }}
-          className="group w-full md:w-auto px-6 sm:px-8 py-4 sm:py-3 bg-gradient-to-br from-red-900 to-red-800 border-2 border-white/60 text-white font-mono tracking-wide whitespace-normal sm:whitespace-nowrap flex items-center justify-center text-center text-sm cursor-pointer leading-tight"
-        >
-          [ View Detailed Contest Format ]
-        </MotionLink>
-        <MotionLink
-          href="/championship#finals"
-          initial={{ opacity: 0, y: 20, boxShadow: "4px 4px 0 rgba(255,255,255,0.5)" }}
-          whileInView={{ opacity: 1, y: 0, boxShadow: "4px 4px 0 rgba(255,255,255,0.5)" }}
-          whileHover={{ scale: 1.03, boxShadow: "0 0 40px rgba(244,63,94,0.6), 4px 4px 0 rgba(255,255,255,0.7)" }}
-          whileTap={{ scale: 0.95 }}
-          viewport={{ once: true }}
-          className="group w-full md:w-auto px-6 sm:px-8 py-4 sm:py-3 bg-gradient-to-br from-red-900 to-red-800 border-2 border-white/60 text-white font-mono tracking-wide whitespace-normal sm:whitespace-nowrap flex items-center justify-center text-center text-sm cursor-pointer leading-tight"
-        >
-          [ See Final Round Details ]
-        </MotionLink>
-      </motion.div>
 
     </ChampionshipSection>
   );

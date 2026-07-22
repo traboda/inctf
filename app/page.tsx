@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import TopBar from '../src/components/shared/TopBar';
 import StarfieldBackground from '../src/components/shared/StarfieldBackground';
 import LandingHeader from '../src/components/landing/Header';
@@ -8,22 +8,14 @@ import LandingAboutInCTF from '../src/components/landing/About';
 import LandingTrainingSection from '../src/components/landing/TrainingSection';
 import LandingResourcesSection from '../src/components/landing/ResourcesSection';
 import LandingPrizeDetails from '../src/components/landing/Prizes';
+import EventSchedule from '../src/components/landing/EventSchedule';
+import FinalsRulesGuidelines from '../src/components/landing/FinalsRulesGuidelines';
 import LandingFAQ from '../src/components/landing/LandingFAQ';
 import LandingOrganizedBy from '../src/components/landing/LandingOrganizedBy';
 import CurrentSpeakers from '../src/components/landing/CurrentSpeakers';
-import OperationTimeline from '../src/components/landing/OperationTimeline';
 import Footer from '../src/components/shared/Footer';
 import FloatingContactButton from '@/src/components/landing/FloatingContactForm';
-import LandingChampionshipWorks from '../src/components/landing/HowItWorks';
-import RegistrationEndingPopup from '../src/components/landing/RegistrationEndingPopup';
 export default function LandingPage() {
-    const [showRegPopup, setShowRegPopup] = useState(false);
-
-    useEffect(() => {
-        const timer = setTimeout(() => setShowRegPopup(true), 3000);
-        return () => clearTimeout(timer);
-    }, []);
-
     return (
         <div className="bg-obsidian min-h-screen text-ghost-white relative overflow-x-hidden" id="landing-page">
             {/* Blurred Satellite Background  */}
@@ -54,11 +46,14 @@ export default function LandingPage() {
             {/* Why Participate — Prizes, Perks & Career Outcomes Section */}
             <LandingPrizeDetails />
 
-            {/* How the Championship Works Section */}
-            <LandingChampionshipWorks />
+            {/* Event Schedule Section */}
+            <EventSchedule />
 
-            {/* Timeline & Key Milestones Section */}
-            <OperationTimeline />
+            {/* Finals Rules & Guidelines */}
+            <FinalsRulesGuidelines />
+
+            {/* FAQ / Important Information */}
+            <LandingFAQ />
 
             {/* Training & Learning Section */}
             <LandingTrainingSection />
@@ -72,20 +67,11 @@ export default function LandingPage() {
             {/* Social Proof — Organized By & Partners */}
             <LandingOrganizedBy />
 
-            {/* FAQ */}
-            <LandingFAQ />
-
             {/* Footer */}
             <Footer />
 
             {/* Floating Contact Button */}
             <FloatingContactButton />
-
-            {/* Registration Ending Popup */}
-            <RegistrationEndingPopup
-                isOpen={showRegPopup}
-                onClose={() => setShowRegPopup(false)}
-            />
         </div>
     );
 }

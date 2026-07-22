@@ -11,7 +11,7 @@ import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollToPlugin);
 }
-import { AlertTriangle, Radio, Terminal, ChevronRight, Crosshair, Banknote, Users, ShieldCheck, Award, Zap } from 'lucide-react';
+import { AlertTriangle, Radio, Terminal, ChevronRight, Crosshair, Banknote, Users, CalendarDays, MapPinned, ShieldCheck, Award, Zap } from 'lucide-react';
 
 import animations from '../../animation';
 import { trackRegisterClick } from '../../utils/trackRegisterClick';
@@ -342,7 +342,7 @@ const LandingHeader = () => {
                 </SectionCard>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6 justify-center w-full mt-8 md:mt-12">
-                  <Link href="https://register.inctf.in" target="_blank" rel="noopener noreferrer" className="plain-link w-full">
+                  <Link href="/#event-schedule" className="plain-link w-full">
                     <motion.button
                       initial={{ opacity: 0, y: 20, boxShadow: "4px 4px 0 rgba(255,255,255,0.5)" }}
                       animate={{ opacity: 1, y: 0, boxShadow: "4px 4px 0 rgba(255,255,255,0.5)" }}
@@ -351,15 +351,12 @@ const LandingHeader = () => {
                       whileTap={{ scale: 0.95 }}
                       className="w-full h-full min-h-[56px] px-2 sm:px-6 py-3 bg-gradient-to-br from-red-900 to-red-800 border-2 border-white/60 text-white font-mono tracking-wide whitespace-nowrap flex items-center justify-center text-center text-sm md:text-base cursor-pointer"
                     >
-                      [ Register Now ]
+                      [ View Event Schedule ]
                     </motion.button>
                   </Link>
 
-                  <div className="w-full">
+                  <Link href="/#ctf-rules-guidelines" className="plain-link w-full">
                     <motion.button
-                      onClick={() => {
-                        gsap.to(window, { duration: 0.8, scrollTo: { y: "#how-it-works", offsetY: 100 }, ease: "power2.inOut" });
-                      }}
                       initial={{ opacity: 0, y: 20, boxShadow: "4px 4px 0 rgba(255,255,255,0.5)" }}
                       animate={{ opacity: 1, y: 0, boxShadow: "4px 4px 0 rgba(255,255,255,0.5)" }}
                       transition={{ delay: 2.2, type: "spring" }}
@@ -367,12 +364,12 @@ const LandingHeader = () => {
                       whileTap={{ scale: 0.95 }}
                       className="w-full h-full min-h-[56px] px-2 sm:px-6 py-3 bg-slate-900/80 border-2 border-cyan-500/50 text-cyan-400 font-mono tracking-wide whitespace-nowrap flex items-center justify-center text-center text-sm md:text-base cursor-pointer"
                     >
-                      [ How InCTF Works ]
+                      [ View Guidelines For the Finals ]
                     </motion.button>
-                  </div>
+                  </Link>
                 </div>
 
-                {/* Registration Alert Status */}
+                {/* Finals Alert Status */}
                 <div className="mt-6 w-full flex justify-center md:justify-start">
                   <motion.div
                     initial={{ opacity: 0, y: 10 }}
@@ -382,7 +379,7 @@ const LandingHeader = () => {
                   >
                     <div className="w-2 h-2 rounded-full bg-alert-crimson animate-pulse shadow-[0_0_10px_rgba(244,63,94,0.7)]"></div>
                     <span className="text-xs sm:text-sm font-mono text-red-400 tracking-widest font-black uppercase">
-                      REGISTRATIONS ARE ONGOING
+                      FINALS BRIEFING LIVE: AUG 7-9, 2026
                     </span>
                   </motion.div>
                 </div>
@@ -447,8 +444,7 @@ const LandingHeader = () => {
           </div>
 
           {/* Hero Quick Facts Row */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-16 md:mt-24 pb-12 w-full max-w-4xl mx-auto relative z-20">
-            {/* Fact 2 */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-16 md:mt-24 pb-12 w-full max-w-6xl mx-auto relative z-20">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -456,12 +452,11 @@ const LandingHeader = () => {
               className="bg-slate-900/40 border border-sky-500/20 p-5 md:p-6 rounded-lg backdrop-blur-sm"
             >
               <h4 className="text-cyan-400 font-mono font-bold text-sm md:text-base uppercase mb-2 tracking-wider flex items-center gap-2">
-                <Users size={16} /> Who can participate?
+                <CalendarDays size={16} /> Finals schedule
               </h4>
-              <p className="text-slate-300 text-sm leading-relaxed">College students and working professionals in India.</p>
+              <p className="text-slate-300 text-sm leading-relaxed">August 7-9, 2026, with finals action concentrated on August 8.</p>
             </motion.div>
 
-            {/* Fact 3 */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -469,9 +464,21 @@ const LandingHeader = () => {
               className="bg-slate-900/40 border border-sky-500/20 p-5 md:p-6 rounded-lg backdrop-blur-sm"
             >
               <h4 className="text-cyan-400 font-mono font-bold text-sm md:text-base uppercase mb-2 tracking-wider flex items-center gap-2">
-                <Award size={16} /> Prizes & Recognition
+                <MapPinned size={16} /> Venues
               </h4>
-              <p className="text-slate-300 text-sm leading-relaxed">Prizes, certificates, and post-contest training opportunities for top performers.</p>
+              <p className="text-slate-300 text-sm leading-relaxed">Amrita Vishwa Vidyapeetham, Bengaluru on August 7 and 8. MLR Convention Centre, JP Nagar, on August 9.</p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.3 }}
+              className="bg-slate-900/40 border border-sky-500/20 p-5 md:p-6 rounded-lg backdrop-blur-sm"
+            >
+              <h4 className="text-cyan-400 font-mono font-bold text-sm md:text-base uppercase mb-2 tracking-wider flex items-center gap-2">
+                <ShieldCheck size={16} /> AI policy
+              </h4>
+              <p className="text-slate-300 text-sm leading-relaxed">AI assistants, generative models, and remote help are prohibited during the CTF finals.</p>
             </motion.div>
           </div>
         </div>

@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ShieldCheck } from 'lucide-react';
+import { ShieldAlert } from 'lucide-react';
 import Link from 'next/link';
 
 // Simple accordion component tailored for the landing page aesthetic
@@ -38,49 +38,57 @@ const LandingFAQ = () => {
 
   const faqs = [
     {
-      question: "I'm a complete beginner. Can I still participate?",
+      question: 'Is accommodation provided for finalists?',
       answer: (
         <>
-          Yes! InCTF is explicitly designed for beginners. We provide guided training and resources to help you learn from scratch. Check out our <a href="#training" className="text-sky-400 hover:text-sky-300 underline underline-offset-2">Training & Learning</a> section to get started.
+          Accommodation is not provided. General transport is also not provided, except for the transport between Amrita University and the MLR Convention Centre on August 9.
         </>
       )
     },
     {
-      question: "Is InCTF free?",
+      question: 'Will finalists receive certificates?',
       answer: (
         <>
-          There is a small registration fee of ₹499 for all eligible students. There are no hidden charges to access the training.
+          Yes. Certificates will be distributed during the closing ceremony, and all finalists will receive them.
         </>
       )
     },
     {
-      question: "What is the contest format?",
+      question: 'What is the venue for each day?',
       answer: (
         <>
-          InCTF features Jeopardy-style challenges across various categories (Web, Crypto, Forensics, etc.). It starts with online learning, moves to a Qualifier round, and ends with an on-site Final. See the <a href="#timeline" className="text-sky-400 hover:text-sky-300 underline underline-offset-2">Mission Timeline</a> for dates.
+          August 7 and 8 will be held at Amrita Vishwa Vidyapeetham, Bengaluru. August 9 will be held at MLR Convention Centre, JP Nagar, Bengaluru.
         </>
       )
     },
     {
-      question: "Where can I practice before the contest?",
+      question: 'What support is available during the finals?',
       answer: (
         <>
-          You can read the <a href="https://wiki.bi0s.in/" target="_blank" rel="noopener noreferrer" className="text-sky-400 hover:text-sky-300 underline underline-offset-2">bi0s Wiki</a>, or explore our <a href="/writeups" className="text-sky-400 hover:text-sky-300 underline underline-offset-2">Writeups</a>. Find all the links in the <a href="#resources" className="text-sky-400 hover:text-sky-300 underline underline-offset-2">Resources</a> section.
+          If you encounter a technical issue or need an official hint, clarification, or solution script, contact the organizers directly.
         </>
       )
     },
     {
-      question: "What do participants get after competing?",
+      question: 'Can top-performing teams receive referrals?',
       answer: (
         <>
-          Top performers receive cash prizes, official certificates, and exclusive internship/hiring opportunities with our network of security partners. Learn more under <a href="#prizes" className="text-sky-400 hover:text-sky-300 underline underline-offset-2">Prizes & Perks</a>.
+          Yes. Outstanding teams may receive referrals from team bi0s to cybersecurity organizations.
+        </>
+      )
+    },
+    {
+      question: 'Can we use AI assistants during the CTF?',
+      answer: (
+        <>
+          No. Any AI assistant, generative model, locally hosted offline LLM, remote helper, or external solution service is prohibited during the CTF finals.
         </>
       )
     }
   ];
 
   return (
-    <section className="relative py-24 z-20" id="landing-faq">
+    <section className="relative py-24 z-20" id="important-information">
       <div className="container mx-auto px-6 md:px-8 max-w-4xl">
         <div className="text-center mb-16">
           <motion.div
@@ -89,15 +97,19 @@ const LandingFAQ = () => {
             viewport={{ once: true }}
           >
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900/60 border border-sky-500/30 text-sky-400 font-mono text-xs tracking-widest uppercase mb-4 shadow-[0_0_10px_rgba(56,189,248,0.2)]">
-              <ShieldCheck size={14} /> Intelligence / FAQ
+              <ShieldAlert size={14} /> Finals / Important Information
             </div>
             <h2 className="text-3xl md:text-5xl font-black text-white uppercase tracking-wide font-heading mb-4">
-              Frequently Asked <span className="text-sky-400">Questions</span>
+              Important <span className="text-sky-400">Information</span>
             </h2>
             <p className="text-slate-400 font-mono text-sm">
-              Common queries about Operation VAJRA.
+              What finalists need to know before arriving on site.
             </p>
           </motion.div>
+        </div>
+
+        <div className="mb-8 rounded-2xl border border-amber-500/25 bg-amber-500/10 px-5 py-4 text-sm md:text-base text-amber-50/90 leading-relaxed">
+          AI usage policy: AI assistants, generative models, local or offline LLMs, remote helpers, and external solution services are prohibited during the CTF finals.
         </div>
 
         <div className="space-y-2">
@@ -129,7 +141,7 @@ const LandingFAQ = () => {
               viewport={{ once: true }}
               className="px-8 py-3 bg-gradient-to-br from-red-900 to-red-800 border-2 border-white/60 text-white font-mono uppercase tracking-wider text-sm transition-all cursor-pointer inline-flex items-center justify-center"
             >
-              [ View Full FAQ ]
+              [ Contact Organizers ]
             </motion.button>
           </Link>
         </div>

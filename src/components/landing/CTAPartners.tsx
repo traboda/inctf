@@ -78,7 +78,7 @@ const LandingMissionOutreach = () => {
           ))}
         </div>
         <p className="text-center text-slate-500 text-sm mt-4 italic">
-          * Mission Outreach Codes provide the lowest available registration fee.
+          * Mission Outreach Codes provide the best available access tier.
         </p>
       </div>
 
@@ -121,7 +121,7 @@ const LandingMissionOutreach = () => {
         <div className="bg-alert-crimson/5 border border-alert-crimson/20 p-4 mt-8 rounded flex items-center gap-3 justify-center text-center md:text-left">
           <ShieldCheck className="text-alert-crimson shrink-0" />
           <p className="text-slate-400 text-sm">
-            <strong className="text-alert-crimson">OPERATIONAL NOTE:</strong> Only verified and payment-completed registrations using the assigned code are counted.
+            <strong className="text-alert-crimson">OPERATIONAL NOTE:</strong> Only verified participation using the assigned code is counted.
           </p>
         </div>
       </div>
