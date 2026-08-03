@@ -36,9 +36,13 @@ const scheduleDays = [
     venue: 'MLR Convention Centre, JP Nagar, Bengaluru',
     highlight: 'Transport to the summit venue will be provided',
     items: [
-      { icon: BusFront, label: 'Transportation', value: 'Amrita University to MLR Convention Centre' },
+      { icon: BusFront, label: 'Transport', value: 'Transport from Amrita University will begin at 8:00 AM.' },
+      { icon: CalendarDays, label: 'Participant Registration', value: 'Participant registration will take place from 8:30 AM to 9:30 AM.' },
       { icon: Presentation, label: 'Technical Talks & Industry Sessions', value: 'Throughout the day' },
-      { icon: CalendarDays, label: 'Networking, Closing, Certificates & Prizes', value: 'Closing session' },
+      { icon: PartyPopper, label: 'Event Goodies', value: 'Event goodies will be distributed throughout the day from the registration desk and the various stalls. Participants can collect them while exploring the event.' },
+      { icon: CalendarDays, label: 'Participation Certificates', value: 'Participation certificates will be distributed just before the Closing Ceremony.' },
+      { icon: PartyPopper, label: 'Lucky Draw', value: 'A special Lucky Draw will also be conducted during the event. The winner will be announced during the Closing Ceremony, so participants are encouraged to stay until the end for a chance to win.' },
+      { icon: CalendarDays, label: 'Event Conclusion', value: 'The event is scheduled to conclude at 4:00 PM.' },
     ],
   },
 ];
