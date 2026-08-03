@@ -24,7 +24,7 @@ const FAQItem = ({ question, answer, isOpen, onClick }: any) => (
       </span>
     </button>
     <div 
-      className={`px-6 overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-48 pb-4 opacity-100' : 'max-h-0 opacity-0'}`}
+      className={`px-6 overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-[420px] pb-4 opacity-100' : 'max-h-0 opacity-0'}`}
     >
       <div className="text-slate-400 font-mono text-sm leading-relaxed border-t border-sky-400/10 pt-4">
         {answer}
@@ -82,6 +82,14 @@ const LandingFAQ = () => {
       answer: (
         <>
           No. Any AI assistant, generative model, locally hosted offline LLM, remote helper, or external solution service is prohibited during the CTF finals.
+        </>
+      )
+    },
+    {
+      question: 'Should the bonafide certificate be submitted once per team or by each individual participant?',
+      answer: (
+        <>
+          Each participant must bring their own individual bonafide certificate. A single certificate for the entire team will not be accepted. Submission of an individual bonafide certificate is mandatory for every participant.
         </>
       )
     }
