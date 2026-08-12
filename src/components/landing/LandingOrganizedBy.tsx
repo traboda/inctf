@@ -2,8 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ShieldCheck, Network } from 'lucide-react';
-import PastSponsorsTable from './PastSponsorsTable';
+import { ShieldCheck } from 'lucide-react';
 
 const LandingOrganizedBy = () => {
   const organizers = [
@@ -43,8 +42,17 @@ const LandingOrganizedBy = () => {
           </motion.div>
         </div>
 
+        <div className="flex justify-center mb-10">
+          <a
+            href="/sponsors"
+            className="inline-flex items-center gap-2 rounded-full border border-sky-500/40 bg-sky-500/10 px-4 py-2 text-xs font-mono uppercase tracking-[0.24em] text-sky-300 transition hover:border-sky-400 hover:bg-sky-500/20 hover:text-white"
+          >
+            Sponsors
+          </a>
+        </div>
+
         {/* 3 Organizers Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {organizers.map((org, i) => (
             <motion.div 
               key={i}
@@ -80,27 +88,6 @@ const LandingOrganizedBy = () => {
               </p>
             </motion.div>
           ))}
-        </div>
-
-        {/* Partners & Supporters Subsection */}
-        <div className="text-center mb-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900/60 border border-sky-500/30 text-sky-400 font-mono text-xs tracking-widest uppercase mb-4 shadow-[0_0_10px_rgba(56,189,248,0.2)]">
-              <Network size={14} /> Network
-            </div>
-            <h3 className="text-2xl md:text-4xl font-black text-white uppercase tracking-wide font-heading">
-              Partners <span className="text-sky-400">& Supporters</span>
-            </h3>
-          </motion.div>
-        </div>
-
-        {/* Existing Past Sponsors Table - wrapped to integrate smoothly */}
-        <div className="-mx-4 md:mx-0">
-          <PastSponsorsTable />
         </div>
       </div>
     </section>
