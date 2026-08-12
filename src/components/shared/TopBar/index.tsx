@@ -207,6 +207,10 @@ const TopBar = ({ UTMSource = null }) => {
         ]
       },
       {
+        label: "Sponsors",
+        link: "/#sponsors"
+      },
+      {
         label: "Get Started",
         link: "/resources",
         items: [
