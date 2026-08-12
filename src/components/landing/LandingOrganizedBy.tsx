@@ -42,15 +42,6 @@ const LandingOrganizedBy = () => {
           </motion.div>
         </div>
 
-        <div className="flex justify-center mb-10">
-          <a
-            href="/sponsors"
-            className="inline-flex items-center gap-2 rounded-full border border-sky-500/40 bg-sky-500/10 px-4 py-2 text-xs font-mono uppercase tracking-[0.24em] text-sky-300 transition hover:border-sky-400 hover:bg-sky-500/20 hover:text-white"
-          >
-            Sponsors
-          </a>
-        </div>
-
         {/* 3 Organizers Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {organizers.map((org, i) => (
